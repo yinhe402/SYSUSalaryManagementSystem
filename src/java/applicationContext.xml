@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+       default-lazy-init="true">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver">
+        </property>
+        <property name="url" value="jdbc:mysql://localhost:3306/test"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="dcw650"></property>
+    </bean>
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.MySQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">true</prop><!--是否显示实际sql语句-->
+                <prop key="connection.pool_size">10</prop><!--设置线程池大小-->
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>tansung/model/Person.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 配置事务管理器bean,使用HibernateTransactionManager事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- DAO layer -->
+
+    <!-- 注入sessionFactory到HibernateDaoSupport，为了代码中的getHibernateTemplate服务 -->
+    <bean id="abstractDao" abstract="true" lazy-init="true">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- parent统一写abstractDao。是一个模板的作用，把abstractDao的注入加到每个dao中 -->
+    <bean id="personDAO" class="tansung.dao.impl.PersonDAO" parent="abstractDao" />
+
+    <!-- Service layer -->
+
+    <bean id="personService" class="tansung.service.impl.PersonService"
+          scope="prototype">
+<!--prototype表示每个都是独立实例，property注入依赖，也就是传递实体给这个类的变量personDAO-->
+        <property name="personDAO" ref="personDAO" />
+    </bean>
+
+    <!-- Action layer -->
+
+    <bean id="personAction" class="tansung.action.PersonAction" scope="prototype">
+        <property name="service" ref="personService"></property>
+    </bean>
+
+
+</beans>
