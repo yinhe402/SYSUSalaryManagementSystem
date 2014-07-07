@@ -5,8 +5,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.web.client.HttpServerErrorException;
-
 import com.jialin.entity.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -34,11 +32,11 @@ public class LoginAction extends ActionSupport {
 			Map session=ActionContext.getContext().getSession();
 			session.put("user.name", user.getName());
 			
-			System.out.println("µÇÂ¼³É¹¦,ÓÃ»§Ãû="+user.getName());
+			System.out.println("ç™»é™†æˆåŠŸ,ç”¨æˆ·å="+user.getName());
 			return "success";
 		}
 		
-		System.out.println("µÇÂ¼Ê§°Ü£¬ÓÃ»§Ãû="+user.getName());
+		System.out.println("ç™»é™†å¤±è´¥,ç”¨æˆ·å="+user.getName());
 		return "fail";
 	}
 	

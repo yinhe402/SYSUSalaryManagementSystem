@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,12 +40,12 @@
 </head>
 <body>
 <form id="myform1" >
-	�û�����<input type="text" name="user.name" /><br />
-	���룺<input type="text" name="user.password" /><br />
-	���䣺<input type="text" name="user.age" /><br />
-	<input type="button" name="btnadd" onclick="addUser()" value="����" />
-	<input type="button" name="btnmodify" onclick="modifyUser()" value="�޸�" />
-	<input type="button" name="btndel" onclick="deleteUser()" value="ɾ��"  />
+	用户名：<input type="text" name="user.name" /><br />
+	密码：<input type="text" name="user.password" /><br />
+	年龄：<input type="text" name="user.age" /><br />
+	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
+	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
+	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  />
  </form>
 </body>
 </html>

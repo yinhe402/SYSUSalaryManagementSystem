@@ -31,7 +31,8 @@
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 	
 		<action name="login" class="loginAction">
-			<result name="success" type="redirect">userMain</result>
+		
+			<result name="success" type="redirect">/userMain.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
 

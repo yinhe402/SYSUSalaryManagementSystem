@@ -45,7 +45,7 @@ public class User {
 	}
 
 	@Id
-	//²ÉÓÃÊı¾İ¿â×ÔÔö·½Ê½Éú³ÉÖ÷¼ü
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue
 	public int getId() {
