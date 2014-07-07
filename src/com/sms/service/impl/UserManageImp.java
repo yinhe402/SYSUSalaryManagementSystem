@@ -1,9 +1,10 @@
-package com.jialin.service;
+package com.sms.service.impl;
 
 import javax.annotation.Resource;
 
-import com.jialin.dao.IUserDao;
-import com.jialin.entity.User;
+import com.sms.dao.IUserDao;
+import com.sms.entity.User;
+import com.sms.service.IUserManage;
 
 public class UserManageImp implements IUserManage {
 	

@@ -1,10 +1,10 @@
-package com.jialin.action;
+package com.sms.action;
 
 import javax.annotation.Resource;
 
-import com.jialin.entity.User;
-import com.jialin.service.IUserManage;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sms.entity.User;
+import com.sms.service.IUserManage;
 
 public class UserAction extends ActionSupport {
 	

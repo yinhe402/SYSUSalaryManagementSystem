@@ -1,6 +1,6 @@
-package com.jialin.dao;
+package com.sms.dao;
 
-import com.jialin.entity.User;
+import com.sms.entity.User;
 
 public interface IUserDao {
 	public void AddUser(User user);

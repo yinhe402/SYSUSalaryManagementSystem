@@ -1,4 +1,4 @@
-package com.jialin.exception;
+package com.sms.exception;
 
 public class MyException extends RuntimeException {
 

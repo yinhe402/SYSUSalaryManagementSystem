@@ -1,10 +1,11 @@
-package com.jialin.dao;
+package com.sms.dao.impl;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.jialin.entity.User;
+import com.sms.dao.IUserDao;
+import com.sms.entity.User;
 
 public class UserDaoImp implements IUserDao {
 

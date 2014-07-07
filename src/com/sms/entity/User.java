@@ -1,4 +1,4 @@
-package com.jialin.entity;
+package com.sms.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
