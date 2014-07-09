@@ -7,7 +7,7 @@
     <!-- 未与spring集成的写法 -->
 	<!-- <package name="loginAction" namespace="/" extends="abstract_struts">
 	
-		<action name="login" class="com.jialin.action.LoginAction">
+		<action name="login" class="com.sms.action.LoginAction">
 			<result name="success" type="redirect">userMain</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
@@ -20,7 +20,7 @@
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
-		<action name="*_*" class="com.jialin.action.UserAction" method="{1}">
+		<action name="*_*" class="com.sms.action.UserAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />

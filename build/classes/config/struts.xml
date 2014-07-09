@@ -12,7 +12,7 @@
 
 	<!-- 公共包 -->
 	<!-- <package name="abstract_struts" abstract="true" extends="struts-default" 
-		namespace="/"> <interceptors> <interceptor name="checkLogin" class="com.jialin.interceptor.CheckLogin" 
+		namespace="/"> <interceptors> <interceptor name="checkLogin" class="com.sms.interceptor.CheckLogin" 
 		/> <interceptor-stack name="myInterceptor"> <interceptor-ref name="checkLogin" 
 		/> <interceptor-ref name="defaultStack" /> </interceptor-stack> </interceptors> 
 		<default-interceptor-ref name="myInterceptor" /> <global-results> <result 
@@ -36,6 +36,6 @@
 
 
 	<!-- 包含的配置文件 -->
-	<include file="/config/struts-user.xml"></include>
+	<include file="./config/struts-user.xml"></include>
 
 </struts>

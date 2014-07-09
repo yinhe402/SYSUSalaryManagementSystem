@@ -12,7 +12,7 @@
   
   <filter>
     <filter-name>CharsetEncodingFilter</filter-name>
-    <filter-class>com.jialin.filter.CharsetEncodingFilter</filter-class>
+    <filter-class>com.sms.filter.CharsetEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>GB18030</param-value>

@@ -33,7 +33,7 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
-				<value>com.jialin.entity.User</value>
+				<value>com.sms.entity.User</value>
 			</list>
 		</property>
 
@@ -62,7 +62,7 @@
 	<aop:config>
 	  <!-- 只对业务逻辑层实施事务 -->
 		<aop:pointcut id="allManagerMethod"
-			expression="execution(* com.jialin.service.*.*(..))" />
+			expression="execution(* com.sms.service.*.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txadvice" />
 	</aop:config>
 
