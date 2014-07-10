@@ -178,31 +178,39 @@ public class Employee {
 		this.startWorkDate = startWorkDate;
 	}
 	
-	@Column(name="start_work_date")
+	@Column(name="hire_title", length=30)
 	public String getHireTitle() {
 		return hireTitle;
 	}
 	public void setHireTitle(String hireTitle) {
 		this.hireTitle = hireTitle;
 	}
+	
+	@Column(name="title_level")
 	public Integer getTitleLevel() {
 		return titleLevel;
 	}
 	public void setTitleLevel(Integer titleLevel) {
 		this.titleLevel = titleLevel;
 	}
+	
+	@Column(name="hire_date")
 	public Date getHireDate() {
 		return hireDate;
 	}
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
+	
+	@Column(name="hire_job", length=20)
 	public String getHireJob() {
 		return hireJob;
 	}
 	public void setHireJob(String hireJob) {
 		this.hireJob = hireJob;
 	}
+	
+	@Column(name="job_level")
 	public Integer getJobLevel() {
 		return jobLevel;
 	}
