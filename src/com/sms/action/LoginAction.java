@@ -87,7 +87,7 @@ public class LoginAction extends ActionSupport {
 		}
 		System.out.println("Yes2");
 		
-		if (userManage.findUserById(user.getId()) == null)
+		if (userManage.findUserById(userNameInteger) == null)
 		{
 			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名不存在");
 			return "fail";
