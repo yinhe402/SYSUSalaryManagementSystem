@@ -38,23 +38,16 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String modifyUser() {
-		System.out.println("-------userAction.modifyUser--------"
-				+ user.getId());
+		System.out.println("-------userAction.modifyUser--------" + user.getId());
+		user.setPassword(Md5.generatePassword(user.getPassword()));
 		userManage.modifyUser(user);
 		return "success";
 	}
 
 	public String deleteUser() {
-		System.out.println("-------userAction.deleteUser--------"
-				+ user.getId());
+		System.out.println("-------userAction.deleteUser--------" + user.getId());
 		userManage.deleteUser(user);
 		return "success";
 	}
 	
-	public User findUserById(Integer id) {
-		System.out.println("-------userAction.findUserById--------"
-				+ id);
-		return userManage.findUserById(id);
-	}
-
 }
