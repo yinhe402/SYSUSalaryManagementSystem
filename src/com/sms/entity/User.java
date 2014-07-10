@@ -3,27 +3,31 @@ package com.sms.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "p_user")
 public class User {
-	private int id;
-	private String name;
+	private Integer id;
 	private String password;
-	private int age;
-
-	@Column(name="name", length=30, nullable=false, unique=true)
-	public String getName() {
-		return name;
+	private Integer userType;
+	
+	/**
+	 * èŒå·¥å· å…­ä½æ•°å­—ç»„æˆ
+	 * */
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	public Integer getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
-	@Column(name="password", length=20, nullable=false, unique=true)
+	@Column(name="password", length=20, nullable=false)
 	public String getPassword() {
 		return password;
 	}
@@ -32,27 +36,18 @@ public class User {
 		this.password = password;
 	}
 
-	@Column(name="age", length=10)
-	public int getAge() {
-		return age;
+	/**
+	 * ç”¨æˆ·ç±»å‹ï¼š 0ä»£è¡¨æ™®é€šç”¨æˆ· 1ä»£è¡¨æ“ä½œå‘˜ 2ä»£è¡¨å®¡æ ¸å‘˜
+	 * */
+	@Column(name="userType", nullable=false)
+	public Integer getUserType() {
+		return userType;
 	}
 
-	public void setAge(Integer age) {
-		this.age = 0;
-		if (age != null) {
-			this.age = age;
+	public void setUserType(Integer userType) {
+		this.userType = 0;
+		if (userType < 3 && userType >=0) {
+			this.userType = userType;
 		}
-	}
-
-	@Id
-	//²ÉÓÃÊı¾İ¿â×ÔÔö·½Ê½Éú³ÉÖ÷¼ü
-	//@GeneratedValue(strategy=GenerationType.AUTO)
-	@GeneratedValue
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 }

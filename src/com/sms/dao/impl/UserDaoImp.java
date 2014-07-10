@@ -21,29 +21,23 @@ public class UserDaoImp implements IUserDao {
 
 	@Override
 	public void AddUser(User user) {
-		System.out.println("-------UserDaoImp.AddUser-----------"
-				+ user.getName());
 		getSession().save(user);
 	}
 
 	@Override
 	public void modifyUser(User user) {
-		System.out.println("-------UserDaoImp.modifyUser-----------"
-				+ user.getName());
 		getSession().update(user);
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		System.out.println("-------UserDaoImp.deleteUser-----------"
-				+ user.getName());
 		getSession().delete(user);
 	}
 
 	@Override
-	public User findUserByName(String  name) {
+	public User findUserById(Integer  id) {
 		Query query = getSession().createQuery("from p_user as u where u.name = ?");
-		query.setString(0, name);
+		query.setString(0,id.toString());
 		User u = (User)query.uniqueResult();
 		return u;
 	}
