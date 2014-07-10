@@ -32,7 +32,7 @@ public class UserAction extends ActionSupport {
 	
 	public String addUser()
 	{
-		System.out.println("-------userAction.addUser--------"+user.getName());
+		System.out.println("-------userAction.addUser--------"+user.getId());
 		
 		userManage.addUser(user);
 		return "success";
@@ -40,14 +40,14 @@ public class UserAction extends ActionSupport {
 	
 	public String modifyUser()
 	{
-		System.out.println("-------userAction.modifyUser--------"+user.getName());
+		System.out.println("-------userAction.modifyUser--------"+user.getId());
 		userManage.modifyUser(user);
 		return "success";
 	}
 	
 	public String deleteUser()
 	{
-		System.out.println("-------userAction.deleteUser--------"+user.getName());
+		System.out.println("-------userAction.deleteUser--------"+user.getId());
 		userManage.deleteUser(user);
 		return "success";
 	}
