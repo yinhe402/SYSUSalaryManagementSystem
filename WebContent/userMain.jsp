@@ -40,9 +40,9 @@
 </head>
 <body>
 <form id="myform1" >
-	用户名：<input type="text" name="user.name" /><br />
+	用户名：<input type="text" name="user.id" /><br />
 	密码：<input type="text" name="user.password" /><br />
-	年龄：<input type="text" name="user.age" /><br />
+	类型：<input type="text" name="user.userType" /><br />
 	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
 	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
 	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  />

@@ -31,12 +31,13 @@ public class UserDaoImp implements IUserDao {
 
 	@Override
 	public void deleteUser(User user) {
+		getSession().clear();
 		getSession().delete(user);
 	}
 
 	@Override
 	public User findUserById(Integer  id) {
-		Query query = getSession().createQuery("from p_user as u where u.name = ?");
+		Query query = getSession().createQuery("from User as u where u.id = ?");
 		query.setString(0,id.toString());
 		User u = (User)query.uniqueResult();
 		return u;
