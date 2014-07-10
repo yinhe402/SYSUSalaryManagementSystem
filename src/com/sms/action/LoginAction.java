@@ -100,7 +100,7 @@ public class LoginAction extends ActionSupport {
 		
 		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
 			Map session = ActionContext.getContext().getSession();
-			session.put("user.name", userIdString);
+			session.put("user.id", userIdString);
 			System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
 			return "success";
 		}
