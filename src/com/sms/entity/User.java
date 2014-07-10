@@ -18,7 +18,6 @@ public class User {
 	 * 职工号 六位数字组成
 	 * */
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {
 		return id;
 	}
@@ -27,7 +26,7 @@ public class User {
 		this.id = id;
 	}
 	
-	@Column(name="password", length=20, nullable=false)
+	@Column(name="password", length=32, nullable=false)
 	public String getPassword() {
 		return password;
 	}

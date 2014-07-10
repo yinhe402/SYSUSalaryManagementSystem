@@ -33,4 +33,9 @@ public class UserManageImp implements IUserManage {
 	public void deleteUser(User user) {
 		userDao.deleteUser(user);
 	}
+
+	@Override
+	public User findUserById(Integer id) {
+		return userDao.findUserById(id);
+	}
 }
