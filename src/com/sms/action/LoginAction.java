@@ -68,15 +68,11 @@ public class LoginAction extends ActionSupport {
 
 		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
 		
-		System.out.println(userIdString);
-		System.out.println(UserPassword);
-		
 		if (!isInteger(userIdString))
 		{
 			System.out.println("登录失败，用户名=" + userIdString + "，用户名应为纯数字");
 			return "fail";
 		}
-		System.out.println("Yes1");
 		
 		Integer userNameInteger = Integer.parseInt(userIdString);
 		
@@ -85,14 +81,12 @@ public class LoginAction extends ActionSupport {
 			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名应为满足职工号范围的6位数字");
 			return "fail";
 		}
-		System.out.println("Yes2");
 		
 		if (userManage.findUserById(userNameInteger) == null)
 		{
 			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名不存在");
 			return "fail";
 		}
-		System.out.println("Yes3");
 		
 		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
 		
