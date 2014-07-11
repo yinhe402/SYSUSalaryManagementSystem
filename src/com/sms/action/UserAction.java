@@ -21,6 +21,12 @@ public class UserAction extends ActionSupport {
 		return true;
 	}
 
+	public static boolean isValid(int value) {
+		if (value >= 100000 && value <= 999999)
+			return true;
+		return false;
+	}
+	
 	public void setUserManage(IUserManage userManage) {
 		this.userManage = userManage;
 	}
@@ -39,7 +45,7 @@ public class UserAction extends ActionSupport {
 
 	public String addUser() {
 		System.out.println("-------userAction.addUser--------" + user.getId());
-		if (isPasswordValid(user.getPassword()))
+		if (isValid(user.getId()) && isPasswordValid(user.getPassword()))
 		{
 			System.out.println("用户增加成功");
 			user.setPassword(Md5.generatePassword(user.getPassword()));
@@ -52,9 +58,8 @@ public class UserAction extends ActionSupport {
 
 	public String modifyUser() {
 		System.out.println("-------userAction.modifyUser--------" + user.getId());
-		if (isPasswordValid(user.getPassword()))
-		{
-			
+		if (isValid(user.getId()) && userManage.findUserById(user.getId()) != null && isPasswordValid(user.getPassword()))
+		{			
 			user.setPassword(Md5.generatePassword(user.getPassword()));
 			userManage.modifyUser(user);
 			return "success";
