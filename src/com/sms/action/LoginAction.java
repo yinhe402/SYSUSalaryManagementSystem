@@ -66,18 +66,6 @@ public class LoginAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getCharacterEncoding());
 
-<<<<<<< HEAD
-		if ("root".equals(user.getId())
-				&& "root123".equals(user.getPassword())) {
-			Map session = ActionContext.getContext().getSession();
-			session.put("user.name", user.getId());
-
-			System.out.println("��½�ɹ����û���=" + user.getId());
-			return "success";
-		}
-
-		System.out.println("��½ʧ�ܣ��û���=" + user.getId());
-=======
 		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
 		
 		System.out.println(userIdString);
@@ -118,7 +106,6 @@ public class LoginAction extends ActionSupport {
 		}
 
 		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5=" + Md5.generatePassword(UserPassword));
->>>>>>> 19c56b2b3b44308a6e77a19bd4ad2aa5baa05851
 		return "fail";
 	}
 

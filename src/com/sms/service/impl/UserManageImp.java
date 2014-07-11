@@ -39,4 +39,5 @@ public class UserManageImp implements IUserManage {
 	public User findUserById(Integer id) {
 		return userDao.findUserById(id);
 	}
+
 }

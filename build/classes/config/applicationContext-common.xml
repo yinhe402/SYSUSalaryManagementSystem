@@ -14,17 +14,9 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-<<<<<<< HEAD
 		<property name="url" value="jdbc:mysql://localhost:3306/sms?useUnicode=true&amp;characterEncoding=UTF-8"/>
-=======
-<<<<<<< HEAD
-		<property name="url" value="jdbc:mysql://localhost:3306/110?useUnicode=true&amp;characterEncoding=UTF-8"/>
-=======
-		<property name="url" value="jdbc:mysql://localhost:3306/sms" />
->>>>>>> 19c56b2b3b44308a6e77a19bd4ad2aa5baa05851
->>>>>>> 9f10457d8d337d49ac9eb570d05adec7ab8905fb
 		<property name="username" value="root" />
-		<property name="password" value="123456" />
+		<property name="password" value="" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -42,10 +34,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.sms.entity.User</value>
-<<<<<<< HEAD
 				<value>com.sms.entity.Employee</value>
-=======
->>>>>>> 9f10457d8d337d49ac9eb570d05adec7ab8905fb
 				<value>com.sms.entity.ProfessionalSalaryChange</value>
 				<value>com.sms.entity.ProfessionalPaylevelSalary</value>
 				<value>com.sms.entity.ProfessionalPositionSalary</value>
