@@ -30,4 +30,12 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean name="employeeManage" class="com.sms.service.impl.EmployeeManageImp">
+		<!-- <property name="userDao" ref="userDao"></property> -->
+	</bean>
+	
+	<bean name="employeeDao" class="com.sms.dao.impl.EmployeeDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 </beans>
