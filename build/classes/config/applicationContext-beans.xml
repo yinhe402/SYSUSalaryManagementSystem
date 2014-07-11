@@ -13,6 +13,9 @@
 	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype">
 		<!-- <property name="userManage" ref="userManage"></property> -->
 	</bean>
+	<bean name="employeeAction" class="com.sms.action.EmployeeAction" scope="prototype">
+		<!-- <property name="employeeManage" ref="employeeManage"></property> -->
+	</bean>
 
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>
