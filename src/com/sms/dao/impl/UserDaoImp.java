@@ -31,6 +31,7 @@ public class UserDaoImp implements IUserDao {
 
 	@Override
 	public void deleteUser(User user) {
+		getSession().clear();
 		getSession().delete(user);
 	}
 
