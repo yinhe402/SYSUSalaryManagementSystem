@@ -48,7 +48,6 @@ public class UserAction extends ActionSupport {
 		if (isValid(user.getId()) && isPasswordValid(user.getPassword()))
 		{
 			System.out.println("用户增加成功");
-			user.setPassword(Md5.generatePassword(user.getPassword()));
 			userManage.addUser(user);
 			return "success";
 		}
@@ -60,7 +59,6 @@ public class UserAction extends ActionSupport {
 		System.out.println("-------userAction.modifyUser--------" + user.getId());
 		if (isValid(user.getId()) && userManage.findUserById(user.getId()) != null && isPasswordValid(user.getPassword()))
 		{			
-			user.setPassword(Md5.generatePassword(user.getPassword()));
 			userManage.modifyUser(user);
 			return "success";
 		}

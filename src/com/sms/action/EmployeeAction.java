@@ -2,10 +2,13 @@ package com.sms.action;
 
 import javax.annotation.Resource;
 
+import org.omg.CORBA.Request;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.Employee;
 import com.sms.security.Md5;
 import com.sms.service.IEmployeeManage;
+import com.sms.service.IUserManage;
 
 public class EmployeeAction extends ActionSupport {
 
@@ -13,13 +16,16 @@ public class EmployeeAction extends ActionSupport {
 
 	@Resource
 	private IEmployeeManage employeeManage;
+	
+	@Resource
+	private IUserManage userManage;
 
 	public static boolean isValid(int value) {
 		if (value >= 100000 && value <= 999999)
 			return true;
 		return false;
 	}
-	
+
 	public void setEmployeeManage(IEmployeeManage employeeManage) {
 		this.employeeManage = employeeManage;
 	}
@@ -36,41 +42,22 @@ public class EmployeeAction extends ActionSupport {
 		this.employee = employee;
 	}
 
-	public String addUser() {
-		System.out.println("-------userAction.addUser--------" + user.getId());
-		if (isValid(user.getId()) && isPasswordValid(user.getPassword()))
-		{
-			user.setPassword(Md5.generatePassword(user.getPassword()));
-			userManage.addUser(user);
+	public String addEmployee() {
+		System.out.println("-------employeeAction.addEmployee--------" + employee.getId());
+		if (isValid(employee.getId())) {
+			employeeManage.addEmployee(employee);				
 			return "success";
 		}
-		System.out.println("密码长度不够");
 		return "fail";
 	}
 
-	public String modifyUser() {
-		System.out.println("-------userAction.modifyUser--------" + user.getId());
-		if (isValid(user.getId()) && userManage.findUserById(user.getId()) != null && isPasswordValid(user.getPassword()))
-		{			
-			user.setPassword(Md5.generatePassword(user.getPassword()));
-			userManage.modifyUser(user);
+	public String modifyEmployee() {
+		System.out.println("-------employeeAction.modifyEmployee--------" + employee.getId());
+		if (isValid(employee.getId()) && employeeManage.findEmployeeById(employee.getId()) != null) {
+			employeeManage.modifyEmployee(employee);
 			return "success";
 		}
-		System.out.println("密码长度不够");
 		return "fail";
 	}
 
-	public String deleteUser() {
-		System.out.println("-------userAction.deleteUser--------" + user.getId());
-		
-		if (Md5.validatePassword(userManage.findUserById(user.getId()).getPassword(), user.getPassword()))
-		{
-			userManage.deleteUser(user);
-			return "success";
-		}
-		System.out.println("密码错误");
-		return "fail";
-	}
-	
 }
-
