@@ -41,11 +41,12 @@
 <body>
 <form id="myform1" >
 	用户名：<input type="text" name="user.id" /><br />
-	密码：<input type="text" name="user.password" /><br />
+	密码：<input type="password" name="user.password" /><br />
 	类型：<input type="text" name="user.userType" /><br />
 	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
 	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
-	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  />
+	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  /><br />
+	<a href="EmployeeEntry.jsp">人员录入</a>
  </form>
 </body>
 </html>

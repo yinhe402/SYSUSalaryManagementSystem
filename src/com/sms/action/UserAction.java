@@ -2,8 +2,6 @@ package com.sms.action;
 
 import javax.annotation.Resource;
 
-import oracle.net.aso.MD5;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.User;
 import com.sms.security.Md5;

@@ -15,27 +15,27 @@ import javax.persistence.Table;
 public class Employee {
 	
 	private Integer id;//职工号
-	private String name;
-	private String email;
-	private Boolean gender;
-	private Date birthday;
+	private String name;//姓名
+	private String email;//邮箱
+	private Boolean gender;//性别
+	private Date birthday;//出生日期
 	private String uid;//身份证号
-	private String department;
-	private String jobType;
-	private String source; //入校来源
-	private Date reachSchoolDate;
-	private String maxEducation;
-	private Date maxEducationDate;
-	private String maxDegree;
-	private Date maxDegreeDate;
+	private String department;//单位
+	private String jobType;//岗位性质
+	private String source; //进校来源
+	private Date reachSchoolDate;//入校报到时间
+	private String maxEducation;//最高学历
+	private Date maxEducationDate;//最高学历获得时间
+	private String maxDegree;//最高学位
+	private Date maxDegreeDate;//最高学位获得时间
 	private String hireWork; //聘任职务
 	private Integer workLevel; //职务级别
 	private Date startWorkDate; //任职时间
 	private String hireTitle; //聘任职称
 	private Integer titleLevel; // 职称级别
-	private Date hireDate;
-	private String hireJob; //聘任岗位
-	private Integer jobLevel;
+	private Date hireDate;//聘任时间
+	private String hireJob; //（拟）聘任岗位
+	private Integer jobLevel;//聘岗级别
 	
 	/**
 	 * 职工号 六位数字组成

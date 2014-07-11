@@ -12,7 +12,6 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.dao.impl.UserDaoImp;
 import com.sms.entity.User;
-import com.sms.security.Md5;
 import com.sms.service.IUserManage;
 import com.sms.service.impl.UserManageImp;
 
@@ -66,17 +65,26 @@ public class LoginAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getCharacterEncoding());
 
+<<<<<<< HEAD
+=======
+		if ("root".equals(user.getId())
+				&& "root123".equals(user.getPassword())) {
+			Map session = ActionContext.getContext().getSession();
+			session.put("user.name", user.getId());
+
+			System.out.println("��½�ɹ����û���=" + user.getId());
+			return "success";
+		}
+
+		System.out.println("��½ʧ�ܣ��û���=" + user.getId());
+>>>>>>> 356acf907cbbb57ff27cc08173e35017323c8ac8
 		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
-		
-		System.out.println(userIdString);
-		System.out.println(UserPassword);
 		
 		if (!isInteger(userIdString))
 		{
 			System.out.println("登录失败，用户名=" + userIdString + "，用户名应为纯数字");
 			return "fail";
 		}
-		System.out.println("Yes1");
 		
 		Integer userNameInteger = Integer.parseInt(userIdString);
 		
@@ -85,14 +93,12 @@ public class LoginAction extends ActionSupport {
 			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名应为满足职工号范围的6位数字");
 			return "fail";
 		}
-		System.out.println("Yes2");
 		
 		if (userManage.findUserById(userNameInteger) == null)
 		{
 			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名不存在");
 			return "fail";
 		}
-		System.out.println("Yes3");
 		
 		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
 		
