@@ -41,6 +41,7 @@ public class UserAction extends ActionSupport {
 		System.out.println("-------userAction.addUser--------" + user.getId());
 		if (isPasswordValid(user.getPassword()))
 		{
+			System.out.println("用户增加成功");
 			user.setPassword(Md5.generatePassword(user.getPassword()));
 			userManage.addUser(user);
 			return "success";
