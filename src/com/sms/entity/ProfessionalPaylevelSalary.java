@@ -29,7 +29,7 @@ public class ProfessionalPaylevelSalary {
 	/*
 	 * 假设薪级数字长度不超过5,不可为空,不可重复
 	 */
-	@Column(name="salaryStandard", length = 5, nullable=false,unique=true)
+	@Column(name="payLevel", length = 5, nullable=false,unique=true)
 	public Integer getPayLevel() {
 		return payLevel;
 	}
