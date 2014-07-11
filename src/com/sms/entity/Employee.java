@@ -9,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 @Entity
+@Table(name="employee")
 public class Employee {
 	
 	private Integer id;//职工号
@@ -20,6 +22,8 @@ public class Employee {
 	private String uid;//身份证号
 	private String department;//单位
 	private String jobType;//岗位性质
+	private String type;//人员身份
+
 	private String source; //进校来源
 	private Date reachSchoolDate;//入校报到时间
 	private String maxEducation;//最高学历
@@ -39,8 +43,6 @@ public class Employee {
 	 * 职工号 六位数字组成
 	 * */
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-	@OneToOne(cascade=CascadeType.ALL)
 	public Integer getId() {
 		return id;
 	}
@@ -86,20 +88,28 @@ public class Employee {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	@Column(name="gender", length = 10, nullable=false)
+	@Column(name="department", length = 10, nullable=false)
 	public String getDepartment() {
 		return department;
 	}
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	@Column(name="jobType", length = 10, nullable=false)
+	
+	@Column(name="job_type", length = 10, nullable=false)
 	public String getJobType() {
 		return jobType;
 	}
-	
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
+	}
+	
+	@Column(name="type", length = 10)
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	@Column(name="source", length = 10)
@@ -151,7 +161,7 @@ public class Employee {
 		this.maxDegreeDate = maxDegreeDate;
 	}
 	
-	@Column(name="max_degree_date")
+	@Column(name="hire_work")
 	public String getHireWork() {
 		return hireWork;
 	}
@@ -161,7 +171,7 @@ public class Employee {
 		this.hireWork = hireWork;
 	}
 	
-	@Column(name="workLevel")
+	@Column(name="work_level")
 	public Integer getWorkLevel() {
 		return workLevel;
 	}

