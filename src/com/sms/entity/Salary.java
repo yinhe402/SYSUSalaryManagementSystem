@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name = "salary_detail")
+@Table(name = "salary")
 public class Salary {
 		private Integer eid; //职工号
 		private Integer positionSalary;//岗位工资
