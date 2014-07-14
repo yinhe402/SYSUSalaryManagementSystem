@@ -2,7 +2,7 @@
 .header{ height: 105px;margin:26px auto;margin-left:150px;  overflow: hidden; position: relative; width: 800px; }
 
 /*---------------------banner----------------------*/
-.banner{  background:url(../images/中大.jpg) no-repeat; background-position:50%100%;min-width:1000px; position:relative;  height:478px; overflow:hidden;  }
+.banner{  background:url(../images/SYSU_Background.jpg) no-repeat; background-position:50%100%;min-width:1000px; position:relative;  height:478px; overflow:hidden;  }
 
 .banner .bd li{ height:478px; }
 
