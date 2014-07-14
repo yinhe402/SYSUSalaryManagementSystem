@@ -2,11 +2,9 @@ package com.sms.dao.impl;
 
 import org.hibernate.*;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
 import com.sms.dao.IEmployeeDao;
 import com.sms.entity.Employee;
+import com.sms.entity.User;
 
 public class EmployeeDaoImp implements IEmployeeDao {
 
@@ -22,9 +20,11 @@ public class EmployeeDaoImp implements IEmployeeDao {
 	
 	@Override
 	public Employee findEmployeeById(Integer id) {
-		Query query = (Query)getSession().createQuery("from Employee as e where e.id = ?");
+		getSession().clear();
+		Query query = getSession().createQuery("from Employee as e where e.id = ?");
 		query.setString(0, id.toString());	
-		return (Employee)query.uniqueResult();
+		Employee employee = (Employee)query.uniqueResult();
+		return employee;
 	}
 
 	@Override

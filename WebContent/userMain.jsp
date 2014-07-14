@@ -46,7 +46,8 @@
 	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
 	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
 	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  /><br />
-	<a href="EmployeeEntry.jsp">人员录入</a>
+	<a href="EmployeeEntry.jsp">人员录入</a><br />
+	<a href="checkEmployeeInfo.jsp">人员查询</a>
  </form>
 </body>
 </html>
