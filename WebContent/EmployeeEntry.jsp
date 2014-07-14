@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,7 +36,7 @@
 	职工号：<input type="text" name="employee.id" /><br />
 	姓名：<input type="text" name="employee.name" /><br />
 	邮箱：<input type="text" name="employee.email" /><br />
-	性别：<input type="radio" name="employee.gender" value=true/>男<input type="radio" name="employee.gender" value=false/>女<br />
+	性别：<input type="radio" name="employee.gender" value="true" checked="checked"/>男<input type="radio" name="employee.gender" value="false"/>女<br />
 	出生日期：<input type="text" name="employee.birthday" /><br />
 	身份证号：<input type="text" name="employee.uid" /><br />
 	单位：<input type="text" name="employee.department" /><br />

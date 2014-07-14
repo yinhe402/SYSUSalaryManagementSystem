@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding//src/com/sms/filter/CharsetEncodingFilter.java=UTF-8
 encoding/<project>=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//WebContent/login.jsp=UTF-8
+encoding//src/com/sms/filter/CharsetEncodingFilter.java=UTF-8
+>>>>>>> 730ea1b74f5fcc19737035e876a0d00cbb545454
