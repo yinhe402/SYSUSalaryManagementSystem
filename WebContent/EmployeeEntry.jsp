@@ -35,7 +35,7 @@
 	职工号：<input type="text" name="employee.id" /><br />
 	姓名：<input type="text" name="employee.name" /><br />
 	邮箱：<input type="text" name="employee.email" /><br />
-	性别：<input type="radio" name="employee.gender" value=true/>男<input type="radio" name="employee.gender" value=false/>女<br />
+	性别：<input type="radio" name="employee.gender" value="true" checked="checked"/>男<input type="radio" name="employee.gender" value="false"/>女<br />
 	出生日期：<input type="text" name="employee.birthday" /><br />
 	身份证号：<input type="text" name="employee.uid" /><br />
 	单位：<input type="text" name="employee.department" /><br />

@@ -1,30 +1,8 @@
-
-/*---------------------reset----------------------*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin:0; padding:0; border:0; outline:0;}
-ol, ul, li { list-style:none } 
-body { background:#FFF;}
-:focus { outline:0 }
-table { border-collapse:collapse; border-spacing:0 }
-table,table td,table th{border:1px solid #edeada;border-collapse:collapse;}
-address, cite, code, dfn, em, var, i { font-style:normal }
-input[type=button], input[type=submit], button { cursor:pointer; outline:none;}
-.input, select { vertical-align:middle }
-* html .clearfix { zoom:1 }
-*+html .clearfix { zoom:1 }
-textarea{resize:none;}
-a { text-decoration:none; color:#009bd8 }
-.clearfix:after {clear: both;content: ".";display: block;height: 0;overflow: hidden;visibility: hidden;}
 .pos-r{ position:relative;}
-.hide{ display:none;}
-/*---------------------header----------------------*/
-
 .header{ height: 105px;margin:26px auto;margin-left:150px;  overflow: hidden; position: relative; width: 800px; }
-/*.headerNav { right: 0;text-align: right;top: 52px; width: 300px; position:absolute;}
-.headerNav a{ color:#515151; font-size:12px; padding:0 2px;}
-.headerNav a:hover{ text-decoration:underline; color:#658b98;}*/
 
 /*---------------------banner----------------------*/
-.banner{  background:url(../themes/中大.jpg) no-repeat; background-position:50%100%;min-width:1000px; position:relative;  height:478px; overflow:hidden;  }
+.banner{  background:url(../images/中大.jpg) no-repeat; background-position:50%100%;min-width:1000px; position:relative;  height:478px; overflow:hidden;  }
 
 .banner .bd li{ height:478px; }
 
@@ -110,15 +88,3 @@ label.form-label {
   box-shadow: 0 1px 4px rgba(11, 122, 179, 0.65) inset, 0 0 14px rgba(11, 122, 179, 0.45);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
