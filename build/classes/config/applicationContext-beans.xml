@@ -13,7 +13,7 @@
 	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype">
 		<!-- <property name="userManage" ref="userManage"></property> -->
 	</bean>
-	<bean name="employeeAction" class="com.sms.action.EmployeeAction" scope="prototype">
+	<bean name="manageTest" class="com.sms.action.ManageTest" scope="prototype"></bean>
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>	
 	

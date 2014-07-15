@@ -31,13 +31,13 @@
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 	
 		<action name="login" class="loginAction">
-			<result name="success" type="redirect">/chooseFun.jsp</result>
+			<result name="success" type="redirect">/userMain.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
 
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->
 		<action name="userMain" class="userMainAction">
-			<result name="success">/test.jsp</result>
+
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
@@ -49,6 +49,7 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
+
 	<package name="employeeActions" namespace="/employee" extends="abstract_struts">
 		<action name="*_*" class="employeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
@@ -56,5 +57,12 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-	
+	<package name="manageTests" namespace="/manage" extends="abstract_struts">
+		<action name="*_*" class="manageTest" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+
 </struts>

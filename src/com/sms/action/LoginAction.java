@@ -49,10 +49,7 @@ public class LoginAction extends ActionSupport {
 		try {
 			Integer.parseInt(value);
 		    return true;
-		} 
-		catch (NumberFormatException e) {
-			return true;
-		} catch (NumberFormatException e) {
+		}  catch (NumberFormatException e) {
 			return false;
 		}
 	}
@@ -62,13 +59,12 @@ public class LoginAction extends ActionSupport {
 	 *判断数字是否满足特定职工号码段范围 
 	 * 判断数字是否满足特定职工号码段范围
 	 */
-	public static boolean isValid(int value)
-	{
 	public static boolean isValid(int value) {
 		if (value >= 100000 && value <= 999999)
 			return true;
 		return false;
 	}
+
 
 	@Override
 	public String execute() throws Exception {
@@ -89,13 +85,9 @@ public class LoginAction extends ActionSupport {
 		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
 		
 		System.out.println("用户登录，用户名=" + user.getId());
-		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
-		
+		userIdString = user.getId().toString();	
 		System.out.println(userIdString);
 		System.out.println(UserPassword);
-		
-
-
 
 		if (!isInteger(userIdString))
 		{
@@ -104,54 +96,45 @@ public class LoginAction extends ActionSupport {
 		}
 		System.out.println("Yes1");
 		
-
-
 		Integer userNameInteger = Integer.parseInt(userIdString);
 		
 		if (!isValid(userNameInteger))
 		{
+			if (!isValid(userNameInteger)) {
+	
+				System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名应为满足职工号范围的6位数字");
+				return "fail";
+			}
+			System.out.println("Yes2");
+			
+			if (userManage.findUserById(userNameInteger) == null)
+			{
+				System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名不存在");
+	
+				if (userManage.findUserById(userNameInteger) == null) {
+					System.out.println("登录失败，用户名=" + user.getId().toString()	+ "，用户名不存在");
+					return "fail";
+				}
+			}
+			System.out.println("Yes3");
 
-		if (!isValid(userNameInteger)) {
-
-			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名应为满足职工号范围的6位数字");
+			String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
+			
+			System.out.println(CorrectUserPassword);
+			
+			if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {	
+				if (Md5.validatePassword(CorrectUserPassword, UserPassword) || (user.getId() == 999999)) {
+					Map session = ActionContext.getContext().getSession();
+					session.put("user.id", userIdString);
+					System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
+					return "success";
+				}
+			}
+			System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5=" + Md5.generatePassword(UserPassword));
+			System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
 			return "fail";
 		}
-		System.out.println("Yes2");
-		
-		if (userManage.findUserById(userNameInteger) == null)
-		{
-			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名不存在");
-
-		if (userManage.findUserById(userNameInteger) == null) {
-			System.out.println("登录失败，用户名=" + user.getId().toString()	+ "，用户名不存在");
-
-
-			return "fail";
-		}
-		System.out.println("Yes3");
-		
-
-
-		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
-		
-
-		System.out.println(CorrectUserPassword);
-		
-		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
-		
-		if (Md5.validatePassword(CorrectUserPassword, UserPassword) || (user.getId() == 999999)) {
-
-			Map session = ActionContext.getContext().getSession();
-			session.put("user.id", userIdString);
-			System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
-			return "success";
-		}
-
-		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5=" + Md5.generatePassword(UserPassword));
-		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
 		return "fail";
 	}
 
-}
-	
 }

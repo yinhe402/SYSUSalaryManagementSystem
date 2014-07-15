@@ -42,29 +42,6 @@ public class UserAction extends ActionSupport {
 	public void setUser(User user) {
 		this.user = user;
 	}
-<<<<<<< HEAD
-	
-	public String addUser()
-	{
-		System.out.println("-------userAction.addUser--------"+user.getId());
-		
-		userManage.addUser(user);
-		return "success";
-	}
-	
-	public String modifyUser()
-	{
-		System.out.println("-------userAction.modifyUser--------"+user.getId());
-		userManage.modifyUser(user);
-		return "success";
-	}
-	
-	public String deleteUser()
-	{
-		System.out.println("-------userAction.deleteUser--------"+user.getId());
-		userManage.deleteUser(user);
-		return "success";
-=======
 
 	public String addUser() {
 		System.out.println("-------userAction.addUser--------" + user.getId());
@@ -85,10 +62,11 @@ public class UserAction extends ActionSupport {
 		if (isPasswordValid(user.getPassword()))
 		{
 			user.setPassword(Md5.generatePassword(user.getPassword()));
-		if (isValid(user.getId()) && userManage.findUserById(user.getId()) != null && isPasswordValid(user.getPassword()))
-		{			
-			userManage.modifyUser(user);
-			return "success";
+			if (isValid(user.getId()) && userManage.findUserById(user.getId()) != null && isPasswordValid(user.getPassword()))
+			{			
+				userManage.modifyUser(user);
+				return "success";
+			}
 		}
 		System.out.println("密码长度不够");
 		return "fail";
@@ -104,7 +82,6 @@ public class UserAction extends ActionSupport {
 		}
 		System.out.println("密码错误");
 		return "fail";
->>>>>>> 19c56b2b3b44308a6e77a19bd4ad2aa5baa05851
 	}
 	
 }

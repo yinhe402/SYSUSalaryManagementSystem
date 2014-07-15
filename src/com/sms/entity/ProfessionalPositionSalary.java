@@ -69,8 +69,9 @@ public class ProfessionalPositionSalary {
 	@Column(name="startPayLevel", length = 5, nullable=false,unique=false)
 	public Integer getStartPayLevel() {
 		return startPayLevel;
+	}
 	
-	public void setStartPaylevel(Integer startPayLevel) {
+	public void setStartPayLevel(Integer startPayLevel) {
 		this.startPayLevel = startPayLevel;
 	}
 }
