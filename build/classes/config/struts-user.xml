@@ -49,13 +49,12 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-	
-	<package name="manageTests" namespace="/manage" extends="abstract_struts">
-		<action name="*_*" class="manageTest" method="{1}">
+	<package name="employeeActions" namespace="/employee" extends="abstract_struts">
+		<action name="*_*" class="employeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-
+	
 </struts>

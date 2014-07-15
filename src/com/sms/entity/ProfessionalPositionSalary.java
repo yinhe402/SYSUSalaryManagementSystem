@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "profPosiSal_table")
 public class ProfessionalPositionSalary {
 	private int id;//主键
+
 	private String position;//岗位
 	private Integer level;//级数
 	private Integer salaryStandard;//工资标准
@@ -31,9 +32,11 @@ public class ProfessionalPositionSalary {
 	 * 岗位,假设岗位汉字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="position", length = 10, nullable=false,unique=false)
+
 	public String getPosition() {
 		return position;
 	}
+
 	public void setPosition(String position) {
 		this.position = position;
 	}
@@ -66,7 +69,7 @@ public class ProfessionalPositionSalary {
 	@Column(name="startPayLevel", length = 5, nullable=false,unique=false)
 	public Integer getStartPayLevel() {
 		return startPayLevel;
-	}
+	
 	public void setStartPaylevel(Integer startPayLevel) {
 		this.startPayLevel = startPayLevel;
 	}

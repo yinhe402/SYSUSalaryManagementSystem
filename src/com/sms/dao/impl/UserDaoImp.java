@@ -26,6 +26,7 @@ public class UserDaoImp implements IUserDao {
 
 	@Override
 	public void modifyUser(User user) {
+		getSession().clear();
 		getSession().update(user);
 	}
 

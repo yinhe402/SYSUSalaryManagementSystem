@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /*
- * 专业技术人员岗位工资表
+ * 管理人员薪级工资表
  */
 @Entity
 @Table(name = "manPosiSal_table")
@@ -31,9 +31,11 @@ public class ManagePositionSalary {
 	 * 岗位,假设岗位汉字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="position", length = 10, nullable=false,unique=false)
+	
 	public String getPosition() {
 		return position;
 	}
+	
 	public void setPosition(String position) {
 		this.position = position;
 	}
@@ -67,6 +69,7 @@ public class ManagePositionSalary {
 	public Integer getStartPayLevel() {
 		return startPayLevel;
 	}
+	
 	public void setStartPayLevel(Integer startPayLevel) {
 		System.out.println("cao");
 		this.startPayLevel = startPayLevel;

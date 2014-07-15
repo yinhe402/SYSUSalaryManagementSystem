@@ -34,6 +34,7 @@ public class WorkerPositionSalary {
 	public String getPosition() {
 		return position;
 	}
+
 	public void setPosition(String position) {
 		this.position = position;
 	}
@@ -64,9 +65,11 @@ public class WorkerPositionSalary {
 	 * 假设起点薪级数字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="startPayLevel", length = 5, nullable=false,unique=false)
+
 	public Integer getStartPayLevel() {
 		return startPayLevel;
 	}
+
 	public void setStartPayLevel(Integer startPayLevel) {
 		this.startPayLevel = startPayLevel;
 	}

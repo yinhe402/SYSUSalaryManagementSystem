@@ -26,6 +26,9 @@ public class User {
 		this.id = id;
 	}
 	
+	/**
+	 * 32位 MD5加密密码
+	 * */
 	@Column(name="password", length=32, nullable=false)
 	public String getPassword() {
 		return password;

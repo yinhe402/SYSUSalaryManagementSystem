@@ -14,9 +14,9 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/1088?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="url" value="jdbc:mysql://172.18.180.24:3306/1088?useUnicode=true&amp;characterEncoding=UTF-8"/>	<property name="url" value="jdbc:mysql://localhost:3306/110?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root" />
-		<property name="password" value="123456" />
+
 	</bean>
 
 	<bean id="sessionFactory"
@@ -34,6 +34,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.sms.entity.User</value>
+				<value>com.sms.entity.Employee</value>
 				<value>com.sms.entity.ProfessionalSalaryChange</value>
 				<value>com.sms.entity.ProfessionalPaylevelSalary</value>
 				<value>com.sms.entity.ProfessionalPositionSalary</value>
