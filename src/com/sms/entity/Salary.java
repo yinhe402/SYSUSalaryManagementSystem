@@ -12,15 +12,15 @@ public class Salary {
 		private Integer levelSalary;//薪级工资
 		private Integer areaDifference;//地区差
 		private Integer positionAllowance;//岗位津贴
-		private Integer educationAllowance;///教护补贴
+		private Integer educationAllowance;//教护补贴
 		private Integer specialAllowance;//特殊津贴
-		private Integer onlyChildAllowance;//独生子女
+		private Integer onlyChildAllowance;//独生子女补贴
 		private Integer otherAllowance;//其它补贴
 		private Integer phoneAllowance;//电话补贴
 		private Integer monthAddAllowance;//月增资额
 		private Integer supplementSalary;//补发工资
 		private Integer totleSalary; //本月总工资
-		private String remarks; // 备注
+		private String remarks; //备注
 		
 		@Id
 		public Integer getEid() {

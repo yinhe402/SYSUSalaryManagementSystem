@@ -20,16 +20,19 @@ import com.sms.service.IUserManage;
 public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
+	
 	@Resource
 	private IEmployeeManage employeeManage;
 
 	@Resource
 	private IUserManage userManage;
+	
+	public Employee getEmployee() {
+		return employee;
+	}
 
-	public static boolean isValid(int value) {
-		if (value >= 100000 && value <= 999999)
-			return true;
-		return false;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	public void setEmployeeManage(IEmployeeManage employeeManage) {
@@ -40,17 +43,14 @@ public class EmployeeAction extends ActionSupport {
 		return employeeManage;
 	}
 
-	public Employee getEmployee() {
-		return employee;
+	public static boolean isValid(int value) {
+		if (value >= 100000 && value <= 999999)
+			return true;
+		return false;
 	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
+	
 	public String addEmployee() {
-		System.out.println("-------employeeAction.addEmployee--------"
-				+ employee.getId());
+		System.out.println("-------employeeAction.addEmployee--------" + employee.getId());
 		if (isValid(employee.getId())) {
 			employeeManage.addEmployee(employee);
 			return "success";
@@ -59,8 +59,7 @@ public class EmployeeAction extends ActionSupport {
 	}
 
 	public String modifyEmployee() {
-		System.out.println("-------employeeAction.modifyEmployee--------"
-				+ employee.getId());
+		System.out.println("-------employeeAction.modifyEmployee--------" + employee.getId());
 		if (isValid(employee.getId())
 				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			employeeManage.modifyEmployee(employee);
@@ -70,8 +69,7 @@ public class EmployeeAction extends ActionSupport {
 	}
 
 	public String getEmployeeInfo() {
-		System.out.println("-------employeeAction.getEmployeeInfo--------"
-				+ employee.getId());
+		System.out.println("-------employeeAction.getEmployeeInfo--------" + employee.getId());
 		if (employee.getId() == null)
 			return "fail";
 		if (isValid(employee.getId())
@@ -85,7 +83,6 @@ public class EmployeeAction extends ActionSupport {
 			return "success";
 		}
 		return "fail";
-
 	}
 
 }

@@ -20,7 +20,7 @@ public class SalaryDaoImp implements ISalaryDao {
 	}
 
 	@Override
-	public void AddSalary(Salary salary) {
+	public void addSalary(Salary salary) {
 		getSession().save(salary);
 	}
 
