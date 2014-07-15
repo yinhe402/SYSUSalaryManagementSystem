@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -19,7 +21,7 @@ public class ManageSalaryChange {
 	private Integer lowBoundOfChangeYear;//套改年限下界
 	private Integer upperBoundOfChangeYear;//套改年限上界
 	private Integer payLevel;//薪级
-	
+
 	@Id
 	@GeneratedValue
 	public int getId() {

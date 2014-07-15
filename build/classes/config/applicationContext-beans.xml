@@ -13,17 +13,20 @@
 	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype">
 		<!-- <property name="userManage" ref="userManage"></property> -->
 	</bean>
+	<bean name="manageTest" class="com.sms.action.ManageTest" scope="prototype"></bean>
 
 	<!-- Spring管理Struts2的Interceptor -->
-	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>
-
-	
+	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>	
 	
 	<bean name="userManage" class="com.sms.service.impl.UserManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
+	</bean>
+	<bean name="manageSalaryManage" class="com.sms.service.impl.ManageSalaryManageImp">
 	</bean>
 	
 	<bean name="userDao" class="com.sms.dao.impl.UserDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="manageSalaryDao" class="com.sms.dao.impl.ManageSalaryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "worPosiSal_table")
 public class WorkerPositionSalary {
 	private int id;//主键
-	private String positon;//岗位
+	private String position;//岗位
 	private Integer level;//级数
 	private Integer salaryStandard;//工资标准
 	private Integer startPayLevel;//起点薪级
@@ -31,11 +31,11 @@ public class WorkerPositionSalary {
 	 * 岗位,假设岗位汉字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="position", length = 10, nullable=false,unique=false)
-	public String getPositon() {
-		return positon;
+	public String getPosition() {
+		return position;
 	}
-	public void setPositon(String positon) {
-		this.positon = positon;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 	/*
@@ -64,10 +64,10 @@ public class WorkerPositionSalary {
 	 * 假设起点薪级数字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="startPayLevel", length = 5, nullable=false,unique=false)
-	public Integer getPaylevel() {
+	public Integer getStartPayLevel() {
 		return startPayLevel;
 	}
-	public void setPaylevel(Integer startPayLevel) {
+	public void setStartPayLevel(Integer startPayLevel) {
 		this.startPayLevel = startPayLevel;
 	}
 }

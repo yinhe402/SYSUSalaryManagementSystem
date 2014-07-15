@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//WebContent/chooseFun.jsp=UTF-8
+encoding//WebContent/showSalary.jsp=UTF-8
 encoding//src/com/sms/action/LoginAction.java=UTF-8
 encoding//src/com/sms/filter/CharsetEncodingFilter.java=UTF-8
 encoding/<project>=UTF-8
