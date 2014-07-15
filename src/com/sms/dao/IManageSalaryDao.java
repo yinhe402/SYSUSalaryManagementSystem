@@ -1,0 +1,25 @@
+package com.sms.dao;
+
+import com.sms.entity.ManagePaylevelSalary;
+import com.sms.entity.ManagePositionSalary;
+import com.sms.entity.ManageSalaryChange;
+
+/*
+ * 管理人员薪级工资接口
+ */
+public interface IManageSalaryDao {
+	public void addManPaySal(ManagePaylevelSalary manPaylevelSalary);//增加管理人员薪级工资映射
+	public void modifyManPaySal(ManagePaylevelSalary manPaylevelSalary);//根据薪级修改管理人员薪级工资映射
+	public void deleteManPaySal(ManagePaylevelSalary manPaylevelSalary);//删除管理人员薪级工资映射
+	public ManagePaylevelSalary findManPaySalByPayLevel(Integer payLevel);//根据薪级获得管理人员薪级工资映射记录
+	
+	public void addManPosSal(ManagePositionSalary managePositionSalary);//增加管理人员职务映射
+	public void modifyManPosSal(ManagePositionSalary managePositionSalary);//根据级别修改管理人员职务映射
+	public void deleteManPosSal(ManagePositionSalary managePositionSalary);//删除管理人员职务映射
+	public ManagePositionSalary findManPosSalByLevel(Integer level);//根据级别获得管理人员职务工资映射记录
+	
+	public void addManSalCha(ManageSalaryChange manageSalaryChange);//增加管理人员套改工资映射
+	public void modifyManSalCha(ManageSalaryChange manageSalaryChange);//根据级别和相应工作年限修改管理人员套改工资映射
+	public void deleteManSalCha(ManageSalaryChange manageSalaryChange);//删除管理人员套改工资映射
+	public ManageSalaryChange findManSalChaByLevel(Integer level,Integer off,Integer cha);//根据级别和相应工作年限获得套改工资映射记录
+}
