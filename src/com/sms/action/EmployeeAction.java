@@ -85,7 +85,6 @@ public class EmployeeAction extends ActionSupport {
 			return "success";
 		}
 		return "fail";
-
 	}
 
 }
