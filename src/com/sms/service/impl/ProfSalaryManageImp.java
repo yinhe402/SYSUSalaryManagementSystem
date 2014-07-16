@@ -1,5 +1,7 @@
 package com.sms.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.sms.dao.IProfSalaryDao;
@@ -141,5 +143,17 @@ public class ProfSalaryManageImp implements IProfSalaryManageDao{
 		System.out.println(getProfessionalSalaryChange().getPayLevel());
 		setProfPaySalByPayLevel(getProfessionalSalaryChange().getPayLevel());
 		setProfPosSalByLevel(level);
+	}
+
+	@Override
+	public List<ProfessionalPaylevelSalary> findAllPayLevelSalary() {
+		// TODO Auto-generated method stub
+		return IProfSalaryDao.findAllPayLevelSalary();
+	}
+
+	@Override
+	public List<ProfessionalPositionSalary> findAllPositionSalary() {
+		// TODO Auto-generated method stub
+		return IProfSalaryDao.findAllPositionSalary();
 	}
 }

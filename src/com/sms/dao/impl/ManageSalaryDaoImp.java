@@ -1,5 +1,8 @@
 package com.sms.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -106,5 +109,21 @@ public class ManageSalaryDaoImp implements IManageSalaryDao{
 		ManageSalaryChange m = (ManageSalaryChange)query.uniqueResult();
 		//System.out.println(m.getId());
 		return m;		
+	}
+
+	@Override
+	public List<ManagePaylevelSalary> findAllPayLevelSalary() {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("from ManagePaylevelSalary");
+		List<ManagePaylevelSalary> listPay = query.list();
+		return listPay;
+	}
+ 
+	@Override
+	public List<ManagePositionSalary> findAllPositonSalary() {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("from ManagePositionSalary");
+		List<ManagePositionSalary> listPos = query.list();
+		return listPos;
 	}
 }
