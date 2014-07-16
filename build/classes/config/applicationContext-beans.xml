@@ -38,4 +38,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean name="startSalaryInfoDao" class="com.sms.dao.impl.StartSalaryInfoDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 </beans>

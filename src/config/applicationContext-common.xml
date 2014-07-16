@@ -44,6 +44,8 @@
 				<value>com.sms.entity.WorkerSalaryChange</value>
 				<value>com.sms.entity.WorkerPaylevelSalary</value>
 				<value>com.sms.entity.WorkerPositionSalary</value>
+				<value>com.sms.entity.Salary</value>
+				<value>com.sms.entity.StartSalary.Info</value>
 			</list>
 		</property>
 

@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	//var myfrom=document.getElementById("myform1");
-
 	
 	function addUser()
 	{

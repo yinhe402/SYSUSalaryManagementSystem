@@ -11,6 +11,8 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.sms.dao.IEmployeeDao;
 import com.sms.dao.impl.EmployeeDaoImp;
+import com.sms.entity.Employee;
+import com.sms.entity.User;
 
 public class TestEmployeeDaoImp {
 	 public static IEmployeeDao iemployeeDao;
@@ -18,30 +20,29 @@ public class TestEmployeeDaoImp {
 	@BeforeClass
 	public static void setUp() {
 		iemployeeDao = new EmployeeDaoImp();
-		ApplicationContext ctx = new  FileSystemXmlApplicationContext("WebContent/WEB-INF/applicationContext.xml"); 
+		ApplicationContext ctx = new  FileSystemXmlApplicationContext("/Config/applicationContext-beans.xml"); 
+		iemployeeDao = (IEmployeeDao) ctx.getBean("employeeDao");
 	}
 
 
 	@Test
 	public void testFindEmployeeById() {
-		Calendar calendar = Calendar.getInstance();
-		
-		fail("Not yet implemented");
+	Employee employee = iemployeeDao.findEmployeeById(113311);
 	}
 
 	@Test
 	public void testAddEmployee() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testDeleteEmployee() {
-		fail("Not yet implemented");
+
 	}
 
 	@Test
 	public void testModifyEmployee() {
-		fail("Not yet implemented");
+
 	}
 
 }
