@@ -1,10 +1,13 @@
 package com.sms.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.sms.dao.IProfSalaryDao;
+import com.sms.entity.ManagePositionSalary;
 import com.sms.entity.ProfessionalPaylevelSalary;
 import com.sms.entity.ProfessionalPositionSalary;
 import com.sms.entity.ProfessionalSalaryChange;
@@ -111,6 +114,22 @@ public class ProfSalaryDaoImp implements IProfSalaryDao{
 		ProfessionalSalaryChange p = (ProfessionalSalaryChange)query.uniqueResult();
 		//System.out.println(m.getId());
 		return p;		
+	}
+
+	@Override
+	public List<ProfessionalPaylevelSalary> findAllPayLevelSalary() {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("from ProfessionalPaylevelSalary");
+		List<ProfessionalPaylevelSalary> listPay = query.list();
+		return listPay;
+	}
+
+	@Override
+	public List<ProfessionalPositionSalary> findAllPositionSalary() {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("from ProfessionalPositionSalary");
+		List<ProfessionalPositionSalary> listPos = query.list();
+		return listPos;
 	}
 
 }

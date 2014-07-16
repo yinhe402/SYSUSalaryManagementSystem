@@ -66,7 +66,7 @@
 		<!-- <property name="userDao" ref="userDao"></property> -->
 	</bean>
 	
-	<bean name="salaryDao" class="com.sms.dao.impl.ManageSalaryDaoImp">
+	<bean name="salaryStandardDao" class="com.sms.dao.impl.ManageSalaryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

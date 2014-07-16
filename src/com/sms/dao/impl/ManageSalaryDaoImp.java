@@ -1,6 +1,7 @@
 package com.sms.dao.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -25,17 +26,14 @@ public class ManageSalaryDaoImp implements IManageSalaryDao{
 
 	@Override
 	public void addManPaySal(ManagePaylevelSalary manPaylevelSalary) {
-		// TODO Auto-generated method stub
 		getSession().save(manPaylevelSalary);
 	}
 	@Override
 	public void modifyManPaySal(ManagePaylevelSalary manPaylevelSalary) {
-		// TODO Auto-generated method stub
 		getSession().update(manPaylevelSalary);
 	}
 	@Override
 	public void deleteManPaySal(ManagePaylevelSalary manPaylevelSalary) {
-		// TODO Auto-generated method stub
 		getSession().delete(manPaylevelSalary);
 	}
 	@Override
@@ -50,17 +48,18 @@ public class ManageSalaryDaoImp implements IManageSalaryDao{
 	
 	@Override
 	public void addManPosSal(ManagePositionSalary managePositionSalary) {
-		// TODO Auto-generated method stub
+
 		getSession().save(managePositionSalary);
 	}
 	@Override
 	public void modifyManPosSal(ManagePositionSalary managePositionSalary) {
-		// TODO Auto-generated method stub
+		getSession().clear();
+		System.out.println("ManagePositioinSalary"+managePositionSalary.getStartPayLevel());
 		getSession().update(managePositionSalary);
 	}
 	@Override
 	public void deleteManPosSal(ManagePositionSalary managePositionSalary) {
-		// TODO Auto-generated method stub
+
 		getSession().delete(managePositionSalary);
 	}
 	@Override
@@ -111,14 +110,18 @@ public class ManageSalaryDaoImp implements IManageSalaryDao{
 	}
 
 	@Override
-	public ArrayList<ManagePaylevelSalary> findAllPayLevelSalary() {
+	public List<ManagePaylevelSalary> findAllPayLevelSalary() {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery("from ManagePaylevelSalary");
+		List<ManagePaylevelSalary> listPay = query.list();
+		return listPay;
 	}
-
+ 
 	@Override
-	public ArrayList<ManagePositionSalary> findAllPositonSalary() {
+	public List<ManagePositionSalary> findAllPositionSalary() {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery("from ManagePositionSalary");
+		List<ManagePositionSalary> listPos = query.list();
+		return listPos;
 	}
 }

@@ -59,7 +59,7 @@
 </s:form>
 
 <form id="myform2">
-	<a href="BasicSalarySystem/BasicSalarySystem.jsp">基本工资体系</a><br />
+	<a href="BasicSalarySystem.jsp">基本工资体系</a><br />
 	
 </form>
 </body>

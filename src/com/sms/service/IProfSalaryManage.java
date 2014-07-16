@@ -1,5 +1,8 @@
 package com.sms.service;
 
+import java.util.List;
+
+import com.sms.entity.ManagePaylevelSalary;
 import com.sms.entity.ProfessionalPaylevelSalary;
 import com.sms.entity.ProfessionalPositionSalary;
 import com.sms.entity.ProfessionalSalaryChange;
@@ -9,11 +12,13 @@ public interface IProfSalaryManage {
 	public void modifyProfPaySal(ProfessionalPaylevelSalary profPaylevelSalary);//修改专业人员薪级工资映射
 	public void deleteProfPaySal();//删除专业人员薪级工资映射
 	public void setProfPaySalByPayLevel(Integer payLevel);//根据薪级设置专业人员薪级工资映射记录
+	public List<ProfessionalPaylevelSalary> findAllPayLevelSalary();//获得所有专业人员薪级工资映射
 	
 	public void addProfPosSal(ProfessionalPositionSalary profPositionSalary);//增加专业人员职务映射
 	public void modifyProfPosSal(ProfessionalPositionSalary profPositionSalary);//修改专业人员职务映射
 	public void deleteProfPosSal();//删除专业人员职务映射
 	public void setProfPosSalByLevel(Integer level);//根据级别设置专业人员职务工资映射记录
+	public List<ProfessionalPositionSalary> findAllPositionSalary();//获得所有专业人员薪级工资映射
 	
 	public void addProfSalCha(ProfessionalSalaryChange profSalaryChange);//增加专业人员套改工资映射
 	public void modifyProfSalCha(ProfessionalSalaryChange profSalaryChange);//修改专业人员套改工资映射
