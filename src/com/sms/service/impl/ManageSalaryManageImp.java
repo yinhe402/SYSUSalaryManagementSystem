@@ -152,8 +152,8 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	}
 
 	@Override
-	public List<ManagePositionSalary> findAllPositonSalary() {
+	public List<ManagePositionSalary> findAllPositionSalary() {
 		// TODO Auto-generated method stub
-		return ImanageSalaryDao.findAllPositonSalary();
+		return ImanageSalaryDao.findAllPositionSalary();
 	}
 }

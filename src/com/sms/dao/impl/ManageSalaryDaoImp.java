@@ -120,7 +120,7 @@ public class ManageSalaryDaoImp implements IManageSalaryDao{
 	}
  
 	@Override
-	public List<ManagePositionSalary> findAllPositonSalary() {
+	public List<ManagePositionSalary> findAllPositionSalary() {
 		// TODO Auto-generated method stub
 		Query query = getSession().createQuery("from ManagePositionSalary");
 		List<ManagePositionSalary> listPos = query.list();

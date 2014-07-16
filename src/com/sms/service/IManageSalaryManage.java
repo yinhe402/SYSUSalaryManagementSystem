@@ -18,7 +18,7 @@ public interface IManageSalaryManage {
 	public void modifyManPosSal(ManagePositionSalary managePositionSalary);//修改管理人员职务映射
 	public void deleteManPosSal();//删除管理人员职务映射
 	public void setManPosSalByLevel(Integer level);//根据级别设置管理人员职务工资映射记录
-	public List<ManagePositionSalary> findAllPositonSalary();//获得所有管理人员职务工资映射
+	public List<ManagePositionSalary> findAllPositionSalary();//获得所有管理人员职务工资映射
 	
 	public void addManSalCha(ManageSalaryChange manageSalaryChange);//增加管理人员套改工资映射
 	public void modifyManSalCha(ManageSalaryChange manageSalaryChange);//修改管理人员套改工资映射
