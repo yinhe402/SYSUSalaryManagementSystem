@@ -57,5 +57,23 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
+	
+	<package name="salaryActions" namespace="/salary" extends="abstract_struts">
+		<action name="*_*" class="salaryAction" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="null" type="redirect">/success.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
+	<package name="salaryStandardActions" namespace="/salaryStandard" extends="abstract_struts">
+		<action name="*_*" class="salaryStandardAction" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="null" type="redirect">/success.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
 
 </struts>

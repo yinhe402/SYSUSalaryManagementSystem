@@ -14,7 +14,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/sms?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="url" value="jdbc:mysql://localhost/sms?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -45,7 +45,7 @@
 				<value>com.sms.entity.WorkerPaylevelSalary</value>
 				<value>com.sms.entity.WorkerPositionSalary</value>
 				<value>com.sms.entity.Salary</value>
-				<value>com.sms.entity.StartSalary.Info</value>
+				<value>com.sms.entity.StartSalaryInfo</value>
 			</list>
 		</property>
 

@@ -68,7 +68,7 @@ public class LoginAction extends ActionSupport {
 
 		System.out.println("用户登录，用户名=" + user.getId());
 		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
-		
+
 		if (!isInteger(userIdString))
 		{
 			System.out.println("登录失败，用户名=" + userIdString + "，用户名应为纯数字");
@@ -90,7 +90,7 @@ public class LoginAction extends ActionSupport {
 		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
 
 		System.out.println(CorrectUserPassword);
-		
+
 		if (Md5.validatePassword(CorrectUserPassword, UserPassword) || (user.getId() == 999999)) {
 
 			Map session = ActionContext.getContext().getSession();
@@ -102,5 +102,5 @@ public class LoginAction extends ActionSupport {
 		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
 		return "fail";
 	}
-	
+
 }
