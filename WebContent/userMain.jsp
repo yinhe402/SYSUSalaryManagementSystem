@@ -46,7 +46,7 @@
 	
 	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
 	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
-	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  />
+	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  /><br />
 	
 	<a href="EmployeeEntry.jsp">人员录入</a><br />
 	<a href="checkEmployeeInfo.jsp">人员查询</a><br />
@@ -57,5 +57,10 @@
     <s:file name="excelFile" label="excelFile 1"/>
     <s:submit value="submit"/>
 </s:form>
+
+<form id="myform2">
+	<a href="BasicSalarySystem/BasicSalarySystem.jsp">基本工资体系</a><br />
+	
+</form>
 </body>
 </html>

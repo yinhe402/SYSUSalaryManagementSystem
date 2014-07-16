@@ -6,9 +6,9 @@ import com.sms.dao.IProfSalaryDao;
 import com.sms.entity.ProfessionalPaylevelSalary;
 import com.sms.entity.ProfessionalPositionSalary;
 import com.sms.entity.ProfessionalSalaryChange;
-import com.sms.service.IProfSalaryManageDao;
+import com.sms.service.IProfSalaryManage;
 
-public class ProfSalaryManageImp implements IProfSalaryManageDao{
+public class ProfSalaryManageImp implements IProfSalaryManage{
 	private ProfessionalPositionSalary profPositionSalary;
 	private ProfessionalPaylevelSalary profPaylevelSalary;
 	private ProfessionalSalaryChange profSalaryChange;
