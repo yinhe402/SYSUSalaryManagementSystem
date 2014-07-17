@@ -1,7 +1,6 @@
 package com.sms.entity;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,7 +12,7 @@ import javax.persistence.TemporalType;
 public class StartSalaryInfo {
 	private String eid; //职工号
 	private Date startSalaryDate;//起薪时间
-	private Time operateDate;//业务处理时间	
+	private Date operateDate;//业务处理时间	
 	private Boolean isRaised;//基本工资是否上调10%
 	private Integer changeYears;//套改年限
 	private Integer breakOffSeniority;//中断工龄
@@ -44,10 +43,10 @@ public class StartSalaryInfo {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Time getOperateDate() {
+	public Date getOperateDate() {
 		return operateDate;
 	}
-	public void setOperateDate(Time operateDate) {
+	public void setOperateDate(Date operateDate) {
 		this.operateDate = operateDate;
 	}
 	

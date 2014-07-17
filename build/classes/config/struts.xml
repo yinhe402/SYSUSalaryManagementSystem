@@ -12,7 +12,8 @@
 
 	<!-- 公共包 -->
 
-	<package name="abstract_struts" abstract="true" extends="struts-default" namespace="/">
+	<package name="abstract_struts" abstract="true" extends="struts-default"
+		namespace="/">
 		<interceptors>
 			<interceptor name="checkLogin" class="checkLoginInterceptor" />
 			<interceptor-stack name="myInterceptor">
@@ -20,7 +21,7 @@
 				<interceptor-ref name="checkLogin" />
 			</interceptor-stack>
 		</interceptors>
-		
+
 		<!-- <default-interceptor-ref name="myInterceptor" /> -->
 
 		<global-results>
