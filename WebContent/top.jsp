@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -45,34 +48,7 @@
 
 		</div>
 
-		<div class="body">
-		    <div class="span3 well">
-		      <!--LeftSidebar content-->
-		      	<ul class="nav nav-list">
-
-                	<li class="nav-header">基本功能</li>
-                	<li class="active"><a href="#">首页</a></li>
-                	<li><a href="#">Library</a></li>
-                	<li><a href="#">Applications</a></li>
-
-                	<li class="nav-header">高级功能</li>
-                	<li><a href="#">Profile</a></li>
-                	<li><a href="#">Settings</a></li>
-
-                	<li class="divider"></li>
-
-                	<li><a href="#">帮助</a></li>
-              	</ul>
-	        	<div style="height:100%;clear:both;"></div>
-		    </div>
-		    <div class="span10 contain">
-		      <!--Body content-->
-		      <h1>This is the title</h1>
-		    </div>
-
-		    <div style="height:100%;clear:both;"></div>
-		</div>
-
+		
 
 		
 	</body>

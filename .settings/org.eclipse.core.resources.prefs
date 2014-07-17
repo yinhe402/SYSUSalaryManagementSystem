@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/BasicSalaryStandard.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8
+encoding//WebContent/newWorkerSalary.jsp=UTF-8
 encoding//src/com/sms/filter/CharsetEncodingFilter.java=UTF-8
 encoding/<project>=UTF-8
