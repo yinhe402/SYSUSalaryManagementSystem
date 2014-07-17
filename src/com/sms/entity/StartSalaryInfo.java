@@ -1,6 +1,8 @@
 package com.sms.entity;
 
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,7 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="OtherInfo")
+@Table(name="start_salary_info")
 public class StartSalaryInfo {
 	private String eid; //职工号
 	private Date startSalaryDate;//起薪时间
@@ -35,6 +37,7 @@ public class StartSalaryInfo {
 		this.eid = eid;
 	}
 	
+	@Column
 	public Date getStartSalaryDate() {
 		return startSalaryDate;
 	}
@@ -43,6 +46,7 @@ public class StartSalaryInfo {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column
 	public Date getOperateDate() {
 		return operateDate;
 	}
@@ -50,78 +54,103 @@ public class StartSalaryInfo {
 		this.operateDate = operateDate;
 	}
 	
+	@Column
 	public Boolean getIsRaised() {
 		return isRaised;
 	}
 	public void setIsRaised(Boolean isRaised) {
 		this.isRaised = isRaised;
 	}
+	
+	@Column
 	public Integer getChangeYears() {
 		return changeYears;
 	}
 	public void setChangeYears(Integer changeYears) {
 		this.changeYears = changeYears;
 	}
+	
+	@Column
 	public Integer getBreakOffSeniority() {
 		return breakOffSeniority;
 	}
 	public void setBreakOffSeniority(Integer breakOffSeniority) {
 		this.breakOffSeniority = breakOffSeniority;
 	}
+	
+	@Column
 	public Integer getWorkYears() {
 		return workYears;
 	}
 	public void setWorkYears(Integer workYears) {
 		this.workYears = workYears;
 	}
+	
+	@Column
 	public Integer getSeniorityBeforeWork() {
 		return seniorityBeforeWork;
 	}
 	public void setSeniorityBeforeWork(Integer seniorityBeforeWork) {
 		this.seniorityBeforeWork = seniorityBeforeWork;
 	}
+	
+	@Column
 	public Integer getLearnSeniority() {
 		return learnSeniority;
 	}
 	public void setLearnSeniority(Integer learnSeniority) {
 		this.learnSeniority = learnSeniority;
 	}
+	
+	@Column
 	public Integer getHireYears() {
 		return hireYears;
 	}
 	public void setHireYears(Integer hireYears) {
 		this.hireYears = hireYears;
 	}
+	
+	@Column
 	public String getSalarySeries() {
 		return salarySeries;
 	}
 	public void setSalarySeries(String salarySeries) {
 		this.salarySeries = salarySeries;
 	}
+	
+	@Column
 	public Integer getPositionLevel() {
 		return positionLevel;
 	}
 	public void setPositionLevel(Integer positionLevel) {
 		this.positionLevel = positionLevel;
 	}
+	
+	@Column
 	public Integer getSalaryLevel() {
 		return salaryLevel;
 	}
 	public void setSalaryLevel(Integer salaryLevel) {
 		this.salaryLevel = salaryLevel;
 	}
+	
+	@Column
 	public Double getPositionSalary() {
 		return positionSalary;
 	}
 	public void setPositionSalary(Double positionSalary) {
 		this.positionSalary = positionSalary;
 	}
+	
+	@Column
 	public Double getLevelSalary() {
 		return levelSalary;
 	}
 	public void setLevelSalary(Double levelSalary) {
 		this.levelSalary = levelSalary;
 	}
+	
+	@Column
 	public String getRemarks() {
 		return remarks;
 	}
