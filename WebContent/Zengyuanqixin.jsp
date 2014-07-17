@@ -11,10 +11,10 @@
 	//var myfrom=document.getElementById("myform1");
 
 	
-	function addEmployee()
+	function importStaff()
 	{
 		var myform=document.forms[0];
-		myform.action="employee/addEmployee_success";
+		myform.action="zengyuanqixin/importStaff_success";
 		myform.method="post";
 		myform.submit();
 	}
@@ -62,9 +62,9 @@
 	薪级：<input type="text" name="startSalaryInfo.salaryLevel" /><br />
 	岗位工资：<input type="text" name="startSalaryInfo.positionSalary" /><br />
 	薪级工资：<input type="text" name="startSalaryInfo.levelSalary" /><br />
-	备注：<input type="text" name="startSalaryInfo.remarks" /><br />
+	备注：<input type="text" name="startSalaryInfo.remarks" value="无" onfocus="if (value =='无'){value =''}" onblur="if (value ==''){value='无'}"/><br />
 	
-	<input type="button" name="btnadd" onclick="addEmployee()" value="增加" />
+	<input type="button" name="btnadd" onclick="importStaff()" value="增加" />
  </form>
 </body>
 </html>

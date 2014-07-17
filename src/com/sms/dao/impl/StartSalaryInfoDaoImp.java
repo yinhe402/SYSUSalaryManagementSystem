@@ -23,7 +23,7 @@ public class StartSalaryInfoDaoImp implements IStartSalaryInfoDao {
 	}
 
 	@Override
-	public void AddStartSalaryInfo(StartSalaryInfo startSalaryInfo) {
+	public void addStartSalaryInfo(StartSalaryInfo startSalaryInfo) {
 		getSession().save(startSalaryInfo);
 	}
 
