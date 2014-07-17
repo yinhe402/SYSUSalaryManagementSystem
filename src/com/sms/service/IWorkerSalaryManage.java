@@ -7,7 +7,7 @@ import com.sms.entity.WorkerPaylevelSalary;
 import com.sms.entity.WorkerPositionSalary;
 import com.sms.entity.WorkerSalaryChange;
 
-public interface IWorkerSalaryManageDao {
+public interface IWorkerSalaryManage {
 	public void addWorkerPaySal(WorkerPaylevelSalary workerPaylevelSalary);//增加工人薪级工资映射
 	public void modifyWorkerPaySal(WorkerPaylevelSalary workerPaylevelSalary);//修改工人薪级工资映射
 	public void deleteWorkerPaySal();//删除工人薪级工资映射

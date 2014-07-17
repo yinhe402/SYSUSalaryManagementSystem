@@ -52,13 +52,11 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	
 	@Override
 	public void addManPaySal(ManagePaylevelSalary manPaylevelSalary) {
-		// TODO Auto-generated method stub
 		ImanageSalaryDao.addManPaySal(manPaylevelSalary);
 	}
 	
 	@Override
 	public void modifyManPaySal(ManagePaylevelSalary manPaylevelSalary) {
-		// TODO Auto-generated method stub
 		setManPaySalByPayLevel(manPaylevelSalary.getPayLevel());
 		getManagePaylevelSalary().setSalaryStandard(manPaylevelSalary.getSalaryStandard());
 		ImanageSalaryDao.modifyManPaySal(getManagePaylevelSalary());
@@ -72,28 +70,21 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 
 	@Override
 	public void setManPaySalByPayLevel(Integer payLevel) {
-		// TODO Auto-generated method stub
 		this.managePaylevelSalary=ImanageSalaryDao.findManPaySalByPayLevel(payLevel);
 	}
 
 	@Override
 	public void addManPosSal(ManagePositionSalary managePositionSalary) {
-		// TODO Auto-generated method stub
 		ImanageSalaryDao.addManPosSal(managePositionSalary);
 	}
 
 	@Override
 	public void modifyManPosSal(ManagePositionSalary managePositionSalary) {
-		// TODO Auto-generated method stub
-		setManPosSalByLevel(managePositionSalary.getLevel());
-		getManagePositionSalary().setSalaryStandard(managePositionSalary.getSalaryStandard());
-		getManagePositionSalary().setPosition(managePositionSalary.getPosition());
-		ImanageSalaryDao.modifyManPosSal(getManagePositionSalary());
+		ImanageSalaryDao.modifyManPosSal(managePositionSalary);
 	}
 
 	@Override
 	public void deleteManPosSal() {
-		// TODO Auto-generated method stub
 		ImanageSalaryDao.deleteManPosSal(getManagePositionSalary());
 	}
 

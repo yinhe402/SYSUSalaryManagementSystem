@@ -7,7 +7,7 @@ import com.sms.entity.ProfessionalPaylevelSalary;
 import com.sms.entity.ProfessionalPositionSalary;
 import com.sms.entity.ProfessionalSalaryChange;
 
-public interface IProfSalaryManageDao {
+public interface IProfSalaryManage {
 	public void addProfPaySal(ProfessionalPaylevelSalary profPaylevelSalary);//增加专业人员薪级工资映射
 	public void modifyProfPaySal(ProfessionalPaylevelSalary profPaylevelSalary);//修改专业人员薪级工资映射
 	public void deleteProfPaySal();//删除专业人员薪级工资映射

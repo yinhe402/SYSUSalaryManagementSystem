@@ -71,7 +71,6 @@ public class ManagePositionSalary {
 	}
 	
 	public void setStartPayLevel(Integer startPayLevel) {
-		System.out.println("cao");
 		this.startPayLevel = startPayLevel;
 	}
 	
