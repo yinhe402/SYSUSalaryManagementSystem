@@ -22,6 +22,9 @@
 	<bean name="salaryStandardAction" class="com.sms.action.SalaryStandardAction" scope="prototype">
 		<!-- <property name="salaryStandardManage" ref="salaryStandardManage"></property> -->
 	</bean>
+	<bean name="zengyuanqixinAction" class="com.sms.action.ZengyuanqixinAction" scope="prototype">
+		<!-- <property name="zengyuanqixinManage" ref="zengyuanqixinManage"></property> -->
+	</bean>
 
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>

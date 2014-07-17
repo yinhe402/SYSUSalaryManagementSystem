@@ -18,15 +18,6 @@
 		myform.method="post";
 		myform.submit();
 	}
-	
-	function modifyEmployee()
-	{
-		var myform=document.forms[0];
-		myform.action="employee/modifyEmployee_success";
-		myform.method="post";
-		myform.submit();
-	}
-	
 
 </script>
 </head>
@@ -58,23 +49,22 @@
 	
 	<br/><br/><br/><br/>
 	
-	起薪时间(XXXX-XX-XX):<input type="text" name="employee.jobLevel" /><br />
-	套改年限：<input type="text" name="employee.jobLevel" /><br />
-	中断工龄：<input type="text" name="employee.jobLevel" /><br />
-	实际工作年限：<input type="text" name="employee.jobLevel" /><br />
-	工作前工龄：<input type="text" name="employee.jobLevel" /><br />
-	大专以上不计工龄年限：<input type="text" name="employee.jobLevel" /><br />
-	任职年限：<input type="text" name="employee.jobLevel" /><br />
-	工资系列：<input type="text" name="employee.jobLevel" /><br />
-	工资岗位级别：<input type="text" name="employee.jobLevel" /><br />
-	薪级：<input type="text" name="employee.jobLevel" /><br />
-	岗位工资：<input type="text" name="employee.jobLevel" /><br />
-	薪级工资：<input type="text" name="employee.jobLevel" /><br />
-	各工资项：<input type="text" name="employee.jobLevel" /><br />
-	备注：<input type="text" name="employee.jobLevel" /><br />
+	起薪时间(XXXX-XX-XX):<input type="text" name="startSalaryInfo.startSalaryDate" /><br />
+	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
+	套改年限：<input type="text" name="startSalaryInfo.changeYears" /><br />
+	中断工龄：<input type="text" name="startSalaryInfo.breakOffSeniority" /><br />
+	截至2006年6月30日实际工作年限：<input type="text" name="startSalaryInfo.workYears" /><br />
+	工作前工龄：<input type="text" name="startSalaryInfo.seniorityBeforeWork" /><br />
+	大专以上不计工龄年限：<input type="text" name="startSalaryInfo.learnSeniority" /><br />
+	任职年限：<input type="text" name="startSalaryInfo.hireYears" /><br />
+	工资系列：<input type="text" name="startSalaryInfo.salarySeries" /><br />
+	工资岗位级别：<input type="text" name="startSalaryInfo.positionLevel" /><br />
+	薪级：<input type="text" name="startSalaryInfo.salaryLevel" /><br />
+	岗位工资：<input type="text" name="startSalaryInfo.positionSalary" /><br />
+	薪级工资：<input type="text" name="startSalaryInfo.levelSalary" /><br />
+	备注：<input type="text" name="startSalaryInfo.remarks" /><br />
 	
 	<input type="button" name="btnadd" onclick="addEmployee()" value="增加" />
-	<input type="button" name="btnmodify" onclick="modifyEmployee()" value="修改" />
  </form>
 </body>
 </html>
