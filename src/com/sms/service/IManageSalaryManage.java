@@ -26,6 +26,7 @@ public interface IManageSalaryManage {
 	public void setManSalChaByLevel(Integer level,Integer off,Integer cha);//根据级别和相应工作年限设置套改工资映射记录
 	
 	public void setAllManage(Integer level,Integer off,Integer cha);//设置所有私有成员
+	public Integer getPayLevel(Integer level,Integer off,Integer cha);//根据相应信息获得薪级
 	
 	public Integer getSalary();//获得管理人员工资
 }
