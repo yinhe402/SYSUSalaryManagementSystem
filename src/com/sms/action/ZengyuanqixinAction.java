@@ -22,7 +22,7 @@ public class ZengyuanqixinAction extends ActionSupport {
 	public void setStartSalaryInfo(StartSalaryInfo startSalaryInfo) {
 		this.startSalaryInfo = startSalaryInfo;
 	}
-	
+
 	@Resource
 	private IStartSalaryInfoManage startSalaryInfoManage;
 
@@ -34,12 +34,12 @@ public class ZengyuanqixinAction extends ActionSupport {
 			IStartSalaryInfoManage startSalaryInfoManage) {
 		this.startSalaryInfoManage = startSalaryInfoManage;
 	}
-	
+
 	private Employee employee;
-	
+
 	@Resource
 	private IEmployeeManage employeeManage;
-	
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -55,10 +55,10 @@ public class ZengyuanqixinAction extends ActionSupport {
 	public IEmployeeManage getEmployeeManage() {
 		return employeeManage;
 	}
-	
+
 	@Resource
-	private IManageSalaryManage manageSalaryManage;	
-	
+	private IManageSalaryManage manageSalaryManage;
+
 	public IManageSalaryManage getManageSalaryManage() {
 		return manageSalaryManage;
 	}
@@ -72,49 +72,51 @@ public class ZengyuanqixinAction extends ActionSupport {
 			return true;
 		return false;
 	}
-	
-	public String importStaff()
-	{
-		System.out.println("-------startSalaryInfoAction.importStaff--------" + employee.getId());
-		if (isValid(employee.getId()))
-		{
+
+	public String importStaff() {
+		System.out.println("-------startSalaryInfoAction.importStaff--------"
+				+ employee.getId());
+		if (isValid(employee.getId())) {
 			employeeManage.addEmployee(employee);
 			startSalaryInfo.setEid(employee.getId());
 			startSalaryInfo.setOperateDate(new Date());
-			
-			//自动套用确定工作前年龄
+
+			// 自动套用确定工作前年龄
 			if (employee.getMaxDegree() == "博士")
 				startSalaryInfo.setSeniorityBeforeWork(5);
 			else if (employee.getMaxDegree() == "硕士")
-				startSalaryInfo.setSeniorityBeforeWork(2);			
-			startSalaryInfo.setChangeYears(startSalaryInfo.getWorkYears()+startSalaryInfo.getSeniorityBeforeWork()+startSalaryInfo.getLearnSeniority());
-			
-			startSalaryInfo.setHireYears(2006-employee.getStartWorkDate().getYear()+1-startSalaryInfo.getBreakOffSeniority());
-			
-			if (startSalaryInfo.getSalarySeries() == "管理")
-			{
-				startSalaryInfo.setPositionSalary(new Double(manageSalaryManage.findManPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard()));
-//				Integer 
-			}
-			else if (startSalaryInfo.getSalarySeries() == "专技")
-			{
-				
-			}
-			else if (startSalaryInfo.getSalarySeries() == "技工")
-			{
-				
-			}
-			else if (startSalaryInfo.getSalarySeries() == "普工")
-			{
-				
-			}
-			else 
-			{
+				startSalaryInfo.setSeniorityBeforeWork(2);
+			startSalaryInfo.setChangeYears(startSalaryInfo.getWorkYears()
+					+ startSalaryInfo.getSeniorityBeforeWork()
+					+ startSalaryInfo.getLearnSeniority());
+
+			startSalaryInfo.setHireYears(2006
+					- employee.getStartWorkDate().getYear() + 1
+					- startSalaryInfo.getBreakOffSeniority());
+
+			if (startSalaryInfo.getSalarySeries() == "管理") {
+				startSalaryInfo.setPositionSalary(new Double(manageSalaryManage
+						.findManPosSalByLevel(
+								startSalaryInfo.getPositionLevel())
+						.getSalaryStandard()));
+				startSalaryInfo.setLevelSalary(new Double(manageSalaryManage
+						.findManPaySalByPayLevel(
+								manageSalaryManage.getPayLevel(
+										startSalaryInfo.getPositionLevel(),
+										startSalaryInfo.getHireYears(),
+										startSalaryInfo.getChangeYears()))
+						.getSalaryStandard()));
+			} else if (startSalaryInfo.getSalarySeries() == "专技") {
+
+			} else if (startSalaryInfo.getSalarySeries() == "技工") {
+
+			} else if (startSalaryInfo.getSalarySeries() == "普工") {
+
+			} else {
 				System.out.println("工资系列有误，请您检查");
 				return "fail";
 			}
-			
-			
+
 			startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
 			return "success";
 		}
