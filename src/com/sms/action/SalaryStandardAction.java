@@ -51,10 +51,6 @@ public class SalaryStandardAction extends ActionSupport {
 		System.out.println("-------salaryStandardAction.checkSalaryStandard--------");
 		List<ManagePositionSalary> lst1 = manageSalaryManage.findAllPositionSalary();
 		List<ManagePaylevelSalary> lst2 = manageSalaryManage.findAllPayLevelSalary();
-		System.out.println(lst1.isEmpty());
-		System.out.println(lst1.get(0).getId());
-		System.out.println(lst1.get(0).getPosition());
-		System.out.println(lst1.get(0).getLevel());
 		Map session = ActionContext.getContext().getSession();
 		session.put("managepositionsalary", lst1);
 		session.put("managepaylevelsalary", lst2);

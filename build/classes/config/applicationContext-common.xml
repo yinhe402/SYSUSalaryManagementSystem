@@ -45,6 +45,7 @@
 				<value>com.sms.entity.WorkerPaylevelSalary</value>
 				<value>com.sms.entity.WorkerPositionSalary</value>
 				<value>com.sms.entity.Salary</value>
+				<value>com.sms.entity.StartSalaryInfo</value>
 			</list>
 		</property>
 
@@ -62,8 +63,7 @@
 		<tx:attributes>
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="modify*" propagation="REQUIRED" />
-			
+			<tx:method name="modify*" propagation="REQUIRED" />		
 			 <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 		</tx:attributes>

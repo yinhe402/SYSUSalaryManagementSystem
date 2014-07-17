@@ -8,8 +8,6 @@
 <title>UserMain</title>
 
 <script type="text/javascript">
-	//var myfrom=document.getElementById("myform1");
-
 	
 	function addUser()
 	{
