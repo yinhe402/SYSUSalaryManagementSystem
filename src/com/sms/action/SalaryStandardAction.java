@@ -65,7 +65,7 @@ public class SalaryStandardAction extends ActionSupport {
 	{
 		System.out.println("-------salaryStandardAction.modifyPosSalaryStandard--------");
 		ManagePositionSalary tmpManagePositionSalary = new ManagePositionSalary();
-		tmpManagePositionSalary.setId(managePositionSalary.getId());
+		tmpManagePositionSalary = manageSalaryManage.findManPosSalByLevel(managePositionSalary.getLevel());
 		tmpManagePositionSalary.setPosition(managePositionSalary.getPosition());
 		tmpManagePositionSalary.setLevel(managePositionSalary.getLevel());
 		tmpManagePositionSalary.setSalaryStandard(managePositionSalary.getSalaryStandard());
@@ -79,7 +79,7 @@ public class SalaryStandardAction extends ActionSupport {
 	{
 		System.out.println("-------salaryStandardAction.modifyLevSalaryStandard--------");
 		ManagePaylevelSalary tmpManagePaylevelSalary = new ManagePaylevelSalary();
-		tmpManagePaylevelSalary.setId(managePaylevelSalary.getId());
+		tmpManagePaylevelSalary = manageSalaryManage.findManPaySalByPayLevel(managePaylevelSalary.getPayLevel());
 		tmpManagePaylevelSalary.setPayLevel(managePaylevelSalary.getPayLevel());
 		tmpManagePaylevelSalary.setSalaryStandard(managePaylevelSalary.getSalaryStandard());
 		manageSalaryManage.modifyManPaySal(tmpManagePaylevelSalary);

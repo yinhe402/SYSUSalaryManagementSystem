@@ -57,7 +57,7 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	
 	@Override
 	public void modifyManPaySal(ManagePaylevelSalary manPaylevelSalary) {
-		setManPaySalByPayLevel(manPaylevelSalary.getPayLevel());
+		findManPaySalByPayLevel(manPaylevelSalary.getPayLevel());
 		getManagePaylevelSalary().setSalaryStandard(manPaylevelSalary.getSalaryStandard());
 		ImanageSalaryDao.modifyManPaySal(getManagePaylevelSalary());
 	}
@@ -69,8 +69,9 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	}
 
 	@Override
-	public void setManPaySalByPayLevel(Integer payLevel) {
+	public ManagePaylevelSalary findManPaySalByPayLevel(Integer payLevel) {
 		this.managePaylevelSalary=ImanageSalaryDao.findManPaySalByPayLevel(payLevel);
+		return this.managePaylevelSalary;
 	}
 
 	@Override
@@ -89,9 +90,10 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	}
 
 	@Override
-	public void setManPosSalByLevel(Integer level) {
+	public ManagePositionSalary findManPosSalByLevel(Integer level) {
 		// TODO Auto-generated method stub
 		this.managePositionSalary=ImanageSalaryDao.findManPosSalByLevel(level);
+		return this.managePositionSalary;
 	}
 
 	@Override
@@ -103,7 +105,7 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	@Override
 	public void modifyManSalCha(ManageSalaryChange manageSalaryChange) {
 		// TODO Auto-generated method stub
-		setManSalChaByLevel(manageSalaryChange.getPositionLevel(), manageSalaryChange.getUpperBoundOfChangeYear(), manageSalaryChange.getUpperBoundOfChangeYear());
+		findManSalChaByLevel(manageSalaryChange.getPositionLevel(), manageSalaryChange.getUpperBoundOfChangeYear(), manageSalaryChange.getUpperBoundOfChangeYear());
 		getManageSalaryChange().setPayLevel(manageSalaryChange.getPayLevel());
 		ImanageSalaryDao.modifyManSalCha(manageSalaryChange);
 	}
@@ -115,9 +117,10 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	}
 
 	@Override
-	public void setManSalChaByLevel(Integer level,Integer off,Integer cha) {
+	public ManageSalaryChange findManSalChaByLevel(Integer level,Integer off,Integer cha) {
 		// TODO Auto-generated method stub
 		this.manageSalaryChange=ImanageSalaryDao.findManSalChaByLevel(level,off,cha);
+		return this.manageSalaryChange;
 	}
 
 	@Override
@@ -130,10 +133,10 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	public void setAllManage(Integer level,Integer off,Integer cha) {
 		//System.out.println(level);
 		// TODO Auto-generated method stub
-		setManSalChaByLevel(level,off,cha);
+		findManSalChaByLevel(level,off,cha);
 		System.out.println(getManageSalaryChange().getPayLevel());
-		setManPaySalByPayLevel(getManageSalaryChange().getPayLevel());
-		setManPosSalByLevel(level);
+		findManPaySalByPayLevel(getManageSalaryChange().getPayLevel());
+		findManPosSalByLevel(level);
 	}
 
 	@Override
