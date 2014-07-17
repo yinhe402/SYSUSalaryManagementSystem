@@ -150,4 +150,12 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 		// TODO Auto-generated method stub
 		return ImanageSalaryDao.findAllPositionSalary();
 	}
+
+	@Override
+	public Integer getPayLevel(Integer level, Integer off, Integer cha) {
+		// TODO Auto-generated method stub
+		setAllManage(level, off, cha);
+		
+		return getManageSalaryChange().getPayLevel();
+	}
 }

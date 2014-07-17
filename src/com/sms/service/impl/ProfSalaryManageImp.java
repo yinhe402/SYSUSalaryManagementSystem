@@ -156,4 +156,12 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 		// TODO Auto-generated method stub
 		return IProfSalaryDao.findAllPositionSalary();
 	}
+
+	@Override
+	public Integer getPayLevel(Integer level, Integer off, Integer cha) {
+		// TODO Auto-generated method stub
+		setAllManage(level, off, cha);
+		
+		return getProfessionalSalaryChange().getPayLevel();
+	}
 }

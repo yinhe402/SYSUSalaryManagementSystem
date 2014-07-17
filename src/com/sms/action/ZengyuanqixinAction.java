@@ -94,7 +94,7 @@ public class ZengyuanqixinAction extends ActionSupport {
 			if (startSalaryInfo.getSalarySeries() == "管理")
 			{
 				startSalaryInfo.setPositionSalary(new Double(manageSalaryManage.findManPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard()));
-				Integer 
+//				Integer 
 			}
 			else if (startSalaryInfo.getSalarySeries() == "专技")
 			{
