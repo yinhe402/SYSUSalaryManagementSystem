@@ -1,5 +1,7 @@
 package com.sms.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -62,7 +64,8 @@ public class LoginAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss E");
+		System.out.println(dateFormat.format(new Date()));
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getCharacterEncoding());
 

@@ -60,7 +60,7 @@
 
 <form id="myform2">
 	<a href="BasicSalarySystem.jsp">基本工资体系</a><br />
-	
+	<a href="Zengyuanqixin.jsp">增员起薪</a><br />
 </form>
 </body>
 </html>
