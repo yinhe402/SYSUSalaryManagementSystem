@@ -51,6 +51,7 @@ public class EmployeeAction extends ActionSupport {
 		System.out.println("-------employeeAction.addEmployee--------" + employee.getId());
 		if (isValid(employee.getId())) {
 			employeeManage.addEmployee(employee);
+			ActionContext.getContext().getSession().put("addedEmployee", employee);
 			return "success";
 		}
 		return "fail";

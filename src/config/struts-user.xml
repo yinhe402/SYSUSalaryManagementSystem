@@ -39,6 +39,11 @@
 		<action name="userMain" class="userMainAction">
 			<result name="success">/userMain.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+		</action>	
+		
+		<action name="getData" class="salaryStandardAction" 
+			method="getAllManagePositionSalary" >
+			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
 	</package>
 
@@ -76,8 +81,8 @@
 		</action>
 	</package>
 	
-	<package name="zengyuanqixinActions" namespace="/zengyuanqixin" extends="abstract_struts">
-		<action name="*_*" class="zengyuanqixinAction" method="{1}">
+	<package name="newEmployeeActions" namespace="/newEmployee" extends="abstract_struts">
+		<action name="*_*" class="newEmployeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
