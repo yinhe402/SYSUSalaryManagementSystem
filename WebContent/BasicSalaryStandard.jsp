@@ -75,7 +75,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<form id="myform2">
   		岗位工资：<br />
-  		id：<input type="text" name="managePositionSalary.id"/><br />
   		岗位：<input type="text" name="managePositionSalary.position"/><br />
   		级数：<input type="text" name="managePositionSalary.level"/><br />
   		工资标准：<input type="text" name="managePositionSalary.salaryStandard"/><br />
@@ -85,7 +84,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<form id="myform3">
   		薪级工资：<br />
-  		薪级：<input type="text" name="managePaylevelSalary.id"/><br />
   		工资标准：<input type="text" name="managePaylevelSalary.payLevel"/><br />
   		起点薪级：<input type="text" name="managePaylevelSalary.salaryStandard"/><br />
   		<input type="button" name="btnmodifyLevSalary" onclick="modifyLevSalaryStandard()" value="Submit" />

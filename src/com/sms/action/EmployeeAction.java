@@ -1,5 +1,6 @@
 package com.sms.action;
 
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -23,9 +24,6 @@ public class EmployeeAction extends ActionSupport {
 	
 	@Resource
 	private IEmployeeManage employeeManage;
-
-	@Resource
-	private IUserManage userManage;
 	
 	public Employee getEmployee() {
 		return employee;

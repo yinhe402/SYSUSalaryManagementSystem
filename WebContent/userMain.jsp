@@ -10,12 +10,18 @@
 </head>
 
 <frameset rows="110,*" cols="*"  border="1" framespacing="0">
-  <frame src="top.jsp" name="topFrame"  scrolling="No" noresize="noresize" id="topFrame" title="topFrame">
+  <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame">
     <frameset  cols="300,*" border="3" >
     <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" />  
        <frame  name="mainFrame"  noresize="noresize" id="mainFrame" title="mainFrame" />
   </frameset>
 </frameset>
-<noframes><body>
+<noframes>
+</noframes>
+<body>
+<form id="myform2">
+	<a href="BasicSalarySystem.jsp">基本工资体系</a><br />
+	<a href="Zengyuanqixin.jsp">增员起薪</a><br />
+</form>
 </body>
-</noframes></html>
+</html>

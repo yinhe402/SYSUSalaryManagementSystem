@@ -75,5 +75,13 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
+	
+	<package name="zengyuanqixinActions" namespace="/zengyuanqixin" extends="abstract_struts">
+		<action name="*_*" class="zengyuanqixinAction" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
 
 </struts>

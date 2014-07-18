@@ -12,7 +12,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="start_salary_info")
 public class StartSalaryInfo {
-	private String eid; //职工号
+	private Integer eid; //职工号
 	private Date startSalaryDate;//起薪时间
 	private Date operateDate;//业务处理时间	
 	private Boolean isRaised;//基本工资是否上调10%
@@ -30,10 +30,10 @@ public class StartSalaryInfo {
 	private String remarks;//备注
 	
 	@Id
-	public String getEid() {
+	public Integer getEid() {
 		return eid;
 	}
-	public void setEid(String eid) {
+	public void setEid(Integer eid) {
 		this.eid = eid;
 	}
 	
