@@ -57,11 +57,11 @@
 <div id="pNode1_sub3_s2" style="padding-left:40px;">·<a href="#" target="_blank">历月工资查询统计</a></div> 
 </div>    
 </div> 
-<div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;">+ 基本工资体系</div> 
+<div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;"> + 基本工资体系</div> 
 <div id="pNode2_ljf" style="display:none;"> 
-<div id="pNode2_sub1" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">.基本工资标准</div>  
-<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">.工资计算公式</div> 
-<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">.基本工资（津补贴）项目</div> 
+<div id="pNode2_sub1"  onclick="" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="getData" target="mainFrame">基本工资标准</a></div>  
+<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">·工资计算公式</div> 
+<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">·基本工资（津补贴）项目</div> 
 </div> 
 
 <div id="pNode3" onclick="showList(this.id);" style="cursor:pointer;"><a class="emp" href="Employee.jsp"target="mainFrame">+职工信息获取（录入）</a></div> 

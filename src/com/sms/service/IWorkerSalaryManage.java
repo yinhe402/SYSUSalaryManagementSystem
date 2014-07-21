@@ -12,7 +12,7 @@ public interface IWorkerSalaryManage {
 	public void modifyWorkerPaySal(WorkerPaylevelSalary workerPaylevelSalary);//修改工人薪级工资映射
 	public void deleteWorkerPaySal();//删除工人薪级工资映射
 	public void setWorkerPaySalByPayLevel(Integer payLevel);//根据薪级设置工人薪级工资映射记录
-	public List<WorkerPositionSalary> findAllPayLevelSalary();//获得所有工人薪级工资映射
+	public List<WorkerPaylevelSalary> findAllPayLevelSalary();//获得所有工人薪级工资映射
 	
 	public void addWorkerPosSal(WorkerPositionSalary workerPositionSalary);//增加工人职务映射
 	public void modifyWorkerPosSal(WorkerPositionSalary workerPositionSalary);//修改工人职务映射
