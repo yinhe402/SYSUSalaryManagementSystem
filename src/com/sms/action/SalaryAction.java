@@ -70,10 +70,14 @@ public class SalaryAction {
 	}
 
 	public String addSalary() {
+	
 		System.out.println("-------salaryAction.addSalary--------"
 				+ salary.getEid());
+		
 		if (salary.getEid() == null)
 			return "fail";
+		
+		
 		if (isValid(salary.getEid())) {
 			if (employeeManage.findEmployeeById(salary.getEid()) != null) {
 				salaryManage.addSalary(salary);

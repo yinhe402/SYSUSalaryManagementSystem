@@ -14,7 +14,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/sms?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="url" value="jdbc:mysql://172.18.180.62/sms?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -45,6 +45,7 @@
 				<value>com.sms.entity.WorkerPaylevelSalary</value>
 				<value>com.sms.entity.WorkerPositionSalary</value>
 				<value>com.sms.entity.Salary</value>
+				<value>com.sms.entity.StartSalaryInfo</value>
 			</list>
 		</property>
 
@@ -62,8 +63,7 @@
 		<tx:attributes>
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="modify*" propagation="REQUIRED" />
-			
+			<tx:method name="modify*" propagation="REQUIRED" />		
 			 <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 		</tx:attributes>

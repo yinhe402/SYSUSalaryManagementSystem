@@ -8,9 +8,9 @@ import com.sms.dao.IProfSalaryDao;
 import com.sms.entity.ProfessionalPaylevelSalary;
 import com.sms.entity.ProfessionalPositionSalary;
 import com.sms.entity.ProfessionalSalaryChange;
-import com.sms.service.IProfSalaryManageDao;
+import com.sms.service.IProfSalaryManage;
 
-public class ProfSalaryManageImp implements IProfSalaryManageDao{
+public class ProfSalaryManageImp implements IProfSalaryManage{
 	private ProfessionalPositionSalary profPositionSalary;
 	private ProfessionalPaylevelSalary profPaylevelSalary;
 	private ProfessionalSalaryChange profSalaryChange;
@@ -155,5 +155,13 @@ public class ProfSalaryManageImp implements IProfSalaryManageDao{
 	public List<ProfessionalPositionSalary> findAllPositionSalary() {
 		// TODO Auto-generated method stub
 		return IProfSalaryDao.findAllPositionSalary();
+	}
+
+	@Override
+	public Integer getPayLevel(Integer level, Integer off, Integer cha) {
+		// TODO Auto-generated method stub
+		setAllManage(level, off, cha);
+		
+		return getProfessionalSalaryChange().getPayLevel();
 	}
 }

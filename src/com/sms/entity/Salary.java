@@ -1,28 +1,44 @@
 package com.sms.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "salary")
 public class Salary {
+		private Integer sid; //主键
 		private Integer eid; //职工号
 		private Integer positionSalary;//岗位工资
 		private Integer levelSalary;//薪级工资
 		private Integer areaDifference;//地区差
 		private Integer positionAllowance;//岗位津贴
-		private Integer educationAllowance;//教护补贴
+		private Integer educationAllowance;///教护补贴
 		private Integer specialAllowance;//特殊津贴
-		private Integer onlyChildAllowance;//独生子女补贴
+		private Integer onlyChildAllowance;//独生子女
 		private Integer otherAllowance;//其它补贴
 		private Integer phoneAllowance;//电话补贴
 		private Integer monthAddAllowance;//月增资额
 		private Integer supplementSalary;//补发工资
 		private Integer totleSalary; //本月总工资
-		private String remarks; //备注
+		private Date time; //发放工资时间(月份)
+		private String remarks; // 备注
 		
 		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name="sid")
+		public Integer getSid() {
+			return sid;
+		}
+		public void setSid(Integer sid) {
+			this.sid = sid;
+		}
+		
+		@Column(name="eid")
 		public Integer getEid() {
 			return eid;
 		}
@@ -125,6 +141,14 @@ public class Salary {
 		}
 		public void setTotleSalary(Integer totleSalary) {
 			this.totleSalary = totleSalary;
+		}
+		
+		@Column(name="Time")
+		public Date getTime() {
+			return time;
+		}
+		public void setTime(Date time) {
+			this.time = time;
 		}
 		
 		@Column(name="remarks")

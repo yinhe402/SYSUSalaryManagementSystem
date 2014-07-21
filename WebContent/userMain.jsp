@@ -1,61 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>UserMain</title>
-
-<script type="text/javascript">
-	//var myfrom=document.getElementById("myform1");
-
-	
-	function addUser()
-	{
-		var myform=document.forms[0];
-		myform.action="user/addUser_success";
-		myform.method="post";
-		myform.submit();
-	}
-	
-	function modifyUser()
-	{
-		var myform=document.forms[0];
-		myform.action="user/modifyUser_success";
-		myform.method="post";
-		myform.submit();
-	}
-	
-	function deleteUser()
-	{
-		var myform=document.forms[0];
-		myform.action="user/deleteUser_success";
-		myform.method="post";
-		myform.submit();
-	}	
-	
-
-</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>中山大学职工工资管理系统</title>
 </head>
+
+<frameset rows="110,*" cols="*"  border="1" framespacing="0">
+  <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame">
+    <frameset  cols="300,*" border="3" >
+    <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" />  
+       <frame  name="mainFrame"  noresize="noresize" id="mainFrame" title="mainFrame" />
+  </frameset>
+</frameset>
+<noframes>
+</noframes>
 <body>
-<form id="myform1" >
-	用户名：<input type="text" name="user.id" /><br />
-	密码：<input type="password" name="user.password" /><br />
-	类型：<input type="text" name="user.userType" /><br />
-	
-	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
-	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
-	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  />
-	
-	<a href="EmployeeEntry.jsp">人员录入</a><br />
-	<a href="checkEmployeeInfo.jsp">人员查询</a><br />
-	<a href="SalaryInfoInput.jsp">工资录入</a><br />
-	<a href="SalaryInfoDisplay.jsp">工资导出</a><br />
- </form>
- <s:form action="user/importUser_success" method="post" enctype="multipart/form-data">
-    <s:file name="excelFile" label="excelFile 1"/>
-    <s:submit value="submit"/>
-</s:form>
+<form id="myform2">
+	<a href="BasicSalarySystem.jsp">基本工资体系</a><br />
+	<a href="Zengyuanqixin.jsp">增员起薪</a><br />
+</form>
 </body>
 </html>

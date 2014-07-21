@@ -1,5 +1,6 @@
 package com.sms.action;
 
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -23,9 +24,6 @@ public class EmployeeAction extends ActionSupport {
 	
 	@Resource
 	private IEmployeeManage employeeManage;
-
-	@Resource
-	private IUserManage userManage;
 	
 	public Employee getEmployee() {
 		return employee;
@@ -53,6 +51,7 @@ public class EmployeeAction extends ActionSupport {
 		System.out.println("-------employeeAction.addEmployee--------" + employee.getId());
 		if (isValid(employee.getId())) {
 			employeeManage.addEmployee(employee);
+			ActionContext.getContext().getSession().put("addedEmployee", employee);
 			return "success";
 		}
 		return "fail";

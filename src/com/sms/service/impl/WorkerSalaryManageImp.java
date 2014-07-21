@@ -8,9 +8,9 @@ import com.sms.dao.IWorkerSalaryDao;
 import com.sms.entity.WorkerPaylevelSalary;
 import com.sms.entity.WorkerPositionSalary;
 import com.sms.entity.WorkerSalaryChange;
-import com.sms.service.IWorkerSalaryManageDao;
+import com.sms.service.IWorkerSalaryManage;
 
-public class WorkerSalaryManageImp implements IWorkerSalaryManageDao{
+public class WorkerSalaryManageImp implements IWorkerSalaryManage{
 	private WorkerPositionSalary workerPositionSalary;
 	private WorkerPaylevelSalary workerPaylevelSalary;
 	private WorkerSalaryChange workerSalaryChange;
@@ -146,14 +146,21 @@ public class WorkerSalaryManageImp implements IWorkerSalaryManageDao{
 	}
 
 	@Override
-	public List<WorkerPositionSalary> findAllPayLevelSalary() {
-		// TODO Auto-generated method stub
-		return IWorkerSalaryDao.findAllPositionSalary();
+	public List<WorkerPaylevelSalary> findAllPayLevelSalary() {
+		return IWorkerSalaryDao.findAllPayLevelSalary();
 	}
 
 	@Override
 	public List<WorkerPositionSalary> findAllPositionSalary() {
 		// TODO Auto-generated method stub
 		return IWorkerSalaryDao.findAllPositionSalary();
+	}
+
+	@Override
+	public Integer getPayLevel(Integer level, Integer off, Integer cha) {
+		// TODO Auto-generated method stub
+		setAllManage(level, off, cha);
+		
+		return getWorkerSalaryChange().getPayLevel();
 	}
 }
