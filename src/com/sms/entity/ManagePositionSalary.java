@@ -12,11 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "manPosiSal_table")
 public class ManagePositionSalary {
-	private int id;//涓婚敭
-	private String positon;//宀椾綅
-	private Integer level;//绾ф暟
-	private Integer salaryStandard;//宸ヨ祫鏍囧噯
-	private Integer startPayLevel;//璧风偣钖骇
+	private int id;//主键
+	private String position;//岗位
+	private Integer level;//级数
+	private Integer salaryStandard;//工资标准
+	private Integer startPayLevel;//起点薪级
 	
 	@Id
 	@GeneratedValue
@@ -28,18 +28,20 @@ public class ManagePositionSalary {
 	}
 	
 	/*
-	 * 宀椾綅,鍋囪宀椾綅姹夊瓧闀垮害涓嶈秴杩?,涓嶅彲涓虹┖,鍙噸澶?
+	 * 岗位,假设岗位汉字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="position", length = 10, nullable=false,unique=false)
-	public String getPositon() {
-		return positon;
+	
+	public String getPosition() {
+		return position;
 	}
-	public void setPositon(String positon) {
-		this.positon = positon;
+	
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 	/*
-	 * 绾ф暟,鍋囪绾ф暟鏁板瓧闀垮害涓嶈秴杩?,涓嶅彲涓虹┖,涓嶅彲閲嶅
+	 * 级数,假设级数数字长度不超过5,不可为空,不可重复
 	 */
 	@Column(name="level", length = 5, nullable=false,unique=true)
 	public Integer getLevel() {
@@ -50,7 +52,7 @@ public class ManagePositionSalary {
 	}
 	
 	/*
-	 * 鍋囪宸ヨ祫鏁板瓧闀垮害涓嶈秴杩?0,涓嶅彲涓虹┖,鍙噸澶?
+	 * 假设工资数字长度不超过10,不可为空,可重复
 	 */
 	@Column(name="salaryStandard", length = 10, nullable=false,unique=false)
 	public Integer getSalaryStandard() {
@@ -61,13 +63,16 @@ public class ManagePositionSalary {
 	}
 	
 	/*
-	 * 鍋囪璧风偣钖骇鏁板瓧闀垮害涓嶈秴杩?,涓嶅彲涓虹┖,鍙噸澶?
+	 * 假设起点薪级数字长度不超过5,不可为空,可重复
 	 */
 	@Column(name="startPayLevel", length = 5, nullable=false,unique=false)
-	public Integer getPaylevel() {
+	public Integer getStartPayLevel() {
 		return startPayLevel;
 	}
-	public void setPaylevel(Integer startPayLevel) {
+	
+	public void setStartPayLevel(Integer startPayLevel) {
+		System.out.println("cao");
 		this.startPayLevel = startPayLevel;
 	}
+	
 }

@@ -1,0 +1,1 @@
+除了编写Employee.html，修改left.html外，在index.js中还加了一个函数（最后一个）,css中加了个class类emp

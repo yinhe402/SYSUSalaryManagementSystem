@@ -1,9 +1,16 @@
 package com.sms.action;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
+import org.hibernate.Session;
 import org.omg.CORBA.Request;
 
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.Employee;
 import com.sms.security.Md5;
@@ -13,17 +20,19 @@ import com.sms.service.IUserManage;
 public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
-
-	@Resource
-	private IEmployeeManage employeeManage;
 	
 	@Resource
-	private IUserManage userManage;
+	private IEmployeeManage employeeManage;
 
-	public static boolean isValid(int value) {
-		if (value >= 100000 && value <= 999999)
-			return true;
-		return false;
+	@Resource
+	private IUserManage userManage;
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	public void setEmployeeManage(IEmployeeManage employeeManage) {
@@ -34,18 +43,16 @@ public class EmployeeAction extends ActionSupport {
 		return employeeManage;
 	}
 
-	public Employee getEmployee() {
-		return employee;
+	public static boolean isValid(int value) {
+		if (value >= 100000 && value <= 999999)
+			return true;
+		return false;
 	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
+	
 	public String addEmployee() {
 		System.out.println("-------employeeAction.addEmployee--------" + employee.getId());
 		if (isValid(employee.getId())) {
-			employeeManage.addEmployee(employee);				
+			employeeManage.addEmployee(employee);
 			return "success";
 		}
 		return "fail";
@@ -53,8 +60,26 @@ public class EmployeeAction extends ActionSupport {
 
 	public String modifyEmployee() {
 		System.out.println("-------employeeAction.modifyEmployee--------" + employee.getId());
-		if (isValid(employee.getId()) && employeeManage.findEmployeeById(employee.getId()) != null) {
+		if (isValid(employee.getId())
+				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			employeeManage.modifyEmployee(employee);
+			return "success";
+		}
+		return "fail";
+	}
+
+	public String getEmployeeInfo() {
+		System.out.println("-------employeeAction.getEmployeeInfo--------" + employee.getId());
+		if (employee.getId() == null)
+			return "fail";
+		if (isValid(employee.getId())
+				&& employeeManage.findEmployeeById(employee.getId()) != null) {
+			Integer eid = employee.getId();
+			employee = employeeManage.findEmployeeById(eid);
+			List<Employee> lst = new ArrayList<Employee>();
+			lst.add(employee);
+			Map session = ActionContext.getContext().getSession();
+			session.put("eInfo", lst);
 			return "success";
 		}
 		return "fail";

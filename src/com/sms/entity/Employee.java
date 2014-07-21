@@ -8,8 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.springframework.context.annotation.Primary;
 @Entity
 @Table(name="employee")
 public class Employee {
@@ -50,6 +54,9 @@ public class Employee {
 		this.id = id;
 	}
 	
+	/**
+	 * 姓名 
+	 * */
 	@Column(name="name", length=20, nullable=false)
 	public String getName() {
 		return name;
@@ -58,6 +65,9 @@ public class Employee {
 		this.name = name;
 	}
 	
+	/**
+	 * 邮箱
+	 * */
 	@Column(name="email", length=40)
 	public String getEmail() {
 		return email;
@@ -66,6 +76,9 @@ public class Employee {
 		this.email = email;
 	}
 	
+	/**
+	 * 性别
+	 * */
 	@Column(name="gender", nullable=false)
 	public Boolean getGender() {
 		return gender;
@@ -74,6 +87,9 @@ public class Employee {
 		this.gender = gender;
 	}
 	
+	/**
+	 * 出生日期
+	 * */
 	@Column(name="birthday", nullable=false)
 	public Date getBirthday() {
 		return birthday;
@@ -81,6 +97,10 @@ public class Employee {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+	/**
+	 * 身份证号
+	 * */
 	@Column(name="uid", length = 20, nullable=false)
 	public String getUid() {
 		return uid;
@@ -88,6 +108,10 @@ public class Employee {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
+	
+	/**
+	 * 单位
+	 * */
 	@Column(name="department", length = 10, nullable=false)
 	public String getDepartment() {
 		return department;
@@ -96,6 +120,9 @@ public class Employee {
 		this.department = department;
 	}
 	
+	/**
+	 * 岗位性质
+	 * */
 	@Column(name="job_type", length = 10, nullable=false)
 	public String getJobType() {
 		return jobType;
@@ -104,6 +131,9 @@ public class Employee {
 		this.jobType = jobType;
 	}
 	
+	/**
+	 * 人员身份
+	 * */
 	@Column(name="type", length = 10)
 	public String getType() {
 		return type;
@@ -112,6 +142,9 @@ public class Employee {
 		this.type = type;
 	}
 	
+	/**
+	 * 入校来源
+	 * */
 	@Column(name="source", length = 10)
 	public String getSource() {
 		return source;
@@ -120,6 +153,9 @@ public class Employee {
 		this.source = source;
 	}
 	
+	/**
+	 * 进校时间
+	 * */
 	@Column(name="reach_school_date")
 	public Date getReachSchoolDate() {
 		return reachSchoolDate;
@@ -128,6 +164,9 @@ public class Employee {
 		this.reachSchoolDate = reachSchoolDate;
 	}
 	
+	/**
+	 * 最高学历
+	 * */
 	@Column(name="max_education", length=20, nullable=false)
 	public String getMaxEducation() {
 		return maxEducation;
@@ -136,6 +175,10 @@ public class Employee {
 	public void setMaxEducation(String maxEducation) {
 		this.maxEducation = maxEducation;
 	}
+	
+	/**
+	 * 最高学历获得时间
+	 * */
 	@Column(name="max_education_date", nullable=false)
 	public Date getMaxEducationDate() {
 		return maxEducationDate;
@@ -145,6 +188,9 @@ public class Employee {
 		this.maxEducationDate = maxEducationDate;
 	}
 	
+	/**
+	 * 最高学位
+	 * */
 	@Column(name="max_degree", length=20, nullable=false)
 	public String getMaxDegree() {
 		return maxDegree;
@@ -153,6 +199,9 @@ public class Employee {
 		this.maxDegree = maxDegree;
 	}
 	
+	/**
+	 * 最高学位获得时间
+	 * */
 	@Column(name="max_degree_date", nullable=false)
 	public Date getMaxDegreeDate() {
 		return maxDegreeDate;
@@ -161,6 +210,9 @@ public class Employee {
 		this.maxDegreeDate = maxDegreeDate;
 	}
 	
+	/**
+	 * 聘任职务
+	 * */
 	@Column(name="hire_work")
 	public String getHireWork() {
 		return hireWork;
@@ -171,6 +223,9 @@ public class Employee {
 		this.hireWork = hireWork;
 	}
 	
+	/**
+	 * 聘任级别
+	 * */
 	@Column(name="work_level")
 	public Integer getWorkLevel() {
 		return workLevel;
@@ -179,7 +234,9 @@ public class Employee {
 		this.workLevel = workLevel;
 	}
 	
-	
+	/**
+	 * 任职时间
+	 * */
 	@Column(name="start_work_date")
 	public Date getStartWorkDate() {
 		return startWorkDate;
@@ -188,6 +245,9 @@ public class Employee {
 		this.startWorkDate = startWorkDate;
 	}
 	
+	/**
+	 * 聘任职称
+	 * */
 	@Column(name="hire_title", length=30)
 	public String getHireTitle() {
 		return hireTitle;
@@ -196,6 +256,9 @@ public class Employee {
 		this.hireTitle = hireTitle;
 	}
 	
+	/**
+	 * 职称级别
+	 * */
 	@Column(name="title_level")
 	public Integer getTitleLevel() {
 		return titleLevel;
@@ -204,6 +267,9 @@ public class Employee {
 		this.titleLevel = titleLevel;
 	}
 	
+	/**
+	 * 聘任时间
+	 * */
 	@Column(name="hire_date")
 	public Date getHireDate() {
 		return hireDate;
@@ -212,6 +278,9 @@ public class Employee {
 		this.hireDate = hireDate;
 	}
 	
+	/**
+	 * 聘任岗位 
+	 * */
 	@Column(name="hire_job", length=20)
 	public String getHireJob() {
 		return hireJob;
@@ -220,6 +289,9 @@ public class Employee {
 		this.hireJob = hireJob;
 	}
 	
+	/**
+	 * 岗位级别
+	 * */
 	@Column(name="job_level")
 	public Integer getJobLevel() {
 		return jobLevel;

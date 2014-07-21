@@ -40,8 +40,9 @@ public class EmployeeDaoImp implements IEmployeeDao {
 
 	@Override
 	public void modifyEmployee(Employee employee) {
+		getSession().clear();
 		getSession().update(employee);
 		
 	}
-
+	
 }

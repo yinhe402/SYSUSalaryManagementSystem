@@ -16,11 +16,13 @@
 	<bean name="employeeAction" class="com.sms.action.EmployeeAction" scope="prototype">
 		<!-- <property name="employeeManage" ref="employeeManage"></property> -->
 	</bean>
+	<bean name="salaryAction" class="com.sms.action.SalaryAction" scope="prototype">
+		<!-- <property name="salaryManage" ref="salaryManage"></property> -->
+	</bean>
 
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>
 
-	
 	
 	<bean name="userManage" class="com.sms.service.impl.UserManageImp">
 		<!-- <property name="userDao" ref="userDao"></property> -->
@@ -35,6 +37,14 @@
 	</bean>
 	
 	<bean name="employeeDao" class="com.sms.dao.impl.EmployeeDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean name="salaryManage" class="com.sms.service.impl.SalaryManageImp">
+		<!-- <property name="userDao" ref="userDao"></property> -->
+	</bean>
+	
+	<bean name="salaryDao" class="com.sms.dao.impl.SalaryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
