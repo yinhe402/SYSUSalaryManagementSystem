@@ -158,4 +158,10 @@ public class Salary {
 		public void setRemarks(String remarks) {
 			this.remarks = remarks;
 		}
+
+		//自动生成总工资
+		public void setTotleSalary(){
+			this.totleSalary=positionSalary+levelSalary+areaDifference+positionAllowance+educationAllowance
+					+specialAllowance+onlyChildAllowance+otherAllowance+phoneAllowance+monthAddAllowance+supplementSalary;
+		}
 }
