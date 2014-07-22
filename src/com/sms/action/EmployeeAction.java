@@ -75,10 +75,8 @@ public class EmployeeAction extends ActionSupport {
 				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			Integer eid = employee.getId();
 			employee = employeeManage.findEmployeeById(eid);
-			List<Employee> lst = new ArrayList<Employee>();
-			lst.add(employee);
 			Map session = ActionContext.getContext().getSession();
-			session.put("eInfo", lst);
+			session.put("eInfo", employee);
 			return "success";
 		}
 		return "fail";
