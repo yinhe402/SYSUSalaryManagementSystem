@@ -18,6 +18,7 @@ public interface IProfSalaryManage {
 	public void modifyProfPosSal(ProfessionalPositionSalary profPositionSalary);//修改专业人员职务映射
 	public void deleteProfPosSal();//删除专业人员职务映射
 	public void setProfPosSalByLevel(Integer level);//根据级别设置专业人员职务工资映射记录
+	public ProfessionalPositionSalary findProfPosSalByLevel(Integer level);//根据级别返回专业人员职务工资映射记录
 	public List<ProfessionalPositionSalary> findAllPositionSalary();//获得所有专业人员薪级工资映射
 	
 	public void addProfSalCha(ProfessionalSalaryChange profSalaryChange);//增加专业人员套改工资映射

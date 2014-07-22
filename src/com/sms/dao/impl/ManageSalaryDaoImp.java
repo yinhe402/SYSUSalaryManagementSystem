@@ -108,7 +108,7 @@ public class ManageSalaryDaoImp implements IManageSalaryDao{
 		//System.out.println(m.getId());
 		return m;		
 	}
-
+	
 	@Override
 	public List<ManagePaylevelSalary> findAllPayLevelSalary() {
 		// TODO Auto-generated method stub
