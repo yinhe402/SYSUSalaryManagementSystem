@@ -43,7 +43,7 @@
         </div>
 	  <div id="pNodel_sub4" onclick="showList(this.id)" style="padding-left:40px; cursor:pointer">+特殊情况工资变动</div>
       <div id="pNodel_sub4_ljf" style="display:none;"> 
-      <div id="pNode1_sub4_s1" style="padding-left:60px;">·<a href="#" target="_blank">请假工资处理</a></div> 
+      <div id="pNode1_sub4_s1" style="padding-left:60px;">·<a href="specialSalaryFunChoose.jsp" target="mainFrame">请假工资处理</a></div> 
       <div id="pNode1_sub4_s2" style="padding-left:60px;">·<a href="#" target="_blank">出国工资处理</a></div> 
 	  <div id="pNode1_sub4_s3" style="padding-left:60px;">·<a href="#" target="_blank">处分处罚工资管理</a></div> 
 	  <div id="pNode1_sub4_s4" style="padding-left:60px;">·<a href="#" target="_blank">退养人员工资管理</a></div> 
@@ -57,11 +57,11 @@
 <div id="pNode1_sub3_s2" style="padding-left:40px;">·<a href="#" target="_blank">历月工资查询统计</a></div> 
 </div>    
 </div> 
-<div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;">+ 基本工资体系</div> 
+<div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;"> + 基本工资体系</div> 
 <div id="pNode2_ljf" style="display:none;"> 
-<div id="pNode2_sub1" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">.基本工资标准</div>  
-<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">.工资计算公式</div> 
-<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">.基本工资（津补贴）项目</div> 
+<div id="pNode2_sub1"  onclick="" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="getData" target="mainFrame">基本工资标准</a></div>  
+<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">·工资计算公式</div> 
+<div id="pNode2_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">·基本工资（津补贴）项目</div> 
 </div> 
 
 <div id="pNode3" onclick="showList(this.id);" style="cursor:pointer;"><a class="emp" href="Employee.jsp"target="mainFrame">+职工信息获取（录入）</a></div> 

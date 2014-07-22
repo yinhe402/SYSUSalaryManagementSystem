@@ -12,6 +12,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.ManagePaylevelSalary;
 import com.sms.entity.ManagePositionSalary;
 import com.sms.service.IManageSalaryManage;
+import com.sms.service.IProfSalaryManage;
+import com.sms.service.IWorkerSalaryManage;
 
 public class SalaryStandardAction extends ActionSupport {
 	
@@ -35,8 +37,30 @@ public class SalaryStandardAction extends ActionSupport {
 		this.managePaylevelSalary = managePaylevelSalary;
 	}
 	
+	public IWorkerSalaryManage getWorkerSalaryManage() {
+		return workerSalaryManage;
+	}
+
+	public void setWorkerSalaryManage(IWorkerSalaryManage workerSalaryManage) {
+		this.workerSalaryManage = workerSalaryManage;
+	}
+
+	public IProfSalaryManage getProfSalaryManage() {
+		return profSalaryManage;
+	}
+
+	public void setProfSalaryManage(IProfSalaryManage profSalaryManage) {
+		this.profSalaryManage = profSalaryManage;
+	}
+
 	@Resource
 	private IManageSalaryManage manageSalaryManage;
+
+	@Resource
+	private IWorkerSalaryManage workerSalaryManage;
+	
+	@Resource 
+	private IProfSalaryManage profSalaryManage;
 
 	public IManageSalaryManage getManageSalaryManage() {
 		return manageSalaryManage;
@@ -79,6 +103,18 @@ public class SalaryStandardAction extends ActionSupport {
 		tmpManagePaylevelSalary.setPayLevel(managePaylevelSalary.getPayLevel());
 		tmpManagePaylevelSalary.setSalaryStandard(managePaylevelSalary.getSalaryStandard());
 		manageSalaryManage.modifyManPaySal(tmpManagePaylevelSalary);
+		return "success";
+	}
+	
+	public String getAllManagePositionSalary()  {
+		System.out.println("GetAllSalary");
+		ActionContext.getContext().getSession().put("manList",manageSalaryManage.findAllPositionSalary());
+		ActionContext.getContext().getSession().put("proList",profSalaryManage.findAllPositionSalary());
+		ActionContext.getContext().getSession().put("workerList", workerSalaryManage.findAllPositionSalary());
+		ActionContext.getContext().getSession().put("manPayLevelList",manageSalaryManage.findAllPayLevelSalary());
+		ActionContext.getContext().getSession().put("proPayLevelList",profSalaryManage.findAllPayLevelSalary());
+		ActionContext.getContext().getSession().put("workerPayLevelList", workerSalaryManage.findAllPayLevelSalary());
+		System.out.println("Add All");
 		return "success";
 	}
 }

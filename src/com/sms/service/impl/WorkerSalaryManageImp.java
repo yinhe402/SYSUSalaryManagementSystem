@@ -146,9 +146,8 @@ public class WorkerSalaryManageImp implements IWorkerSalaryManage{
 	}
 
 	@Override
-	public List<WorkerPositionSalary> findAllPayLevelSalary() {
-		// TODO Auto-generated method stub
-		return IWorkerSalaryDao.findAllPositionSalary();
+	public List<WorkerPaylevelSalary> findAllPayLevelSalary() {
+		return IWorkerSalaryDao.findAllPayLevelSalary();
 	}
 
 	@Override

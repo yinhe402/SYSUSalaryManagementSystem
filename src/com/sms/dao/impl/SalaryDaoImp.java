@@ -45,4 +45,13 @@ public class SalaryDaoImp implements ISalaryDao {
 		return s;
 	}
 
+	@Override
+	public Salary findSalaryByEId(Integer eid) {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery("from Salary as s where s.eid = ?");
+		query.setString(0,eid.toString());
+		Salary s = (Salary)query.list().get(0);
+		return s;
+	}
+
 }

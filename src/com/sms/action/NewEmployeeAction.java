@@ -10,11 +10,10 @@ import com.sms.entity.StartSalaryInfo;
 import com.sms.service.IEmployeeManage;
 import com.sms.service.IManageSalaryManage;
 import com.sms.service.IStartSalaryInfoManage;
-import com.sms.action.EmployeeAction;
 
-public class ZengyuanqixinAction extends ActionSupport {
+public class NewEmployeeAction extends ActionSupport {
 	private StartSalaryInfo startSalaryInfo;
-
+	
 	public StartSalaryInfo getStartSalaryInfo() {
 		return startSalaryInfo;
 	}
