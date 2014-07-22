@@ -19,6 +19,7 @@ public interface IWorkerSalaryManage {
 	public void deleteWorkerPosSal();//删除工人职务映射
 	public void setWorkerPosSalByLevel(Integer level);//根据级别设置工人职务工资映射记录
 	public List<WorkerPositionSalary> findAllPositionSalary();//获得所有工人薪级工资映射
+	public WorkerPositionSalary findWorPosSalByLevel(Integer level);
 	
 	public void addWorkerSalCha(WorkerSalaryChange workerSalaryChange);//增加工人套改工资映射
 	public void modifyWorkerSalCha(WorkerSalaryChange workerSalaryChange);//修改工人套改工资映射

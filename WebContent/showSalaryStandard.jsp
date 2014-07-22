@@ -87,7 +87,13 @@ html {
 														<td><s:property value="#proList.level" /></td>
 														<td><s:property value="#proList.salaryStandard" /></td>
 														<td><s:property value="#proList.startPayLevel" /></td>
-														<td ><a href="BasicSalaryStandard.jsp">修改</a></td>
+														<td ><a href="
+														<s:url action="salaryStandard/getChangeInfo_changeSalaryStandard"> 
+														<s:param name="position" value= "#proList.position" />
+														<s:param name="level" value= "#proList.level" />
+														<s:param name="salaryStandard" value= "#proList.salaryStandard" />
+														<s:param name="startPayLevel" value= "#proList.startPayLevel" />
+														</s:url>">修改</a></td>
 													</tr>
 												</s:iterator>
 											</table>
@@ -315,7 +321,7 @@ html {
 														<td><s:property value="#workerPayLevelList.payLevel" /></td>
 														<td><s:property
 																value="#workerPayLevelList.salaryStandard" /></td>
-														<td ><s:a href="BasicSalaryStandard.jsp">修改</s:a></td>
+														<td ><a href="BasicSalaryStandard.jsp">修改</a></td>
 													</tr>
 												</s:iterator>
 

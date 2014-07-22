@@ -1,6 +1,5 @@
 package com.sms.action;
 
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -21,10 +20,10 @@ import com.sms.service.IUserManage;
 public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
-	
+
 	@Resource
 	private IEmployeeManage employeeManage;
-	
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -46,19 +45,22 @@ public class EmployeeAction extends ActionSupport {
 			return true;
 		return false;
 	}
-	
+
 	public String addEmployee() {
-		System.out.println("-------employeeAction.addEmployee--------" + employee.getId());
+		System.out.println("-------employeeAction.addEmployee--------"
+				+ employee.getId());
 		if (isValid(employee.getId())) {
 			employeeManage.addEmployee(employee);
-			ActionContext.getContext().getSession().put("addedEmployee", employee);
+			ActionContext.getContext().getSession()
+					.put("addedEmployee", employee);
 			return "success";
 		}
 		return "fail";
 	}
 
 	public String modifyEmployee() {
-		System.out.println("-------employeeAction.modifyEmployee--------" + employee.getId());
+		System.out.println("-------employeeAction.modifyEmployee--------"
+				+ employee.getId());
 		if (isValid(employee.getId())
 				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			employeeManage.modifyEmployee(employee);
@@ -68,17 +70,16 @@ public class EmployeeAction extends ActionSupport {
 	}
 
 	public String getEmployeeInfo() {
-		System.out.println("-------employeeAction.getEmployeeInfo--------" + employee.getId());
+		System.out.println("-------employeeAction.getEmployeeInfo--------"
+				+ employee.getId());
 		if (employee.getId() == null)
 			return "fail";
 		if (isValid(employee.getId())
 				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			Integer eid = employee.getId();
 			employee = employeeManage.findEmployeeById(eid);
-			List<Employee> lst = new ArrayList<Employee>();
-			lst.add(employee);
 			Map session = ActionContext.getContext().getSession();
-			session.put("eInfo", lst);
+			session.put("eInfo", employee);
 			return "success";
 		}
 		return "fail";
