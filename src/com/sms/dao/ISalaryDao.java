@@ -7,4 +7,5 @@ public interface ISalaryDao {
 	public void modifySalary(Salary salary);
 	public void deleteSalary(Salary salary);
 	public Salary findSalaryById(Integer id);
+	public Salary findSalaryByEId(Integer eid);
 }
