@@ -10,79 +10,59 @@
 	<!-- Spring管理Struts2的Action -->
 	<bean name="loginAction" class="com.sms.action.LoginAction" scope="prototype"></bean>
 	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
-	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype">
-		<!-- <property name="userManage" ref="userManage"></property> -->
-	</bean>
-	<bean name="employeeAction" class="com.sms.action.EmployeeAction" scope="prototype">
-		<!-- <property name="employeeManage" ref="employeeManage"></property> -->
-	</bean>
-	<bean name="salaryAction" class="com.sms.action.SalaryAction" scope="prototype">
-		<!-- <property name="salaryManage" ref="salaryManage"></property> -->
-	</bean>
-	<bean name="salaryStandardAction" class="com.sms.action.SalaryStandardAction" scope="prototype">
-		<!-- <property name="salaryStandardManage" ref="salaryStandardManage"></property> -->
-	</bean>
-	<bean name="newEmployeeAction" class="com.sms.action.NewEmployeeAction" scope="prototype">
-		<!-- <property name="newEmployeeAction" ref="newEmployeeAction"></property> -->
-	</bean>
+	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype"></bean>
+	<bean name="employeeAction" class="com.sms.action.EmployeeAction" scope="prototype"></bean>
+	<bean name="salaryAction" class="com.sms.action.SalaryAction" scope="prototype"></bean>
+	<bean name="salaryStandardAction" class="com.sms.action.SalaryStandardAction" scope="prototype"></bean>
+	<bean name="newEmployeeAction" class="com.sms.action.NewEmployeeAction" scope="prototype"></bean>
+	<bean name="specialSalaryAction" class="com.sms.action.SpecialSalaryAction" scope="prototype"></bean>
 
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>
 
 	
-	<bean name="userManage" class="com.sms.service.impl.UserManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
-	</bean>
-	
+	<bean name="userManage" class="com.sms.service.impl.UserManageImp"></bean>
 	<bean name="userDao" class="com.sms.dao.impl.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean name="employeeManage" class="com.sms.service.impl.EmployeeManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
-	</bean>
-	
+	<bean name="employeeManage" class="com.sms.service.impl.EmployeeManageImp"></bean>
 	<bean name="employeeDao" class="com.sms.dao.impl.EmployeeDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean name="StartSalaryInfoManage" class="com.sms.service.impl.StartSalaryInfoManageImp">
-		<!-- <property name="startSalaryInfoDao" ref="startSalaryInfoDao"></property> -->
-	</bean>
-	
+	<bean name="StartSalaryInfoManage" class="com.sms.service.impl.StartSalaryInfoManageImp"></bean>
 	<bean name="startSalaryInfoDao" class="com.sms.dao.impl.StartSalaryInfoDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean name="salaryManage" class="com.sms.service.impl.SalaryManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
-	</bean>
-	
+	<bean name="salaryManage" class="com.sms.service.impl.SalaryManageImp"></bean>
 	<bean name="salaryDao" class="com.sms.dao.impl.SalaryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 		
-	<bean name="manageSalaryManage" class="com.sms.service.impl.ManageSalaryManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
-	</bean>
-	
+	<bean name="manageSalaryManage" class="com.sms.service.impl.ManageSalaryManageImp"></bean>
 	<bean name="ImanageSalaryDao" class="com.sms.dao.impl.ManageSalaryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean name="profSalaryManage" class="com.sms.service.impl.ProfSalaryManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
-	</bean>
-	
+	<bean name="profSalaryManage" class="com.sms.service.impl.ProfSalaryManageImp"></bean>
 	<bean name="IProfSalaryDao" class="com.sms.dao.impl.ProfSalaryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean name="workerSalaryManage" class="com.sms.service.impl.WorkerSalaryManageImp">
-		<!-- <property name="userDao" ref="userDao"></property> -->
+	<bean name="workerSalaryManage" class="com.sms.service.impl.WorkerSalaryManageImp"></bean>
+	<bean name="IWorkerSalaryDao" class="com.sms.dao.impl.WorkerSalaryDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<bean name="IWorkerSalaryDao" class="com.sms.dao.impl.WorkerSalaryDaoImp">
+	<bean name="specialSalaryChangeManage" class="com.sms.service.impl.SpecialSalaryChangeManageImp"></bean>
+	<bean name="specialSalaryChangeDao" class="com.sms.dao.impl.SpecialSalaryChangeDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean name="specialSalaryRecoveryManage" class="com.sms.service.impl.SpecialSalaryRecoveryManageImp"></bean>
+	<bean name="specialSalaryRecoveryDao" class="com.sms.dao.impl.SpecialSalaryRecoveryDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	

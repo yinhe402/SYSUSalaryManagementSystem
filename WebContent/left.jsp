@@ -43,7 +43,7 @@
         </div>
 	  <div id="pNodel_sub4" onclick="showList(this.id)" style="padding-left:40px; cursor:pointer">+特殊情况工资变动</div>
       <div id="pNodel_sub4_ljf" style="display:none;"> 
-      <div id="pNode1_sub4_s1" style="padding-left:60px;">·<a href="#" target="_blank">请假工资处理</a></div> 
+      <div id="pNode1_sub4_s1" style="padding-left:60px;">·<a href="specialSalaryFunChoose.jsp" target="mainFrame">请假工资处理</a></div> 
       <div id="pNode1_sub4_s2" style="padding-left:60px;">·<a href="#" target="_blank">出国工资处理</a></div> 
 	  <div id="pNode1_sub4_s3" style="padding-left:60px;">·<a href="#" target="_blank">处分处罚工资管理</a></div> 
 	  <div id="pNode1_sub4_s4" style="padding-left:60px;">·<a href="#" target="_blank">退养人员工资管理</a></div> 

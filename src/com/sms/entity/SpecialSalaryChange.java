@@ -1,28 +1,27 @@
 package com.sms.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 /*
- * 扣减恢复信息表
+ * 工资变动信息表
  */
 @Entity
-@Table(name="deductionRecovery")
-public class DeductionRecovery {
+@Table(name="specialSalaryChange")
+public class SpecialSalaryChange {
 	private Integer id;//主键
 	private Integer eId;//职工号
-	private Date recoveryDate;//恢复时间
-	private Integer recoverySalary;//恢复工资
+	private Date changeDate;//扣减生效时间
 	private Integer checkerId;//审核员id
 	private Date checkDate;//审核时间
-	private Integer operatoeId;//操作员id
+	private Integer operatorId;//操作员id
 	private Date operateDate;//操作时间
-	private String recoveryReason;//恢复原因
+	private Integer amount;//工资金额增减，负数为减少
+	private String reason;//扣减原因	
 	
 	@Id
 	@GeneratedValue
@@ -36,7 +35,7 @@ public class DeductionRecovery {
 	/*
 	 * 职工号，6位数字
 	 */
-	@Column(name="eId")
+	@Column(name="eId",length=6)
 	public Integer getEId() {
 		return eId;
 	}
@@ -45,25 +44,14 @@ public class DeductionRecovery {
 	}
 	
 	/*
-	 * 恢复时间
+	 * 扣减生效时间
 	 */
-	@Column(name="recoveryDate")
-	public Date getRecoveryDate() {
-		return recoveryDate;
+	@Column(name="changeDate")
+	public Date getChangeDate() {
+		return changeDate;
 	}
-	public void setRecoveryDate(Date recoveryDate) {
-		this.recoveryDate = recoveryDate;
-	}
-	
-	/*
-	 * 恢复工资
-	 */
-	@Column(name="recoverySalary")
-	public Integer getRecoverySalary() {
-		return recoverySalary;
-	}
-	public void setRecoverySalary(Integer recoverySalary) {
-		this.recoverySalary = recoverySalary;
+	public void setChangeDate(Date changeDate) {
+		this.changeDate = new  Date();
 	}
 	
 	/*
@@ -78,7 +66,7 @@ public class DeductionRecovery {
 	}
 	
 	/*
-	 * 审核时间
+	 *审核时间
 	 */
 	@Column(name="checkDate")
 	public Date getCheckDate() {
@@ -91,12 +79,12 @@ public class DeductionRecovery {
 	/*
 	 * 操作员id
 	 */
-	@Column(name="operatoeId")
-	public Integer getOperatoeId() {
-		return operatoeId;
+	@Column(name="operatorId")
+	public Integer getOperatorId() {
+		return operatorId;
 	}
-	public void setOperatoeId(Integer operatoeId) {
-		this.operatoeId = operatoeId;
+	public void setOperatorId(Integer operatoeId) {
+		this.operatorId = operatoeId;
 	}
 	
 	/*
@@ -111,13 +99,24 @@ public class DeductionRecovery {
 	}
 	
 	/*
-	 * 恢复原因
+	 * 扣减金额
 	 */
-	@Column(name="recoveryReason")
-	public String getRecoveryReason() {
-		return recoveryReason;
+	@Column(name="amount")
+	public Integer getAmount() {
+		return amount;
 	}
-	public void setRecoveryReason(String recoveryReason) {
-		this.recoveryReason = recoveryReason;
+	public void setAmount(Integer amount) {
+		this.amount = amount;
 	}
-}
+	
+	/*
+	 *扣减原因
+	 */
+	@Column(name="reason")
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+}	

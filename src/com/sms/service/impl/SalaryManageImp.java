@@ -38,8 +38,14 @@ public class SalaryManageImp implements ISalaryManage{
 	}
 	
 	@Override
-	public Salary findSalaryById(Integer eid)
+	public Salary findSalaryById(Integer id)
 	{
-		return salaryDao.findSalaryById(eid);
+		return salaryDao.findSalaryById(id);
+	}
+
+	@Override
+	public Salary findSalaryByEId(Integer eid) {
+		// TODO Auto-generated method stub
+		return salaryDao.findSalaryByEId(eid);
 	}
 }
