@@ -25,6 +25,9 @@
 	<bean name="newEmployeeAction" class="com.sms.action.NewEmployeeAction" scope="prototype">
 		<!-- <property name="newEmployeeAction" ref="newEmployeeAction"></property> -->
 	</bean>
+	<bean name="bonusAction" class="com.sms.action.bonusAction" scope="prototype">
+		<!-- <property name="bonusAction" ref="bonusAction"></property> -->
+	</bean>
 
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>
