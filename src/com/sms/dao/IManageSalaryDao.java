@@ -21,7 +21,6 @@ public interface IManageSalaryDao {
 	public void deleteManPosSal(ManagePositionSalary managePositionSalary);//删除管理人员职务映射
 	public ManagePositionSalary findManPosSalByLevel(Integer level);//根据级别获得管理人员职务工资映射记录
 	public List<ManagePositionSalary> findAllPositionSalary();//获得所有管理人员职务工资映射
-
 	
 	public void addManSalCha(ManageSalaryChange manageSalaryChange);//增加管理人员套改工资映射
 	public void modifyManSalCha(ManageSalaryChange manageSalaryChange);//根据级别和相应工作年限修改管理人员套改工资映射

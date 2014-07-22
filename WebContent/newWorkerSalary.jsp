@@ -31,6 +31,20 @@
 		myform.submit();
 	}
 	
+	function addExperience() {
+		i = 1;
+		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
+		var experienceDiv = topWin.document.getElementById("experience");
+		experienceDiv.innerHTML+='<div id="div_'+i+'">年份:<s:textfield name="workDate'+i+'"/> 担任职位<s:textfield name="workExperience'+i+'"/> <button type="button" class="btn btn-warning" onclick="delExperience('+i+')">删除</button> <div>';
+		i=i+1;
+		
+	}
+
+	function delExperience(o){
+		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
+	    mainDocument.getElementById("experience").removeChild(mainDocument.getElementById("div_"+o));
+}
+
 
 </script>
 </head>
@@ -80,6 +94,13 @@
 	岗位工资（自动套用）：<input type="text" name="startSalaryInfo.positionSalary" /><br />
 	薪级工资（自动套用）：<input type="text" name="startSalaryInfo.levelSalary" /><br />
 	备注：<input type="text" name="startSalaryInfo.remarks" value="无" onfocus="if (value =='无'){value =''}" onblur="if (value ==''){value='无'}"/><br />
+	<div id="experience">
+		<h3>工作经历:</h3><br />
+	</div>
+	<button type="button" class="btn btn-success" onclick="addExperience()"> 增加</button>
+	
+	
+
 </s:form>
 </body>
 

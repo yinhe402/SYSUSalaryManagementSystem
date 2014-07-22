@@ -77,6 +77,11 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 	}
 
 	@Override
+	public ProfessionalPositionSalary findProfPosSalByLevel(Integer level) {
+		return IProfSalaryDao.findProfPosSalByLevel(level);
+	}
+	
+	@Override
 	public void addProfPosSal(ProfessionalPositionSalary ProfPositionSalary) {
 		// TODO Auto-generated method stub
 		IProfSalaryDao.addProfPosSal(ProfPositionSalary);
