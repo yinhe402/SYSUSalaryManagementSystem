@@ -163,4 +163,15 @@ public class WorkerSalaryManageImp implements IWorkerSalaryManage{
 		
 		return getWorkerSalaryChange().getPayLevel();
 	}
+
+	@Override
+	public WorkerPositionSalary findWorkerPosSalByLevel(Integer level) {
+		return  IWorkerSalaryDao.findWorkerPosSalByLevel(level);
+		
+	}
+
+	@Override
+	public WorkerPaylevelSalary findWorkerPaySalByPayLevel(Integer payLevel) {
+		return IWorkerSalaryDao.findWorkerPaySalByPayLevel(payLevel);
+	}
 }
