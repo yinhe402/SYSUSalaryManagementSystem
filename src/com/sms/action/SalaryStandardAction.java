@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.fileupload.RequestContext;
+import org.apache.struts2.ServletActionContext;
 
 import java.util.List;
 
@@ -11,6 +15,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.ManagePaylevelSalary;
 import com.sms.entity.ManagePositionSalary;
+import com.sms.entity.ProfessionalPositionSalary;
 import com.sms.service.IManageSalaryManage;
 import com.sms.service.IProfSalaryManage;
 import com.sms.service.IWorkerSalaryManage;
@@ -27,6 +32,7 @@ public class SalaryStandardAction extends ActionSupport {
 		this.managePositionSalary = managePositionSalary;
 	}
 	
+	private ProfessionalPositionSalary professionalPositionSalary;
 	private ManagePaylevelSalary managePaylevelSalary;
 
 	public ManagePaylevelSalary getManagePaylevelSalary() {
@@ -116,5 +122,19 @@ public class SalaryStandardAction extends ActionSupport {
 		ActionContext.getContext().getSession().put("workerPayLevelList", workerSalaryManage.findAllPayLevelSalary());
 		System.out.println("Add All");
 		return "success";
+	}
+	
+	public String getChangeInfo() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String position = request.getParameter("position");
+		System.out.print(position);
+		String level = request.getParameter("level");
+		System.out.print(level);
+		String salaryStandard = request.getParameter("salaryStandard");
+		System.out.print(salaryStandard);
+		String startPayLevel = request.getParameter("startPayLevel");
+		System.out.print(startPayLevel);
+		return "success";
+		
 	}
 }

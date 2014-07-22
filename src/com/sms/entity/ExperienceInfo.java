@@ -1,4 +1,4 @@
-package com.sms.security;
+package com.sms.entity;
 
 public class ExperienceInfo {
 	private String ganhuo;

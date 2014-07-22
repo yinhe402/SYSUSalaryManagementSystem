@@ -45,10 +45,14 @@
 			method="getAllManagePositionSalary" >
 			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
+		<action name="*" >
+			<result>/{1}.jsp</result>
+		</action>
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
 		<action name="*_*" class="userAction" method="{1}">
+			
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
