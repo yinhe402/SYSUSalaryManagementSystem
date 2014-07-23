@@ -11,7 +11,8 @@
 	<constant name="struts.action.extension" value=","></constant>
 	<!-- 取消标签自动换行 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
-	
+<!-- 	utf-8编码 -->
+	<constant name="struts.i18n.encoding" value="utf-8"/>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
  	<!-- 公共包 -->
 

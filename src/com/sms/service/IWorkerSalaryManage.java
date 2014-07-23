@@ -14,11 +14,13 @@ public interface IWorkerSalaryManage {
 	public void setWorkerPaySalByPayLevel(Integer payLevel);//根据薪级设置工人薪级工资映射记录
 	public List<WorkerPaylevelSalary> findAllPayLevelSalary();//获得所有工人薪级工资映射
 	
+	public WorkerPositionSalary findWorkerPosSalByLevel(Integer level);
 	public void addWorkerPosSal(WorkerPositionSalary workerPositionSalary);//增加工人职务映射
 	public void modifyWorkerPosSal(WorkerPositionSalary workerPositionSalary);//修改工人职务映射
 	public void deleteWorkerPosSal();//删除工人职务映射
 	public void setWorkerPosSalByLevel(Integer level);//根据级别设置工人职务工资映射记录
 	public List<WorkerPositionSalary> findAllPositionSalary();//获得所有工人薪级工资映射
+	public WorkerPositionSalary findWorPosSalByLevel(Integer level);
 	
 	public void addWorkerSalCha(WorkerSalaryChange workerSalaryChange);//增加工人套改工资映射
 	public void modifyWorkerSalCha(WorkerSalaryChange workerSalaryChange);//修改工人套改工资映射
@@ -27,6 +29,7 @@ public interface IWorkerSalaryManage {
 	
 	public void setAllManage(Integer level,Integer off,Integer cha);//设置所有私有成员
 	public Integer getPayLevel(Integer level,Integer off,Integer cha);//根据相应信息获得薪级
+	public WorkerPaylevelSalary findWorkerPaySalByPayLevel(Integer payLevel);
 	
 	public Integer getSalary();//获得工人工资
 }
