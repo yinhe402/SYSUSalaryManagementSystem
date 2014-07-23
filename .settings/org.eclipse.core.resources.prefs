@@ -1,11 +1,11 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=a8bf81fb3db0f1ab17dadb0ea277a37d765770ab
 eclipse.preferences.version=1
 encoding//WebContent/BasicSalaryStandard.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8
-encoding//WebContent/newWorkerSalary.jsp=UTF-8
-<<<<<<< HEAD
-encoding//src/com/sms/entity/ExperienceInfo.java=UTF-8
-=======
+encoding//WebContent/newWorkerSalary_daiqixin.jsp=UTF-8
 encoding//WebContent/specialSalaryChange.jsp=UTF-8
->>>>>>> a8bf81fb3db0f1ab17dadb0ea277a37d765770ab
+encoding//src/com/sms/entity/ExperienceInfo.java=UTF-8
 encoding//src/com/sms/filter/CharsetEncodingFilter.java=UTF-8
 encoding/<project>=UTF-8
