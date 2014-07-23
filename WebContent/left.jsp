@@ -60,7 +60,7 @@
 <div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;"> + 基本工资体系</div> 
 <div id="pNode2_ljf" style="display:none;"> 
 <div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="getData" target="mainFrame">基本工资标准</a></div>  
-<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·工资计算公式</div> 
+<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a href="salaryComputeFormula.jsp" target="mainFrame">工资计算公式</div> 
 <div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·基本工资（津补贴）项目</div> 
 </div> 
 

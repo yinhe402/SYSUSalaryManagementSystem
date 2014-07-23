@@ -100,5 +100,13 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
+	
+	<package name="initSalaryCompute" namespace="/initSalaryCompute" extends="abstract_struts">
+		<action name="initSalaryCompute" class="initSalaryCompute" method="initSalaryCompute">
+			<result name="success" type="redirect">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
 
 </struts>

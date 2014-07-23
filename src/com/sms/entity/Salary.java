@@ -28,6 +28,11 @@ public class Salary {
 		private Date time; //发放工资时间(月份)
 		private String remarks; // 备注
 		
+		Salary(){
+			monthAddAllowance=0;
+			supplementSalary=0;
+		}
+		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name="sid")
@@ -162,6 +167,6 @@ public class Salary {
 		//自动生成总工资
 		public void setTotleSalary(){
 			this.totleSalary=positionSalary+levelSalary+areaDifference+positionAllowance+educationAllowance
-					+specialAllowance+onlyChildAllowance+otherAllowance+phoneAllowance+monthAddAllowance+supplementSalary;
+					+specialAllowance+onlyChildAllowance+otherAllowance+phoneAllowance+supplementSalary;
 		}
 }

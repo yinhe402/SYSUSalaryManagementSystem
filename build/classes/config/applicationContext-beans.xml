@@ -16,7 +16,8 @@
 	<bean name="salaryStandardAction" class="com.sms.action.SalaryStandardAction" scope="prototype"></bean>
 	<bean name="newEmployeeAction" class="com.sms.action.NewEmployeeAction" scope="prototype"></bean>
 	<bean name="specialSalaryAction" class="com.sms.action.SpecialSalaryAction" scope="prototype"></bean>
-
+	<bean name="initSalaryCompute" class="com.sms.action.InitSalaryCompute" scope="prototype"></bean>
+	
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin" scope="prototype"></bean>
 
