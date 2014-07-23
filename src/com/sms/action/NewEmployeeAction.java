@@ -14,7 +14,9 @@ import com.sms.entity.ExperienceInfo;
 import com.sms.entity.StartSalaryInfo;
 import com.sms.service.IEmployeeManage;
 import com.sms.service.IManageSalaryManage;
+import com.sms.service.IProfSalaryManage;
 import com.sms.service.IStartSalaryInfoManage;
+import com.sms.service.IWorkerSalaryManage;
 import com.sms.service.LevelSalaryChange;
 
 public class NewEmployeeAction extends ActionSupport {
@@ -141,6 +143,28 @@ public class NewEmployeeAction extends ActionSupport {
 	public void setManageSalaryManage(IManageSalaryManage manageSalaryManage) {
 		this.manageSalaryManage = manageSalaryManage;
 	}
+	
+	@Resource
+	private IProfSalaryManage profSalaryManage;	
+
+	public IProfSalaryManage getProfSalaryManage() {
+		return profSalaryManage;
+	}
+
+	public void setProfSalaryManage(IProfSalaryManage profSalaryManage) {
+		this.profSalaryManage = profSalaryManage;
+	}
+	
+	@Resource
+	private IWorkerSalaryManage workerSalaryManage;	
+
+	public IWorkerSalaryManage getWorkerSalaryManage() {
+		return workerSalaryManage;
+	}
+
+	public void setWorkerSalaryManage(IWorkerSalaryManage workerSalaryManage) {
+		this.workerSalaryManage = workerSalaryManage;
+	}
 
 	public static boolean isValid(int value) {
 		if (value >= 100000 && value <= 999999)
@@ -195,11 +219,14 @@ public class NewEmployeeAction extends ActionSupport {
 			startSalaryInfo.setSalaryLevel(LevelSalaryChange.getSalaryLevel(manageList, techList, eduList, attendWorkDate, array1, array2, l, failTime, worList));
 			
 			if (startSalaryInfo.getSalarySeries() == "管理") {
-				
+				startSalaryInfo.setPositionSalary(Double.parseDouble(manageSalaryManage.findManPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard().toString()));
+				startSalaryInfo.setLevelSalary(Double.parseDouble(manageSalaryManage.findManPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).toString()));
 			} else if (startSalaryInfo.getSalarySeries() == "专技") {
-				
+				startSalaryInfo.setPositionSalary(Double.parseDouble(profSalaryManage.findProfPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard().toString()));
+				startSalaryInfo.setLevelSalary(Double.parseDouble(profSalaryManage.findProfPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).toString()));
 			} else if (startSalaryInfo.getSalarySeries() == "工人") {
-				
+				startSalaryInfo.setPositionSalary(Double.parseDouble(workerSalaryManage.findWorkerPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard().toString()));
+				startSalaryInfo.setLevelSalary(Double.parseDouble(workerSalaryManage.findWorkerPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).toString()));
 			}
 			
 			startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
