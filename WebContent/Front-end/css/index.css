@@ -19,34 +19,8 @@
 	padding-left: 10px;
 }
 
-.bs-docs-sidenav {
-	width: 228px;
-	background-color: #fff;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-	box-shadow: 0 1px 4px rgba(0,0,0,.065);
-}
 
-.bs-docs-sidenav > li > a {
-  display: block;
-  width: 190px \9;
-  margin: 0 0 -1px;
-  padding: 8px 14px;
-  border: 1px solid #e5e5e5;
-}
-
-.contain {
-	border: 1px solid #e5e5e5;
-	
-	padding: 250px;
-	
-}
-#js_title{font-size:16px; font-weight:bold; padding:5px 0px;} 
-#js_describe{font-size:14px; padding:10px 0px;} 
-div{font-size:18px; height:100%; line-height:200%;} 
+div{font-size:18px;  line-height:200%;} 
 a
 {
 font-size:15px; 
@@ -56,4 +30,20 @@ color:black;
 .emp{
 font-size:18px;
 color:#292421;
+}
+
+.employeeinfo{
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+}
+
+.form-control{
+	margin-top: 10px;
+
+}
+
+.searchBlank{
+	margin-left:300px;
+	
 }
