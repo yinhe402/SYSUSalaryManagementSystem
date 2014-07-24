@@ -32,7 +32,7 @@
 </div> 
 <div id="pNode1_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">+ 日常工资处理</div> 
 <div id="pNode1_sub2_ljf" style="display:none;"> 
-<div id="pNode1_sub2_s1" style="padding-left:40px;">·<a href="newWorkerSalary.jsp" target="mainFrame">增员起薪</a></div>
+<div id="pNode1_sub2_s1" style="padding-left:40px;">·<a href="newWorkerSalary_daiqixin.jsp" target="mainFrame">增员起薪</a></div>
 <div id="pNode1_sub2_s2" style="padding-left:40px;">·<a href="#" target="_blank">减员停薪、取消工资关系</a></div>
 <div id="pNode1_sub2_s3" style="padding-left:40px;">·<a href="#" target="_self">补发补扣处理</a></div>
    <div id="pNodel_sub3" onclick="showList(this.id)" style="padding-left:40px; cursor:pointer">+常规工资变动</div>

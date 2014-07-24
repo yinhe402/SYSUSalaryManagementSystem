@@ -12,11 +12,6 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
 	//ar myfrom=document.getElementById("myform1");
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
-	m = 0;
 	
 	function addSalaryInfo()
 	{	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
@@ -33,81 +28,6 @@
 		myform.action="newEmployee/modifySalaryInfo_success";
 		myform.method="post";
 		myform.submit();
-	}
-	
-	function addManExperience() {
-		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var experienceDiv = topWin.document.getElementById("manExperience");
-		experienceDiv.innerHTML+='<div id="manExperience_'+i+'">年份:<s:textfield name="manWorkDate'+i+'"/> 担任职位<s:textfield name="manExperience'+i+'"/> <button type="button" class="btn btn-warning" onclick="delManExperience('+i+')">删除</button> <div>';
-		i=i+1;
-		topWin.document.getElementById("i").value=i;
-	}
-
-	function delManExperience(o){
-		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-	    mainDocument.getElementById("manExperience").removeChild(mainDocument.getElementById("manExperience_"+o));
-		i=i-1;
-		topWin.document.getElementById("i").value=i;
-	}
-	
-	function addProExperience() {
-		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var experienceDiv = topWin.document.getElementById("proExperience");
-		experienceDiv.innerHTML+='<div id="proExperience_'+j+'">年份:<s:textfield name="proWorkDate'+j+'"/> 担任职称<s:textfield name="proExperience'+j+'"/> <button type="button" class="btn btn-warning" onclick="delProExperience('+j+')">删除</button> <div>';
-		j=j+1;
-		topWin.document.getElementById("j").value=j;
-	}
-
-	function delProExperience(o){
-		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-	    mainDocument.getElementById("proExperience").removeChild(mainDocument.getElementById("proExperience_"+o));
-		j=j-1;
-		topWin.document.getElementById("j").value=j;
-	}
-
-	function addEduExperience() {
-		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var experienceDiv = topWin.document.getElementById("eduExperience");
-		experienceDiv.innerHTML+='<div id="eduExperience_'+k+'">年份:<s:textfield name="eduWorkDate'+k+'"/> 获得学位<s:textfield name="eduExperience'+k+'"/> <button type="button" class="btn btn-warning" onclick="delEduExperience('+k+')">删除</button> <div>';
-		k=k+1;
-		topWin.document.getElementById("k").value=k;
-	}
-
-	function delEduExperience(o){
-		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-	    mainDocument.getElementById("eduExperience").removeChild(mainDocument.getElementById("eduExperience_"+o));
-	    k=k-1;
-	    topWin.document.getElementById("k").value=k;
-	}
-	
-	function addBreakExperience() {
-		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var experienceDiv = topWin.document.getElementById("breakExperience");
-		experienceDiv.innerHTML+='<div id="breakExperience_'+i+'">起始时间：<s:textfield name="breakStartDate'+i+'"/> 结束时间：<s:textfield name="breakEndDate'+i+'"/> <button type="button" class="btn btn-warning" onclick="delBreakExperience('+i+')">删除</button> <div>';
-		l=l+1;
-		topWin.document.getElementById("l").value=l;
-	}
-
-	function delBreakExperience(o) {
-		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-	    mainDocument.getElementById("breakExperience").removeChild(mainDocument.getElementById("breakExperience_"+o));
-	    l=l-1;
-	    topWin.document.getElementById("l").value=l;
-	}
-	
-	function addWorkerExperience() {
-		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var experienceDiv = topWin.document.getElementById("workerExperience");
-		experienceDiv.innerHTML+='<div id="workerExperience_'+k+'">年份:<s:textfield name="workerWorkDate'+m+'"/> 获得学位<s:textfield name="workerExperience'+m+'"/> <button type="button" class="btn btn-warning" onclick="delWorkerExperience('+m+')">删除</button> <div>';
-		m=m+1;
-		topWin.document.getElementById("m").value=m;
-	}
-
-	function delWorkerExperience(o){
-		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-	    mainDocument.getElementById("workerExperience").removeChild(mainDocument.getElementById("workerExperience_"+o));
-	    m=m-1;
-	    topWin.document.getElementById("m").value=m;
 	}
 	
 </script>
@@ -143,53 +63,48 @@
 </s:form>
 
 <s:form id="myform1">	
-	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.addedEmployee.id}"/> <br />	
-	起薪时间(XXXX-XX-XX):<input type="text" name="startSalaryInfo.startSalaryDate" /><br />
-	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
-	起始工作时间：<input type="text" name="startWorkYear" /><br />
-	考核不合格次数：<input type="text" name="failYearTime" /><br />
-	套改年限（自动套用）：<input type="text" name="startSalaryInfo.changeYears" /><br />
-	中断工龄（自动套用）：<input type="text" name="startSalaryInfo.breakOffSeniority" /><br />
-	截至2006年6月30日实际工作年限（自动套用）：<input type="text" name="startSalaryInfo.workYears" /><br />
-	工作前工龄（自动套用）：<input type="text" name="startSalaryInfo.seniorityBeforeWork" /><br />
-	大专以上不计工龄年限（自动套用）：<input type="text" name="startSalaryInfo.learnSeniority" /><br />
-	任职年限（自动套用）：<input type="text" name="startSalaryInfo.hireYears" /><br />
-	工资系列：<input type="text" name="startSalaryInfo.salarySeries" /><br />
-	工资岗位级别：<input type="text" name="startSalaryInfo.positionLevel" /><br />
-	薪级（自动套用）：<input type="text" name="startSalaryInfo.salaryLevel" /><br />
-	岗位工资（自动套用）：<input type="text" name="startSalaryInfo.positionSalary" /><br />
-	薪级工资（自动套用）：<input type="text" name="startSalaryInfo.levelSalary" /><br />
-	备注：<input type="text" name="startSalaryInfo.remarks" value="无" onfocus="if (value =='无'){value =''}" onblur="if (value ==''){value='无'}"/><br />
-	<div id="manExperience">
-		<h3>管理系列经历:</h3><br />
-	</div>
-	<s:textarea name="i" id="i" style="display:none"></s:textarea>
-	<button type="button" class="btn btn-success" onclick="addManExperience()"> 增加</button>
+	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.ssInfo.eid}"/> <br />	
+	起薪时间(XXXX-XX-XX):<s:textfield  name="startSalaryInfo.startSalaryDate" value="%{#session.ssInfo.startSalaryDate}"/> <br />
+	/* //基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
+	基本工资是否上调10%： */
+	起始工作时间：<s:textfield  name="startSalaryInfo.startWorkYear" value="%{#session.ssInfo.startWorkYear}"/> <br />
+	考核不合格次数：<s:textfield  name="startSalaryInfo.failYearTime" value="%{#session.ssInfo.failYearTime}"/> <br />
+	工资系列：<s:textfield  name="startSalaryInfo.salarySeries" value="%{#session.ssInfo.salarySeries}"/> <br />
+	工资岗位级别：<s:textfield  name="startSalaryInfo.positionLevel" value="%{#session.ssInfo.positionLevel}"/> <br />
+	套改年限（自动套用）：<s:textfield  name="startSalaryInfo.changeYears" value="%{#session.ssInfo.changeYears}"/> <br />
+	中断工龄（自动套用）：<s:textfield  name="startSalaryInfo.breakOffSeniority" value="%{#session.ssInfo.breakOffSeniority}"/> <br />
+	截至2006年6月30日实际工作年限（自动套用）：<s:textfield  name="startSalaryInfo.workYears" value="%{#session.ssInfo.workYears}"/> <br />
+	工作前工龄（自动套用）：<s:textfield  name="startSalaryInfo.seniorityBeforeWork" value="%{#session.ssInfo.seniorityBeforeWork}"/> <br />
+	大专以上不计工龄年限（自动套用）：<s:textfield  name="startSalaryInfo.learnSeniority" value="%{#session.ssInfo.learnSeniority}"/> <br />
+	任职年限（自动套用）：<s:textfield  name="startSalaryInfo.hireYears" value="%{#session.ssInfo.hireYears}"/> <br />
+	薪级（自动套用）：<s:textfield  name="startSalaryInfo.salaryLevel" value="%{#session.ssInfo.salaryLevel}"/> <br />
+	岗位工资（自动套用）：<s:textfield  name="startSalaryInfo.positionSalary" value="%{#session.ssInfo.positionSalary}"/> <br />
+	薪级工资（自动套用）：<s:textfield  name="startSalaryInfo.levelSalary" value="%{#session.ssInfo.levelSalary}"/> <br />
+	备注：<s:textfield  name="startSalaryInfo.remarks" value="%{#session.ssInfo.remarks}"/> <br />
 	
-	<div id="proExperience">
-		<h3>专技系列经历:</h3><br />
-	</div>
-	<s:textarea name="j" id="j" style="display:none"></s:textarea>
-	<button type="button" class="btn btn-success" onclick="addProExperience()"> 增加</button>
+	管理系列经历：<br />
+	<s:iterator id=mList value="#session.mList">
+		<td><s:textfield value="#mList.getTime()"/></td>
+		<td><s:textfield value="#mList.getGanhuo()"/></td><br />
+	</s:iterator>
 	
-	<div id="workerExperience">
-		<h3> 工人系列经历:</h3><br />
-	</div>
-	<s:textarea name="m" id="m" style="display:none"></s:textarea>
-	<button type="button" class="btn btn-success" onclick="addWorkerExperience()"> 增加</button>
+	专技系列经历：<br />
+	<s:iterator id=tList value="#session.tList">
+		<td><s:textfield value="#tList.getTime()"/></td>
+		<td><s:textfield value="#tList.getGanhuo()"/></td><br />
+	</s:iterator>
 	
-	<div id="eduExperience">
-		<h3>教育经历:</h3><br />
-	</div>
-	<s:textarea name="k" id="k" style="display:none"></s:textarea>
-	<button type="button" class="btn btn-success" onclick="addEduExperience()"> 增加</button>
+	工人系列经历：<br />
+	<s:iterator id=wList value="#session.wList">
+		<td><s:textfield value="#wList.getTime()"/></td>
+		<td><s:textfield value="#wList.getGanhuo()"/></td><br />
+	</s:iterator>
 	
-	<div id="breakExperience">
-		<h3>中断工作经历:</h3><br />
-	</div>
-	<s:textarea name="l" id="l" style="display:none"></s:textarea>
-	<button type="button" class="btn btn-success" onclick="addBreakExperience()"> 增加</button>
-	
+	教育经历:<br />
+	<s:iterator id=eList value="#session.eList">
+		<td><s:textfield value="#eList.getTime()"/></td>
+		<td><s:textfield value="#eList.getGanhuo()"/></td><br />
+	</s:iterator>	
 	
 	<button type="button" class="btn btn-success" onclick="addSalaryInfo()"> 提交</button>
 	

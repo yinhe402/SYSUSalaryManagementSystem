@@ -69,5 +69,9 @@ pageEncoding="utf-8"%>
 		聘岗级别：<input type="text" name="employee.jobLevel" /><br />
 		<button type="button" class="btn btn-success" onclick="addEmployee()">增加</button>
 	</form>
+	<s:form action="employee/importEmployeeInfo_success" method="post" enctype="multipart/form-data">
+    	<s:file name="employeeFile" label="excelFile"/>
+    	<s:submit value="submit"/>
+	</s:form>
 </body>
 </html>

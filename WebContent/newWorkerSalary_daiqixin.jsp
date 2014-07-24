@@ -41,13 +41,18 @@
 		experienceDiv.innerHTML+='<div id="manExperience_'+i+'">年份:<s:textfield name="manWorkDate'+i+'"/> 担任职位<s:textfield name="manExperience'+i+'"/> <button type="button" class="btn btn-warning" onclick="delManExperience('+i+')">删除</button> <div>';
 		i=i+1;
 		topWin.document.getElementById("i").value=i;
+		
+		alert("i="+i);
 	}
 
 	function delManExperience(o){
+		i=i-1;
+		alert("i="+i);
+		
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 	    mainDocument.getElementById("manExperience").removeChild(mainDocument.getElementById("manExperience_"+o));
-		i=i-1;
 		topWin.document.getElementById("i").value=i;
+		
 	}
 	
 	function addProExperience() {
@@ -56,12 +61,16 @@
 		experienceDiv.innerHTML+='<div id="proExperience_'+j+'">年份:<s:textfield name="proWorkDate'+j+'"/> 担任职称<s:textfield name="proExperience'+j+'"/> <button type="button" class="btn btn-warning" onclick="delProExperience('+j+')">删除</button> <div>';
 		j=j+1;
 		topWin.document.getElementById("j").value=j;
+		
+		alert("j="+j);
 	}
 
 	function delProExperience(o){
+		j=j-1;
+	    alert("j="+j);
+	    
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 	    mainDocument.getElementById("proExperience").removeChild(mainDocument.getElementById("proExperience_"+o));
-		j=j-1;
 		topWin.document.getElementById("j").value=j;
 	}
 
@@ -71,48 +80,61 @@
 		experienceDiv.innerHTML+='<div id="eduExperience_'+k+'">年份:<s:textfield name="eduWorkDate'+k+'"/> 获得学位<s:textfield name="eduExperience'+k+'"/> <button type="button" class="btn btn-warning" onclick="delEduExperience('+k+')">删除</button> <div>';
 		k=k+1;
 		topWin.document.getElementById("k").value=k;
+		
+		alert("k="+k);
 	}
 
 	function delEduExperience(o){
+		k=k-1;
+		alert("k="+k);
+		
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 	    mainDocument.getElementById("eduExperience").removeChild(mainDocument.getElementById("eduExperience_"+o));
-	    k=k-1;
-	    topWin.document.getElementById("k").value=k;
+	    topWin.document.getElementById("k").value=k;   	    
 	}
 	
 	function addBreakExperience() {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("breakExperience");
-		experienceDiv.innerHTML+='<div id="breakExperience_'+i+'">起始时间：<s:textfield name="breakStartDate'+i+'"/> 结束时间：<s:textfield name="breakEndDate'+i+'"/> <button type="button" class="btn btn-warning" onclick="delBreakExperience('+i+')">删除</button> <div>';
+		experienceDiv.innerHTML+='<div id="breakExperience_'+l+'">起始时间：<s:textfield name="breakStartDate'+l+'"/> 结束时间：<s:textfield name="breakEndDate'+l+'"/> <button type="button" class="btn btn-warning" onclick="delBreakExperience('+l+')">删除</button> <div>';
 		l=l+1;
 		topWin.document.getElementById("l").value=l;
+		
+		alert("l="+l);
 	}
 
 	function delBreakExperience(o) {
+		l=l-1;
+		alert("l="+l);
+		
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 	    mainDocument.getElementById("breakExperience").removeChild(mainDocument.getElementById("breakExperience_"+o));
-	    l=l-1;
 	    topWin.document.getElementById("l").value=l;
-	}
+ }
 	
 	function addWorkerExperience() {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("workerExperience");
-		experienceDiv.innerHTML+='<div id="workerExperience_'+k+'">年份:<s:textfield name="workerWorkDate'+m+'"/> 获得学位<s:textfield name="workerExperience'+m+'"/> <button type="button" class="btn btn-warning" onclick="delWorkerExperience('+m+')">删除</button> <div>';
+		experienceDiv.innerHTML+='<div id="workerExperience_'+m+'">年份:<s:textfield name="workerWorkDate'+m+'"/> 获得学位<s:textfield name="workerExperience'+m+'"/> <button type="button" class="btn btn-warning" onclick="delWorkerExperience('+m+')">删除</button> <div>';
 		m=m+1;
 		topWin.document.getElementById("m").value=m;
+		
+		alert("m="+m);
 	}
 
 	function delWorkerExperience(o){
+		m=m-1;
+		alert("m="+m);
+		
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 	    mainDocument.getElementById("workerExperience").removeChild(mainDocument.getElementById("workerExperience_"+o));
-	    m=m-1;
-	    topWin.document.getElementById("m").value=m;
+	    topWin.document.getElementById("m").value=m; 	    
 	}
 	
 </script>
 </head>
 <body>
+
 <s:form id="myform" style="display:none">
 	职工号：<s:property value="#session.addedEmployee.id"/><br />
 	姓名:<s:property  value="#session.addedEmployee.name"/> <br />
