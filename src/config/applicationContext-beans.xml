@@ -9,33 +9,17 @@
 
 	<!-- Spring管理Struts2的Action -->
 	<bean name="loginAction" class="com.sms.action.LoginAction" scope="prototype"></bean>
-	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport"
-		scope="prototype"></bean>
-		
-	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype">
-		<!-- <property name="userManage" ref="userManage"></property> -->
-	</bean>
-	<bean name="employeeAction" class="com.sms.action.EmployeeAction"
-		scope="prototype">
-		<!-- <property name="employeeManage" ref="employeeManage"></property> -->
-	</bean>
-	<bean name="salaryAction" class="com.sms.action.SalaryAction"
-		scope="prototype">
-		<!-- <property name="salaryManage" ref="salaryManage"></property> -->
-	</bean>
-	<bean name="salaryStandardAction" class="com.sms.action.SalaryStandardAction"
-		scope="prototype">
-		<!-- <property name="salaryStandardManage" ref="salaryStandardManage"></property> -->
-	</bean>
-	<bean name="newEmployeeAction" class="com.sms.action.NewEmployeeAction"
-		scope="prototype">
-		<!-- <property name="newEmployeeAction" ref="newEmployeeAction"></property> -->
-	</bean>
-	<bean name="bonusAction" class="com.sms.action.bonusAction" scope="prototype">
-		<!-- <property name="bonusAction" ref="bonusAction"></property> -->
-	</bean>
-	<bean name="specialSalaryAction" class="com.sms.action.SpecialSalaryAction"
-		scope="prototype"></bean>
+	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
+	<bean name="userAction" class="com.sms.action.UserAction" scope="prototype"></bean>
+	<bean name="employeeAction" class="com.sms.action.EmployeeAction" scope="prototype"></bean>
+	<bean name="salaryAction" class="com.sms.action.SalaryAction" scope="prototype"></bean>
+	<bean name="salaryStandardAction" class="com.sms.action.SalaryStandardAction" scope="prototype"></bean>
+	<bean name="newEmployeeAction" class="com.sms.action.NewEmployeeAction" scope="prototype"></bean>
+	<bean name="specialSalaryAction" class="com.sms.action.SpecialSalaryAction" scope="prototype"></bean>
+	<bean name="initSalaryCompute" class="com.sms.action.InitSalaryCompute" scope="prototype"></bean>
+	<bean name="bonusAction" class="com.sms.action.BonusAction" scope="prototype"></bean>
+	<bean name="autoSalary" class="com.sms.action.AutoSalary" scope="prototype"></bean>
+	
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin"
 		scope="prototype"></bean>

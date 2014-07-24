@@ -1,5 +1,7 @@
 package com.sms.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.sms.dao.IStartSalaryInfoDao;
@@ -38,8 +40,14 @@ public class StartSalaryInfoManageImp implements IStartSalaryInfoManage {
 	}
 	
 	@Override
-	public StartSalaryInfo findStartSalaryInfoById(Integer id)
+	public StartSalaryInfo findStartSalaryInfoByEId(Integer eid)
 	{
-		return startSalaryInfoDao.findStartSalaryInfoById(id);
+		return startSalaryInfoDao.findStartSalaryInfoByEId(eid);
+	}
+
+	@Override
+	public List<StartSalaryInfo> getAllStartSalaryInfo() {
+		// TODO Auto-generated method stub
+		return  startSalaryInfoDao.getAllStartSalaryInfo();
 	}
 }

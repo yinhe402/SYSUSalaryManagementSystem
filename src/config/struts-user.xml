@@ -35,6 +35,11 @@
 		<action name="*" >
 			<result>/{1}.jsp</result>
 		</action>
+		
+		<action name="autoSalary" class="autoSalary" method="computeSalary">
+			<result name="success">/showSalaryForAll.jsp</result>
+		</action>
+		
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
@@ -85,6 +90,14 @@
 	<package name="specialSalaryActions" namespace="/specialSalary" extends="abstract_struts">
 		<action name="*_*" class="specialSalaryAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
+	<package name="initSalaryCompute" namespace="/initSalaryCompute" extends="abstract_struts">
+		<action name="initSalaryCompute" class="initSalaryCompute" method="initSalaryCompute">
+			<result name="success" type="redirect">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>

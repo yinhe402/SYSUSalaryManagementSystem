@@ -23,6 +23,10 @@ public class SpecialSalaryChange {
 	private Integer amount;//工资金额增减，负数为减少
 	private String reason;//扣减原因	
 	
+	SpecialSalaryChange(){
+		changeDate=new Date();
+	}
+	
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -51,7 +55,7 @@ public class SpecialSalaryChange {
 		return changeDate;
 	}
 	public void setChangeDate(Date changeDate) {
-		this.changeDate = new  Date();
+		this.changeDate = changeDate;
 	}
 	
 	/*
