@@ -15,7 +15,7 @@ pageEncoding="utf-8"%>
 		function addEmployee() {
 			var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 			var myform = topWin.document.getElementById("myform1");
-			myform.action = "employee/addEmployee_success";
+			myform.action = "employee/addEmployee_newWorkerSalary_daiqixin";
 			myform.method = "post";
 			myform.submit();
 		}

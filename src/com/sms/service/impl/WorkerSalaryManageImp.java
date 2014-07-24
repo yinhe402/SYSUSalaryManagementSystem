@@ -69,6 +69,12 @@ public class WorkerSalaryManageImp implements IWorkerSalaryManage{
 		// TODO Auto-generated method stub
 		IWorkerSalaryDao.deleteWorkerPaySal(getWorkerPaylevelSalary());
 	}
+	
+	@Override
+	public WorkerPositionSalary findWorPosSalByLevel(Integer level) {
+		this.workerPositionSalary = IWorkerSalaryDao.findWorkerPosSalByLevel(level);
+		return this.workerPositionSalary;
+	}
 
 	@Override
 	public void setWorkerPaySalByPayLevel(Integer payLevel) {
@@ -162,5 +168,16 @@ public class WorkerSalaryManageImp implements IWorkerSalaryManage{
 		setAllManage(level, off, cha);
 		
 		return getWorkerSalaryChange().getPayLevel();
+	}
+
+	@Override
+	public WorkerPositionSalary findWorkerPosSalByLevel(Integer level) {
+		return  IWorkerSalaryDao.findWorkerPosSalByLevel(level);
+		
+	}
+
+	@Override
+	public WorkerPaylevelSalary findWorkerPaySalByPayLevel(Integer payLevel) {
+		return IWorkerSalaryDao.findWorkerPaySalByPayLevel(payLevel);
 	}
 }

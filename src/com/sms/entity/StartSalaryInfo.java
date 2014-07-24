@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 public class StartSalaryInfo {
 	private Integer eid; //职工号
 	private Date startSalaryDate;//起薪时间
-	private Date operateDate;//业务处理时间	
+	private Date operateDate;//业务处理时间
 	private Boolean isRaised;//基本工资是否上调10%
 	private Integer changeYears;//套改年限
 	private Integer breakOffSeniority;//中断工龄

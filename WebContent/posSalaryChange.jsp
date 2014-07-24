@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" >
+	<title>中山大学教职工工资系统</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript"> 
+		function modifyPosSalaryStandard() {
+			var mainDocument=window.top.document.getElementById("mainFrame").contentWindow.document;
+			var myform=mainDocument.getElementById("myform");
+			myform.action="salaryStandard/modifyPosSalaryStandard_showSalaryStandard";
+			myform.method="post";
+			myform.submit();
+		}
+	</script>
+</head>
+
+<body>
+	<s:form id="myform">	 
+		<s:textfield style="display:none" name="tableName" value="%{#session.tableName}"/><br />
+		<s:textfield style="display:none" name="type" value="%{#session.type}"/><br />
+		岗位：<s:textfield name="position" value="%{#session.position}"/><br />
+		级数：<s:textfield name="level" value="%{#session.level}"/><br />
+		工资标准：<s:textfield name="salaryStandard" value="%{#session.salaryStandard}"/><br />
+		起点薪级：<s:textfield name="startPayLevel" value="%{#session.startPayLevel}"/><br />
+		<button type="button" class="btn btn-success" onclick="modifyPosSalaryStandard()">修改</button>
+	</s:form>
+</body>
+</html>

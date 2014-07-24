@@ -23,6 +23,10 @@ public class SpecialSalaryRecovery {
 	private Date operateDate;//操作时间
 	private String recoveryReason;//恢复原因
 	
+	SpecialSalaryRecovery(){
+		recoveryDate=new Date();
+	}
+	
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -51,7 +55,7 @@ public class SpecialSalaryRecovery {
 		return recoveryDate;
 	}
 	public void setRecoveryDate(Date recoveryDate) {
-		this.recoveryDate = new Date();
+		this.recoveryDate = recoveryDate;
 	}
 	
 	/*

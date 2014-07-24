@@ -75,17 +75,17 @@
   	
   	<form id="myform2">
   		岗位工资：<br />
-  		岗位：<input type="text" name="managePositionSalary.position"/><br />
-  		级数：<input type="text" name="managePositionSalary.level"/><br />
-  		工资标准：<input type="text" name="managePositionSalary.salaryStandard"/><br />
-  		起点薪级：<input type="text" name="managePositionSalary.startPayLevel"/><br />
+  		岗位：<s:textfield name="position"/><br />
+  		级数：<s:textfield name="level"/><br />
+  		工资标准：<s:textfield name="salaryStandard"/><br />
+  		起点薪级：<s:textfield name="startPayLevel"/><br />
   		<input type="button" name="btnmodifyPosSalary" onclick="modifyPosSalaryStandard()" value="Submit" />
   	</form>
   	
   	<form id="myform3">
   		薪级工资：<br />
-  		工资标准：<input type="text" name="managePaylevelSalary.payLevel"/><br />
-  		起点薪级：<input type="text" name="managePaylevelSalary.salaryStandard"/><br />
+  		工资标准：<s:textfield name="payLevel"/><br />
+  		起点薪级：<s:textfield name="payLevelSalaryStandard"/><br />
   		<input type="button" name="btnmodifyLevSalary" onclick="modifyLevSalaryStandard()" value="Submit" />
   	</form>
   </body>

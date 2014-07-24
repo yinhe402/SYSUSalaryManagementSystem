@@ -1,12 +1,11 @@
 package com.sms.action;
 
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.RequestContext;
 import org.apache.struts2.ServletActionContext;
 
 import java.util.List;
@@ -15,15 +14,94 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.ManagePaylevelSalary;
 import com.sms.entity.ManagePositionSalary;
+import com.sms.entity.ProfessionalPaylevelSalary;
 import com.sms.entity.ProfessionalPositionSalary;
+import com.sms.entity.WorkerPaylevelSalary;
+import com.sms.entity.WorkerPositionSalary;
 import com.sms.service.IManageSalaryManage;
 import com.sms.service.IProfSalaryManage;
 import com.sms.service.IWorkerSalaryManage;
 
 public class SalaryStandardAction extends ActionSupport {
 	
-	private ManagePositionSalary managePositionSalary;
+	/**
+	 * 
+	 */
+	private String tableName;
+	private String position;
+	private Integer level;
+	private Integer salaryStandard;
+	private Integer startPayLevel;
+	private String type;
+	private Integer payLevel;
+	private Integer payLevelSalaryStandard;
+	public String getPosition() {
+		return position;
+	}
 
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public Integer getLevel() {
+		return level;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+
+	public Integer getSalaryStandard() {
+		return salaryStandard;
+	}
+
+	public void setSalaryStandard(Integer salaryStandard) {
+		this.salaryStandard = salaryStandard;
+	}
+
+	public Integer getStartPayLevel() {
+		return startPayLevel;
+	}
+
+	public void setStartPayLevel(Integer startPayLevel) {
+		this.startPayLevel = startPayLevel;
+	}
+
+	public Integer getPayLevel() {
+		return payLevel;
+	}
+
+	public void setPayLevel(Integer payLevel) {
+		this.payLevel = payLevel;
+	}
+
+	public Integer getPayLevelSalaryStandard() {
+		return payLevelSalaryStandard;
+	}
+
+	public void setPayLevelSalaryStandard(Integer payLevelSalaryStandard) {
+		this.payLevelSalaryStandard = payLevelSalaryStandard;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+
+
+	private ManagePositionSalary managePositionSalary;
+	
 	public ManagePositionSalary getManagePositionSalary() {
 		return managePositionSalary;
 	}
@@ -32,7 +110,7 @@ public class SalaryStandardAction extends ActionSupport {
 		this.managePositionSalary = managePositionSalary;
 	}
 	
-	private ProfessionalPositionSalary professionalPositionSalary;
+	
 	private ManagePaylevelSalary managePaylevelSalary;
 
 	public ManagePaylevelSalary getManagePaylevelSalary() {
@@ -90,26 +168,71 @@ public class SalaryStandardAction extends ActionSupport {
 	public String modifyPosSalaryStandard()
 	{
 		System.out.println("-------salaryStandardAction.modifyPosSalaryStandard--------");
-		ManagePositionSalary tmpManagePositionSalary = new ManagePositionSalary();
-		tmpManagePositionSalary = manageSalaryManage.findManPosSalByLevel(managePositionSalary.getLevel());
-		tmpManagePositionSalary.setPosition(managePositionSalary.getPosition());
-		tmpManagePositionSalary.setLevel(managePositionSalary.getLevel());
-		tmpManagePositionSalary.setSalaryStandard(managePositionSalary.getSalaryStandard());
-		tmpManagePositionSalary.setStartPayLevel(managePositionSalary.getStartPayLevel());
-		System.out.println(tmpManagePositionSalary.getStartPayLevel());
-		manageSalaryManage.modifyManPosSal(tmpManagePositionSalary);
-		return "success";
+		System.out.println(type);
+		System.out.println(level);
+		if(type.equals("pro")) {
+		ProfessionalPositionSalary professionalPositionSalary  = new ProfessionalPositionSalary();
+		professionalPositionSalary  = profSalaryManage.findProfPosSalByLevel(level);
+		professionalPositionSalary.setPosition(position);
+		professionalPositionSalary.setLevel(level);
+		professionalPositionSalary.setSalaryStandard(salaryStandard);
+		professionalPositionSalary.setStartPayLevel(startPayLevel);
+		profSalaryManage.modifyProfPosSal(professionalPositionSalary);
+		return getAllManagePositionSalary();
+		}
+		else if (type.equals("man")) {
+			ManagePositionSalary managePositionSalary = new ManagePositionSalary();
+			managePositionSalary = manageSalaryManage.findManPosSalByLevel(level);
+			managePositionSalary.setPosition(position);
+			managePositionSalary.setLevel(level);
+			managePositionSalary.setSalaryStandard(salaryStandard);
+			managePositionSalary.setStartPayLevel(startPayLevel);
+			manageSalaryManage.modifyManPaySal(managePaylevelSalary);
+			return getAllManagePositionSalary();
+		}
+		else if (type.equals("worker")) {
+			WorkerPositionSalary workerPositionSalary = new WorkerPositionSalary();
+			workerPositionSalary = workerSalaryManage.findWorkerPosSalByLevel(level);
+			workerPositionSalary.setPosition(position);
+			workerPositionSalary.setSalaryStandard(salaryStandard);
+			workerPositionSalary.setStartPayLevel(startPayLevel);
+			workerSalaryManage.modifyWorkerPosSal(workerPositionSalary);
+			return getAllManagePositionSalary();
+		}
+		
+		return "false";
 	}
 	
 	public String modifyLevSalaryStandard()
 	{
 		System.out.println("-------salaryStandardAction.modifyLevSalaryStandard--------");
-		ManagePaylevelSalary tmpManagePaylevelSalary = new ManagePaylevelSalary();
-		tmpManagePaylevelSalary = manageSalaryManage.findManPaySalByPayLevel(managePaylevelSalary.getPayLevel());
-		tmpManagePaylevelSalary.setPayLevel(managePaylevelSalary.getPayLevel());
-		tmpManagePaylevelSalary.setSalaryStandard(managePaylevelSalary.getSalaryStandard());
-		manageSalaryManage.modifyManPaySal(tmpManagePaylevelSalary);
-		return "success";
+		System.out.println(type);
+		System.out.println(payLevel);
+		if(type.equals("pro")) {
+			ProfessionalPaylevelSalary professionalPaylevelSalary  = new ProfessionalPaylevelSalary();
+			professionalPaylevelSalary = profSalaryManage.findProfPaySalByPayLevel(payLevel);
+			professionalPaylevelSalary.setPayLevel(payLevel);
+			professionalPaylevelSalary.setSalaryStandard(payLevelSalaryStandard);
+			profSalaryManage.modifyProfPaySal(professionalPaylevelSalary);
+			return getAllManagePositionSalary();
+			}
+			else if (type.equals("man")) {
+				ManagePaylevelSalary managePaylevelSalary = new ManagePaylevelSalary();
+				managePaylevelSalary = manageSalaryManage.findManPaySalByPayLevel(payLevel);
+				managePaylevelSalary.setPayLevel(payLevel);
+				managePaylevelSalary.setSalaryStandard(payLevelSalaryStandard);
+				manageSalaryManage.modifyManPaySal(managePaylevelSalary);
+				return getAllManagePositionSalary();
+			}
+			else if (type.equals("worker")) {
+				WorkerPaylevelSalary workerPaylevelSalary = new WorkerPaylevelSalary();
+				workerPaylevelSalary = workerSalaryManage.findWorkerPaySalByPayLevel(payLevel);
+				workerPaylevelSalary.setPayLevel(payLevel);
+				workerPaylevelSalary.setSalaryStandard(payLevelSalaryStandard);
+				workerSalaryManage.modifyWorkerPaySal(workerPaylevelSalary);
+				return getAllManagePositionSalary();
+			}
+		return "fail";
 	}
 	
 	public String getAllManagePositionSalary()  {
@@ -124,17 +247,28 @@ public class SalaryStandardAction extends ActionSupport {
 		return "success";
 	}
 	
-	public String getChangeInfo() {
+	public String getChangeInfo() throws UnsupportedEncodingException {
 		HttpServletRequest request = ServletActionContext.getRequest();
-		String position = request.getParameter("position");
-		System.out.print(position);
-		String level = request.getParameter("level");
-		System.out.print(level);
-		String salaryStandard = request.getParameter("salaryStandard");
-		System.out.print(salaryStandard);
-		String startPayLevel = request.getParameter("startPayLevel");
-		System.out.print(startPayLevel);
-		return "success";
+		Map session = ActionContext.getContext().getSession();
+		tableName = request.getParameter("tableName");
+		session.put("tableName", tableName);
+		type = request.getParameter("type");
+		session.put("type", type);
+		System.out.print(tableName);
+		if(tableName.equals("posSalary")) {
+			session.put("position", new String(request.getParameter("position").getBytes("ISO8859-1"),"UTF-8"));
+			session.put("level", Integer.parseInt(request.getParameter("level")));
+			session.put("salaryStandard", Integer.parseInt(request.getParameter("salaryStandard")));
+			session.put("startPayLevel", Integer.parseInt(request.getParameter("startPayLevel")));
+			return "success";
+		}
+		else if ("payLevel".equals(tableName)) {
+			session.put("payLevel", Integer.parseInt(request.getParameter("payLevel")));
+			session.put("payLevelSalaryStandard", Integer.parseInt(request.getParameter("payLevelSalaryStandard")));
+			return "success";
+		}			
+			
+		return "fail";
 		
 	}
 }
