@@ -219,14 +219,14 @@ public class NewEmployeeAction extends ActionSupport {
 			startSalaryInfo.setSalaryLevel(LevelSalaryChange.getSalaryLevel(manageList, techList, eduList, attendWorkDate, array1, array2, l, failTime, worList));
 			
 			if (startSalaryInfo.getSalarySeries() == "管理") {
-				startSalaryInfo.setPositionSalary(Double.parseDouble(manageSalaryManage.findManPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard().toString()));
-				startSalaryInfo.setLevelSalary(Double.parseDouble(manageSalaryManage.findManPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).toString()));
+				startSalaryInfo.setPositionSalary(manageSalaryManage.findManPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
+				startSalaryInfo.setLevelSalary(manageSalaryManage.findManPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
 			} else if (startSalaryInfo.getSalarySeries() == "专技") {
-				startSalaryInfo.setPositionSalary(Double.parseDouble(profSalaryManage.findProfPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard().toString()));
-				startSalaryInfo.setLevelSalary(Double.parseDouble(profSalaryManage.findProfPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).toString()));
+				startSalaryInfo.setPositionSalary(profSalaryManage.findProfPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
+				startSalaryInfo.setLevelSalary(profSalaryManage.findProfPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
 			} else if (startSalaryInfo.getSalarySeries() == "工人") {
-				startSalaryInfo.setPositionSalary(Double.parseDouble(workerSalaryManage.findWorkerPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard().toString()));
-				startSalaryInfo.setLevelSalary(Double.parseDouble(workerSalaryManage.findWorkerPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).toString()));
+				startSalaryInfo.setPositionSalary(workerSalaryManage.findWorkerPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
+				startSalaryInfo.setLevelSalary(workerSalaryManage.findWorkerPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
 			}
 			
 			startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);

@@ -4,7 +4,7 @@ import com.sms.entity.Salary;
 
 //工资计算公式
 public class ComputeSalarySingleton {
-	private static ComputeSalarySingleton computeSalarySingleton = null;
+	private static final ComputeSalarySingleton computeSalarySingleton = new ComputeSalarySingleton();  
 	
 	private Integer positionSalary;//岗位工资
 	private Integer levelSalary;//薪级工资
@@ -12,34 +12,47 @@ public class ComputeSalarySingleton {
 	private Integer areaDifference;//地区差
 	private Integer positionAllowance;//岗位津贴
 	private Integer educationAllowance;///教护补贴
-	private Integer specialPositionParas,specialLevelParas;//特殊津贴加权
+	private Double specialPositionParas,specialLevelParas;//特殊津贴加权
 	private Integer onlyChildAllowance;//独生子女
-	private Integer otherPositionParas,otherLevelParas;//其它补贴加权
-	private Integer phonePositionParam,phoneLevelParam;//电话补贴加权
+	private Double otherPositionParas,otherLevelParas;//其它补贴加权
+	private Double phonePositionParam,phoneLevelParam;//电话补贴加权
 	//private Integer monthAddAllowance;//月增资额
 	//private Integer supplementSalary;//补发工资
 	 
-	 private ComputeSalarySingleton(){
+	private ComputeSalarySingleton(){
+		 areaDifference=0;
+		 positionAllowance=0;
+		 educationAllowance=0;
+		 specialPositionParas=(double) 0.0;
+		 specialLevelParas=(double) 0.0;
+		 onlyChildAllowance=0;
+		 otherPositionParas=(double) 0.0;
+		 otherLevelParas=(double) 0.0;
+		 phonePositionParam=(double) 0.0;
+		 phoneLevelParam=(double) 0.0;
 	 }
 	 
 	 synchronized public static ComputeSalarySingleton getInstance(){
-		 if(computeSalarySingleton==null){
-			 computeSalarySingleton=new ComputeSalarySingleton();
-		 }
 		 return computeSalarySingleton;
 	 }
 	
-	 public void computeSalary(Salary salary){
+	 public void setSalary(Salary salary){
+		 System.out.println("start");
 		 positionSalary=salary.getPositionSalary();
 		 levelSalary=salary.getLevelSalary();
+		 
+		 System.out.println(salary.getEid());
+		 System.out.println(positionSalary);
+		 System.out.println(levelSalary);
+		 System.out.println(getInstance().getAreaDifference());
 		 
 		 salary.setAreaDifference(areaDifference);
 		 salary.setPositionAllowance(positionAllowance);
 		 salary.setEducationAllowance(educationAllowance);
-		 salary.setSpecialAllowance(specialPositionParas*positionSalary+specialLevelParas*levelSalary);
+		 salary.setSpecialAllowance((int)(specialPositionParas*positionSalary+specialLevelParas*levelSalary));
 		 salary.setOnlyChildAllowance(onlyChildAllowance);
-		 salary.setOtherAllowance(otherPositionParas*positionSalary+otherLevelParas*levelSalary);
-		 salary.setPhoneAllowance(phonePositionParam*positionSalary+phoneLevelParam*levelSalary);
+		 salary.setOtherAllowance((int)(otherPositionParas*positionSalary+otherLevelParas*levelSalary));
+		 salary.setPhoneAllowance((int)(phonePositionParam*positionSalary+phoneLevelParam*levelSalary));
 		 salary.setTotleSalary();
 	 }
 
@@ -48,6 +61,8 @@ public class ComputeSalarySingleton {
 	}
 
 	public void setPositionSalary(Integer positionSalary) {
+		System.out.println("设置岗位工资");
+		System.out.println(positionSalary);	
 		this.positionSalary = positionSalary;
 	}
 
@@ -64,6 +79,8 @@ public class ComputeSalarySingleton {
 	}
 
 	public void setAreaDifference(Integer areaDifference) {
+		System.out.println("设置地区差");
+		System.out.println(areaDifference);	
 		this.areaDifference = areaDifference;
 	}
 
@@ -83,19 +100,19 @@ public class ComputeSalarySingleton {
 		this.educationAllowance = educationAllowance;
 	}
 
-	public Integer getSpecialPositionParas() {
+	public Double getSpecialPositionParas() {
 		return specialPositionParas;
 	}
 
-	public void setSpecialPositionParas(Integer specialPositionParas) {
+	public void setSpecialPositionParas(Double specialPositionParas) {
 		this.specialPositionParas = specialPositionParas;
 	}
 
-	public Integer getSpecialLevelParas() {
+	public Double getSpecialLevelParas() {
 		return specialLevelParas;
 	}
 
-	public void setSpecialLevelParas(Integer specialLevelParas) {
+	public void setSpecialLevelParas(Double specialLevelParas) {
 		this.specialLevelParas = specialLevelParas;
 	}
 
@@ -107,35 +124,35 @@ public class ComputeSalarySingleton {
 		this.onlyChildAllowance = onlyChildAllowance;
 	}
 
-	public Integer getOtherPositionParas() {
+	public Double getOtherPositionParas() {
 		return otherPositionParas;
 	}
 
-	public void setOtherPositionParas(Integer otherPositionParas) {
+	public void setOtherPositionParas(Double otherPositionParas) {
 		this.otherPositionParas = otherPositionParas;
 	}
 
-	public Integer getOtherLevelParas() {
+	public Double getOtherLevelParas() {
 		return otherLevelParas;
 	}
 
-	public void setOtherLevelParas(Integer otherLevelParas) {
+	public void setOtherLevelParas(Double otherLevelParas) {
 		this.otherLevelParas = otherLevelParas;
 	}
 
-	public Integer getPhonePositionParam() {
+	public Double getPhonePositionParam() {
 		return phonePositionParam;
 	}
 
-	public void setPhonePositionParam(Integer phonePositionParam) {
+	public void setPhonePositionParam(Double phonePositionParam) {
 		this.phonePositionParam = phonePositionParam;
 	}
 
-	public Integer getPhoneLevelParam() {
+	public Double getPhoneLevelParam() {
 		return phoneLevelParam;
 	}
 
-	public void setPhoneLevelParam(Integer phoneLevelParam) {
+	public void setPhoneLevelParam(Double phoneLevelParam) {
 		this.phoneLevelParam = phoneLevelParam;
 	}
 }

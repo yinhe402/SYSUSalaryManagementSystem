@@ -1,5 +1,7 @@
 package com.sms.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.*;
 
 import org.hibernate.Session;
@@ -40,10 +42,19 @@ public class StartSalaryInfoDaoImp implements IStartSalaryInfoDao {
 	}
 
 	@Override
-	public StartSalaryInfo findStartSalaryInfoById(Integer id) {
+	public StartSalaryInfo findStartSalaryInfoByEId(Integer eid) {
 		Query query = (Query)getSession().createQuery("from StartSalaryInfo as s where s.eid = ?");
-		query.setString(0, id.toString());
-		return (StartSalaryInfo)query.uniqueResult();
+		query.setString(0, eid.toString());
+		return (StartSalaryInfo)query.list().get(0);
+	}
+
+	@Override
+	public List<StartSalaryInfo> getAllStartSalaryInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("这里是起薪");
+		Query query = (Query)getSession().createQuery("from StartSalaryInfo");
+		System.out.println(query.list().size());
+		return (List<StartSalaryInfo>)query.list();
 	}
 
 }

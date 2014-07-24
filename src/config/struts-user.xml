@@ -35,6 +35,11 @@
 		<action name="*" >
 			<result>/{1}.jsp</result>
 		</action>
+		
+		<action name="autoSalary" class="autoSalary" method="computeSalary">
+			<result name="success">/showSalaryForAll.jsp</result>
+		</action>
+		
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
