@@ -38,6 +38,11 @@ color:#292421;
 	text-align: center;
 }
 
+.addEmployeeSalary{
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+}
 
 .center{
 	text-align:center; padding-top:30px;
