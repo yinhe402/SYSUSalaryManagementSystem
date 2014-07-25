@@ -38,12 +38,9 @@
 			<result>/{1}.jsp</result>
 		</action>
 		
-<<<<<<< HEAD
-=======
 		<action name="autoSalary" class="autoSalary" method="computeSalary">
 			<result name="success">/showSalaryForAll.jsp</result>
 		</action>
->>>>>>> 995ba2567674fd4c278b6fdfed221d30acd24ab2
 		
 	</package>
 

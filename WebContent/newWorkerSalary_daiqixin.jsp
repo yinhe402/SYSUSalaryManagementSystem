@@ -134,12 +134,8 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-<s:form id="myform" style="display:none; ">
-=======
 
 <s:form id="myform" style="display:none">
->>>>>>> 995ba2567674fd4c278b6fdfed221d30acd24ab2
 	职工号：<s:property value="#session.addedEmployee.id"/><br />
 	姓名:<s:property  value="#session.addedEmployee.name"/> <br />
 	邮箱:<s:property  value="#session.addedEmployee.email"/><br />
