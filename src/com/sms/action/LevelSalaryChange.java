@@ -1,4 +1,4 @@
-package com.sms.service;
+package com.sms.action;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,23 +10,26 @@ import javax.annotation.Resource;
 import com.sms.entity.ExperienceInfo;
 import com.sms.service.IManageSalaryManage;
 import com.sms.service.IProfSalaryManage;
+import com.sms.service.IWorkerSalaryManage;
 
 public class LevelSalaryChange {
 	@Resource
-	private static IManageSalaryManage manageSalaryManage;
+	private IManageSalaryManage manageSalaryManage;
 
-	public static IManageSalaryManage getManageSalaryManage() {
+	public IManageSalaryManage getManageSalaryManage() {
+		System.out.println("get manageSalaryManage");
 		return manageSalaryManage;
 	}
 
 	public void setManageSalaryManage(IManageSalaryManage manageSalaryManage) {
+		System.out.println("set manageSalaryManage");
 		this.manageSalaryManage = manageSalaryManage;
 	}
 
 	@Resource
-	private static IProfSalaryManage profSalaryManage;
+	private IProfSalaryManage profSalaryManage;
 
-	public static IProfSalaryManage getProfSalaryManage() {
+	public IProfSalaryManage getProfSalaryManage() {
 		return profSalaryManage;
 	}
 
@@ -35,19 +38,18 @@ public class LevelSalaryChange {
 	}
 
 	@Resource
-	private static IWorkerSalaryManage workerSalaryManage;
+	private IWorkerSalaryManage workerSalaryManage;
 
-	public static IWorkerSalaryManage getWorkerSalaryManage() {
+	public IWorkerSalaryManage getWorkerSalaryManage() {
 		return workerSalaryManage;
 	}
 
-	public static void setWorkerSalaryManage(
-			IWorkerSalaryManage workerSalaryManage) {
-		LevelSalaryChange.workerSalaryManage = workerSalaryManage;
+	public void setWorkerSalaryManage(IWorkerSalaryManage workerSalaryManage) {
+		this.workerSalaryManage = workerSalaryManage;
 	}
 
 	// 字符串到日期格式转化函数，输入字符串，返回日期
-	public static Date strToDate(String str) {
+	public Date strToDate(String str) {
 		String[] divideStr = str.split("-");
 		if (divideStr.length == 3) {
 			int year = Integer.parseInt(divideStr[0].trim());
@@ -61,7 +63,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取两个日期之间的时间差（四舍五入，精确到月），输入两个日期，输出中断工龄
-	public static int dateDif(Date d1, Date d2) {
+	public int dateDif(Date d1, Date d2) {
 		int yearDif = d2.getYear() - d1.getYear();
 		int monthDif = d2.getMonth() - d1.getMonth();
 		int dayDif = d2.getDay() - d1.getDay();
@@ -86,7 +88,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取管理系列任职时间
-	public static int getManageOfficeTime(int mLevel, int manageMinYear,
+	public int getManageOfficeTime(int mLevel, int manageMinYear,
 			ArrayList<ExperienceInfo> techList) {
 		int minTechYear = 2006;
 		int techLength = techList.size();
@@ -148,7 +150,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取专技系列任职年限
-	public static int getTechOfficeTime(int tLevel, int techMinYear,
+	public int getTechOfficeTime(int tLevel, int techMinYear,
 			ArrayList<ExperienceInfo> manageList) {
 		int minManageYear = 2006;
 		int manageLength = manageList.size();
@@ -189,7 +191,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取中断工龄
-	public static int getBreakUpYears(ArrayList<Date> array1,
+	public int getBreakUpYears(ArrayList<Date> array1,
 			ArrayList<Date> array2, int arrayNum) {
 		int breakUpYears = 0;
 		for (int i = 0; i < arrayNum; i++)
@@ -199,7 +201,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取工作前工龄
-	public static int getBeforeWorkTime(ArrayList<ExperienceInfo> eduList) {
+	public int getBeforeWorkTime(ArrayList<ExperienceInfo> eduList) {
 		int beforeWorkTime = 0;
 		int eduLength = eduList.size();
 		for (int i = 0; i < eduLength; i++) {
@@ -214,7 +216,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取不计算工龄的在校学习时间
-	public static int getStudyInSchoolTime(ArrayList<ExperienceInfo> eduList) {
+	public int getStudyInSchoolTime(ArrayList<ExperienceInfo> eduList) {
 		int studyInSchoolTime = 0;
 		int eduLength = eduList.size();
 		for (int i = 0; i < eduLength; i++) {
@@ -229,7 +231,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取实际工作年限
-	public static int getRealWorkTime(Date attendWorkDate,
+	public int getRealWorkTime(Date attendWorkDate,
 			ArrayList<Date> array1, ArrayList<Date> array2, int arrayNum) {
 		int realWorkTime = 0;
 		realWorkTime = 2006 - (1900 + attendWorkDate.getYear()) + 1
@@ -238,7 +240,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取套改年限
-	public static int getSalaryChangeYears(Date attendWorkDate,
+	public int getSalaryChangeYears(Date attendWorkDate,
 			ArrayList<Date> array1, ArrayList<Date> array2, int arrayNum,
 			ArrayList<ExperienceInfo> eduList, int failTime) {
 		int salaryChangeTime = 0;
@@ -250,7 +252,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取任职年限
-	public static int getOfficeTime(ArrayList<ExperienceInfo> manageList,
+	public int getOfficeTime(ArrayList<ExperienceInfo> manageList,
 			ArrayList<ExperienceInfo> techList,
 			ArrayList<ExperienceInfo> eduList, Date attendWorkDate,
 			ArrayList<Date> array1, ArrayList<Date> array2, int arrayNum,
@@ -388,6 +390,10 @@ public class LevelSalaryChange {
 						System.out.println("职务等级：  " + manageMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
 						int curLevel1 = 0;
+						System.out.println();
+						if(manageSalaryManage==null){
+							System.out.println("manageSalaryManage null");
+						}
 						if (manageSalaryManage.getPayLevel(
 								11 - manageMaxLevel,
 								officeTime1,
@@ -676,7 +682,7 @@ public class LevelSalaryChange {
 	}
 
 	// 获取薪级
-	public static int getSalaryLevel(ArrayList<ExperienceInfo> manageList,
+	public int getSalaryLevel(ArrayList<ExperienceInfo> manageList,
 			ArrayList<ExperienceInfo> techList,
 			ArrayList<ExperienceInfo> eduList, Date attendWorkDate,
 			ArrayList<Date> array1, ArrayList<Date> array2, int arrayNum,

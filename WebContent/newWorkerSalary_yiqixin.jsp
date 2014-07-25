@@ -13,19 +13,11 @@
 <script type="text/javascript">
 	//ar myfrom=document.getElementById("myform1");
 	
-	function addSalaryInfo()
-	{	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var myform = topWin.document.getElementById("myform1");
-		myform.action="newEmployee/importStaff_success";
-		myform.method="post";
-		myform.submit();
-	}
-	
-	function modifySalaryInfo()
+	function SubmitSalaryInfo()
 	{	
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
-		myform.action="newEmployee/modifySalaryInfo_success";
+		myform.action="newEmployee/addSalaryInfo_success";
 		myform.method="post";
 		myform.submit();
 	}
@@ -65,10 +57,14 @@
 <s:form id="myform1">	
 	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.ssInfo.eid}"/> <br />	
 	起薪时间(XXXX-XX-XX):<s:textfield  name="startSalaryInfo.startSalaryDate" value="%{#session.ssInfo.startSalaryDate}"/> <br />
-	/* //基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
-	基本工资是否上调10%： */
-	起始工作时间：<s:textfield  name="startSalaryInfo.startWorkYear" value="%{#session.ssInfo.startWorkYear}"/> <br />
-	考核不合格次数：<s:textfield  name="startSalaryInfo.failYearTime" value="%{#session.ssInfo.failYearTime}"/> <br />
+	<s:if test="#startSalaryInfo.isRaised">
+	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
+	</s:if> 
+	<s:else> 
+	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
+	</s:else>
+	起始工作时间：<s:textfield  name="startSalaryInfo.startWorkYear" value="%{#session.sYear}"/> <br />
+	考核不合格次数：<s:textfield  name="startSalaryInfo.failYearTime" value="%{#session.fTime}"/> <br />
 	工资系列：<s:textfield  name="startSalaryInfo.salarySeries" value="%{#session.ssInfo.salarySeries}"/> <br />
 	工资岗位级别：<s:textfield  name="startSalaryInfo.positionLevel" value="%{#session.ssInfo.positionLevel}"/> <br />
 	套改年限（自动套用）：<s:textfield  name="startSalaryInfo.changeYears" value="%{#session.ssInfo.changeYears}"/> <br />
@@ -83,30 +79,30 @@
 	备注：<s:textfield  name="startSalaryInfo.remarks" value="%{#session.ssInfo.remarks}"/> <br />
 	
 	管理系列经历：<br />
-	<s:iterator id=mList value="#session.mList">
-		<td><s:textfield value="#mList.getTime()"/></td>
-		<td><s:textfield value="#mList.getGanhuo()"/></td><br />
+	<s:iterator id="mList" value="#session.mList">
+		<td><s:textfield value="%{#mList.getTime()}"/></td>
+		<td><s:textfield value="%{#mList.getGanhuo()}"/></td><br />
 	</s:iterator>
 	
 	专技系列经历：<br />
-	<s:iterator id=tList value="#session.tList">
-		<td><s:textfield value="#tList.getTime()"/></td>
-		<td><s:textfield value="#tList.getGanhuo()"/></td><br />
+	<s:iterator id="tList" value="#session.tList">
+		<td><s:textfield value="%{#tList.getTime()}"/></td>
+		<td><s:textfield value="%{#tList.getGanhuo()}"/></td><br />
 	</s:iterator>
 	
 	工人系列经历：<br />
-	<s:iterator id=wList value="#session.wList">
-		<td><s:textfield value="#wList.getTime()"/></td>
-		<td><s:textfield value="#wList.getGanhuo()"/></td><br />
+	<s:iterator id="wList" value="#session.wList">
+		<td><s:textfield value="%{#wList.getTime()}"/></td>
+		<td><s:textfield value="%{#wList.getGanhuo()}"/></td><br />
 	</s:iterator>
 	
 	教育经历:<br />
-	<s:iterator id=eList value="#session.eList">
-		<td><s:textfield value="#eList.getTime()"/></td>
-		<td><s:textfield value="#eList.getGanhuo()"/></td><br />
+	<s:iterator id="eList" value="#session.eList">
+		<td><s:textfield value="%{#eList.getTime()}"/></td>
+		<td><s:textfield value="%{#eList.getGanhuo()}"/></td><br />
 	</s:iterator>	
 	
-	<button type="button" class="btn btn-success" onclick="addSalaryInfo()"> 提交</button>
+	<button type="button" class="btn btn-success" onclick="SubmitSalaryInfo()"> 提交</button>
 	
 </s:form>
 </body>

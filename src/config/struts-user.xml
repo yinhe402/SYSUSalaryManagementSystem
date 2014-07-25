@@ -37,9 +37,16 @@
 		<action name="*" >
 			<result>/{1}.jsp</result>
 		</action>
+<<<<<<< HEAD
 		<action name="autoSalary" class="autoSalary" method="computeSalary">
 			<result name="success">/showSalaryForAll.jsp</result>
 		</action>
+=======
+		
+		<action name="autoSalary" class="autoSalary" method="computeSalary">
+			<result name="success">/showSalaryForAll.jsp</result>
+		</action>
+>>>>>>> 2e015d63cb6862b06465b3f9e88c9ddaccb77b42
 		
 	</package>
 

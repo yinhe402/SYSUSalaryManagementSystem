@@ -162,8 +162,7 @@
 						</dl>
 
 						<dl class="dl-horizontal">
-							<dt>聘岗级别
-							<dt>
+							<dt>聘岗级别</dt>
 							<dd>
 
 								<select id="joblevel" name="employee.jobLevel"
@@ -347,8 +346,5 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/liveValidation.js"></script>
 <script type="text/javascript" src="js/employee.js"></script>
-
-		
-
 </body>
 </html>
