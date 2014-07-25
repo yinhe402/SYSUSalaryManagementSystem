@@ -2,13 +2,13 @@
 			    		format: 'yyyy-mm-dd',
 			    	});
 
-			         function addEmployee() {
-				      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-						var myform = topWin.document.getElementById("infoinput");
-						myform.action = "employee/addEmployee_Employee";
-						myform.method = "post";
-						myform.submit();
-					}
+//			         function addEmployee() {
+//				      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
+//						var myform = topWin.document.getElementById("infoinput");
+//						myform.action = "employee/addEmployee_Employee";
+//						myform.method = "post";
+//						myform.submit();
+//					}
 
 					function modifyEmployee() {
 						var mainframe = window.frames['mainFrame'];

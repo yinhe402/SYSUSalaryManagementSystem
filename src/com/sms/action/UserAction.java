@@ -112,6 +112,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String importUser() throws Exception {
+		System.out.println("-------userAction.importUser()-------"+user);
 		Integer id = null;
 		String password = null;
 		Integer userType = null;
@@ -120,14 +121,11 @@ public class UserAction extends ActionSupport {
 		int k = 0;
 		int flag = 0;
 
-		System.out.println("I am here!");
-
 		if (excelFile != null) {
 			String path = excelFile.getAbsolutePath();
 			try {
 				workbook = new XSSFWorkbook(path);
-				for (int numSheets = 0; numSheets < workbook
-						.getNumberOfSheets(); numSheets++) {
+				for (int numSheets = 0; numSheets < 1; numSheets++) {
 					System.out.println("2007版进去读取Sheet的循环");
 					if (workbook.getSheetAt(numSheets) != null) {
 						XSSFSheet aSheet = (XSSFSheet) workbook

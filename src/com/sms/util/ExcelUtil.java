@@ -473,8 +473,8 @@ public class ExcelUtil  {
                                 .valueOf(fieldValue.toString().charAt(0)));    
                     }    
                 }else if(Date.class==fieldType){  
-                    field.set(o, new SimpleDateFormat("yyyy/MM/dd").parse(fieldValue.toString()));  
-                }else {  
+                    field.set(o, new SimpleDateFormat("yy-MM-dd").parse(fieldValue.toString()));  
+                }else{  
                     field.set(o, fieldValue);  
                 }  
             }else{  

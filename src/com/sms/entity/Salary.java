@@ -1,6 +1,6 @@
 package com.sms.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +27,21 @@ public class Salary {
 		private Integer totleSalary; //本月总工资
 		private Date time; //发放工资时间(月份)
 		private String remarks; // 备注
+		
+		public Salary(){
+			monthAddAllowance=0;
+			supplementSalary=0;
+			time=new Date();
+		}
+		
+		public Salary(Integer eid,Integer positionSalary,Integer levelSalary){
+			this.eid=eid;
+			this.positionSalary=positionSalary;
+			this.levelSalary=levelSalary;
+			monthAddAllowance=0;
+			supplementSalary=0;
+			time=new Date();
+		}
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -162,6 +177,6 @@ public class Salary {
 		//自动生成总工资
 		public void setTotleSalary(){
 			this.totleSalary=positionSalary+levelSalary+areaDifference+positionAllowance+educationAllowance
-					+specialAllowance+onlyChildAllowance+otherAllowance+phoneAllowance+monthAddAllowance+supplementSalary;
+					+specialAllowance+onlyChildAllowance+otherAllowance+phoneAllowance;
 		}
 }

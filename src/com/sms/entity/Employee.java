@@ -1,6 +1,6 @@
 package com.sms.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -84,13 +84,11 @@ public class Employee {
 	 * 性别
 	 * */
 	@Column(name="gender", nullable=false)
-	public String getGender() {
-		
+	public String getGender() {	
 		return gender;
 	}
 	public void setGender(String gender) {
 		System.out.println(gender);
-		this.gender = gender;
 	}
 	
 	/**

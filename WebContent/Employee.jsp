@@ -4,17 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>中山大学教职工工资系统</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/datepicker.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css">
 <link rel="stylesheet" href="css/index.css">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/liveValidation.js"></script>
 <script type="text/javascript">
  function addEmployee() {
 				      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
@@ -27,7 +23,7 @@
 </head>
 <body>
 		<div class="employeeinfo">职工信息录入</div>
-		<s:form id="infoinput" enctype="multipart/form-data">
+		<form id="infoinput" enctype="multipart/form-data">
 			<div class="container">
 				<div class="row">
 					<div class="span6">
@@ -347,6 +343,7 @@
 				</div>
 
 			</div>
+			</form>
 			<div style="margin-top:30px; margin-bottom:250px;" class="center">
 				<div class="btn-group">
 					<button type="button" class="btn btn-success" onclick="addEmployee()">增加</button>
@@ -354,9 +351,11 @@
 					<input class="btn btn-success" type="RESET" value="重置">
 				</div>
 			</div>
-			</s:form>
-			
-
-		
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/liveValidation.js"></script>
+<script type="text/javascript" src="js/employee.js"></script>
 </body>
 </html>
