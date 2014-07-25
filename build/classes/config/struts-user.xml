@@ -42,7 +42,7 @@
 		</action>	
 		
 		<action name="getData" class="salaryStandardAction" 
-			method="getAllManagePositionSalary" >
+			method="getAllSalaryStandard" >
 			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
 		<action name="*" >

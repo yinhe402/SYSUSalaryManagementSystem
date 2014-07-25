@@ -1,7 +1,12 @@
 package com.sms.action;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -21,6 +26,8 @@ import com.sms.service.IUserManage;
 public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
+	private File excelFile;
+	
 	
 	@Resource
 	private IEmployeeManage employeeManage;
@@ -82,4 +89,13 @@ public class EmployeeAction extends ActionSupport {
 		return "fail";
 	}
 
+	public String importEmployeeInfo() throws FileNotFoundException {
+		InputStream in = new FileInputStream(excelFile);
+		String sheetName = "Sheet1";
+		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
+		map.put("职工号", "id");
+		map.put("名字", "name");
+		map.put("", "");
+		return sheetName;
+	}
 }
