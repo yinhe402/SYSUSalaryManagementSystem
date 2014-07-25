@@ -19,34 +19,8 @@
 	padding-left: 10px;
 }
 
-.bs-docs-sidenav {
-	width: 228px;
-	background-color: #fff;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-	box-shadow: 0 1px 4px rgba(0,0,0,.065);
-}
 
-.bs-docs-sidenav > li > a {
-  display: block;
-  width: 190px \9;
-  margin: 0 0 -1px;
-  padding: 8px 14px;
-  border: 1px solid #e5e5e5;
-}
-
-.contain {
-	border: 1px solid #e5e5e5;
-	
-	padding: 250px;
-	
-}
-#js_title{font-size:16px; font-weight:bold; padding:5px 0px;} 
-#js_describe{font-size:14px; padding:10px 0px;} 
-div{font-size:18px; height:100%; line-height:200%;} 
+div{font-size:18px;  line-height:200%;} 
 a
 {
 font-size:15px; 
@@ -57,3 +31,49 @@ color:black;
 font-size:18px;
 color:#292421;
 }
+
+.employeeinfo{
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+}
+
+
+.center{
+	text-align:center; padding-top:30px;
+}
+
+.LV_validation_message{
+	font-size: 10px;
+	font-weight:bold;
+    margin:0 0 0 5px;
+}
+
+.LV_valid {
+    color:#00CC00;
+}
+	
+.LV_invalid {
+    color:#CC0000;
+}
+    
+.LV_valid_field,
+input.LV_valid_field:hover, 
+input.LV_valid_field:active,
+textarea.LV_valid_field:hover, 
+textarea.LV_valid_field:active {
+    border: 1px solid #00CC00;
+}
+    
+.LV_invalid_field, 
+input.LV_invalid_field:hover, 
+input.LV_invalid_field:active,
+textarea.LV_invalid_field:hover, 
+textarea.LV_invalid_field:active {
+    border: 1px solid #CC0000;
+}
+
+dl{
+	margin-bottom: -15px;
+}
+

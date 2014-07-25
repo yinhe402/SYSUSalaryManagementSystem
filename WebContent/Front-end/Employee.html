@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<title>中山大学教职工工资系统</title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrap/css/datepicker.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css">
+		<link rel="stylesheet" href="css/index.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+	         function addEmployee() {
+		      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
+				var myform = topWin.document.getElementById("myform1");
+				myform.action = "employee/addEmployee_success";
+				myform.method = "post";
+				myform.submit();
+			}
+
+			function modifyEmployee() {
+				var mainframe = window.frames['mainFrame'];
+				var myform = mainframe.contentDocument.getElementById('myform1');
+				myform.action = "employee/modifyEmployee_success";
+				myform.method = "post";
+				myform.submit();
+			}
+			 
+  
+
+			
+		</script>
+
+	</head>
+	<body>
+		<form>
+			<div class = "employeeinfo">
+			 职工信息录入<br>
+			</div>
+
+			<form action="" method="post" >
+            <div style= "margin:0 auto;width:900px; margin-top:30px;padding-left :30px; font-weight:bold;">
+                <div>
+                	<span style="padding-right:38px;">职工号：</span><input type="text" name="employee.id" size=20 ">
+                </div>
+                <div>
+                	<span style="padding-right:57px;">姓名：</span><input type="text" name="employee.name" size=20 >
+				    <span style="padding-left:10%; padding-right:52px;">性别：</span>
+				        <select id="gender" name="employee.gender">
+                               
+                               <option value="1">男</option>
+                               <option value="2">女</option>
+        
+                        </select>
+				</div>
+				<div>
+					<span style="padding-right:19px;">出生日期：</span><input type="text" class="datepicker" name="employee.birthday" size=20>
+				    <span style="padding-left:10%; padding-right:19px;">身份证号：</span><input type="text" name="employee.uid" size=20 ><br>
+				</div>
+				<div>
+					<span style="padding-right:57px;">单位：</span><input type="text" name="employee.department" size=20 >
+				    <span style="padding-left:10%; padding-right:19px;">岗位性质：</span><input type="text" name="employee.jobType" size=20 >
+				</div>
+				<div>
+					<span style="padding-right:19px;">人员身份：</span><input type="text" name="type" size=20 ><br>
+				</div>
+				<div>
+					<span style="padding-right:19px;">入校来源：</span><input type="text" name="employee.source" size=20>
+				    <span style="padding-left:10%; padding-right:19px;z-index:9999;">入校报到时间：</span></span><input class="datepicker" type="text" name="employee.reachSchoolDate" >
+				</div>
+				<div>
+					<span style="padding-right:19px;">最高学历：</span><input type="text" name="employee.maxEducation" size=20 >
+				    <span style="padding-left:10%; padding-right:19px;">最高学历获得时间：</span><input type="text" class="datepicker" name="maxEducationDate" size=20>
+				</div>
+				<div>
+					<span style="padding-right:19px;">最高学位：</span><input type="text" name="employee.maxDegree" size=20 >
+				    <span style="padding-left:10%; padding-right:19px;">最高学位获得时间：</span><input type="text" class="datepicker" name="maxDegreeDate" size=20>
+				</div>
+				<div>
+					<span style="padding-right:19px;">职务级别：</span><input type="text" name="employee.hirework" size=20>
+				    <span style="padding-left:10%; padding-right:19px;">任职时间：</span><input type="text" class="datepicker" name="employee.startWorkDate" size=20>
+				</div>
+				<div>
+					<span style="padding-right:19px;">聘任职称：</span><input type="text" name="employee.hireTitle" size=20 >
+				    <span style="padding-left:10%; padding-right:19px;">职称级别：</span><input type="text" name="employee.titleLevel" size=20>
+				</div>
+				<div>
+					<span style="padding-right:19px;">聘任时间：</span><input type="text" class="datepicker" name="employee.hireDate" size=20> 
+				    <span style="padding-left:10%; padding-right:19px;">(拟)聘任岗位：</span><input type="text" name="employee.hireJob" size=20>
+				</div>
+				<div>
+					<span style="padding-right:19px;">聘岗级别：</span><input type="text" name="employee.jobLevel" size=20 >
+				</div>
+     			
+      			<div style="text-align:center; padding-top:30px;">
+      		    <button style="margin-right:15px; " type="button" class="btn btn-success" onclick="addEmployee()">增加</button>
+			    <button style="margin-right:15px; " type="button" class="btn btn-success" onclick="modifyEmployee()">修改</button>
+			    <input class= "btn btn-success" type="RESET" value="重置">
+			    </div>
+
+
+ 
+			    <script type="text/javascript">    $(".datepicker").datepicker();</script>
+
+
+      	    </div>
+    		</from>
+		</form>
+	</body>
+</html>

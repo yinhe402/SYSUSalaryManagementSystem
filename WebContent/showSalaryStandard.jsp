@@ -6,73 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>中山大学职工工资管理系统</title>
-<style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
 
-BK
-    .tabfont01 {
-	font-family: "宋体";
-	font-size: 9px;
-	color: #555555;
-	text-decoration: none;
-	text-align: center;
-}
-
-.font051 {
-	font-family: "宋体";
-	font-size: 12px;
-	color: #333333;
-	text-decoration: none;
-	line-height: 20px;
-}
-
-.font201 {
-	font-family: "宋体";
-	font-size: 12px;
-	color: #FF0000;
-	text-decoration: none;
-}
-
-.button {
-	font-family: "宋体";
-	font-size: 14px;
-	height: 37px;
-}
-
-html {
-	overflow-x: auto;
-	overflow-y: auto;
-	border: 0;
-}
--->
-</style>
-<script type="text/JavaScript">
-
-</script>
 </head>
 
 <body>
 	<s:form name="professionalPositionForm">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:30px;">
 			<tr>
 				<td><table id="subtree1" style="DISPLAY: " width="100%"
 						border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><table width="95%" border="0" align="center"
-									cellpadding="0" cellspacing="0">
+							<td><table width="85%" border="0" align="center"
+									cellpadding="0" cellspacing="0" >
 									<tr>
 										<td height="40" class="font42">
 											<table width="100%" border="0" cellpadding="4"
-												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<tr class="CTitle">
-													<td height="22" colspan="7" align="center"
-														style="font-size:16px bgcolor = #FFFFFF">专业技术人员岗位工资表</td>
+												cellspacing="1"  bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF">
+													<td height="22" colspan="7" align="center" 
+														style="font-size:16px; ">专业技术人员岗位工资表</td>
 												</tr>
 												<tr bgcolor="#EEEEEE">
 													<td width="10%">岗位</td>
@@ -113,20 +65,20 @@ html {
 
 
 	<s:form name="fom" id="fom" method="post" action="">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 			<tr>
 				<td><table id="subtree1" style="DISPLAY: " width="100%"
 						border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><table width="95%" border="0" align="center"
+							<td><table width="85%" border="0" align="center"
 									cellpadding="0" cellspacing="0">
 									<tr>
 										<td height="40" class="font42">
 											<table width="100%" border="0" cellpadding="4"
-												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<tr class="CTitle">
+												cellspacing="1" bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF">
 													<td height="22" colspan="7" align="center"
-														style="font-size:16px bgcolor = #FFFFFF">专业技术人员薪级工资表</td>
+														style="font-size:16px">专业技术人员薪级工资表</td>
 												</tr>
 												<tr bgcolor="#EEEEEE">
 													<td width="20%">薪级</td>
@@ -166,20 +118,20 @@ html {
 	<br />
 
 	<s:form name="fom" id="fom" method="post" action="">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 			<tr>
 				<td><table id="subtree1" style="DISPLAY: " width="100%"
 						border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><table width="95%" border="0" align="center"
+							<td><table width="85%" border="0" align="center"
 									cellpadding="0" cellspacing="0">
 									<tr>
 										<td height="40" class="font42">
 											<table width="100%" border="0" cellpadding="4"
-												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<tr class="CTitle">
+												cellspacing="1" bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF" >
 													<td height="22" colspan="7" align="center"
-														style="font-size:16px bgcolor = #FFFFFF">管理人员岗位工资表</td>
+														style="font-size:16px;">管理人员岗位工资表</td>
 												</tr>
 												<tr bgcolor="#EEEEEE">
 													<td width="10%">岗位</td>
@@ -220,20 +172,20 @@ html {
 
 
 	<s:form name="fom" id="fom" method="post" action="">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 			<tr>
 				<td><table id="subtree1" style="DISPLAY: " width="100%"
 						border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><table width="95%" border="0" align="center"
+							<td><table width="85%" border="0" align="center"
 									cellpadding="0" cellspacing="0">
 									<tr>
 										<td height="40" class="font42">
 											<table width="100%" border="0" cellpadding="4"
-												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<tr class="CTitle">
+												cellspacing="1" bgcolor="#00000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF">
 													<td height="22" colspan="7" align="center"
-														style="font-size:16px bgcolor = #FFFFFF">管理人员薪级工资表</td>
+														style="font-size:16px">管理人员薪级工资表</td>
 												</tr>
 												<tr bgcolor="#EEEEEE">
 													<td width="20%">薪级</td>
@@ -268,22 +220,22 @@ html {
 	<br />
 
 	<s:form name="fom" id="fom" method="post" action="">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 
 
 			<tr>
 				<td><table id="subtree1" style="DISPLAY: " width="100%"
 						border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><table width="95%" border="0" align="center"
+							<td><table width="85%" border="0" align="center"
 									cellpadding="0" cellspacing="0">
 									<tr>
 										<td height="40" class="font42">
 											<table width="100%" border="0" cellpadding="4"
-												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<tr class="CTitle">
+												cellspacing="1" bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF">
 													<td height="22" colspan="7" align="center"
-														style="font-size:16px bgcolor = #FFFFFF">工人岗位工资表</td>
+														style="font-size:16px;">工人岗位工资表</td>
 												</tr>
 												<tr bgcolor="#EEEEEE">
 													<td width="10%">岗位</td>
@@ -324,22 +276,22 @@ html {
 	<br />
 
 	<s:form name="fom" id="fom" method="post" action="">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 
 
 			<tr>
 				<td><table id="subtree1" style="DISPLAY: " width="100%"
 						border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><table width="95%" border="0" align="center"
+							<td><table width="85%" border="0" align="center"
 									cellpadding="0" cellspacing="0">
 									<tr>
 										<td height="40" class="font42">
 											<table width="100%" border="0" cellpadding="4"
-												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<tr class="CTitle">
+												cellspacing="1" bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF">
 													<td height="22" colspan="7" align="center"
-														style="font-size:16px bgcolor = #FFFFFF">工人薪级工资表</td>
+														style="font-size:16px;">工人薪级工资表</td>
 												</tr>
 												<tr bgcolor="#EEEEEE">
 													<td width="20%">薪级</td>
