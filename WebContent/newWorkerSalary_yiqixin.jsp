@@ -13,19 +13,11 @@
 <script type="text/javascript">
 	//ar myfrom=document.getElementById("myform1");
 	
-	function addSalaryInfo()
-	{	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var myform = topWin.document.getElementById("myform1");
-		myform.action="newEmployee/importStaff_success";
-		myform.method="post";
-		myform.submit();
-	}
-	
-	function modifySalaryInfo()
+	function SubmitSalaryInfo()
 	{	
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
-		myform.action="newEmployee/modifySalaryInfo_success";
+		myform.action="newEmployee/addSalaryInfo_success";
 		myform.method="post";
 		myform.submit();
 	}
@@ -110,7 +102,7 @@
 		<td><s:textfield value="%{#eList.getGanhuo()}"/></td><br />
 	</s:iterator>	
 	
-	<button type="button" class="btn btn-success" onclick="addSalaryInfo()"> 提交</button>
+	<button type="button" class="btn btn-success" onclick="SubmitSalaryInfo()"> 提交</button>
 	
 </s:form>
 </body>

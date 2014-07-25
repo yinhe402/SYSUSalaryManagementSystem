@@ -1432,8 +1432,6 @@ public class NewEmployeeAction extends ActionSupport {
 				startSalaryInfo.setLevelSalary(workerSalaryManage.findWorkerPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
 			}
 
-			startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
-
 			Map session = ActionContext.getContext().getSession();
 			session.put("ssInfo", startSalaryInfo);
 			session.put("sYear", startWorkYear);
@@ -1446,5 +1444,12 @@ public class NewEmployeeAction extends ActionSupport {
 			return "success";
 		}
 		return "fail";
+	}
+	
+	public String addSalaryInfo() {
+		System.out.println("-------startSalaryInfoAction.importStaff--------"
+				+ startSalaryInfo.getEid());
+		startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
+		return "success";
 	}
 }
