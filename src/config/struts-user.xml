@@ -28,13 +28,17 @@
 			<result name="success">/userMain.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
-
+		<action name="addEmployee" class="employeeAction" method="addEmployee">
+			<result name="success">/Employee.jsp</result>
+		</action>
 		<action name="getData" class="salaryStandardAction" method="getAllManagePositionSalary">
 			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
 		<action name="*" >
 			<result>/{1}.jsp</result>
 		</action>
+		
+		
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">

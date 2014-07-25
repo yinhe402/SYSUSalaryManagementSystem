@@ -24,22 +24,23 @@
 </head>
 
 <body>
-
-<s:form id="myform1" >
-	<input type="text" name="employee.id" id="input" class="form-control">
+<br>
+<s:form id="myform1" style="margin-left:300px; margin-bottom:-20px;" >
+	<span style="font-weight:bold;">输入职工号：</span><input type="text" name="employee.id" id="input" style="margin-top:10px;">
 	<button type="button" class="btn btn-success" onclick="findEmployee()">查询</button>
 </s:form>
-
+<br>
+<br>
 <s:form id="myform" > 
-<table class="table table-bordered" >
+<table style="width:90%; margin:0 auto; margin-bottom:50px;"class="table table-bordered table-hover" >
 	<thead>
 		<tr>
 			<th>职工信息表</th>
 		</tr>
 	</thead>
-	<tbody>
-		<tr>
-			<td>职工号：</td> <td><s:property value="#session.eInfo.id"/></td>
+	<tbody >
+		<tr >
+			<td style="width:40%;">职工号：</td> <td><s:property value="#session.eInfo.id"/></td>
 		</tr>
 
 		<tr>
@@ -106,7 +107,7 @@
 			<td>职务级别:</td> <td><s:property  value="#session.eInfo.workLevel" /></td>
 		</tr>
 		<tr>
-			<td>聘任时间:</td> <td><s:property  value="#session.eInfo.startWorkDate" /></td>
+			<td>任职时间:</td> <td><s:property  value="#session.eInfo.startWorkDate" /></td>
 		</tr>
 		<tr>
 			<td>聘任职称:</td> <td><s:property  value="#session.eInfo.hireTitle" /></td>

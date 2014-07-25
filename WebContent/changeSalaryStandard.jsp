@@ -6,46 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>中山大学职工工资管理系统</title>
-<style type="text/css">
-<!--
-body {
-  margin-left: 0px;
-  margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-}BK
-.tabfont01 {  
-  font-family: "宋体";
-  font-size: 9px;
-  color: #555555;
-  text-decoration: none;
-  text-align: center;
-}
-.font051 {font-family: "宋体";
-  font-size: 12px;
-  color: #333333;
-  text-decoration: none;
-  line-height: 20px;
-}
-.font201 {font-family: "宋体";
-  font-size: 12px;
-  color: #FF0000;
-  text-decoration: none;
-}
-.button {
-  font-family: "宋体";
-  font-size: 14px;
-  height: 37px;
-}
-html { overflow-x: auto; overflow-y: auto; border:0;} 
--->
-</style>
 
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
-<script type="text/JavaScript">
-
-</script>
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
 function sousuo(){
@@ -79,7 +40,7 @@ function link(){
 
 <body>
 <form name="fom" id="fom" method="post" action="">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="60%" border="0" cellspacing="0" cellpadding="0">
   
   
   <tr>

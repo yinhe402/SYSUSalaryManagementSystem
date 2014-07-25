@@ -25,7 +25,7 @@
 				</span>
 			</div>
 
-			<div class="span4 offset1">
+			<div class="span4 offset1" style="margin-left:180px;">
 				<div class="pull-right user">
 					<span class="label label-success">当前用户</span>
 					<span class="label label-info">覃蓓（11331285）</span>
@@ -53,6 +53,21 @@
 		
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

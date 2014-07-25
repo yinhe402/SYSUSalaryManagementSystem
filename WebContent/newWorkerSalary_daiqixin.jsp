@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="textml; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<link rel="stylesheet" href="bootstrap/css/datepicker.css">
+
+
 <script type="text/javascript">
 	//ar myfrom=document.getElementById("myform1");
 	i = 0;
@@ -113,7 +113,7 @@
 </script>
 </head>
 <body>
-<s:form id="myform" style="display:none">
+<s:form id="myform" style="display:none; ">
 	职工号：<s:property value="#session.addedEmployee.id"/><br />
 	姓名:<s:property  value="#session.addedEmployee.name"/> <br />
 	邮箱:<s:property  value="#session.addedEmployee.email"/><br />
@@ -142,7 +142,7 @@
 	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.addedEmployee.id}"/> <br />	
 </s:form>
 
-<s:form id="myform1">	
+<s:form id="myform1" style="margin-left:100px;">	
 	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.addedEmployee.id}"/> <br />	
 	起薪时间(XXXX-XX-XX):<input type="text" name="startSalaryInfo.startSalaryDate" /><br />
 	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
@@ -184,6 +184,12 @@
 	<button type="button" class="btn btn-success" onclick="addSalaryInfo()"> 提交</button>
 	
 </s:form>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/liveValidation.js"></script>
+
 </body>
 
 </html>
