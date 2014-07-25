@@ -12,7 +12,7 @@ public class UserManageImp implements IUserManage {
 	@Resource  
 	private IUserDao userDao;
 	
-	public IUserDao getUserDao() {		
+	public IUserDao getUserDao() {	
 		return userDao;
 	}
 
