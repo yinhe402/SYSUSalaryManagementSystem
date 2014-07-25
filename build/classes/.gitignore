@@ -1,5 +1,2 @@
-/com/
-/config/
-*.class
-.*
-
+/com
+/config

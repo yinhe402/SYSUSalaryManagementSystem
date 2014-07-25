@@ -23,14 +23,18 @@ pageEncoding="utf-8"%>
 </head>
 
 <body>
-	<s:form id="myform">	 
+	<s:form id="myform" style="text-align:center;">
+	    <br/>
+	    <span style="font-size:22px; font-weight:bold;">请输入修改后的工资标准：</span>	<br/>	
+	    <div style="margin-left:-50px;"> 
 		<s:textfield style="display:none" name="tableName" value="%{#session.tableName}"/><br />
 		<s:textfield style="display:none" name="type" value="%{#session.type}"/><br />
 		岗位：<s:textfield name="position" value="%{#session.position}"/><br />
 		级数：<s:textfield name="level" value="%{#session.level}"/><br />
-		工资标准：<s:textfield name="salaryStandard" value="%{#session.salaryStandard}"/><br />
-		起点薪级：<s:textfield name="startPayLevel" value="%{#session.startPayLevel}"/><br />
+		<span style="margin-left:-35px;">工资标准：</span><s:textfield name="salaryStandard" value="%{#session.salaryStandard}"/><br />
+		<span style="margin-left:-35px;">起点薪级：</span><s:textfield name="startPayLevel" value="%{#session.startPayLevel}"/><br />
 		<button type="button" class="btn btn-success" onclick="modifyPosSalaryStandard()">修改</button>
+		</div>
 	</s:form>
 </body>
 </html>

@@ -4,22 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>中山大学教职工工资系统</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/datepicker.css">
-<link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css">
+
 <link rel="stylesheet" href="css/index.css">
-<script type="text/javascript">
- function addEmployee() {
-				      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-						var myform = topWin.document.getElementById("infoinput");
-						myform.action = "employee/addEmployee_success";
-						myform.method = "post";
-						myform.submit();
-					}
-</script>
+
 </head>
 <body>
 		<div class="employeeinfo">职工信息录入</div>
@@ -32,7 +23,7 @@
 								职工号<span style="color:red">*</span>
 							</dt>
 							<dd>
-								<input id="f1" type="text" name="employee.id" size=20>
+								<input id="f1" type="text" name="employee.id" maxLength="6">
 							</dd>
 						</dl>
 
@@ -69,9 +60,7 @@
 								最高学历<span style="color:red">*</span>
 							</dt>
 							<dd>
-
-								<select name="employee.maxEducation">
-
+								<select id="maxeducation" name="employee.maxEducation">
 									<option value="无">无</option>
 									<option value="博士研究生">博士研究生</option>
 									<option value="硕士研究生">硕士研究生</option>
@@ -80,7 +69,6 @@
 									<option value="高中(中专)">高中(中专)</option>
 									<option value="初中">初中</option>
 									<option value="小学">小学</option>
-
 								</select>
 							</dd>
 						</dl>
@@ -90,7 +78,7 @@
 								最高学位<span style="color:red">*</span>
 							</dt>
 							<dd>
-								<select name="employee.maxDegree">
+								<select id="maxdegree" name="employee.maxDegree">
 
 									<option value="无">无</option>
 									<option value="学士">学士</option>
@@ -172,8 +160,7 @@
 						</dl>
 
 						<dl class="dl-horizontal">
-							<dt>聘岗级别
-							<dt>
+							<dt>聘岗级别</dt>
 							<dd>
 
 								<select id="joblevel" name="employee.jobLevel"
@@ -201,10 +188,8 @@
 							</dt>
 							<dd>
 								<select id="gender" name="employee.gender">
-
-									<option value="true">男</option>
-									<option value="false">女</option>
-
+									<option value="男">男</option>
+									<option value="女">女</option>
 								</select>
 							</dd>
 						</dl>
@@ -243,7 +228,7 @@
 							</dt>
 							<dd>
 								<input id="f9" type="text" class="datepicker"
-									name="employee.maxDegreeDate" size=20>
+									name="employee.maxEducationDate" size=20>
 							</dd>
 						</dl>
 
@@ -253,7 +238,7 @@
 							</dt>
 							<dd>
 								<input id="f10" type="text" class="datepicker"
-									name="employee.maxEducationDate" size=20>
+									name="employee.maxDegreeDate" size=20>
 							</dd>
 						</dl>
 
@@ -301,7 +286,6 @@
 							<dd>
 								<select id="titlelevel" name="employee.titleLevel"
 									onchange="showD(this.selectedIndex)">
-
 									<option value="">无</option>
 									<option value="1">一级</option>
 									<option value="2">二级</option>
@@ -343,7 +327,6 @@
 				</div>
 
 			</div>
-			</form>
 			<div style="margin-top:30px; margin-bottom:250px;" class="center">
 				<div class="btn-group">
 					<button type="button" class="btn btn-success" onclick="addEmployee()">增加</button>
@@ -351,6 +334,7 @@
 					<input class="btn btn-success" type="RESET" value="重置">
 				</div>
 			</div>
+			</form>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>

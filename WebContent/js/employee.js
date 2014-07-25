@@ -1,14 +1,88 @@
 			    	$(".datepicker").datepicker({
 			    		format: 'yyyy-mm-dd',
 			    	});
-
-//			         function addEmployee() {
-//				      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-//						var myform = topWin.document.getElementById("infoinput");
-//						myform.action = "employee/addEmployee_Employee";
-//						myform.method = "post";
-//						myform.submit();
-//					}
+                    
+			    	
+			    	   
+			         function addEmployee() {
+			        	
+				      	var topWin = window.top.document.getElementById("mainFrame").contentWindow;
+						var myform = topWin.document.getElementById("infoinput");
+						var id = topWin.document.getElementById("f1").value;
+						var gender = topWin.document.getElementById("gender").value;
+						var name = topWin.document.getElementById("f2").value;
+						var birthdate = topWin.document.getElementById("f7").value;
+						var identification = topWin.document.getElementById("f3").value;
+						var email = topWin.document.getElementById("email").value;
+						var department = topWin.document.getElementById("f4").value;
+						var jobtype = topWin.document.getElementById("f8").value;						
+						var maxeducationdate = topWin.document.getElementById("f9").value;						
+						var maxdegreedate = topWin.document.getElementById("f10").value;
+						var type = topWin.document.getElementById("f5").value;
+						var source = topWin.document.getElementById("f11").value;
+						var reachschooldate = topWin.document.getElementById("f6").value;
+						
+						
+						
+					    if(null == id || "" == id ){
+					        alert("职工号不能为空");
+					        topWin.document.getElementById("f1").focus();
+					        return false;
+					    }else if(id.length != 6){
+					    	alert("职工号长度必须为6位");
+					        topWin.document.getElementById("f1").focus();
+					        return false;
+					    }else if(null == name || "" == name){
+					    	alert("姓名不能为空");
+					        topWin.document.getElementById("f2").focus();
+					        return false;
+					    }else if(null == birthdate || "" == birthdate ){
+					    	alert("出生日期不能为空");
+					        topWin.document.getElementById("f7").focus();
+					        return false;
+					    }else if(null == identification || "" == identification ){
+					    	alert("身份证号不能为空");
+					        topWin.document.getElementById("f3").focus();
+					        return false;
+					    }else if(null == email || "" == email){
+					    	alert("邮箱不能为空");				
+					        topWin.document.getElementById("email").focus();
+					        return false;
+					    }else if(null == department || "" == department){
+					    	alert("单位不能为空");				
+					        topWin.document.getElementById("f4").focus();
+					        return false;					    	
+					    }else if(null == jobtype || "" == jobtype){
+					    	alert("岗位性质不能为空");				
+					        topWin.document.getElementById("f8").focus();
+					        return false;
+					    }else if(null ==  maxeducationdate || "" == maxeducationdate){
+					    	alert("最高学历获得时间不能为空");				
+					        topWin.document.getElementById("f9").focus();
+					        return false;
+					    }else if(null ==  maxdegreedate || "" == maxdegreedate){
+					    	alert("最高学位获得时间不能为空");				
+					        topWin.document.getElementById("f10").focus();
+					        return false;
+					    }else if(null == type || "" == type){
+					    	alert("人员身份不能为空");				
+					        topWin.document.getElementById("f5").focus();
+					        return false;
+					    }else if(null == source || "" == source){
+					    	alert("入校来源不能为空");				
+					        topWin.document.getElementById("f11").focus();
+					        return false;
+					    }else if(null == reachschooldate || "" == reachschooldate){
+					    	alert("入校报到时间不能为空");				
+					        topWin.document.getElementById("f6").focus();
+					        return false;
+					    }
+					    	
+					    	
+						myform.action = "employee/addEmployee_Employee";
+						myform.method = "post";
+						myform.submit();
+					}
 
 					function modifyEmployee() {
 						var mainframe = window.frames['mainFrame'];
@@ -33,12 +107,12 @@
 					em.add( Validate.Email ,{ failureMessage: "格式错误" });
 					em.add( Validate.Presence ,{ failureMessage: "必填" });
 
-			    var   level   =   ["无",    "一级",   "二级",   "三级",   "四级",   "五级",   "六级",   "七级",   "八级",   "九级",   "十级"]; 
+			    var   level   =   ["",    "1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10"]; 
 			    var   work   =   ["无",    "正部级",   "副部级",   "正厅级",   "副厅级",   "正处级",   "副处级",   "正科级",   "副科级",   "科员",   "办事员"]; 
-          var   title   =   ["无",    "正高级",   "副高级",   "中级",   "助理级",   "员级"];
-					var   titlelevel   =   ["无",    "一级",   "二级",   "三级",   "四级",   "五级",   "六级",   "七级",   "八级",   "九级",   "十级",   "十一级",   "十二级",   "十三级"];
-          var   hirejob   =   ["无",    "高级技工",   "技师",   "高级工",   "中级工",   "初级工",   "普通工"];
-          var   joblevel   =   ["无",    "技术工一级",   "技术工二级",   "技术工三级",   "技术工四级",   "技术工五级",   "普通工"];
+			    var   title   =   ["无",    "正高级",   "副高级",   "中级",   "助理级",   "员级"];
+				var   titlelevel   =   ["",    "1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10",   "11",   "12",   "13"];
+				var   hirejob   =   ["无",    "高级技工",   "技师",   "高级工",   "中级工",   "初级工",   "普通工"];
+				var   joblevel   =   ["",    "1",   "2",   "3",   "4",   "5",   "6"];
 
 					function showA(n){
  			   			var se=document.getElementById("worklevel");

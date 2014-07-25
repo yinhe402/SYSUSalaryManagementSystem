@@ -9,7 +9,7 @@ public class MyException extends RuntimeException {
 
 	public MyException(String message, Throwable cause,
 			boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 

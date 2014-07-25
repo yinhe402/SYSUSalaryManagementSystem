@@ -89,6 +89,7 @@ public class Employee {
 	}
 	public void setGender(String gender) {
 		System.out.println(gender);
+		this.gender = gender;
 	}
 	
 	/**
@@ -249,7 +250,7 @@ public class Employee {
 		return workLevel;
 	}
 	public void setWorkLevel(Integer workLevel) {
-		System.out.println(workLevel);
+		System.out.println("职务级别："+workLevel);
 		this.workLevel = workLevel;
 	}
 	
@@ -286,7 +287,7 @@ public class Employee {
 	}
 	public void setTitleLevel(Integer titleLevel) {
 		this.titleLevel = titleLevel;
-		System.out.println(titleLevel);
+		System.out.println("职称级别："+titleLevel);
 	}
 	
 	/**
@@ -322,6 +323,6 @@ public class Employee {
 	}
 	public void setJobLevel(Integer jobLevel) {
 		this.jobLevel = jobLevel;
-		System.out.println(jobLevel);
+		System.out.println("岗位级别"+jobLevel);
 	}
 }

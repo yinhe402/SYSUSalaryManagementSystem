@@ -24,8 +24,7 @@
 <div id="pNode1" onclick="showList(this.id);" style="cursor:pointer;">+ 基本工资（津补贴）管理</div> 
 <div id="pNode1_ljf" style="display:none;"> 
 <div id="pNode1_sub1" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">+ 工资普调处理</div> 
-<div id="pNode1_sub1_ljf" style="display:none;"> 
-<div id="pNode1_sub1_s1" style="padding-left:40px;">·<a href="getData" target="mainFrame">调整工资标准</a></div> 
+<div id="pNode1_sub1_ljf" style="display:none;">  
 <div id="pNode1_sub1_s2" style="padding-left:40px;">·<a href="#" target="_blank">晋升薪级工资</a></div> 
 <div id="pNode1_sub1_s3" style="padding-left:40px;">·<a href="nianzhongjiang.jsp" target="mainFrame">年终一次性奖金</a></div> 
 <div id="pNode1_sub1_s4" style="padding-left:40px;">·<a href="#" target="_blank">年终考核优秀奖金</a></div> 
@@ -59,15 +58,16 @@
 </div> 
 <div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;"> + 基本工资体系</div> 
 <div id="pNode2_ljf" style="display:none;"> 
-<div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="getData" target="mainFrame">基本工资标准</a></div>  
+<div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a  href="getData" target="mainFrame">基本工资标准</a></div>  
 <div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a href="salaryComputeFormula.jsp" target="mainFrame">工资计算公式</a></div> 
-<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·基本工资（津补贴）项目</div> 
+<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a>基本工资（津补贴）项目</a></div> 
 </div> 
 
 <div id="pNode3" onclick="showList(this.id);" style="cursor:pointer;">+职工信息获取</div> 
 <div id="pNode3_ljf" style="display:none;">
-<div id="pNode3_sub1" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="Employee.jsp" target="mainFrame">职工信息录入</a></div>   
-<div id="pNode3_sub1" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="DisplayEmployeeInfo.jsp" target="mainFrame">查找职工</a></div>   
+<div id="pNode3_sub1" style="padding-left:20px; cursor:pointer;">·<a  href="Employee.jsp" target="mainFrame">职工信息录入</a></div>   
+<div id="pNode3_sub2" style="padding-left:20px; cursor:pointer;">·<a  href="DisplayEmployeeInfo.jsp" target="mainFrame">查找职工</a></div>
+<div id="pNode3_sub3" style="padding-left:20px; cursor:pointer;">·<a  href="ImportEmployeeInfo.jsp" target="mainFrame">批量导入</a></div>      
 
 </div> 
 
