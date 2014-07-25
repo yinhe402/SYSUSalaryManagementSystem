@@ -71,6 +71,7 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	@Override
 	public ManagePaylevelSalary findManPaySalByPayLevel(Integer payLevel) {
 		this.managePaylevelSalary=ImanageSalaryDao.findManPaySalByPayLevel(payLevel);
+		
 		return this.managePaylevelSalary;
 	}
 
@@ -133,10 +134,18 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 	public void setAllManage(Integer level,Integer off,Integer cha) {
 		//System.out.println(level);
 		// TODO Auto-generated method stub
-		findManSalChaByLevel(level,off,cha);
-		System.out.println(getManageSalaryChange().getPayLevel());
-		findManPaySalByPayLevel(getManageSalaryChange().getPayLevel());
+		Integer payLevel;
 		findManPosSalByLevel(level);
+		findManSalChaByLevel(level,off,cha);
+		if(getManageSalaryChange()==null){
+			payLevel=managePositionSalary.getStartPayLevel();
+		}
+		else {
+			payLevel=manageSalaryChange.getPayLevel();
+		}
+		//System.out.println(.getPayLevel());
+		findManPaySalByPayLevel(payLevel);
+		
 	}
 
 	@Override
@@ -156,6 +165,6 @@ public class ManageSalaryManageImp implements IManageSalaryManage{
 		// TODO Auto-generated method stub
 		setAllManage(level, off, cha);
 		
-		return getManageSalaryChange().getPayLevel();
+		return managePaylevelSalary.getPayLevel();
 	}
 }

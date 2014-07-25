@@ -26,15 +26,6 @@
 		myform.submit();
 	}
 	
-	function modifySalaryInfo()
-	{	
-		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
-		var myform = topWin.document.getElementById("myform1");
-		myform.action="newEmployee/modifySalaryInfo_success";
-		myform.method="post";
-		myform.submit();
-	}
-	
 	function addManExperience() {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("manExperience");
