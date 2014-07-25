@@ -25,8 +25,8 @@ public class StartSalaryInfo {
 	private String  salarySeries; //工资系列
 	private Integer positionLevel;//工资岗位级别
 	private Integer salaryLevel;//薪级
-	private Double positionSalary;//岗位工资
-	private Double levelSalary;//薪级工资
+	private Integer positionSalary;//岗位工资
+	private Integer levelSalary;//薪级工资
 	private String remarks;//备注
 	
 	@Id
@@ -135,18 +135,18 @@ public class StartSalaryInfo {
 	}
 	
 	@Column
-	public Double getPositionSalary() {
+	public Integer getPositionSalary() {
 		return positionSalary;
 	}
-	public void setPositionSalary(Double positionSalary) {
+	public void setPositionSalary(Integer positionSalary) {
 		this.positionSalary = positionSalary;
 	}
 	
 	@Column
-	public Double getLevelSalary() {
+	public Integer getLevelSalary() {
 		return levelSalary;
 	}
-	public void setLevelSalary(Double levelSalary) {
+	public void setLevelSalary(Integer levelSalary) {
 		this.levelSalary = levelSalary;
 	}
 	

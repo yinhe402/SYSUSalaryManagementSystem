@@ -1,6 +1,6 @@
 package com.sms.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ public class Employee {
 	private Integer id;//职工号
 	private String name;//姓名
 	private String email;//邮箱
-	private Boolean gender;//性别
+	private String gender;//性别
 	private Date birthday;//出生日期
 	private String uid;//身份证号
 	private String department;//单位
@@ -80,10 +80,10 @@ public class Employee {
 	 * 性别
 	 * */
 	@Column(name="gender", nullable=false)
-	public Boolean getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Boolean gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	

@@ -1,20 +1,17 @@
 package com.sms.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
 
 import javax.annotation.Resource;
-
-import org.apache.struts2.components.Else;
 
 import com.sms.entity.ExperienceInfo;
 import com.sms.service.IManageSalaryManage;
 import com.sms.service.IProfSalaryManage;
 
 public class LevelSalaryChange {
-
 	@Resource
 	private static IManageSalaryManage manageSalaryManage;
 
@@ -71,12 +68,15 @@ public class LevelSalaryChange {
 
 		if (monthDif < 0) {
 			yearDif = yearDif - 1;
-			monthDif = 12 - monthDif;
+			monthDif = 12 + monthDif;
 		}
 		if (dayDif < 0) {
 			monthDif = monthDif - 1;
+			dayDif = 30 + dayDif;
 		}
 
+		System.out.println("起始时间:" + d1);
+		System.out.println("恢复时间:" + d2);
 		System.out.println("中断时间" + yearDif + "年" + monthDif + "月");
 		if ((monthDif == 6 && dayDif > 0) || monthDif > 6) {
 			return yearDif + 1;
@@ -194,6 +194,7 @@ public class LevelSalaryChange {
 		int breakUpYears = 0;
 		for (int i = 0; i < arrayNum; i++)
 			breakUpYears = breakUpYears + dateDif(array1.get(i), array2.get(i));
+		System.out.println("中断工龄：" + breakUpYears);
 		return breakUpYears;
 	}
 
@@ -202,9 +203,9 @@ public class LevelSalaryChange {
 		int beforeWorkTime = 0;
 		int eduLength = eduList.size();
 		for (int i = 0; i < eduLength; i++) {
-			if (eduList.get(i).getGanhuo() == "博士") {
+			if (eduList.get(i).getGanhuo().equals("博士")) {
 				beforeWorkTime = 5;
-			} else if (eduList.get(i).getGanhuo() == "硕士") {
+			} else if (eduList.get(i).getGanhuo().equals("硕士")) {
 				if (beforeWorkTime == 0)
 					beforeWorkTime = 2;
 			}
@@ -217,9 +218,9 @@ public class LevelSalaryChange {
 		int studyInSchoolTime = 0;
 		int eduLength = eduList.size();
 		for (int i = 0; i < eduLength; i++) {
-			if (eduList.get(i).getGanhuo() == "本科") {
+			if (eduList.get(i).getGanhuo().equals("本科")) {
 				studyInSchoolTime = 4;
-			} else if (eduList.get(i).getGanhuo() == "专科") {
+			} else if (eduList.get(i).getGanhuo().equals("专科")) {
 				if (studyInSchoolTime == 0)
 					studyInSchoolTime = 3;
 			}
@@ -284,7 +285,7 @@ public class LevelSalaryChange {
 						manageMinYear1 = manageList.get(0).getTime();
 					}
 				} else {
-					for (int i = 0; i < manageLength; i++) {
+					for (int i = 0; i < manageLength - 1; i++) {
 						for (int j = i + 1; j < manageLength; j++) {
 							if (manageList.get(i).getGanhuoLevel() < manageList
 									.get(j).getGanhuoLevel()) {
@@ -321,7 +322,7 @@ public class LevelSalaryChange {
 						techMinYear1 = techList.get(0).getTime();
 					}
 				} else {
-					for (int i = 0; i < techLength; i++) {
+					for (int i = 0; i < techLength - 1; i++) {
 						for (int j = i + 1; j < techLength; j++) {
 							if (techList.get(i).getGanhuoLevel() < techList
 									.get(j).getGanhuoLevel()) {
@@ -358,11 +359,19 @@ public class LevelSalaryChange {
 								manageMinYear1, techList);
 						System.out.println("职务等级：  " + manageMaxLevel);
 						System.out.println("任职年限：  " + curOfficeTime);
-						int curLevel = manageSalaryManage.getPayLevel(
+						int curLevel = 0;
+						if (manageSalaryManage.getPayLevel(
 								11 - manageMaxLevel,
 								curOfficeTime,
 								getSalaryChangeYears(attendWorkDate, array1,
-										array2, arrayNum, eduList, failTime));
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel = manageSalaryManage.getPayLevel(
+									11 - manageMaxLevel,
+									curOfficeTime,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime));
+						}
 						if (curLevel < manageSalaryManage.findManPosSalByLevel(
 								11 - manageMaxLevel).getStartPayLevel())
 							curLevel = manageSalaryManage.findManPosSalByLevel(
@@ -378,11 +387,19 @@ public class LevelSalaryChange {
 								manageMinYear1, techList);
 						System.out.println("职务等级：  " + manageMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
-						int curLevel1 = manageSalaryManage.getPayLevel(
+						int curLevel1 = 0;
+						if (manageSalaryManage.getPayLevel(
 								11 - manageMaxLevel,
 								officeTime1,
 								getSalaryChangeYears(attendWorkDate, array1,
-										array2, arrayNum, eduList, failTime));
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel1 = manageSalaryManage.getPayLevel(
+									11 - manageMaxLevel,
+									officeTime1,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime));
+						}
 						if (curLevel1 < manageSalaryManage
 								.findManPosSalByLevel(11 - manageMaxLevel)
 								.getStartPayLevel())
@@ -400,11 +417,19 @@ public class LevelSalaryChange {
 								manageSecMaxLevel, manageMinYear2, techList);
 						System.out.println("职务等级：  " + manageSecMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
-						int curLevel2 = manageSalaryManage.getPayLevel(
+						int curLevel2 = 0;
+						if (manageSalaryManage.getPayLevel(
 								11 - manageSecMaxLevel,
 								officeTime2,
 								getSalaryChangeYears(attendWorkDate, array1,
-										array2, arrayNum, eduList, failTime));
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel2 = manageSalaryManage.getPayLevel(
+									11 - manageSecMaxLevel,
+									officeTime2,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime));
+						}
 						if (curLevel2 < manageSalaryManage
 								.findManPosSalByLevel(11 - manageSecMaxLevel)
 								.getStartPayLevel())
@@ -429,11 +454,18 @@ public class LevelSalaryChange {
 								techMinYear1, manageList);
 						System.out.println("职务等级：  " + techMaxLevel);
 						System.out.println("任职年限：  " + curOfficeTime);
-						int curLevel = profSalaryManage.getPayLevel(
+						int curLevel = 0;
+						if (profSalaryManage.getPayLevel(
+								techMaxLevel,
+								curOfficeTime,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+						curLevel = profSalaryManage.getPayLevel(
 								techMaxLevel,
 								curOfficeTime,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel < profSalaryManage.findProfPosSalByLevel(
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel = profSalaryManage.findProfPosSalByLevel(
@@ -449,11 +481,18 @@ public class LevelSalaryChange {
 								techMinYear1, manageList);
 						System.out.println("职务等级：  " + techMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
-						int curLevel1 = profSalaryManage.getPayLevel(
+						int curLevel1 = 0;
+						if (profSalaryManage.getPayLevel(
+								techMaxLevel,
+								officeTime1,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel1 = profSalaryManage.getPayLevel(
 								techMaxLevel,
 								officeTime1,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel1 < profSalaryManage.findProfPosSalByLevel(
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel1 = profSalaryManage.findProfPosSalByLevel(
@@ -469,11 +508,18 @@ public class LevelSalaryChange {
 								techMinYear2, manageList);
 						System.out.println("职务等级：  " + techSecMaxLevel);
 						System.out.println("任职年限：  " + officeTime2);
-						int curLevel2 = profSalaryManage.getPayLevel(
+						int curLevel2 = 0;
+						if (profSalaryManage.getPayLevel(
+								techSecMaxLevel,
+								officeTime2,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel2 = profSalaryManage.getPayLevel(
 								techSecMaxLevel,
 								officeTime2,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel2 < profSalaryManage.findProfPosSalByLevel(
 								14 - techSecMaxLevel).getStartPayLevel())
 							curLevel2 = profSalaryManage.findProfPosSalByLevel(
@@ -501,7 +547,7 @@ public class LevelSalaryChange {
 						worMinYear1 = worList.get(0).getTime();
 					}
 				} else {
-					for (int i = 0; i < worLength; i++) {
+					for (int i = 0; i < worLength - 1; i++) {
 						for (int j = i + 1; j < worLength; j++) {
 							if (worList.get(i).getGanhuoLevel() < worList
 									.get(j).getGanhuoLevel()) {
@@ -536,12 +582,20 @@ public class LevelSalaryChange {
 							int curOfficeTime = worMinYear1;
 							System.out.println("职务等级：  " + worMaxLevel);
 							System.out.println("任职年限：  " + curOfficeTime);
-							int curLevel = workerSalaryManage.getPayLevel(
+							int curLevel = 0;
+							if (workerSalaryManage.getPayLevel(
+									worMaxLevel,
+									curOfficeTime,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime)) != null) {
+								curLevel = workerSalaryManage.getPayLevel(
 									worMaxLevel,
 									curOfficeTime,
 									getSalaryChangeYears(attendWorkDate,
 											array1, array2, arrayNum, eduList,
 											failTime));
+							}
 							if (curLevel < workerSalaryManage
 									.findWorPosSalByLevel(7 - worMaxLevel)
 									.getStartPayLevel())
@@ -558,12 +612,20 @@ public class LevelSalaryChange {
 							int officeTime1 = worMinYear1;
 							System.out.println("职务等级：  " + worMaxLevel);
 							System.out.println("任职年限：  " + officeTime1);
-							int curLevel1 = workerSalaryManage.getPayLevel(
+							int curLevel1 = 0;
+							if (workerSalaryManage.getPayLevel(
+									worMaxLevel,
+									officeTime1,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime)) != null) {
+								curLevel1 = workerSalaryManage.getPayLevel(
 									worMaxLevel,
 									officeTime1,
 									getSalaryChangeYears(attendWorkDate,
 											array1, array2, arrayNum, eduList,
 											failTime));
+							}
 							if (curLevel1 < workerSalaryManage
 									.findWorPosSalByLevel(7 - worMaxLevel)
 									.getStartPayLevel())
@@ -580,12 +642,20 @@ public class LevelSalaryChange {
 							int officeTime2 = worMinYear1;
 							System.out.println("职务等级：  " + worMaxLevel);
 							System.out.println("任职年限：  " + officeTime2);
-							int curLevel2 = workerSalaryManage.getPayLevel(
+							int curLevel2 = 0;
+							if (workerSalaryManage.getPayLevel(
+									worMaxLevel,
+									officeTime2,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime)) != null) {
+								curLevel2 = workerSalaryManage.getPayLevel(
 									worMaxLevel,
 									officeTime2,
 									getSalaryChangeYears(attendWorkDate,
 											array1, array2, arrayNum, eduList,
 											failTime));
+							}
 							if (curLevel2 < workerSalaryManage
 									.findWorPosSalByLevel(7 - worMaxLevel)
 									.getStartPayLevel())
@@ -639,7 +709,7 @@ public class LevelSalaryChange {
 						manageMinYear1 = manageList.get(0).getTime();
 					}
 				} else {
-					for (int i = 0; i < manageLength; i++) {
+					for (int i = 0; i < manageLength - 1; i++) {
 						for (int j = i + 1; j < manageLength; j++) {
 							if (manageList.get(i).getGanhuoLevel() < manageList
 									.get(j).getGanhuoLevel()) {
@@ -676,7 +746,7 @@ public class LevelSalaryChange {
 						techMinYear1 = techList.get(0).getTime();
 					}
 				} else {
-					for (int i = 0; i < techLength; i++) {
+					for (int i = 0; i < techLength - 1; i++) {
 						for (int j = i + 1; j < techLength; j++) {
 							if (techList.get(i).getGanhuoLevel() < techList
 									.get(j).getGanhuoLevel()) {
@@ -713,11 +783,18 @@ public class LevelSalaryChange {
 								manageMinYear1, techList);
 						System.out.println("职务等级：  " + manageMaxLevel);
 						System.out.println("任职年限：  " + curOfficeTime);
-						int curLevel = manageSalaryManage.getPayLevel(
+						int curLevel = 0;
+						if (manageSalaryManage.getPayLevel(
+								11 - manageMaxLevel,
+								curOfficeTime,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel = manageSalaryManage.getPayLevel(
 								11 - manageMaxLevel,
 								curOfficeTime,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel < manageSalaryManage.findManPosSalByLevel(
 								11 - manageMaxLevel).getStartPayLevel())
 							curLevel = manageSalaryManage.findManPosSalByLevel(
@@ -732,11 +809,18 @@ public class LevelSalaryChange {
 								manageMinYear1, techList);
 						System.out.println("职务等级：  " + manageMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
-						int curLevel1 = manageSalaryManage.getPayLevel(
+						int curLevel1 = 0;
+						if (manageSalaryManage.getPayLevel(
+								11 - manageMaxLevel,
+								officeTime1,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel1 = manageSalaryManage.getPayLevel(
 								11 - manageMaxLevel,
 								officeTime1,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel1 < manageSalaryManage
 								.findManPosSalByLevel(11 - manageMaxLevel)
 								.getStartPayLevel())
@@ -753,11 +837,18 @@ public class LevelSalaryChange {
 								manageSecMaxLevel, manageMinYear2, techList);
 						System.out.println("职务等级：  " + manageSecMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
-						int curLevel2 = manageSalaryManage.getPayLevel(
+						int curLevel2 = 0;
+						if (manageSalaryManage.getPayLevel(
+								11 - manageSecMaxLevel,
+								officeTime2,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel2 = manageSalaryManage.getPayLevel(
 								11 - manageSecMaxLevel,
 								officeTime2,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel2 < manageSalaryManage
 								.findManPosSalByLevel(11 - manageSecMaxLevel)
 								.getStartPayLevel())
@@ -781,11 +872,18 @@ public class LevelSalaryChange {
 								techMinYear1, manageList);
 						System.out.println("职务等级：  " + techMaxLevel);
 						System.out.println("任职年限：  " + curOfficeTime);
-						int curLevel = profSalaryManage.getPayLevel(
+						int curLevel = 0;
+						if (profSalaryManage.getPayLevel(
+								techMaxLevel,
+								curOfficeTime,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel = profSalaryManage.getPayLevel(
 								techMaxLevel,
 								curOfficeTime,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel < profSalaryManage.findProfPosSalByLevel(
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel = profSalaryManage.findProfPosSalByLevel(
@@ -800,11 +898,18 @@ public class LevelSalaryChange {
 								techMinYear1, manageList);
 						System.out.println("职务等级：  " + techMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
-						int curLevel1 = profSalaryManage.getPayLevel(
+						int curLevel1 = 0;
+						if (profSalaryManage.getPayLevel(
+								techMaxLevel,
+								officeTime1,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel1 = profSalaryManage.getPayLevel(
 								techMaxLevel,
 								officeTime1,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel1 < profSalaryManage.findProfPosSalByLevel(
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel1 = profSalaryManage.findProfPosSalByLevel(
@@ -819,11 +924,18 @@ public class LevelSalaryChange {
 								techMinYear2, manageList);
 						System.out.println("职务等级：  " + techSecMaxLevel);
 						System.out.println("任职年限：  " + officeTime2);
-						int curLevel2 = profSalaryManage.getPayLevel(
+						int curLevel2 = 0;
+						if (profSalaryManage.getPayLevel(
+								techSecMaxLevel,
+								officeTime2,
+								getSalaryChangeYears(attendWorkDate, array1,
+										array2, arrayNum, eduList, failTime)) != null) {
+							curLevel2 = profSalaryManage.getPayLevel(
 								techSecMaxLevel,
 								officeTime2,
 								getSalaryChangeYears(attendWorkDate, array1,
 										array2, arrayNum, eduList, failTime));
+						}
 						if (curLevel2 < profSalaryManage.findProfPosSalByLevel(
 								14 - techSecMaxLevel).getStartPayLevel())
 							curLevel2 = profSalaryManage.findProfPosSalByLevel(
@@ -839,46 +951,46 @@ public class LevelSalaryChange {
 				int eduLength = eduList.size();
 				for (int i = 0; i < eduLength; i++) {
 					if (eduList.get(i).getTime() >= 2006) {
-						if (eduList.get(i).getGanhuo() == "专科") {
+						if (eduList.get(i).getGanhuo().equals("专科")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 5) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 5;
-						} else if (eduList.get(i).getGanhuo() == "本科") {
+						} else if (eduList.get(i).getGanhuo().equals("本科")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 7) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 7;
-						} else if (eduList.get(i).getGanhuo() == "双学士") {
+						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 9) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 9;
-						} else if (eduList.get(i).getGanhuo() == "硕士") {
+						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 11) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 11;
-						} else if (eduList.get(i).getGanhuo() == "博士") {
+						} else if (eduList.get(i).getGanhuo().equals("博士")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 14) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 14;
 						}
 					} else {
-						if (eduList.get(i).getGanhuo() == "专科") {
+						if (eduList.get(i).getGanhuo().equals("专科")) {
 							if ((new Date().getYear() - 2006 + 5) > level)
 								level = new Date().getYear() - 2006 + 5;
-						} else if (eduList.get(i).getGanhuo() == "本科") {
+						} else if (eduList.get(i).getGanhuo().equals("本科")) {
 							if ((new Date().getYear() - 2006 + 7) > level)
 								level = new Date().getYear() - 2006 + 7;
-						} else if (eduList.get(i).getGanhuo() == "双学士") {
+						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
 							if ((new Date().getYear() - 2006 + 9) > level)
 								level = new Date().getYear() - 2006 + 9;
-						} else if (eduList.get(i).getGanhuo() == "硕士") {
+						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
 							if ((new Date().getYear() - 2006 + 11) > level)
 								level = new Date().getYear() - 2006 + 11;
-						} else if (eduList.get(i).getGanhuo() == "博士") {
+						} else if (eduList.get(i).getGanhuo().equals("博士")) {
 							if ((new Date().getYear() - 2006 + 14) > level)
 								level = new Date().getYear() - 2006 + 14;
 						}
@@ -900,7 +1012,7 @@ public class LevelSalaryChange {
 						worMinYear1 = worList.get(0).getTime();
 					}
 				} else {
-					for (int i = 0; i < worLength; i++) {
+					for (int i = 0; i < worLength - 1; i++) {
 						for (int j = i + 1; j < worLength; j++) {
 							if (worList.get(i).getGanhuoLevel() < worList
 									.get(j).getGanhuoLevel()) {
@@ -935,12 +1047,20 @@ public class LevelSalaryChange {
 							int curOfficeTime = worMinYear1;
 							System.out.println("职务等级：  " + worMaxLevel);
 							System.out.println("任职年限：  " + curOfficeTime);
-							int curLevel = workerSalaryManage.getPayLevel(
+							int curLevel = 0;
+							if (workerSalaryManage.getPayLevel(
+									worMaxLevel,
+									curOfficeTime,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime)) != null) {
+								curLevel = workerSalaryManage.getPayLevel(
 									worMaxLevel,
 									curOfficeTime,
 									getSalaryChangeYears(attendWorkDate,
 											array1, array2, arrayNum, eduList,
 											failTime));
+							}
 							if (curLevel < workerSalaryManage
 									.findWorPosSalByLevel(7 - worMaxLevel)
 									.getStartPayLevel())
@@ -956,12 +1076,20 @@ public class LevelSalaryChange {
 							int officeTime1 = worMinYear1;
 							System.out.println("职务等级：  " + worMaxLevel);
 							System.out.println("任职年限：  " + officeTime1);
-							int curLevel1 = workerSalaryManage.getPayLevel(
+							int curLevel1 = 0;
+							if (workerSalaryManage.getPayLevel(
+									worMaxLevel,
+									officeTime1,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime)) != null) {
+								curLevel1 = workerSalaryManage.getPayLevel(
 									worMaxLevel,
 									officeTime1,
 									getSalaryChangeYears(attendWorkDate,
 											array1, array2, arrayNum, eduList,
 											failTime));
+							}
 							if (curLevel1 < workerSalaryManage
 									.findWorPosSalByLevel(7 - worMaxLevel)
 									.getStartPayLevel())
@@ -977,12 +1105,20 @@ public class LevelSalaryChange {
 							int officeTime2 = worMinYear1;
 							System.out.println("职务等级：  " + worMaxLevel);
 							System.out.println("任职年限：  " + officeTime2);
-							int curLevel2 = workerSalaryManage.getPayLevel(
+							int curLevel2 = 0;
+							if (workerSalaryManage.getPayLevel(
+									worMaxLevel,
+									officeTime2,
+									getSalaryChangeYears(attendWorkDate,
+											array1, array2, arrayNum, eduList,
+											failTime)) != null) {
+								curLevel2 = workerSalaryManage.getPayLevel(
 									worMaxLevel,
 									officeTime2,
 									getSalaryChangeYears(attendWorkDate,
 											array1, array2, arrayNum, eduList,
 											failTime));
+							}
 							if (curLevel2 < workerSalaryManage
 									.findWorPosSalByLevel(7 - worMaxLevel)
 									.getStartPayLevel())
@@ -1000,46 +1136,46 @@ public class LevelSalaryChange {
 				int eduLength = eduList.size();
 				for (int i = 0; i < eduLength; i++) {
 					if (eduList.get(i).getTime() >= 2006) {
-						if (eduList.get(i).getGanhuo() == "专科") {
+						if (eduList.get(i).getGanhuo().equals("专科")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 5) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 5;
-						} else if (eduList.get(i).getGanhuo() == "本科") {
+						} else if (eduList.get(i).getGanhuo().equals("本科")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 7) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 7;
-						} else if (eduList.get(i).getGanhuo() == "双学士") {
+						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 9) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 9;
-						} else if (eduList.get(i).getGanhuo() == "硕士") {
+						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 11) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 11;
-						} else if (eduList.get(i).getGanhuo() == "博士") {
+						} else if (eduList.get(i).getGanhuo().equals("博士")) {
 							if ((new Date().getYear()
 									- eduList.get(i).getTime() + 14) > level)
 								level = new Date().getYear()
 										- eduList.get(i).getTime() + 14;
 						}
 					} else {
-						if (eduList.get(i).getGanhuo() == "专科") {
+						if (eduList.get(i).getGanhuo().equals("专科")) {
 							if ((new Date().getYear() - 2006 + 5) > level)
 								level = new Date().getYear() - 2006 + 5;
-						} else if (eduList.get(i).getGanhuo() == "本科") {
+						} else if (eduList.get(i).getGanhuo().equals("本科")) {
 							if ((new Date().getYear() - 2006 + 7) > level)
 								level = new Date().getYear() - 2006 + 7;
-						} else if (eduList.get(i).getGanhuo() == "双学士") {
+						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
 							if ((new Date().getYear() - 2006 + 9) > level)
 								level = new Date().getYear() - 2006 + 9;
-						} else if (eduList.get(i).getGanhuo() == "硕士") {
+						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
 							if ((new Date().getYear() - 2006 + 11) > level)
 								level = new Date().getYear() - 2006 + 11;
-						} else if (eduList.get(i).getGanhuo() == "博士") {
+						} else if (eduList.get(i).getGanhuo().equals("博士")) {
 							if ((new Date().getYear() - 2006 + 14) > level)
 								level = new Date().getYear() - 2006 + 14;
 						}
