@@ -163,8 +163,7 @@
 						</dl>
 
 						<dl class="dl-horizontal">
-							<dt>聘岗级别
-							<dt>
+							<dt>聘岗级别</dt>
 							<dd>
 
 								<select id="joblevel" name="employee.jobLevel"
