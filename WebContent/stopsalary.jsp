@@ -59,13 +59,6 @@
 					</tr>
 					
 					<tr>
-						<td>姓名</td>
-						<td></td>
-						<td>职工号</td>
-						<td></td>
-					</tr>
-					
-					<tr>
 						<td>工资停发时间</td>
 						<td><input type="text" style="border-style:none;width:99%;"/></td>
 						<td>业务处理时间</td>
