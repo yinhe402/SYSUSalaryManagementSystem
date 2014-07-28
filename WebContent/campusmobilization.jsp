@@ -32,10 +32,10 @@
 				 
 				
 				<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><input name="mob1" type="text" value="" class="input1"/></td>
+				<td><input name="mob1" type="text" value="" class="input1"/></td>
+				<td><input name="mob1" type="text" value="" class="input1"/></td>
+				<td><input name="mob1" type="text" value="" class="input1"/></td>
 				<td><input name="mob1" type="text" value="填写变更依据" class="input1"/></td>
 				<td><input name="mob2" type="text" value="填写备注" class="input1"/></td>
 			    <tr>
