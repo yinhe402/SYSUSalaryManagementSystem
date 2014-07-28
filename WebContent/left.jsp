@@ -36,9 +36,9 @@
 <div id="pNode1_sub2_s3" style="padding-left:40px;">·<a href="bufabukou.jsp" target="mainFrame">补发补扣处理</a></div>
    <div id="pNodel_sub3" onclick="showList(this.id)" style="padding-left:40px; cursor:pointer">+常规工资变动</div>
       <div id="pNodel_sub3_ljf" style="display:none;"> 
-      <div id="pNode1_sub3_s1" style="padding-left:60px;">·<a href="campusmobilization" target="mainFrame">校内调动</a></div> 
-      <div id="pNode1_sub3_s2" style="padding-left:60px;">·<a href="academictitlechange" target="mainFrame">职称变动</a></div> 
-	  <div id="pNode1_sub3_s3" style="padding-left:60px;">·<a href="positionchange" target="mainFrame">职务变动</a></div> 
+      <div id="pNode1_sub3_s1" style="padding-left:60px;">·<a href="campusmobilization.jsp" target="mainFrame">校内调动</a></div> 
+      <div id="pNode1_sub3_s2" style="padding-left:60px;">·<a href="academictitlechange.jsp" target="mainFrame">职称变动</a></div> 
+	  <div id="pNode1_sub3_s3" style="padding-left:60px;">·<a href="positionchange.jsp" target="mainFrame">职务变动</a></div> 
         </div>
 	  <div id="pNodel_sub4" onclick="showList(this.id)" style="padding-left:40px; cursor:pointer">+特殊情况工资变动</div>
       <div id="pNodel_sub4_ljf" style="display:none;"> 
@@ -58,15 +58,9 @@
 </div> 
 <div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;"> + 基本工资体系</div> 
 <div id="pNode2_ljf" style="display:none;"> 
-<<<<<<< HEAD
-<div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a  href="getData" target="mainFrame">基本工资标准</a></div>  
-<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a href="salaryComputeFormula.jsp" target="mainFrame">工资计算公式</a></div> 
-<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a>基本工资（津补贴）项目</a></div> 
-=======
 <div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="getData" target="mainFrame">基本工资标准</a></div>  
 <div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a href="salaryComputeFormula.jsp" target="mainFrame">工资计算公式</a></div> 
 <div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·基本工资（津补贴）项目</div> 
->>>>>>> 995ba2567674fd4c278b6fdfed221d30acd24ab2
 </div> 
 
 <div id="pNode3" onclick="showList(this.id);" style="cursor:pointer;">+职工信息获取</div> 

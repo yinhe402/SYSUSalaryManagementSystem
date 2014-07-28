@@ -19,6 +19,8 @@
 	<bean name="initSalaryCompute" class="com.sms.action.InitSalaryCompute" scope="prototype"></bean>
 	<bean name="bonusAction" class="com.sms.action.BonusAction" scope="prototype"></bean>
 	<bean name="autoSalary" class="com.sms.action.AutoSalary" scope="prototype"></bean>
+	<bean name="changeAction" class="com.sms.action.ChangeAction" scope="prototype"></bean>
+		
 	<bean name="levelSalaryChange" class="com.sms.action.LevelSalaryChange" scope="prototype"></bean>
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.sms.interceptor.CheckLogin"
@@ -67,6 +69,11 @@
 
 	<bean name="specialSalaryRecoveryManage" class="com.sms.service.impl.SpecialSalaryRecoveryManageImp"></bean>
 	<bean name="specialSalaryRecoveryDao" class="com.sms.dao.impl.SpecialSalaryRecoveryDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean name="departmentChangeManage" class="com.sms.service.impl.DepartmentChangeManageImp"></bean>
+	<bean name="departmentChangeDao" class="com.sms.dao.impl.DepartmentChangeDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

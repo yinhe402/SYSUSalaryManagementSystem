@@ -1,6 +1,6 @@
 package com.sms.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +16,7 @@ import javax.persistence.Table;
 public class DepartmentChange {
 	private Integer id;//主键
 	private Integer eId;//职工号
+	private String name;//姓名
 	private String oldDepartment;//原单位
 	private String newDepartment;//新单位
 	private Date depChangeDate;//单位变动时间
@@ -40,6 +41,17 @@ public class DepartmentChange {
 	}
 	public void setEId(Integer eId) {
 		this.eId = eId;
+	}
+	
+	/*
+	 * 姓名。
+	 */
+	@Column(name="name")
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/*

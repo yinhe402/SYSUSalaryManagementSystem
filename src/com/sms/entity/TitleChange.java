@@ -15,7 +15,8 @@ import javax.persistence.Table;
 @Table(name="titleChange")
 public class TitleChange {
 	private Integer id;//主键
-	private Integer eId;//职工号	
+	private Integer eId;//职工号
+	private String name;//姓名
 	private String newHireTitle; //新聘任职称
 	private Integer newTitleLevel; //新职称级别
 	private Date titleChangeDate;//职务变动时间
@@ -39,6 +40,17 @@ public class TitleChange {
 	}
 	public void setEId(Integer eId) {
 		this.eId = eId;
+	}
+	
+	/*
+	 * 姓名
+	 */
+	@Column(name="name")
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	/*
