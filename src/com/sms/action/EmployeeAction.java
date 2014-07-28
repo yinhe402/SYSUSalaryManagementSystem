@@ -28,7 +28,6 @@ public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
 	private File excelFile;
-	
 	@Resource
 	private IEmployeeManage employeeManage;
 
