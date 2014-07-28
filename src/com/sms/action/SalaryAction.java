@@ -144,12 +144,9 @@ public class SalaryAction {
 			salary = salaryManage.findSalaryById(eid);
 			List<Salary> lst = new ArrayList<Salary>();
 			lst.add(salary);
-			System.out.println("Here1");
 			String []tableHeader={"职工号","岗位工资","薪级工资","地区差","岗位津贴","教护补贴","特殊津贴","独生子女补贴","其它补贴","电话补贴","月增资额","补发工资","本月总工资","备注"};
 			short cellNumber = (short)tableHeader.length;
-			System.out.println("Here2");
 			HSSFWorkbook workbook = new HSSFWorkbook();
-			System.out.println("Here3");
 			HSSFCell cell = null;
 			HSSFRow row = null;
 			HSSFCellStyle style_header = workbook.createCellStyle();

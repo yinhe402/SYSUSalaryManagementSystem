@@ -315,6 +315,7 @@
 	邮箱:<s:property value="#session.addedEmployee.email" />
 		<br />
 	性别：	<s:if test="#session.addedEmployee.gender"> 男</s:if>
+
 		<s:else>女</s:else>
 		<br />
 	出生日期：<s:property value="#session.addedEmployee.birthday" />

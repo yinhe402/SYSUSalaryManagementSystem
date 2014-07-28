@@ -358,6 +358,12 @@ public class NewEmployeeAction extends ActionSupport {
 	// 获取实际工作年限
 	public int getRealWorkTime(Date attendWorkDate, ArrayList<Date> array1,
 			ArrayList<Date> array2, int arrayNum) {
+		Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
+		String baseDateStr = "2006-07-01";
+		baseWorkDate = strToDate(baseDateStr);
+		if (attendWorkDate.after(baseWorkDate))
+			return 0;
+		
 		int realWorkTime = 0;
 		realWorkTime = 2006 - (1900 + attendWorkDate.getYear()) + 1
 				- getBreakUpYears(array1, array2, arrayNum);
@@ -368,7 +374,14 @@ public class NewEmployeeAction extends ActionSupport {
 	public int getSalaryChangeYears(Date attendWorkDate,
 			ArrayList<Date> array1, ArrayList<Date> array2, int arrayNum,
 			ArrayList<ExperienceInfo> eduList, int failTime) {
+		Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
+		String baseDateStr = "2006-07-01";
+		baseWorkDate = strToDate(baseDateStr);
+		if (attendWorkDate.after(baseWorkDate))
+			return 0;
+		
 		int salaryChangeTime = 0;
+		
 		salaryChangeTime = getRealWorkTime(attendWorkDate, array1, array2,
 				arrayNum)
 				+ getBeforeWorkTime(eduList)
@@ -1324,6 +1337,8 @@ public class NewEmployeeAction extends ActionSupport {
 				}
 			}
 		}
+		if (level == 0)
+			level = 1;
 		System.out.println("Final Level="+level);
 		return level;
 	}
@@ -1435,11 +1450,12 @@ public class NewEmployeeAction extends ActionSupport {
 			Map session = ActionContext.getContext().getSession();
 			session.put("ssInfo", startSalaryInfo);
 			session.put("sYear", startWorkYear);
+			session.put("fTime", failTime+"");
 			session.put("mList", manageList);
 			session.put("tList", techList);
 			session.put("wList", worList);
 			session.put("eList", eduList);
-			session.put("fTime", failTime);
+			
 
 			return "success";
 		}
