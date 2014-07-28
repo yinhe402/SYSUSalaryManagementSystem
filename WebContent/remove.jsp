@@ -39,9 +39,9 @@
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label" for="yesorno">是否进行工资减员:</label>
+					<label class="control-label" for="yesorno">业务处理:</label>
 					<div class="controls">
-					<select id="yesorno"><option selected="selected" value="是">是</option><option value="否">否</option></select>
+					<select id="yesorno"><option selected="selected" value="是">停薪</option><option value="否">取消工资关系</option></select>
 					</div>
 				</div>
 				

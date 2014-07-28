@@ -21,6 +21,8 @@
 	function addSalaryInfo() {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
+
+	
 		myform.action = "newEmployee/importStaff_newWorkerSalary_yiqixin";
 		myform.method = "post";
 		myform.submit();
@@ -29,14 +31,14 @@
 	function modifySalaryInfo() {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
+
 		myform.action = "newEmployee/modifySalaryInfo_success";
 		myform.method = "post";
 		myform.submit();
 	}
-	
 
 	function addManExperience() {
-		
+
 		label0 = document.createElement("label");
 		label0.setAttribute("id", "label" + i);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
@@ -48,7 +50,7 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "'manWorkDate'+i");
+		a.setAttribute("name", "manWorkDate" + i);
 		a.setAttribute("id", "Title" + i);
 		label0.appendChild(a);
 
@@ -58,7 +60,7 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "'manExperience'+i");
+		b.setAttribute("name", "manExperience" + i);
 		b.setAttribute("id", "Title" + i);
 		label0.appendChild(b);
 
@@ -70,8 +72,8 @@
 		textField2.setAttribute("value", "删除");
 
 		textField2.onclick = function() {
-			delManExperience(this)
-		}
+			delManExperience(this);
+		};
 		label0.appendChild(textField2);
 
 		var div = document.createElement("div");
@@ -79,8 +81,8 @@
 		label0.appendChild(div);
 
 		experienceDiv.appendChild(label0);
-		topWin.document.getElementById("i").value = i;
 		i++;
+		topWin.document.getElementById("i").value = i;
 	}
 
 	function delManExperience(o) {
@@ -102,7 +104,7 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "'proWorkDate'+j");
+		a.setAttribute("name", "proWorkDate" + j);
 		a.setAttribute("id", "Title" + j);
 		label0.appendChild(a);
 
@@ -112,7 +114,7 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "'proExperience'+j");
+		b.setAttribute("name", "proExperience" + j);
 		b.setAttribute("id", "Title" + j);
 		label0.appendChild(b);
 
@@ -124,8 +126,8 @@
 		textField2.setAttribute("value", "删除");
 
 		textField2.onclick = function() {
-			delProExperience(this)
-		}
+			delProExperience(this);
+		};
 		label0.appendChild(textField2);
 
 		var div = document.createElement("div");
@@ -133,8 +135,9 @@
 		label0.appendChild(div);
 
 		experienceDiv.appendChild(label0);
-		topWin.document.getElementById("j").value = j;
 		j++;
+		topWin.document.getElementById("j").value = j;
+		
 	}
 
 	function delProExperience(o) {
@@ -155,7 +158,7 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "'workerWorkDate'+m");
+		a.setAttribute("name", "workerWorkDate" + m);
 		a.setAttribute("id", "Title" + m);
 		label0.appendChild(a);
 
@@ -165,7 +168,7 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "'workerExperience'+m");
+		b.setAttribute("name", "workerExperience" + m);
 		b.setAttribute("id", "Title" + m);
 		label0.appendChild(b);
 
@@ -177,8 +180,8 @@
 		textField2.setAttribute("value", "删除");
 
 		textField2.onclick = function() {
-			delWorkerExperience(this)
-		}
+			delWorkerExperience(this);
+		};
 		label0.appendChild(textField2);
 
 		var div = document.createElement("div");
@@ -186,14 +189,16 @@
 		label0.appendChild(div);
 
 		experienceDiv.appendChild(label0);
-		topWin.document.getElementById("m").value = m;
 		m++;
+		topWin.document.getElementById("m").value = m;
+		
 	}
 
 	function delWorkerExperience(o) {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-		mainDocument.getElementById("workerExperience").removeChild(o.parentNode);
+		mainDocument.getElementById("workerExperience").removeChild(
+				o.parentNode);
 	}
 
 	function addEduExperience() {
@@ -208,7 +213,7 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "'eduWorkDate'+k");
+		a.setAttribute("name", "eduWorkDate" + k);
 		a.setAttribute("id", "Title" + k);
 		label0.appendChild(a);
 
@@ -218,7 +223,7 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "'eduExperience'+k");
+		b.setAttribute("name", "eduExperience" + k);
 		b.setAttribute("id", "Title" + k);
 		label0.appendChild(b);
 
@@ -230,8 +235,8 @@
 		textField2.setAttribute("value", "删除");
 
 		textField2.onclick = function() {
-			delEduExperience(this)
-		}
+			delEduExperience(this);
+		};
 		label0.appendChild(textField2);
 
 		var div = document.createElement("div");
@@ -239,8 +244,9 @@
 		label0.appendChild(div);
 
 		experienceDiv.appendChild(label0);
-		topWin.document.getElementById("k").value = k;
 		k++;
+		topWin.document.getElementById("k").value = k;
+		
 	}
 
 	function delEduExperience(o) {
@@ -250,7 +256,7 @@
 	}
 
 	function addBreakExperience() {
-	    label0 = document.createElement("label");
+		label0 = document.createElement("label");
 		label0.setAttribute("id", "label" + l);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("breakExperience");
@@ -261,7 +267,7 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "'breakWorkDate'+l");
+		a.setAttribute("name", "breakWorkDate" + l);
 		a.setAttribute("id", "Title" + l);
 		label0.appendChild(a);
 
@@ -271,7 +277,7 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "'breakExperience'+l");
+		b.setAttribute("name", "breakExperience" + l);
 		b.setAttribute("id", "Title" + l);
 		label0.appendChild(b);
 
@@ -283,8 +289,8 @@
 		textField2.setAttribute("value", "删除");
 
 		textField2.onclick = function() {
-			delBreakExperience(this)
-		}
+			delBreakExperience(this);
+		};
 		label0.appendChild(textField2);
 
 		var div = document.createElement("div");
@@ -292,16 +298,17 @@
 		label0.appendChild(div);
 
 		experienceDiv.appendChild(label0);
-		topWin.document.getElementById("l").value = l;
 		l++;
+		topWin.document.getElementById("l").value = l;
+		
 	}
 
 	function delBreakExperience(o) {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-		mainDocument.getElementById("breakExperience").removeChild(o.parentNode);
+		mainDocument.getElementById("breakExperience")
+				.removeChild(o.parentNode);
 	}
-	
 </script>
 </head>
 <body>
@@ -392,12 +399,10 @@
 					</dl>
 
 					<dl class="dl-horizontal">
-						<dt>
-							考核不合格次数<span style="color:red">*</span>
-						</dt>
+						<dt>考核不合格次数</dt>
 						<dd>
 
-							<input id="f2" type="text" name="failTime" size=20>
+							<input type="text" name="failTime" size=20>
 						</dd>
 					</dl>
 
@@ -406,7 +411,7 @@
 							工资岗位级别<span style="color:red">*</span>
 						</dt>
 						<dd>
-							<input id="f3" type="text" name="startSalaryInfo.positionLevel"
+							<input id="f2" type="text" name="startSalaryInfo.positionLevel"
 								size=20>
 						</dd>
 					</dl>
@@ -418,7 +423,8 @@
 							起薪时间<span style="color:red">*</span>
 						</dt>
 						<dd>
-							<input type="text" id="f4" name="startSalaryInfo.startSalaryDate">
+							<input type="text" id="f3" class="datepicker"
+								name="startSalaryInfo.startSalaryDate">
 
 						</dd>
 					</dl>
@@ -429,7 +435,8 @@
 							起始工作时间<span style="color:red">*</span>
 						</dt>
 						<dd>
-							<input type="text" id="f5" name="startWorkYear">
+							<input type="text" id="f4" class="datepicker"
+								name="startWorkYear">
 						</dd>
 					</dl>
 
@@ -439,7 +446,7 @@
 						</dt>
 						<dd>
 
-							<input id="f6" type="text" name="startSalaryInfo.salarySeries">
+							<input id="f5" type="text" name="startSalaryInfo.salarySeries">
 						</dd>
 					</dl>
 
@@ -470,8 +477,8 @@
 				class="btn btn-success" onclick="addProExperience()">增加</button>
 		</div>
 		<s:textarea name="j" id="j" style="display:none;"></s:textarea>
-		
-		
+
+
 
 		<div id="workerExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">工人系列经历</span>
@@ -480,24 +487,24 @@
 		</div>
 		<s:textarea name="m" id="m" style="display:none;"></s:textarea>
 
-        <div id="eduExperience" style="text-align:center; margin-top:50px;">
+		<div id="eduExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">教育经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addEduExperience()">增加</button>
 		</div>
 		<s:textarea name="k" id="k" style="display:none;"></s:textarea>
-		
-        <div id="breakExperience" style="text-align:center; margin-top:50px;">
+
+		<div id="breakExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">中断工作经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addBreakExperience()">增加</button>
 		</div>
 		<s:textarea name="l" id="l" style="display:none;"></s:textarea>
-		
-		
 
-		<button type="button" style="margin-left: 45%; margin-top:50px;" class="btn btn-success"
-			onclick="addSalaryInfo()">提交</button>
+
+
+		<button type="button" style="margin-left: 45%; margin-top:50px;"
+			class="btn btn-success" onclick="addSalaryInfo()">提交</button>
 
 	</s:form>
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -506,6 +513,27 @@
 		src="bootstrap/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/liveValidation.js"></script>
+	<script type="text/javascript">
+		$(".datepicker").datepicker({
+			format : 'yyyy-mm-dd',
+		});
+
+		for ( var y = 1; y < 6; y++) {
+			var em = new LiveValidation("f" + y, {
+				validMessage : " ",
+				wait : 500
+			}, {
+				onlyOnSubmit : true
+			});
+			em.add(Validate.Presence, {
+				failureMessage : "必填"
+			});
+		}
+
+		
+		
+	</script>
+
 
 </body>
 

@@ -126,7 +126,7 @@ public class ChangeAction {
 			return null;
 		}*/
 		/*return "fail";*/
-		if (true) {
+		if (SchoolInnerChange().equals("success")) {
 			List<DepartmentChange> lst = new ArrayList<DepartmentChange>();
 			departmentChange.setDepChangeDate(new Date());
 			lst.add(departmentChange);
