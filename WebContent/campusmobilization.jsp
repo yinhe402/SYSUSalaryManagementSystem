@@ -11,6 +11,20 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type="text/javascript">
+		//var myfrom=document.getElementById("myform1");
+		
+		function exportExcel()
+		{
+			var myform=document.forms[0];
+			myform.action="change/InfoExport_success";
+			myform.method="post";
+			myform.submit();
+		}
+
+	</script>
+	
 </head>
 <body>
 	<div class="container">
@@ -32,16 +46,17 @@
 				 
 				
 				<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td><input name="mob1" type="text" value="填写变更依据" class="input1"/></td>
-				<td><input name="mob2" type="text" value="填写备注" class="input1"/></td>
+				<td><input name="departmentChange.eId" type="text" value="" class="input1"/></td>
+				<td><input name="departmentChange.name" type="text" value="" class="input1"/></td>
+				<td><input name="departmentChange.newDepartment" type="text" value="" class="input1"/></td>
+				<td><input name="departmentChange.oldDepartment" type="text" value="" class="input1"/></td>
+				<td><input name="departmentChange.according" type="text" value="填写变更依据" class="input1"/></td>
+				<td><input name="departmentChange.note" type="text" value="填写备注" class="input1"/></td>
 			    <tr>
 				
 				</tbody>
 			</table>
+			<input type="button" value="导出" onclick="exportExcel()"/>
 		</form>
 	</div>
 </body>

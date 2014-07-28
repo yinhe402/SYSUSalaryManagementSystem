@@ -363,7 +363,7 @@ public class NewEmployeeAction extends ActionSupport {
 		baseWorkDate = strToDate(baseDateStr);
 		if (attendWorkDate.after(baseWorkDate))
 			return 0;
-		
+
 		int realWorkTime = 0;
 		realWorkTime = 2006 - (1900 + attendWorkDate.getYear()) + 1
 				- getBreakUpYears(array1, array2, arrayNum);
@@ -379,9 +379,9 @@ public class NewEmployeeAction extends ActionSupport {
 		baseWorkDate = strToDate(baseDateStr);
 		if (attendWorkDate.after(baseWorkDate))
 			return 0;
-		
+
 		int salaryChangeTime = 0;
-		
+
 		salaryChangeTime = getRealWorkTime(attendWorkDate, array1, array2,
 				arrayNum)
 				+ getBeforeWorkTime(eduList)
@@ -972,13 +972,12 @@ public class NewEmployeeAction extends ActionSupport {
 							curLevel1 = manageSalaryManage
 									.findManPosSalByLevel(11 - manageMaxLevel)
 									.getStartPayLevel();
-						System.out.println("level="+level);
+						System.out.println("level=" + level);
 						if (curLevel1 > level) {
 							level = curLevel1;
 						}
-						System.out.println("level="+level);
+						System.out.println("level=" + level);
 						System.out.println("对应薪级：  " + curLevel1);
-						
 
 						System.out.println("管理系列2：");
 						int officeTime2 = getManageOfficeTime(
@@ -1005,11 +1004,11 @@ public class NewEmployeeAction extends ActionSupport {
 									.findManPosSalByLevel(
 											11 - manageSecMaxLevel)
 									.getStartPayLevel();
-						System.out.println("level="+level);
+						System.out.println("level=" + level);
 						if (curLevel2 > level) {
 							level = curLevel2;
 						}
-						System.out.println("level="+level);
+						System.out.println("level=" + level);
 						System.out.println("对应薪级：  " + curLevel2);
 					}
 				}
@@ -1100,53 +1099,53 @@ public class NewEmployeeAction extends ActionSupport {
 						System.out.println("对应薪级：  " + curLevel2);
 					}
 				}
-				level = level + (new Date().getYear()+1900 - 2006);
+				level = level + (new Date().getYear() + 1900 - 2006);
 			} else {
 				int eduLength = eduList.size();
 				for (int i = 0; i < eduLength; i++) {
 					if (eduList.get(i).getTime() >= 2006) {
 						if (eduList.get(i).getGanhuo().equals("专科")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 5) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 5;
 						} else if (eduList.get(i).getGanhuo().equals("本科")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 7) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 7;
 						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 9) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 9;
 						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 11) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 11;
 						} else if (eduList.get(i).getGanhuo().equals("博士")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 14) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 14;
 						}
 					} else {
 						if (eduList.get(i).getGanhuo().equals("专科")) {
-							if ((new Date().getYear()+1900 - 2006 + 5) > level)
-								level = new Date().getYear()+1900 - 2006 + 5;
+							if ((new Date().getYear() + 1900 - 2006 + 5) > level)
+								level = new Date().getYear() + 1900 - 2006 + 5;
 						} else if (eduList.get(i).getGanhuo().equals("本科")) {
-							if ((new Date().getYear()+1900 - 2006 + 7) > level)
-								level = new Date().getYear()+1900 - 2006 + 7;
+							if ((new Date().getYear() + 1900 - 2006 + 7) > level)
+								level = new Date().getYear() + 1900 - 2006 + 7;
 						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
-							if ((new Date().getYear()+1900 - 2006 + 9) > level)
-								level = new Date().getYear()+1900 - 2006 + 9;
+							if ((new Date().getYear() + 1900 - 2006 + 9) > level)
+								level = new Date().getYear() + 1900 - 2006 + 9;
 						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
-							if ((new Date().getYear()+1900 - 2006 + 11) > level)
-								level = new Date().getYear()+1900 - 2006 + 11;
+							if ((new Date().getYear() + 1900 - 2006 + 11) > level)
+								level = new Date().getYear() + 1900 - 2006 + 11;
 						} else if (eduList.get(i).getGanhuo().equals("博士")) {
-							if ((new Date().getYear()+1900 - 2006 + 14) > level)
-								level = new Date().getYear()+1900 - 2006 + 14;
+							if ((new Date().getYear() + 1900 - 2006 + 14) > level)
+								level = new Date().getYear() + 1900 - 2006 + 14;
 						}
 					}
 				}
@@ -1291,47 +1290,47 @@ public class NewEmployeeAction extends ActionSupport {
 				for (int i = 0; i < eduLength; i++) {
 					if (eduList.get(i).getTime() >= 2006) {
 						if (eduList.get(i).getGanhuo().equals("专科")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 5) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 5;
 						} else if (eduList.get(i).getGanhuo().equals("本科")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 7) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 7;
 						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 9) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 9;
 						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 11) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 11;
 						} else if (eduList.get(i).getGanhuo().equals("博士")) {
-							if ((new Date().getYear()+1900
+							if ((new Date().getYear() + 1900
 									- eduList.get(i).getTime() + 14) > level)
-								level = new Date().getYear()+1900
+								level = new Date().getYear() + 1900
 										- eduList.get(i).getTime() + 14;
 						}
 					} else {
 						if (eduList.get(i).getGanhuo().equals("专科")) {
-							if ((new Date().getYear()+1900 - 2006 + 5) > level)
-								level = new Date().getYear()+1900 - 2006 + 5;
+							if ((new Date().getYear() + 1900 - 2006 + 5) > level)
+								level = new Date().getYear() + 1900 - 2006 + 5;
 						} else if (eduList.get(i).getGanhuo().equals("本科")) {
-							if ((new Date().getYear()+1900 - 2006 + 7) > level)
-								level = new Date().getYear()+1900 - 2006 + 7;
+							if ((new Date().getYear() + 1900 - 2006 + 7) > level)
+								level = new Date().getYear() + 1900 - 2006 + 7;
 						} else if (eduList.get(i).getGanhuo().equals("双学士")) {
-							if ((new Date().getYear()+1900 - 2006 + 9) > level)
-								level = new Date().getYear()+1900 - 2006 + 9;
+							if ((new Date().getYear() + 1900 - 2006 + 9) > level)
+								level = new Date().getYear() + 1900 - 2006 + 9;
 						} else if (eduList.get(i).getGanhuo().equals("硕士")) {
-							if ((new Date().getYear()+1900 - 2006 + 11) > level)
-								level = new Date().getYear()+1900 - 2006 + 11;
+							if ((new Date().getYear() + 1900 - 2006 + 11) > level)
+								level = new Date().getYear() + 1900 - 2006 + 11;
 						} else if (eduList.get(i).getGanhuo().equals("博士")) {
-							if ((new Date().getYear()+1900 - 2006 + 14) > level)
-								level = new Date().getYear()+1900 - 2006 + 14;
+							if ((new Date().getYear() + 1900 - 2006 + 14) > level)
+								level = new Date().getYear() + 1900 - 2006 + 14;
 						}
 					}
 				}
@@ -1339,7 +1338,7 @@ public class NewEmployeeAction extends ActionSupport {
 		}
 		if (level == 0)
 			level = 1;
-		System.out.println("Final Level="+level);
+		System.out.println("Final Level=" + level);
 		return level;
 	}
 
@@ -1429,42 +1428,60 @@ public class NewEmployeeAction extends ActionSupport {
 			startSalaryInfo.setHireYears(getOfficeTime(manageList, techList,
 					eduList, attendWorkDate, array1, array2, l, failTime,
 					worList));// 获取任职年限
-			System.out.println("任职年限：  "+startSalaryInfo.getHireYears());
-			
+			System.out.println("任职年限：  " + startSalaryInfo.getHireYears());
+
 			startSalaryInfo.setSalaryLevel(getSalaryLevel(manageList, techList,
 					eduList, attendWorkDate, array1, array2, l, failTime,
 					worList));// 获取薪级
-			System.out.println("薪级：  "+startSalaryInfo.getSalaryLevel());
+			System.out.println("薪级：  " + startSalaryInfo.getSalaryLevel());
 
 			if (startSalaryInfo.getSalarySeries().equals("管理")) {
-				startSalaryInfo.setPositionSalary(manageSalaryManage.findManPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
-				startSalaryInfo.setLevelSalary(manageSalaryManage.findManPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
+				startSalaryInfo.setPositionSalary(manageSalaryManage
+						.findManPosSalByLevel(
+								startSalaryInfo.getPositionLevel())
+						.getSalaryStandard());
+				startSalaryInfo.setLevelSalary(manageSalaryManage
+						.findManPaySalByPayLevel(
+								startSalaryInfo.getSalaryLevel())
+						.getSalaryStandard());
 			} else if (startSalaryInfo.getSalarySeries().equals("专技")) {
-				startSalaryInfo.setPositionSalary(profSalaryManage.findProfPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
-				startSalaryInfo.setLevelSalary(profSalaryManage.findProfPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
+				startSalaryInfo.setPositionSalary(profSalaryManage
+						.findProfPosSalByLevel(
+								startSalaryInfo.getPositionLevel())
+						.getSalaryStandard());
+				startSalaryInfo.setLevelSalary(profSalaryManage
+						.findProfPaySalByPayLevel(
+								startSalaryInfo.getSalaryLevel())
+						.getSalaryStandard());
 			} else if (startSalaryInfo.getSalarySeries().equals("工人")) {
-				startSalaryInfo.setPositionSalary(workerSalaryManage.findWorkerPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
-				startSalaryInfo.setLevelSalary(workerSalaryManage.findWorkerPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
+				startSalaryInfo.setPositionSalary(workerSalaryManage
+						.findWorkerPosSalByLevel(
+								startSalaryInfo.getPositionLevel())
+						.getSalaryStandard());
+				startSalaryInfo.setLevelSalary(workerSalaryManage
+						.findWorkerPaySalByPayLevel(
+								startSalaryInfo.getSalaryLevel())
+						.getSalaryStandard());
 			}
 
 			Map session = ActionContext.getContext().getSession();
 			session.put("ssInfo", startSalaryInfo);
 			session.put("sYear", startWorkYear);
-			session.put("fTime", failTime+"");
+			session.put("fTime", failTime + "");
 			session.put("mList", manageList);
 			session.put("tList", techList);
 			session.put("wList", worList);
 			session.put("eList", eduList);
-			
 
 			return "success";
 		}
 		return "fail";
 	}
-	
+
 	public String addSalaryInfo() {
 		System.out.println("-------startSalaryInfoAction.importStaff--------"
 				+ startSalaryInfo.getEid());
+		startSalaryInfo.setOperateDate(new Date());
 		startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
 		return "success";
 	}

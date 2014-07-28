@@ -107,12 +107,18 @@
 					em.add( Validate.Email ,{ failureMessage: "格式错误" });
 					em.add( Validate.Presence ,{ failureMessage: "必填" });
 
-			    var   level   =   ["",    "1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10"]; 
+			    var   level   =   ["无",    "一级",   "二级",   "三级",   "四级",   "五级",   "六级",   "七级",   "八级",   "九级",   "十级"]; 
+			    var   levelnum = [0,1,2,3,4,5,6,7,8,9,10];
 			    var   work   =   ["无",    "正部级",   "副部级",   "正厅级",   "副厅级",   "正处级",   "副处级",   "正科级",   "副科级",   "科员",   "办事员"]; 
+			    
 			    var   title   =   ["无",    "正高级",   "副高级",   "中级",   "助理级",   "员级"];
-				var   titlelevel   =   ["",    "1",   "2",   "3",   "4",   "5",   "6",   "7",   "8",   "9",   "10",   "11",   "12",   "13"];
+			    var   titlenum = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
+				var   titlelevel   =   ["无",    "一级",   "二级",   "三级",   "四级",   "五级",   "六级",   "七级",   "八级",   "九级",   "十级",   "十一级",   "十二级",   "十三级"];
+				
+				
 				var   hirejob   =   ["无",    "高级技工",   "技师",   "高级工",   "中级工",   "初级工",   "普通工"];
-				var   joblevel   =   ["",    "1",   "2",   "3",   "4",   "5",   "6"];
+				var   jobnum   =  [0,1,2,3,4,5,6];
+				var   joblevel   =   ["无",    "技术工一级",   "技术工二级",   "技术工三级",   "技术工四级",   "技术工五级",   "普通工"];
 
 					function showA(n){
  			   			var se=document.getElementById("worklevel");
@@ -123,17 +129,17 @@
   						for(var j= 1;j <=10 ;j++)
  							if(n==j){
   								var op=document.createElement("option");
-  								op.value=level[j];
+  								op.value=levelnum[j];
   								op.text=level[j];
   								se.add(op);
   							}
   						if(n==0)
   							for(var k=0; k<=10; k++){
   								var op=document.createElement("option");
-  								op.value=level[k];
+  								op.value=levelnum[k];
   								op.text=level[k];
   								se.add(op);
-  						}
+  							}
 
 					}
 
@@ -169,7 +175,7 @@
  						if(n==1){
  							for(var k=0; k<=4; k++){
   								var op=document.createElement("option");
-  								op.value=titlelevel[k];
+  								op.value=titlenum[k];
   								op.text=titlelevel[k];
   								se.add(op);
   							}
@@ -181,7 +187,7 @@
   							se.add(op);
  							for(var k=5; k<=7; k++){
   								var op=document.createElement("option");
-  								op.value=titlelevel[k];
+  								op.value=titlenum[k];
   								op.text=titlelevel[k];
   								se.add(op);
   							}
@@ -194,7 +200,7 @@
   							se.add(op);
  							for(var k=8; k<=10; k++){
   								var op=document.createElement("option");
-  								op.value=titlelevel[k];
+  								op.value=titlenum[k];
   								op.text=titlelevel[k];
   								se.add(op);  								
   							}
@@ -206,21 +212,21 @@
   							se.add(op);
  							for(var k=11; k<=12; k++){
   								var op=document.createElement("option");
-  								op.value=titlelevel[k];
+  								op.value=titlenum[k];
   								op.text=titlelevel[k];
   								se.add(op);
   							}
   						}
   						if(n==5){  														
  							var op=document.createElement("option");
-  							op.value=titlelevel[13];
+  							op.value=titlenum[13];
   							op.text=titlelevel[13];
   							se.add(op);  							
   						}
   						if(n==0)
   							for(var k=0; k<=13; k++){
   								var op=document.createElement("option");
-  								op.value=titlelevel[k];
+  								op.value=titlenum[k];
   								op.text=titlelevel[k];
   								se.add(op);
   						}
@@ -229,15 +235,15 @@
   					function showD(n){
 
  			   			var se=document.getElementById("hiretitle");
-              var re=document.getElementById("titlelevel");
-              if(se.options.length == 6 && re.options.length != 14)
-                  return;
-						  var i=0;
- 						  for(i=6;i>=0;i--){
+ 			   			var re=document.getElementById("titlelevel");
+ 			   			if(se.options.length == 6 && re.options.length != 14)
+ 			   				return;
+						var i=0;
+ 						for(i=6;i>=0;i--){
    							  se.remove(i);
   						}
   						
- 						  if(n==1||n==2||n==3||n==4){
+ 						if(n==1||n==2||n==3||n==4){
   							 var op=document.createElement("option");
   							 op.value=title[1];
   							 op.text=title[1];
@@ -285,14 +291,14 @@
               for(var j= 1;j <=6 ;j++)
               if(n==j){
                   var op=document.createElement("option");
-                  op.value=joblevel[j];
+                  op.value=jobnum[j];
                   op.text=joblevel[j];
                   se.add(op);
                 }
               if(n==0)
                 for(var k=0; k<=6; k++){
                   var op=document.createElement("option");
-                  op.value=joblevel[k];
+                  op.value=jobnum[k];
                   op.text=joblevel[k];
                   se.add(op);
               }
@@ -316,7 +322,7 @@
               if(n==0)
                 for(var k=0; k<=6; k++){
                   var op=document.createElement("option");
-                  op.value=hirejob[k];
+                  op.value=hire[j];
                   op.text=hirejob[k];
                   se.add(op);
               }
