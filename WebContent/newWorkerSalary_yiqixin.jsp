@@ -55,28 +55,215 @@
 </s:form>
 
 <s:form id="myform1">	
-	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.ssInfo.eid}"/> <br />	
-	起薪时间(XXXX-XX-XX):<s:textfield  name="startSalaryInfo.startSalaryDate" value="%{#session.ssInfo.startSalaryDate}"/> <br />
-	<s:if test="%{#session.ssInfo.isRaised}">
-	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
-	</s:if> 
-	<s:else> 
-	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
-	</s:else>
-	起始工作时间：<s:textfield  name="startSalaryInfo.startWorkYear" value="%{#session.sYear}"/> <br />
-	考核不合格次数：<s:textfield  name="failYearTime" value="%{#session.fTime}"/> <br />
-	工资系列：<s:textfield  name="startSalaryInfo.salarySeries" value="%{#session.ssInfo.salarySeries}"/> <br />
-	工资岗位级别：<s:textfield  name="startSalaryInfo.positionLevel" value="%{#session.ssInfo.positionLevel}"/> <br />
-	套改年限（自动套用）：<s:textfield  name="startSalaryInfo.changeYears" value="%{#session.ssInfo.changeYears}"/> <br />
-	中断工龄（自动套用）：<s:textfield  name="startSalaryInfo.breakOffSeniority" value="%{#session.ssInfo.breakOffSeniority}"/> <br />
-	截至2006年6月30日实际工作年限（自动套用）：<s:textfield  name="startSalaryInfo.workYears" value="%{#session.ssInfo.workYears}"/> <br />
-	工作前工龄（自动套用）：<s:textfield  name="startSalaryInfo.seniorityBeforeWork" value="%{#session.ssInfo.seniorityBeforeWork}"/> <br />
-	大专以上不计工龄年限（自动套用）：<s:textfield  name="startSalaryInfo.learnSeniority" value="%{#session.ssInfo.learnSeniority}"/> <br />
-	任职年限（自动套用）：<s:textfield  name="startSalaryInfo.hireYears" value="%{#session.ssInfo.hireYears}"/> <br />
-	薪级（自动套用）：<s:textfield  name="startSalaryInfo.salaryLevel" value="%{#session.ssInfo.salaryLevel}"/> <br />
-	岗位工资（自动套用）：<s:textfield  name="startSalaryInfo.positionSalary" value="%{#session.ssInfo.positionSalary}"/> <br />
-	薪级工资（自动套用）：<s:textfield  name="startSalaryInfo.levelSalary" value="%{#session.ssInfo.levelSalary}"/> <br />
-	备注：<s:textfield  name="startSalaryInfo.remarks" value="%{#session.ssInfo.remarks}"/> <br />
+<div class="addEmployeeSalary">增员起薪</div>
+<div class="container" style="font-size:18px;">
+			<div class="row">
+				<div class="span6" style="margin-left:65px;">
+					<dl class="dl-horizontal">
+						<dt>
+							职工号<span style="color:red">*</span>
+						</dt>
+						<dd>
+							<s:textfield id="f1" name="startSalaryInfo.eid"
+								value="%{#session.ssInfo.eid}" maxlength="6" />
+
+						</dd>
+					</dl>
+					
+			        <dl class="dl-horizontal">
+						<dt>
+							起薪时间<span style="color:red">*</span>
+						</dt>
+						<dd>
+							<s:textfield id="f1" name="startSalaryInfo.startSalaryDate"
+								value="%{#session.ssInfo.startSalaryDate}" />
+
+						</dd>
+					</dl>
+
+
+					<dl class="dl-horizontal" style="margin-bottom:30px; ">
+						<dt style="margin-left:-35px; overflow:visible;">
+							基本工资是否上调10%<span style="color:red ;">*</span>
+						</dt>
+						<dd>
+							<s:if test="%{#session.ssInfo.isRaised}">
+								<input type="radio" style="margin-top:-3px;"name="startSalaryInfo.isRaised" value="true" checked="checked"/>是&nbsp;&nbsp;&nbsp;<input type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="false"/>否<br />
+							</s:if> 
+							<s:else> 
+								<input type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="true"/>是&nbsp;&nbsp;&nbsp;<input style="margin-top:-3px;" type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
+							</s:else>
+							
+							
+
+						</dd>
+						
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							起始工作时间<span style="color:red">*</span>
+						</dt>
+						<dd>
+                            
+							<s:textfield id="f1" name="startSalaryInfo.startWorkYear"
+								value="%{#session.sYear}" />
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							考核不合格次数<span style="color:red">*</span>
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="failYearTime"
+								value="%{#session.fTime}" />
+							
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							工资系列<span style="color:red">*</span>
+						</dt>
+						<dd>
+ 						<s:textfield id="f1" name="startSalaryInfo.salarySeries"
+								value="%{#session.ssInfo.salarySeries}"/>
+							
+						</dd>
+					</dl>
+					
+
+					<dl class="dl-horizontal">
+						<dt>
+							工资岗位级别<span style="color:red">*</span>
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.positionLevel"
+								value="%{#session.ssInfo.positionLevel}"/>
+							
+						</dd>
+					</dl>
+					
+					
+					<dl class="dl-horizontal">
+						<dt>
+							套改年限(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.changeYears"
+								value="%{#session.ssInfo.changeYears}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							中断工龄(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.breakOffSeniority"
+								value="%{#session.ssInfo.breakOffSeniority}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							截至2006年6月30日实际工作年限(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.workYears" 
+								value="%{#session.ssInfo.workYears}"/>
+							
+						</dd>
+					</dl>
+					
+					
+					<dl class="dl-horizontal">
+						<dt>
+							工作前工龄(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.seniorityBeforeWork"
+								value="%{#session.ssInfo.seniorityBeforeWork}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							大专以上不计工龄年限(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.learnSeniority"
+								value="%{#session.ssInfo.learnSeniority}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							任职年限(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.hireYears"
+								value="%{#session.ssInfo.hireYears}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							薪级()
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.salaryLevel" 
+								value="%{#session.ssInfo.salaryLevel}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							岗位工资(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.positionSalary" 
+								value="%{#session.ssInfo.positionSalary}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							薪级工资(自动套用)
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.levelSalary" 
+								value="%{#session.ssInfo.levelSalary}"/>
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							备注
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.remarks" 
+								value="%{#session.ssInfo.remarks}"/>
+							
+						</dd>
+					</dl>
+					
+				</div>
+             </div>
+</div>
+  
+	
 	
 	管理系列经历：<br />
 	<s:iterator id="mList" value="#session.mList">

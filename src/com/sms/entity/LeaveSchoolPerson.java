@@ -18,7 +18,8 @@ public class LeaveSchoolPerson {
 	private Integer eId;//职工号
 	private Date leaveSchoolDate;//离校时间
 	private String leaveReason;//离校原因
-	private Integer salaryState;//工资状态 0:在职,1:停职，2:取消工资关系
+	private String salaryState;//工资状态 在职,停职,取消工资关系
+	private Date stopData;//停发时间
 	
 	@Id
 	@GeneratedValue
@@ -66,10 +67,18 @@ public class LeaveSchoolPerson {
 	 * 工资状态
 	 */
 	@Column(name="salaryState")
-	public Integer getSalaryState() {
+	public String getSalaryState() {
 		return salaryState;
 	}
-	public void setSalaryState(Integer salaryState) {
+	public void setSalaryState(String salaryState) {
 		this.salaryState = salaryState;
+	}
+	
+	@Column(name="stopDate",nullable=false)
+	public Date getStopData() {
+		return stopData;
+	}
+	public void setStopData(Date stopData) {
+		this.stopData = stopData;
 	}
 }
