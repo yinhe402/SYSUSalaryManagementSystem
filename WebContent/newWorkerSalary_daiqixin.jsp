@@ -160,7 +160,7 @@
 	起薪时间(XXXX-XX-XX):<input type="text" name="startSalaryInfo.startSalaryDate" /><br />
 	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
 	起始工作时间：<input type="text" name="startWorkYear" /><br />
-	考核不合格次数：<input type="text" name="failYearTime" /><br />	
+	考核不合格次数：<input type="text" name="failTime" /><br />	
 	工资系列：<input type="text" name="startSalaryInfo.salarySeries" /><br />
 	工资岗位级别：<input type="text" name="startSalaryInfo.positionLevel" /><br />
 	备注：<input type="text" name="startSalaryInfo.remarks" value="无" onfocus="if (value =='无'){value =''}" onblur="if (value ==''){value='无'}"/><br />

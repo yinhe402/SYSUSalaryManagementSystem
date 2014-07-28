@@ -57,14 +57,14 @@
 <s:form id="myform1">	
 	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.ssInfo.eid}"/> <br />	
 	起薪时间(XXXX-XX-XX):<s:textfield  name="startSalaryInfo.startSalaryDate" value="%{#session.ssInfo.startSalaryDate}"/> <br />
-	<s:if test="#startSalaryInfo.isRaised">
+	<s:if test="%{#session.ssInfo.isRaised}">
 	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
 	</s:if> 
 	<s:else> 
 	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
 	</s:else>
 	起始工作时间：<s:textfield  name="startSalaryInfo.startWorkYear" value="%{#session.sYear}"/> <br />
-	考核不合格次数：<s:textfield  name="startSalaryInfo.failYearTime" value="%{#session.fTime}"/> <br />
+	考核不合格次数：<s:textfield  name="failYearTime" value="%{#session.fTime}"/> <br />
 	工资系列：<s:textfield  name="startSalaryInfo.salarySeries" value="%{#session.ssInfo.salarySeries}"/> <br />
 	工资岗位级别：<s:textfield  name="startSalaryInfo.positionLevel" value="%{#session.ssInfo.positionLevel}"/> <br />
 	套改年限（自动套用）：<s:textfield  name="startSalaryInfo.changeYears" value="%{#session.ssInfo.changeYears}"/> <br />
