@@ -33,12 +33,12 @@
 		myform.method = "post";
 		myform.submit();
 	}
-	var j = 0;
+	
 
 	function addManExperience() {
-		j++;
+		
 		label0 = document.createElement("label");
-		label0.setAttribute("id", "label" + j);
+		label0.setAttribute("id", "label" + i);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("manExperience");
 
@@ -48,8 +48,8 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "'manWorkDate'+j");
-		a.setAttribute("id", "Title" + j);
+		a.setAttribute("name", "'manWorkDate'+i");
+		a.setAttribute("id", "Title" + i);
 		label0.appendChild(a);
 
 		var span2 = document.createElement("span");
@@ -58,8 +58,8 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "'manExperience'+j");
-		b.setAttribute("id", "Title" + j);
+		b.setAttribute("name", "'manExperience'+i");
+		b.setAttribute("id", "Title" + i);
 		label0.appendChild(b);
 
 		var textField2 = document.createElement("input");
@@ -79,7 +79,8 @@
 		label0.appendChild(div);
 
 		experienceDiv.appendChild(label0);
-		topWin.document.getElementById("j").value = j;
+		topWin.document.getElementById("i").value = i;
+		i++;
 	}
 
 	function delManExperience(o) {
@@ -90,74 +91,217 @@
 	}
 
 	function addProExperience() {
+		label0 = document.createElement("label");
+		label0.setAttribute("id", "label" + j);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("proExperience");
-		experienceDiv.innerHTML += '<div style="font-weight:bold;" id="proExperience_'+j+'">年份&nbsp<s:textfield name="proWorkDate'+j+'"/> &nbsp&nbsp担任职称&nbsp<s:textfield name="proExperience'+j+'"/> <button type="button" style="margin-top:-5px;" class="btn btn-warning" onclick="delProExperience('
-				+ j + ')">删除</button> <div>';
-		j = j + 1;
+
+		var span1 = document.createElement("span");
+		span1.innerHTML = '<span style="font-weight:bold;">年份&nbsp</span>';
+		label0.appendChild(span1);
+
+		var a = document.createElement("input");
+		a.setAttribute("type", "text");
+		a.setAttribute("name", "'proWorkDate'+j");
+		a.setAttribute("id", "Title" + j);
+		label0.appendChild(a);
+
+		var span2 = document.createElement("span");
+		span2.innerHTML = '<span style="font-weight:bold;">&nbsp&nbsp担任职称&nbsp</span>';
+		label0.appendChild(span2);
+
+		var b = document.createElement("input");
+		b.setAttribute("type", "text");
+		b.setAttribute("name", "'proExperience'+j");
+		b.setAttribute("id", "Title" + j);
+		label0.appendChild(b);
+
+		var textField2 = document.createElement("input");
+		textField2.setAttribute("type", "button");
+		textField2.setAttribute("name", "button");
+		textField2.setAttribute("style", "margin-top:-8px; margin-left:10px;");
+		textField2.setAttribute("class", "btn btn-warning");
+		textField2.setAttribute("value", "删除");
+
+		textField2.onclick = function() {
+			delProExperience(this)
+		}
+		label0.appendChild(textField2);
+
+		var div = document.createElement("div");
+		div.innerHTML = '';
+		label0.appendChild(div);
+
+		experienceDiv.appendChild(label0);
 		topWin.document.getElementById("j").value = j;
+		j++;
 	}
 
 	function delProExperience(o) {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-		mainDocument.getElementById("proExperience").removeChild(
-				mainDocument.getElementById("proExperience_" + o));
-		j = j - 1;
-		topWin.document.getElementById("j").value = j;
+		mainDocument.getElementById("proExperience").removeChild(o.parentNode);
 	}
 
 	function addWorkerExperience() {
+		label0 = document.createElement("label");
+		label0.setAttribute("id", "label" + m);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("workerExperience");
-		experienceDiv.innerHTML += '<div style="font-weight:bold;" id="workerExperience_'+m+'">年份&nbsp<s:textfield name="workerWorkDate'+m+'"/> &nbsp&nbsp获得学位&nbsp<s:textfield name="workerExperience'+m+'"/> <button type="button" style="margin-top:-5px;"class="btn btn-warning" onclick="delWorkerExperience('
-				+ m + ')">删除</button> <div>';
-		m = m + 1;
+
+		var span1 = document.createElement("span");
+		span1.innerHTML = '<span style="font-weight:bold;">年份&nbsp</span>';
+		label0.appendChild(span1);
+
+		var a = document.createElement("input");
+		a.setAttribute("type", "text");
+		a.setAttribute("name", "'workerWorkDate'+m");
+		a.setAttribute("id", "Title" + m);
+		label0.appendChild(a);
+
+		var span2 = document.createElement("span");
+		span2.innerHTML = '<span style="font-weight:bold;">&nbsp&nbsp担任职称&nbsp</span>';
+		label0.appendChild(span2);
+
+		var b = document.createElement("input");
+		b.setAttribute("type", "text");
+		b.setAttribute("name", "'workerExperience'+m");
+		b.setAttribute("id", "Title" + m);
+		label0.appendChild(b);
+
+		var textField2 = document.createElement("input");
+		textField2.setAttribute("type", "button");
+		textField2.setAttribute("name", "button");
+		textField2.setAttribute("style", "margin-top:-8px; margin-left:10px;");
+		textField2.setAttribute("class", "btn btn-warning");
+		textField2.setAttribute("value", "删除");
+
+		textField2.onclick = function() {
+			delWorkerExperience(this)
+		}
+		label0.appendChild(textField2);
+
+		var div = document.createElement("div");
+		div.innerHTML = '';
+		label0.appendChild(div);
+
+		experienceDiv.appendChild(label0);
 		topWin.document.getElementById("m").value = m;
+		m++;
 	}
 
 	function delWorkerExperience(o) {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-		mainDocument.getElementById("workerExperience").removeChild(
-				mainDocument.getElementById("workerExperience_" + o));
-		m = m - 1;
-		topWin.document.getElementById("m").value = m;
+		mainDocument.getElementById("workerExperience").removeChild(o.parentNode);
 	}
 
 	function addEduExperience() {
+		label0 = document.createElement("label");
+		label0.setAttribute("id", "label" + k);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("eduExperience");
-		experienceDiv.innerHTML += '<div id="eduExperience_'+k+'">年份:<s:textfield name="eduWorkDate'+k+'"/> 获得学位<s:textfield name="eduExperience'+k+'"/> <button type="button" class="btn btn-warning" onclick="delEduExperience('
-				+ k + ')">删除</button> <div>';
-		k = k + 1;
+
+		var span1 = document.createElement("span");
+		span1.innerHTML = '<span style="font-weight:bold;">年份&nbsp</span>';
+		label0.appendChild(span1);
+
+		var a = document.createElement("input");
+		a.setAttribute("type", "text");
+		a.setAttribute("name", "'eduWorkDate'+k");
+		a.setAttribute("id", "Title" + k);
+		label0.appendChild(a);
+
+		var span2 = document.createElement("span");
+		span2.innerHTML = '<span style="font-weight:bold;">&nbsp&nbsp获得学位&nbsp</span>';
+		label0.appendChild(span2);
+
+		var b = document.createElement("input");
+		b.setAttribute("type", "text");
+		b.setAttribute("name", "'eduExperience'+k");
+		b.setAttribute("id", "Title" + k);
+		label0.appendChild(b);
+
+		var textField2 = document.createElement("input");
+		textField2.setAttribute("type", "button");
+		textField2.setAttribute("name", "button");
+		textField2.setAttribute("style", "margin-top:-8px; margin-left:10px;");
+		textField2.setAttribute("class", "btn btn-warning");
+		textField2.setAttribute("value", "删除");
+
+		textField2.onclick = function() {
+			delEduExperience(this)
+		}
+		label0.appendChild(textField2);
+
+		var div = document.createElement("div");
+		div.innerHTML = '';
+		label0.appendChild(div);
+
+		experienceDiv.appendChild(label0);
 		topWin.document.getElementById("k").value = k;
+		k++;
 	}
 
 	function delEduExperience(o) {
+		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-		mainDocument.getElementById("eduExperience").removeChild(
-				mainDocument.getElementById("eduExperience_" + o));
-		k = k - 1;
-		topWin.document.getElementById("k").value = k;
+		mainDocument.getElementById("eduExperience").removeChild(o.parentNode);
 	}
 
 	function addBreakExperience() {
+	    label0 = document.createElement("label");
+		label0.setAttribute("id", "label" + l);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var experienceDiv = topWin.document.getElementById("breakExperience");
-		experienceDiv.innerHTML += '<div id="breakExperience_'+i+'">起始时间：<s:textfield name="breakStartDate'+i+'"/> 结束时间：<s:textfield name="breakEndDate'+i+'"/> <button type="button" class="btn btn-warning" onclick="delBreakExperience('
-				+ i + ')">删除</button> <div>';
-		l = l + 1;
+
+		var span1 = document.createElement("span");
+		span1.innerHTML = '<span style="font-weight:bold;">起始时间&nbsp</span>';
+		label0.appendChild(span1);
+
+		var a = document.createElement("input");
+		a.setAttribute("type", "text");
+		a.setAttribute("name", "'breakWorkDate'+l");
+		a.setAttribute("id", "Title" + l);
+		label0.appendChild(a);
+
+		var span2 = document.createElement("span");
+		span2.innerHTML = '<span style="font-weight:bold;">&nbsp&nbsp结束时间&nbsp</span>';
+		label0.appendChild(span2);
+
+		var b = document.createElement("input");
+		b.setAttribute("type", "text");
+		b.setAttribute("name", "'breakExperience'+l");
+		b.setAttribute("id", "Title" + l);
+		label0.appendChild(b);
+
+		var textField2 = document.createElement("input");
+		textField2.setAttribute("type", "button");
+		textField2.setAttribute("name", "button");
+		textField2.setAttribute("style", "margin-top:-8px; margin-left:10px;");
+		textField2.setAttribute("class", "btn btn-warning");
+		textField2.setAttribute("value", "删除");
+
+		textField2.onclick = function() {
+			delBreakExperience(this)
+		}
+		label0.appendChild(textField2);
+
+		var div = document.createElement("div");
+		div.innerHTML = '';
+		label0.appendChild(div);
+
+		experienceDiv.appendChild(label0);
 		topWin.document.getElementById("l").value = l;
+		l++;
 	}
 
 	function delBreakExperience(o) {
+		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
-		mainDocument.getElementById("breakExperience").removeChild(
-				mainDocument.getElementById("breakExperience_" + o));
-		l = l - 1;
-		topWin.document.getElementById("l").value = l;
+		mainDocument.getElementById("breakExperience").removeChild(o.parentNode);
 	}
+	
 </script>
 </head>
 <body>
@@ -252,7 +396,7 @@
 						</dt>
 						<dd>
 
-							<input id="f2" type="text" name="failYearTime" size=20>
+							<input id="f2" type="text" name="failTime" size=20>
 						</dd>
 					</dl>
 
@@ -325,6 +469,8 @@
 				class="btn btn-success" onclick="addProExperience()">增加</button>
 		</div>
 		<s:textarea name="j" id="j" style="display:none;"></s:textarea>
+		
+		
 
 		<div id="workerExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">工人系列经历</span>
@@ -333,24 +479,23 @@
 		</div>
 		<s:textarea name="m" id="m" style="display:none;"></s:textarea>
 
-
-		<div id="eduExperience">
-			<h3>教育经历:</h3>
-			<br />
+        <div id="eduExperience" style="text-align:center; margin-top:50px;">
+			<span style="font-size:25px; font-weight:bold;">教育经历</span>
+			<button type="button" style="margin-top:-5px; margin-left:5px;"
+				class="btn btn-success" onclick="addEduExperience()">增加</button>
 		</div>
-		<s:textarea name="k" id="k" style="display:none"></s:textarea>
-		<button type="button" class="btn btn-success"
-			onclick="addEduExperience()">增加</button>
-
-		<div id="breakExperience">
-			<h3>中断工作经历:</h3>
-			<br />
+		<s:textarea name="k" id="k" style="display:none;"></s:textarea>
+		
+        <div id="breakExperience" style="text-align:center; margin-top:50px;">
+			<span style="font-size:25px; font-weight:bold;">中断工作经历</span>
+			<button type="button" style="margin-top:-5px; margin-left:5px;"
+				class="btn btn-success" onclick="addBreakExperience()">增加</button>
 		</div>
-		<s:textarea name="l" id="l" style="display:none"></s:textarea>
-		<button type="button" class="btn btn-success"
-			onclick="addBreakExperience()">增加</button>
+		<s:textarea name="l" id="l" style="display:none;"></s:textarea>
+		
+		
 
-		<button type="button" class="btn btn-success"
+		<button type="button" style="margin-left: 45%; margin-top:50px;" class="btn btn-success"
 			onclick="addSalaryInfo()">提交</button>
 
 	</s:form>

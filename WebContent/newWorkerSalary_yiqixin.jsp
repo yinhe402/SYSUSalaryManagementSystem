@@ -55,9 +55,101 @@
 </s:form>
 
 <s:form id="myform1">	
+<div class="container">
+			<div class="row">
+				<div class="span6" style="margin-left:65px;">
+					<dl class="dl-horizontal">
+						<dt>
+							职工号<span style="color:red">*</span>
+						</dt>
+						<dd>
+							<s:textfield id="f1" name="startSalaryInfo.eid"
+								value="%{#session.ssInfo.eid}" maxlength="6" />
+
+						</dd>
+					</dl>
+					
+			        <dl class="dl-horizontal">
+						<dt>
+							起薪时间<span style="color:red">*</span>
+						</dt>
+						<dd>
+							<s:textfield id="f1" name="startSalaryInfo.startSalaryDate"
+								value="%{#session.ssInfo.startSalaryDate}" />
+
+						</dd>
+					</dl>
+
+
+					<dl class="dl-horizontal" style="margin-bottom:20px; ">
+						<dt >
+							基本工资是否上调10%<span style="color:red ;">*</span>
+						</dt>
+						<dd>
+							<s:if test="#startSalaryInfo.isRaised">
+								<input type="radio" style="margin-top:-3px;"name="startSalaryInfo.isRaised" value="true" checked="checked"/>是&nbsp;&nbsp;&nbsp;<input type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="false"/>否<br />
+							</s:if> 
+							<s:else> 
+								<input type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="true"/>是&nbsp;&nbsp;&nbsp;<input style="margin-top:-3px;" type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
+							</s:else>
+							
+
+						</dd>
+						
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							起始工作时间<span style="color:red">*</span>
+						</dt>
+						<dd>
+                            
+							<s:textfield id="f1" name="startSalaryInfo.startWorkYear"
+								value="%{#session.sYear}" />
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							考核不合格次数<span style="color:red">*</span>
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="failYearTime"
+								value="%{#session.fTime}" />
+							
+							
+						</dd>
+					</dl>
+					
+					<dl class="dl-horizontal">
+						<dt>
+							工资系列<span style="color:red">*</span>
+						</dt>
+						<dd>
+ 						<s:textfield id="f1" name="startSalaryInfo.salarySeries"
+								value="%{#session.ssInfo.salarySeries}"/>
+							
+						</dd>
+					</dl>
+					
+
+					<dl class="dl-horizontal">
+						<dt>
+							工资岗位级别<span style="color:red">*</span>
+						</dt>
+						<dd>
+						<s:textfield id="f1" name="startSalaryInfo.positionLevel"
+								value="%{#session.ssInfo.positionLevel}"/>
+							
+						</dd>
+					</dl>
+				</div>
+             </div>
+</div>
 	职工号	: <s:textfield  name="startSalaryInfo.eid" value="%{#session.ssInfo.eid}"/> <br />	
 	起薪时间(XXXX-XX-XX):<s:textfield  name="startSalaryInfo.startSalaryDate" value="%{#session.ssInfo.startSalaryDate}"/> <br />
-	<s:if test="#startSalaryInfo.isRaised">
+	<s:if test="%{#session.ssInfo.isRaised}">
 	基本工资是否上调10%：<input type="radio" name="startSalaryInfo.isRaised" value="true" checked="checked"/>是<input type="radio" name="startSalaryInfo.isRaised" value="false"/>否<br />
 	</s:if> 
 	<s:else> 
