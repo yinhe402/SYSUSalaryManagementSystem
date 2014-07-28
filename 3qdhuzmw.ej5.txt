@@ -1,0 +1,35 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   WebContent/Employee.jsp
+#	new file:   WebContent/WEB-INF/lib/jxl.jar
+#	new file:   WebContent/js/employee.js
+#	new file:   WebContent/js/liveValidation.js
+#	modified:   build/classes/.gitignore
+#	modified:   build/classes/com/sms/action/EmployeeAction.class
+#	modified:   build/classes/com/sms/action/NewEmployeeAction.class
+#	modified:   build/classes/com/sms/action/SalaryAction.class
+#	modified:   build/classes/com/sms/action/SalaryStandardAction.class
+#	modified:   build/classes/com/sms/action/UserAction.class
+#	modified:   build/classes/com/sms/entity/Employee.class
+#	deleted:    build/classes/com/sms/security/LevelSalaryChange.class
+#	modified:   build/classes/com/sms/security/Md5.class
+#	modified:   build/classes/config/applicationContext-common.xml
+#	modified:   build/classes/config/struts-user.xml
+#	new file:   document/salary.xls
+#	new file:   document/user.xls
+#	modified:   src/com/sms/action/EmployeeAction.java
+#	modified:   src/com/sms/action/SalaryStandardAction.java
+#	modified:   src/com/sms/entity/Employee.java
+#	new file:   src/com/sms/exception/ExcelException.java
+#	new file:   src/com/sms/util/EmployeeImport.java
+#	new file:   src/com/sms/util/ExcelUtil.java
+#	new file:   src/com/sms/util/ImportAndExport.java
+#	modified:   src/config/applicationContext-common.xml
+#	modified:   src/config/struts-user.xml
+#
+

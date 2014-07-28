@@ -27,11 +27,10 @@
 		<action name="userMain" class="userMainAction">
 			<result name="success">/userMain.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-		</action>
-		<action name="addEmployee" class="employeeAction" method="addEmployee">
-			<result name="success">/Employee.jsp</result>
-		</action>
-		<action name="getData" class="salaryStandardAction" method="getAllManagePositionSalary">
+		</action>	
+		
+		<action name="getData" class="salaryStandardAction" 
+			method="getAllSalaryStandard" >
 			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
 		<action name="*" >

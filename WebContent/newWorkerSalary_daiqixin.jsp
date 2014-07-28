@@ -312,6 +312,12 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+<s:form id="myform" style="display:none">
+	职工号：<s:property value="#session.addedEmployee.id"/><br />
+	姓名:<s:property  value="#session.addedEmployee.name"/> <br />
+	邮箱:<s:property  value="#session.addedEmployee.email"/><br />
+=======
 
 	<s:form id="myform" style="display:none; ">
 
@@ -321,6 +327,7 @@
 		<br />
 	邮箱:<s:property value="#session.addedEmployee.email" />
 		<br />
+>>>>>>> 776c268596fd795d9f49ab379b665bc2d3968e52
 	性别：	<s:if test="#session.addedEmployee.gender"> 男</s:if>
 
 		<s:else>女</s:else>

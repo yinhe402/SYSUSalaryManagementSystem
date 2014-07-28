@@ -59,9 +59,7 @@
 								最高学历<span style="color:red">*</span>
 							</dt>
 							<dd>
-
 								<select id="maxeducation" name="employee.maxEducation">
-
 									<option value="无">无</option>
 									<option value="博士研究生">博士研究生</option>
 									<option value="硕士研究生">硕士研究生</option>
@@ -70,7 +68,6 @@
 									<option value="高中(中专)">高中(中专)</option>
 									<option value="初中">初中</option>
 									<option value="小学">小学</option>
-
 								</select>
 							</dd>
 						</dl>
@@ -190,10 +187,8 @@
 							</dt>
 							<dd>
 								<select id="gender" name="employee.gender">
-
-									<option value="true">男</option>
-									<option value="false">女</option>
-
+									<option value="男">男</option>
+									<option value="女">女</option>
 								</select>
 							</dd>
 						</dl>
@@ -290,7 +285,6 @@
 							<dd>
 								<select id="titlelevel" name="employee.titleLevel"
 									onchange="showD(this.selectedIndex)">
-
 									<option value="">无</option>
 									<option value="1">一级</option>
 									<option value="2">二级</option>

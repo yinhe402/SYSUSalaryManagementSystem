@@ -51,6 +51,7 @@ public class Employee {
 		return id;
 	}
 	public void setId(Integer id) {
+		System.out.println(id);
 		this.id = id;
 	}
 	
@@ -62,6 +63,7 @@ public class Employee {
 		return name;
 	}
 	public void setName(String name) {
+		System.out.println(name);
 		this.name = name;
 	}
 	
@@ -70,9 +72,11 @@ public class Employee {
 	 * */
 	@Column(name="email", length=40)
 	public String getEmail() {
+		
 		return email;
 	}
 	public void setEmail(String email) {
+		System.out.println(email);
 		this.email = email;
 	}
 	
@@ -80,10 +84,11 @@ public class Employee {
 	 * 性别
 	 * */
 	@Column(name="gender", nullable=false)
-	public String getGender() {
+	public String getGender() {	
 		return gender;
 	}
 	public void setGender(String gender) {
+		System.out.println(gender);
 		this.gender = gender;
 	}
 	
@@ -95,6 +100,7 @@ public class Employee {
 		return birthday;
 	}
 	public void setBirthday(Date birthday) {
+		System.out.println(birthday);
 		this.birthday = birthday;
 	}
 	
@@ -106,6 +112,7 @@ public class Employee {
 		return uid;
 	}
 	public void setUid(String uid) {
+		System.out.println(uid);
 		this.uid = uid;
 	}
 	
@@ -117,6 +124,8 @@ public class Employee {
 		return department;
 	}
 	public void setDepartment(String department) {
+		System.out.println(department);
+		
 		this.department = department;
 	}
 	
@@ -125,9 +134,11 @@ public class Employee {
 	 * */
 	@Column(name="job_type", length = 10, nullable=false)
 	public String getJobType() {
+		
 		return jobType;
 	}
 	public void setJobType(String jobType) {
+		System.out.println(jobType);
 		this.jobType = jobType;
 	}
 	
@@ -139,6 +150,7 @@ public class Employee {
 		return type;
 	}
 	public void setType(String type) {
+		System.out.println(type);
 		this.type = type;
 	}
 	
@@ -150,6 +162,7 @@ public class Employee {
 		return source;
 	}
 	public void setSource(String source) {
+		System.out.println(source);
 		this.source = source;
 	}
 	
@@ -161,6 +174,7 @@ public class Employee {
 		return reachSchoolDate;
 	}
 	public void setReachSchoolDate(Date reachSchoolDate) {
+		System.out.println(reachSchoolDate);
 		this.reachSchoolDate = reachSchoolDate;
 	}
 	
@@ -173,6 +187,7 @@ public class Employee {
 	}
 	
 	public void setMaxEducation(String maxEducation) {
+		System.out.println(maxEducation);
 		this.maxEducation = maxEducation;
 	}
 	
@@ -185,6 +200,7 @@ public class Employee {
 	}
 	
 	public void setMaxEducationDate(Date maxEducationDate) {
+		System.out.println(maxEducationDate);
 		this.maxEducationDate = maxEducationDate;
 	}
 	
@@ -196,6 +212,7 @@ public class Employee {
 		return maxDegree;
 	}
 	public void setMaxDegree(String maxDegree) {
+		System.out.println(maxDegree);
 		this.maxDegree = maxDegree;
 	}
 	
@@ -207,6 +224,7 @@ public class Employee {
 		return maxDegreeDate;
 	}
 	public void setMaxDegreeDate(Date maxDegreeDate) {
+		System.out.println(maxDegreeDate);
 		this.maxDegreeDate = maxDegreeDate;
 	}
 	
@@ -220,6 +238,7 @@ public class Employee {
 	
 	
 	public void setHireWork(String hireWork) {
+		System.out.println(hireWork);
 		this.hireWork = hireWork;
 	}
 	
@@ -231,6 +250,7 @@ public class Employee {
 		return workLevel;
 	}
 	public void setWorkLevel(Integer workLevel) {
+		System.out.println("职务级别："+workLevel);
 		this.workLevel = workLevel;
 	}
 	
@@ -242,6 +262,7 @@ public class Employee {
 		return startWorkDate;
 	}
 	public void setStartWorkDate(Date startWorkDate) {
+		System.out.println(startWorkDate);
 		this.startWorkDate = startWorkDate;
 	}
 	
@@ -254,6 +275,7 @@ public class Employee {
 	}
 	public void setHireTitle(String hireTitle) {
 		this.hireTitle = hireTitle;
+		System.out.println(hireTitle);
 	}
 	
 	/**
@@ -265,6 +287,7 @@ public class Employee {
 	}
 	public void setTitleLevel(Integer titleLevel) {
 		this.titleLevel = titleLevel;
+		System.out.println("职称级别："+titleLevel);
 	}
 	
 	/**
@@ -276,6 +299,7 @@ public class Employee {
 	}
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
+		System.out.println(hireDate);
 	}
 	
 	/**
@@ -287,6 +311,7 @@ public class Employee {
 	}
 	public void setHireJob(String hireJob) {
 		this.hireJob = hireJob;
+		System.out.println(hireJob);
 	}
 	
 	/**
@@ -298,5 +323,6 @@ public class Employee {
 	}
 	public void setJobLevel(Integer jobLevel) {
 		this.jobLevel = jobLevel;
+		System.out.println("岗位级别"+jobLevel);
 	}
 }

@@ -27,8 +27,7 @@ import com.sms.util.ExcelUtil;
 public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
-	
-
+	private File excelFile;
 	@Resource
 	private IEmployeeManage employeeManage;
 
@@ -97,7 +96,7 @@ public class EmployeeAction extends ActionSupport {
 				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			Integer eid = employee.getId();
 			employee = employeeManage.findEmployeeById(eid);
-			Map session = ActionContext.getContext().getSession();
+			Map<String, Object> session = ActionContext.getContext().getSession();
 			session.put("eInfo", employee);
 			return "success";
 		}
@@ -106,10 +105,9 @@ public class EmployeeAction extends ActionSupport {
 	
 	public String importEmployeeInfo() throws FileNotFoundException, ExcelException {
 		if (employeeFile != null) {
-			String filePath = employeeFile.getAbsolutePath();
 			List<Employee> employeeList = new ArrayList<Employee>();
 			InputStream in = new FileInputStream(employeeFile);
-			LinkedHashMap fieldMap = new LinkedHashMap<String, String>();
+			LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>();
 			fieldMap.put("职工号", "id");
 			fieldMap.put("姓名", "name");
 			fieldMap.put("邮箱", "email");
@@ -133,20 +131,13 @@ public class EmployeeAction extends ActionSupport {
 			fieldMap.put("聘任时间", "hireDate");
 			fieldMap.put("（拟）聘任岗位", "hireJob");
 			fieldMap.put("聘岗级别", "jobLevel");
-			String[] uniqueFields = {"职工号"};
-			Employee employee = new Employee();
-			
-			employeeList = ExcelUtil.excelToList(in, "Sheet1", Employee.class, fieldMap, uniqueFields);
-			
+			String[] uniqueFields = {"职工号"};	
+			employeeList = ExcelUtil.excelToList(in, "Sheet1", Employee.class, fieldMap, uniqueFields);			
 			for (Employee e : employeeList) {
-				
-				System.out.println(e.getHireTitle());
-				System.out.println(e.getType());
 				
 				employeeManage.addEmployee(e);
 			}
 		}
 		return "success";
 	}
-
 }

@@ -178,7 +178,7 @@ public class SalaryStandardAction extends ActionSupport {
 		professionalPositionSalary.setSalaryStandard(salaryStandard);
 		professionalPositionSalary.setStartPayLevel(startPayLevel);
 		profSalaryManage.modifyProfPosSal(professionalPositionSalary);
-		return getAllManagePositionSalary();
+		return getAllSalaryStandard();
 		}
 		else if (type.equals("man")) {
 			ManagePositionSalary managePositionSalary = new ManagePositionSalary();
@@ -188,7 +188,7 @@ public class SalaryStandardAction extends ActionSupport {
 			managePositionSalary.setSalaryStandard(salaryStandard);
 			managePositionSalary.setStartPayLevel(startPayLevel);
 			manageSalaryManage.modifyManPaySal(managePaylevelSalary);
-			return getAllManagePositionSalary();
+			return getAllSalaryStandard();
 		}
 		else if (type.equals("worker")) {
 			WorkerPositionSalary workerPositionSalary = new WorkerPositionSalary();
@@ -197,7 +197,7 @@ public class SalaryStandardAction extends ActionSupport {
 			workerPositionSalary.setSalaryStandard(salaryStandard);
 			workerPositionSalary.setStartPayLevel(startPayLevel);
 			workerSalaryManage.modifyWorkerPosSal(workerPositionSalary);
-			return getAllManagePositionSalary();
+			return getAllSalaryStandard();
 		}
 		
 		return "false";
@@ -214,7 +214,7 @@ public class SalaryStandardAction extends ActionSupport {
 			professionalPaylevelSalary.setPayLevel(payLevel);
 			professionalPaylevelSalary.setSalaryStandard(payLevelSalaryStandard);
 			profSalaryManage.modifyProfPaySal(professionalPaylevelSalary);
-			return getAllManagePositionSalary();
+			return getAllSalaryStandard();
 			}
 			else if (type.equals("man")) {
 				ManagePaylevelSalary managePaylevelSalary = new ManagePaylevelSalary();
@@ -222,7 +222,7 @@ public class SalaryStandardAction extends ActionSupport {
 				managePaylevelSalary.setPayLevel(payLevel);
 				managePaylevelSalary.setSalaryStandard(payLevelSalaryStandard);
 				manageSalaryManage.modifyManPaySal(managePaylevelSalary);
-				return getAllManagePositionSalary();
+				return getAllSalaryStandard();
 			}
 			else if (type.equals("worker")) {
 				WorkerPaylevelSalary workerPaylevelSalary = new WorkerPaylevelSalary();
@@ -230,13 +230,14 @@ public class SalaryStandardAction extends ActionSupport {
 				workerPaylevelSalary.setPayLevel(payLevel);
 				workerPaylevelSalary.setSalaryStandard(payLevelSalaryStandard);
 				workerSalaryManage.modifyWorkerPaySal(workerPaylevelSalary);
-				return getAllManagePositionSalary();
+				return getAllSalaryStandard();
 			}
 		return "fail";
 	}
 	
-	public String getAllManagePositionSalary()  {
+	public String getAllSalaryStandard()  {
 		System.out.println("GetAllSalary");
+
 		ActionContext.getContext().getSession().put("manList",manageSalaryManage.findAllPositionSalary());
 		ActionContext.getContext().getSession().put("proList",profSalaryManage.findAllPositionSalary());
 		ActionContext.getContext().getSession().put("workerList", workerSalaryManage.findAllPositionSalary());
