@@ -1445,7 +1445,7 @@ public class NewEmployeeAction extends ActionSupport {
 			} else if (startSalaryInfo.getSalarySeries().equals("工人")) {
 				startSalaryInfo.setPositionSalary(workerSalaryManage.findWorkerPosSalByLevel(startSalaryInfo.getPositionLevel()).getSalaryStandard());
 				startSalaryInfo.setLevelSalary(workerSalaryManage.findWorkerPaySalByPayLevel(startSalaryInfo.getSalaryLevel()).getSalaryStandard());
-			}
+			}					
 
 			Map session = ActionContext.getContext().getSession();
 			session.put("ssInfo", startSalaryInfo);
@@ -1465,6 +1465,7 @@ public class NewEmployeeAction extends ActionSupport {
 	public String addSalaryInfo() {
 		System.out.println("-------startSalaryInfoAction.importStaff--------"
 				+ startSalaryInfo.getEid());
+		startSalaryInfo.setOperateDate(new Date());
 		startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
 		return "success";
 	}
