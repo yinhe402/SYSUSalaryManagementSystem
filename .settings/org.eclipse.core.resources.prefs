@@ -1,10 +1,9 @@
 =\=\=\=\=\=\=
-<<<<<<<=HEAD
->>>>>>>=a8bf81fb3db0f1ab17dadb0ea277a37d765770ab
 eclipse.preferences.version=1
 encoding//WebContent/AutoComputeSalary.jsp=UTF-8
 encoding//WebContent/BasicSalaryStandard.jsp=UTF-8
 encoding//WebContent/ImportEmployeeInfo.jsp=UTF-8
+encoding//WebContent/SchoolInnerChange.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8
 encoding//WebContent/newWorkerSalary_daiqixin.jsp=UTF-8
 encoding//WebContent/showSalaryForAll.jsp=UTF-8

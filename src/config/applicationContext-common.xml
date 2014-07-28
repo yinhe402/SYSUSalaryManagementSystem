@@ -48,6 +48,9 @@
 				<value>com.sms.entity.StartSalaryInfo</value>
 				<value>com.sms.entity.SpecialSalaryChange</value>
 				<value>com.sms.entity.SpecialSalaryRecovery</value>
+				<value>com.sms.entity.WorkChange</value>
+				<value>com.sms.entity.TitleChange</value>
+				<value>com.sms.entity.DepartmentChange</value>
 			</list>
 		</property>
 

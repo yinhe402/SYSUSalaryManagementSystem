@@ -36,7 +36,7 @@
 <div id="pNode1_sub2_s3" style="padding-left:40px;">·<a href="#" target="_self">补发补扣处理</a></div>
    <div id="pNodel_sub3" onclick="showList(this.id)" style="padding-left:40px; cursor:pointer">+常规工资变动</div>
       <div id="pNodel_sub3_ljf" style="display:none;"> 
-      <div id="pNode1_sub3_s1" style="padding-left:60px;">·<a href="#" target="_blank">校内调动</a></div> 
+      <div id="pNode1_sub3_s1" style="padding-left:60px;">·<a href="SchoolInnerChange.jsp" target="mainFrame">校内调动</a></div> 
       <div id="pNode1_sub3_s2" style="padding-left:60px;">·<a href="#" target="_blank">职称变动</a></div> 
 	  <div id="pNode1_sub3_s3" style="padding-left:60px;">·<a href="#" target="_blank">职务变动</a></div> 
         </div>
