@@ -42,13 +42,15 @@
 
 		</select>
 		
-		<button type="button"
+		<button type="button" style="margin-bottom:10px;"
 			 
 			class="btn btn-success" onclick="">提交
 		</button>
 		</div>
 
 
+
+        
 
 	</s:form>
 

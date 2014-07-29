@@ -27,19 +27,19 @@
 	 	</thead>
 	 	
 	 	<tbody>
-	 	<s:iterator value="" id="">
+	 	<s:iterator value="#session.infoRecovery" id="recovery">
 				 <tr>
-				 <td><s:property value=""/></td>
-				 <td><s:property value=""/></td>
-				 <td><s:property value=""/></td>
-				 <td><s:property value=""/></td>
-				 <td><s:property value=""/></td>
+				 <td><s:property value="#recovery[0]"/></td>
+				 <td><s:property value="#recovery[1]"/></td>
+				 <td><s:property value="#recovery[2]"/></td>
+				 <td><s:property value="#recovery[3]"/></td>
+				 <td><s:property value="#recovery[4]"/></td>
 				 </tr>
 				</s:iterator>
 	 	</tbody>
 	 </table>
 	  <div class="container" align="center">
-	 <a class="btn btn-primary">打印</a>	 
+	 <a class="btn btn-primary">导出</a>	 
 	 </div>
 	 </form>
 </body>
