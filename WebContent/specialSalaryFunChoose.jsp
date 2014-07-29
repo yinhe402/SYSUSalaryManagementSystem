@@ -78,7 +78,7 @@
 	<form id="form2">
 		<h2>特殊情况工资恢复</h2>
 		<div class="control-group">
-		职工号：<input type="text" name="specialSalaryChange.eId" />
+		职工号：<input type="text" name="specialSalaryRecovery.eId" />
 		</div>
 		
 		<!--  

@@ -92,9 +92,14 @@ public class SpecialSalaryAction {
 		}
 		//System.out.println(specialSalaryRecovery.getEId());
 		iSpecialSalaryRecoveryManage.addSpecialSalaryRecovery(specialSalaryRecovery);
+//<<<<<<< HEAD
+//
+//		Salary salary = iSalaryManage.findLastSalaryByEId(specialSalaryRecovery.getEId());
+//		Employee employee = iEmployeeManage.findEmployeeById(specialSalaryChange.getEId());
+//=======
+		Salary salary = iSalaryManage.findSalaryByEId(specialSalaryRecovery.getEId()).get(0);
+		Employee employee = iEmployeeManage.findEmployeeById(specialSalaryRecovery.getEId());
 
-		Salary salary = iSalaryManage.findLastSalaryByEId(specialSalaryRecovery.getEId());
-		Employee employee = iEmployeeManage.findEmployeeById(specialSalaryChange.getEId());
 		salary.setTotleSalary();
 		iSalaryManage.modifySalary(salary);
 		String[] strings = {employee.getId().toString(),employee.getName(),employee.getDepartment(),specialSalaryRecovery.getRecoveryReason().toString(),specialSalaryRecovery.getRecoveryDate().toString()}; 

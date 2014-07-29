@@ -312,7 +312,7 @@
 </script>
 </head>
 <body>
-	<s:form>
+	<s:form style="display:none">
 	职工号：
 	<s:property value="#session.addedEmployee.id" />
 	<br /> 姓名:

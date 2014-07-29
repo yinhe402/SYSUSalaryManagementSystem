@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap/css/datepicker.css">
 <link rel="stylesheet" href="css/index.css">
-
 </head>
 <body>
 		<div class="employeeinfo">职工信息录入</div>
