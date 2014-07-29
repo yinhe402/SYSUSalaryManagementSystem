@@ -31,7 +31,7 @@ public class LeaveSchoolPersonManageImp implements ILeaveSchoolPersonManage{
 	}
 
 	@Override
-	public List<LeaveSchoolPerson> findLeaveSchoolPersonByEId(Integer eId) {
+	public LeaveSchoolPerson findLeaveSchoolPersonByEId(Integer eId) {
 		// TODO Auto-generated method stub
 		return iLeaveSchoolPersonDao.findLeaveSchoolPersonByEId(eId);
 	}
