@@ -1,5 +1,7 @@
 package com.sms.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,12 +48,17 @@ public class SalaryDaoImp implements ISalaryDao {
 	}
 
 	@Override
-	public Salary findSalaryByEId(Integer eid) {
-		// TODO Auto-generated method stub
+	public List<Salary> findSalaryByEId(Integer eid) {
 		Query query = getSession().createQuery("from Salary as s where s.eid = ?");
 		query.setString(0,eid.toString());
-		Salary s = (Salary)query.list().get(0);
-		return s;
+		return (List<Salary>)query.list();
+	}
+
+	@Override
+	public Salary findLastSalaryById(Integer eid) {
+		Query query = getSession().createQuery("from Salary as s where s.eid = ? order by time desc");
+		query.setString(0,eid.toString());
+		return (Salary)query.list().get(0);
 	}
 
 }

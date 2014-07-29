@@ -43,9 +43,16 @@ public class FinalBonusDaoImp implements IFinalBonusDao{
 
 	@Override
 	public List<FinalBonus> findFinalBonusByEId(Integer eId) {
-		// TODO Auto-generated method stub
 		Query query = (Query)getSession().createQuery("from FinalBonus where eId = ?");
 		query.setString(0, eId.toString());	
+		return (List<FinalBonus>)query.list();
+	}
+
+	@Override
+	public List<FinalBonus> findFinalBonusByDoubleBonusType(
+			String doubleBonusType) {
+		Query query = (Query)getSession().createQuery("from FinalBonus where  doubleSalaryType = ?");
+		query.setString(0, doubleBonusType);	
 		return (List<FinalBonus>)query.list();
 	}
 

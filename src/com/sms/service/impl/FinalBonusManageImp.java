@@ -14,26 +14,33 @@ public class FinalBonusManageImp implements IFinalBonusManage{
 
 	@Override
 	public void addFinalBonus(FinalBonus finalBonus) {
-		// TODO Auto-generated method stub
+		
 		iFinalBonusDao.addFinalBonus(finalBonus);
 	}
 
 	@Override
 	public void deleteFinalBonus(FinalBonus finalBonus) {
-		// TODO Auto-generated method stub
+		
 		iFinalBonusDao.deleteFinalBonus(finalBonus);
 	}
 
 	@Override
 	public void modifyFinalBonus(FinalBonus finalBonus) {
-		// TODO Auto-generated method stub
+		
 		iFinalBonusDao.modifyFinalBonus(finalBonus);
 	}
 
 	@Override
 	public List<FinalBonus> findFinalBonusByEId(Integer eId) {
-		// TODO Auto-generated method stub
+		
 		return iFinalBonusDao.findFinalBonusByEId(eId);
+	}
+
+	@Override
+	public List<FinalBonus> findFinalBonusByDoubleBonusType(
+			String doubleBonusType) {
+		
+		return iFinalBonusDao.findFinalBonusByDoubleBonusType(doubleBonusType);
 	}
 
 }
