@@ -15,16 +15,16 @@
 <script type="text/javascript">
 	function specialSalaryChange()
 	{
-	var myform=document.forms[0];
-	myform.action="specialSalary/specialSalaryChange_success";
-	myform.method="post";
-	myform.submit();
-}
+		var myform=document.getElementById("form1");
+		myform.action="specialSalary/specialSalaryChange";
+		myform.method="post";
+		myform.submit();
+	}
 	
 	function specialSalaryRecovery()
 	{
-		var myform=document.forms[0];
-		myform.action="specialSalary/specialSalaryRecovery_success";
+		var myform=document.getElementById("form2");
+		myform.action="specialSalary/specialSalaryRecovery";
 		myform.method="post";
 		myform.submit();
 	}
@@ -38,11 +38,12 @@
 	<div class="container">
 	<h2>特殊情况工资变动</h2>
 	<hr/>
-	<form class="form-horizontal">
+	<form id="form1">
 	    <div class="control-group">
 		职工号：<input type="text" name="specialSalaryChange.eId"/>
 		</div>
 		
+		<!--
 		 <div class="control-group">
 		姓名：<input type="text" name=""/>
 		</div>
@@ -50,6 +51,7 @@
 		 <div class="control-group">
 		单位：<input type="text" name=""/>
 		</div>
+		-->
 		
 		<div class="control-group">
 		工资变动幅度<br/>(负数代表减薪)：<input type="text" name="specialSalaryChange.amount"/>
@@ -59,42 +61,49 @@
 		变动原因：<input type="text" name="specialSalaryChange.reason"/>
 		</div>
 		
+		<!-- 
 		 <div class="control-group">
 		修改时间：<input type="text" name=""/>
 		</div>
+		 -->
 		
 		<div class="control-group">
-		<a href="specialSalaryChange.jsp" target="mainFrame"><input class="btn btn-primary" style="width:60px;" name="btnchange" onclick="specialSalaryChange()" value="确定" /></a>
+			<input class="btn btn-primary" style="width:60px;" name="btnchange" onclick="specialSalaryChange()" value="确定" />
 		</div>
 	</form>
 	</div>
 	<hr/>
 
 	<div class="container">
-	<form class="form-horizontal">
-	<h2>特殊情况工资恢复</h2>
-	<div class="control-group">
-	职工号：<input type="text" name="specialSalaryChange.eId" />
-	</div>
-	
-    <div class="control-group">
-	姓名：<input type="text" name=""/>
-	</div>
-	
-	 <div class="control-group">
-	单位：<input type="text" name=""/>
-	</div>
-	<div class="control-group">
-	恢复原因：<input type="text" name="specialSalaryRecovery.recoveryReason"/>
-	</div>
-	
-	 <div class="control-group">
-	修改时间：<input type="text" name=""/>
-	</div>
-	
-	<div class="control-group">
-	<a href="specialSalaryRecovery.jsp" target="mainFrame"><input class="btn btn-primary" style="width:60px;" name="btnRecovery" onclick="specialSalaryRecovery()" value="确定" /></a>
-	</div>
+	<form id="form2">
+		<h2>特殊情况工资恢复</h2>
+		<div class="control-group">
+		职工号：<input type="text" name="specialSalaryChange.eId" />
+		</div>
+		
+		<!--  
+	    <div class="control-group">
+		姓名：<input type="text" name=""/>
+		</div>
+		
+		 <div class="control-group">
+		单位：<input type="text" name=""/>
+		</div>
+		-->
+		
+		<div class="control-group">
+		恢复原因：<input type="text" name="specialSalaryRecovery.recoveryReason"/>
+		</div>
+		
+		<!--  
+		 <div class="control-group">
+		修改时间：<input type="text" name=""/>
+		</div>
+		-->
+		
+		<div class="control-group">
+			<input class="btn btn-primary" style="width:60px;" name="btnRecovery" onclick="specialSalaryRecovery()" value="确定" />
+		</div>
 	</form>
     </div>
 </body>

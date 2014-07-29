@@ -9,4 +9,5 @@ public interface ISpecialSalaryChangeManage {
 	public void deleteSpecialSalaryChange(SpecialSalaryChange specialSalaryChange);
 	public void modifySpecialSalaryChange(SpecialSalaryChange specialSalaryChange);
 	public List<SpecialSalaryChange>  findSpecialSalaryChangeByEId(Integer eId);
+	public List<SpecialSalaryChange> findAllSpecialSalaryChange();
 }
