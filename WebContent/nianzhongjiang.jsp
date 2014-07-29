@@ -1,21 +1,107 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>年终一次性奖金</title>
+<base href="<%=basePath%>">
 
-<script type="text/javascript">
-	//var myfrom=document.getElementById("myform1");
-	
-</script>
+<title>减员停薪、取消工资关系</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="css/index.css">
 </head>
+<script type="text/javascript">
+	function getFinalBonus() {
+	var myform = document.getElementById("professionalPositionForm");
+	myform.action="bonus/getSalaryResult_nianzhongjiang";
+	myform.method="post";
+	myform.submit();
+	}
+</script>
 <body>
-<s:form action="bonus/importTestResult_success" method="post" enctype="multipart/form-data">
-    <s:file name="excelFile" label="excelFile 1"/>
-    <s:submit value="submit"/>
-</s:form>
+	<s:form style="text-align:center;"
+		action="bonus/importTestResult_nianzhongjiang" method="post"
+		enctype="multipart/form-data" role="form">
+		<div>
+			<s:file name="testResultFile" label="testResultFile" />
+
+			<button type="submit" class="btn btn-success">导入考核结果</button>
+		</div>
+	</s:form> 
+	
+	<s:form style="text-align:center;"
+		action="bonus/importOffInfoResult_nianzhongjiang" method="post"
+		enctype="multipart/form-data" role="form">
+		<div>
+			<s:file name="offInfoFile" label="offInfoFile" />
+			<button type="submit" class="btn btn-success">导入请假出国信息</button>
+		</div>
+	</s:form> 
+		
+
+		<s:form name="professionalPositionForm">
+		<div style="margin-top:5%;">
+			<select id="type" name="type" >
+				<option value="1">不发</option>
+				<option value="2">双薪</option>
+				<option value="3">部分双薪</option>
+			</select>
+					<button type="button" style="margin-bottom:10px;"
+				class="btn btn-success" onclick="">查询</button>
+		</div>
+		</s:form>
+	
+			<table
+				width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td height="40">
+						<table width="100%" border="0" cellpadding="4" cellspacing="1"
+							bgcolor="#000000" class="newfont03">
+							<tr class="CTitle" bgcolor="#CAE1FF">
+								<td height="22" colspan="7" align="center"
+									style="font-size:16px; "></td>
+							</tr>
+							<tr bgcolor="#EEEEEE">
+								<td width="10%">职工号</td>
+								<td width="10%">双薪基数</td>
+								<td width="10%">双薪类型</td>
+								<td width="10%">部分双薪原因</td>
+								<td width="10%">双薪月数</td>
+								<td width="10%"> 时间</td>
+							</tr>
+							<s:iterator id="result" value="#result">
+							<tr bgcolor="#EEEEEE">
+								<td width="10%"><s:property value="#result.eid"/></td>
+								<td width="10%"><s:property value="#result.basis"/></td>
+								<td width="10%"><s:property value="#result.doubleSalaryType"/></td>
+								<td width="10%"><s:property value="#result.cutReason"/></td>
+								<td width="10%"><s:property value="#result.months"/></td>
+								<td width="10%"><s:property value="#result.year"/></td>
+							</tr>
+							</s:iterator>
+
+						
+
+						</table>
+					</td>
+				</tr>
+			</table>
+		
+
+
+
+	
+
 </body>
 </html>

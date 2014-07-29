@@ -128,7 +128,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <s:form action="employee/importStopEmployeeInfo_remove" method="post" enctype="multipart/form-data" role="form">
-     	<s:file name="stopEmployeeFile" label="excelFile"/>
+     	<s:file class="btn btn-success" name="stopEmployeeFile" label="excelFile"/>
+     	 
      	<button type="submit" class="btn btn-success">导入</button>
 	</s:form>
 	<s:iterator id="lList" value="#session.lList">

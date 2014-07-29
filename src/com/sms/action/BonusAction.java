@@ -63,8 +63,35 @@ public class BonusAction extends ActionSupport {
 	private IOffInfoManage offInfoManage;
 	@Resource
 	private ISalaryManage salaryManage;
-	private File testResultFile;
 	
+	private File testResultFile;
+	private File offInfoFile;
+	public File getOffInfoFile() {
+		return offInfoFile;
+	}
+
+	public void setOffInfoFile(File offInfoFile) {
+		this.offInfoFile = offInfoFile;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public List<FinalBonus> getResult() {
+		return result;
+	}
+
+	public void setResult(List<FinalBonus> result) {
+		this.result = result;
+	}
+
+	private String type;
+	private List<FinalBonus> result;
 	public String importTestResult() throws FileNotFoundException, ExcelException {
 		if (null != testResultFile) {
 			List<FinalCheck> checks = new ArrayList<FinalCheck>();
@@ -125,7 +152,28 @@ public class BonusAction extends ActionSupport {
 	}
 	
 	public String getSalaryResult() {
-		//TODO
-         return null;
+		List<FinalBonus> noBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("不发");
+		List<FinalBonus> partBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("部分双薪");
+		List<FinalBonus> allBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("全部双薪");
+		System.out.print(type);
+		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
+         return "success";
+	}
+	
+	public String importOffInfoResult() throws FileNotFoundException, ExcelException {
+		List<OffInfo> checks = new ArrayList<OffInfo>();
+		InputStream in = new FileInputStream(offInfoFile);
+		LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>();
+		fieldMap.put("职工号", "eid");
+		fieldMap.put("开始时间", "startDate");
+		fieldMap.put("结束时间", "endDate");
+		fieldMap.put("原因", "reason");
+		String[] uniqueFields = {"职工号", "开始时间", "结束时间", "原因"};
+		checks = ExcelUtil.excelToList(in, "Sheet1", OffInfo.class, fieldMap, uniqueFields);
+		for(OffInfo o:checks) {
+			offInfoManage.addOffInfo(o);
+		}
+		return "success";
+
 	}
 }

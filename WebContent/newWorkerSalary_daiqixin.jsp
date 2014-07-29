@@ -22,7 +22,44 @@
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
 
+		
+		var id = topWin.document.getElementById("f1").value;
+		
+		var level= topWin.document.getElementById("f2").value;
+		
+		var startSalaryTime = topWin.document.getElementById("f3").value;
+		
+		var startWorkTime = topWin.document.getElementById("f4").value;
 	
+		var paySeries = topWin.document.getElementById("f5").value;
+		
+
+		if (null == id || "" == id) {
+			alert("职工号不能为空");
+			topWin.document.getElementById("f1").focus();
+			return false;
+		} else if (id.length != 6) {
+			alert("职工号长度必须为6位");
+			topWin.document.getElementById("f1").focus();
+			return false;
+		} else if (null == level || "" == level) {
+			alert("工资岗位级别不能为空");
+			topWin.document.getElementById("f2").focus();
+			return false;
+		} else if (null == startSalaryTime|| "" == startSalaryTime) {
+			alert("起薪时间不能为空");
+			topWin.document.getElementById("f3").focus();
+			return false;
+		} else if (null == startWorkTime || "" == startWorkTime) {
+			alert("起始工作时间不能为空");
+			topWin.document.getElementById("f4").focus();
+			return false;
+		} else if (null == paySeries || "" == paySeries) {
+			alert("工资系列不能为空");
+			topWin.document.getElementById("f5").focus();
+			return false;
+		}
+
 		myform.action = "newEmployee/importStaff_newWorkerSalary_yiqixin";
 		myform.method = "post";
 		myform.submit();
@@ -137,7 +174,7 @@
 		experienceDiv.appendChild(label0);
 		j++;
 		topWin.document.getElementById("j").value = j;
-		
+
 	}
 
 	function delProExperience(o) {
@@ -191,7 +228,7 @@
 		experienceDiv.appendChild(label0);
 		m++;
 		topWin.document.getElementById("m").value = m;
-		
+
 	}
 
 	function delWorkerExperience(o) {
@@ -246,7 +283,7 @@
 		experienceDiv.appendChild(label0);
 		k++;
 		topWin.document.getElementById("k").value = k;
-		
+
 	}
 
 	function delEduExperience(o) {
@@ -256,6 +293,7 @@
 	}
 
 	function addBreakExperience() {
+
 		label0 = document.createElement("label");
 		label0.setAttribute("id", "label" + l);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
@@ -267,7 +305,11 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "breakWorkDate" + l);
+
+		a.setAttribute("class", "datepicker");
+
+		a.setAttribute("name", "breakStartDate" + l);
+
 		a.setAttribute("id", "Title" + l);
 		label0.appendChild(a);
 
@@ -277,7 +319,11 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "breakExperience" + l);
+
+		b.setAttribute("class", "datepicker");
+		b.setAttribute("name", "breakEndDate" + l);
+
+
 		b.setAttribute("id", "Title" + l);
 		label0.appendChild(b);
 
@@ -300,7 +346,13 @@
 		experienceDiv.appendChild(label0);
 		l++;
 		topWin.document.getElementById("l").value = l;
-		
+
+        
+	    $(".datepicker").datepicker({
+			format : 'yyyy-mm-dd',
+			 language: 'zh-CN',
+		});
+
 	}
 
 	function delBreakExperience(o) {
@@ -312,59 +364,57 @@
 </script>
 </head>
 <body>
-	<s:form style="display:none">
-	职工号：
-	<s:property value="#session.addedEmployee.id" />
-	<br /> 姓名:
-	<s:property value="#session.addedEmployee.name" />
-	<br /> 邮箱:
-	<s:property value="#session.addedEmployee.email" />
-	<br /> 性别：
-	<s:if test="#session.addedEmployee.gender"> 男</s:if>
-
-	<s:else>女</s:else>
-	<br /> 出生日期：
-	<s:property value="#session.addedEmployee.birthday" />
-	<br /> 身份证号：
-	<s:property value="#session.addedEmployee.uid" />
-	<br /> 单位：
-	<s:property value="#session.addedEmployee.department" />
-	<br /> 岗位性质：
-	<s:property value="#session.addedEmployee.jobType" />
-	<br /> 人员身份：
-	<s:property value="#session.addedEmployee.type" />
-	<br /> 进校来源：
-	<s:property value="#session.addedEmployee.source" />
-	<br /> 入校报到时间：
-	<s:property value="#session.addedEmployee.reachSchoolDate" />
-	<br /> 最高学历：
-	<s:property value="#session.addedEmployee.maxEducation" />
-	<br /> 最高学历获得时间：
-	<s:property value="#session.addedEmployee.maxEducationDate" />
-	<br /> 最高学位：
-	<s:property value="#session.addedEmployee.maxDegree" />
-	<br /> 最高学位获得时间：
-	<s:property value="#session.addedEmployee.maxDegreeDate" />
-	<br /> 聘任职务：
-	<s:property value="#session.addedEmployee.hireWork" />
-	<br /> 职务级别：
-	<s:property value="#session.addedEmployee.workLevel" />
-	<br /> 任职时间：
-	<s:property value="#session.addedEmployee.startWorkDate" />
-	<br /> 聘任职称：
-	<s:property value="#session.addedEmployee.hireTitle" />
-	<br /> 职称级别：
-	<s:property value="#session.addedEmployee.titleLevel" />
-	<br /> 聘任时间：
-	<s:property value="#session.addedEmployee.hireDate" />
-	<br /> （拟）聘任岗位：
-	<s:property value="#session.addedEmployee.hireJob" />
-	<br /> 聘岗级别：
-	<s:property value="#session.addedEmployee.jobLevel" />
-	<br /> 职工号 :
-	<s:textfield name="startSalaryInfo.eid"
-		value="%{#session.addedEmployee.id}" />
-	<br />
+	<s:form id="myform" style="display:none; ">
+	职工号：<s:property value="#session.addedEmployee.id" />
+		<br />
+	姓名:<s:property value="#session.addedEmployee.name" />
+		<br />
+	邮箱:<s:property value="#session.addedEmployee.email" />
+		<br />
+	性别：	<s:if test="%{#session.addedEmployee.gender == '男'}">男</s:if>
+		<s:else>女</s:else>
+		<br />
+	出生日期：<s:property value="#session.addedEmployee.birthday" />
+		<br />
+	身份证号：<s:property value="#session.addedEmployee.uid" />
+		<br />
+	单位：<s:property value="#session.addedEmployee.department" />
+		<br />
+	岗位性质：<s:property value="#session.addedEmployee.jobType" />
+		<br />
+	人员身份：<s:property value="#session.addedEmployee.type" />
+		<br />
+	进校来源：<s:property value="#session.addedEmployee.source" />
+		<br />
+	入校报到时间：<s:property value="#session.addedEmployee.reachSchoolDate" />
+		<br />
+	最高学历：<s:property value="#session.addedEmployee.maxEducation" />
+		<br />
+	最高学历获得时间：<s:property value="#session.addedEmployee.maxEducationDate" />
+		<br />
+	最高学位：<s:property value="#session.addedEmployee.maxDegree" />
+		<br />
+	最高学位获得时间：<s:property value="#session.addedEmployee.maxDegreeDate" />
+		<br />
+	聘任职务：<s:property value="#session.addedEmployee.hireWork" />
+		<br />
+	职务级别：<s:property value="#session.addedEmployee.workLevel" />
+		<br />
+	任职时间：<s:property value="#session.addedEmployee.startWorkDate" />
+		<br />
+	聘任职称：<s:property value="#session.addedEmployee.hireTitle" />
+		<br />
+	职称级别：<s:property value="#session.addedEmployee.titleLevel" />
+		<br />
+	聘任时间：<s:property value="#session.addedEmployee.hireDate" />
+		<br />
+	（拟）聘任岗位：<s:property value="#session.addedEmployee.hireJob" />
+		<br />
+	聘岗级别：<s:property value="#session.addedEmployee.jobLevel" />
+		<br />
+	职工号	: <s:textfield name="startSalaryInfo.eid"
+			value="%{#session.addedEmployee.id}" />
+		<br />
 	</s:form>
 
 	<s:form id="myform1">
@@ -444,8 +494,12 @@
 							工资系列<span style="color:red">*</span>
 						</dt>
 						<dd>
-
-							<input id="f5" type="text" name="startSalaryInfo.salarySeries">
+							<select id="f5" name="startSalaryInfo.salarySeries">
+									<option value="管理">管理</option>
+									<option value="专技">专技</option>
+									<option value="工人">工人</option>
+							</select>
+							
 						</dd>
 					</dl>
 
@@ -502,7 +556,9 @@
 
 
 
-		<button type="button" style="margin-left: 45%; margin-top:50px;"
+
+		<button type="button" style="margin-left: 45%; margin-top:50px; margin-bottom:300px;"
+
 			class="btn btn-success" onclick="addSalaryInfo()">提交</button>
 
 	</s:form>
@@ -514,7 +570,11 @@
 	<script type="text/javascript" src="js/liveValidation.js"></script>
 	<script type="text/javascript">
 		$(".datepicker").datepicker({
+
+			 ViewMode: 'years',
 			format : 'yyyy-mm-dd',
+	
+			
 		});
 
 		for ( var y = 1; y < 6; y++) {
@@ -529,8 +589,6 @@
 			});
 		}
 
-		
-		
 	</script>
 
 

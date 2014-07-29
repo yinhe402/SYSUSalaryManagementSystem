@@ -81,4 +81,19 @@
 	<bean name="leaveSchoolPersonDao" class="com.sms.dao.impl.LeaveSchoolPersonDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean name="finalBonusManage" class="com.sms.service.impl.FinalBonusManageImp"></bean>
+	<bean name="finalBonusDao" class="com.sms.dao.impl.FinalBonusDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean name="finalCheckManage" class="com.sms.service.impl.FinalCheckManageImp"></bean>
+	<bean name="finalCheckDao" class="com.sms.dao.impl.FinalCheckDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean name="offInfoManage" class="com.sms.service.impl.OffInfoManageImp"></bean>
+	<bean name="offInfoDao" class="com.sms.dao.impl.OffInfoDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>
