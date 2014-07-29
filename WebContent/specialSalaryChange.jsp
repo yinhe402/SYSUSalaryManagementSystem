@@ -29,19 +29,20 @@
 	 	
 	 	<tbody>
 	 	<s:iterator value="#session.infoChange" id="change">
-				 <tr>
-				 <td><s:property value="#change[0]"/></td>
-				 <td><s:property value="#change[1]"/></td>
-				 <td><s:property value="#change[2]"/></td>
-				 <td><s:property value="#change[3]"/></td>
-				 <td><s:property value="#change[4]"/></td>
-				 <td><s:property value="#change[5]"/></td>
-				 </tr>
-				</s:iterator>
+			 <tr>
+			 <td><s:property value="#change.eid"/></td>
+			 <td><s:property value="#change.name"/></td>
+			 <td><s:property value="#change.department"/></td>
+			 <td><s:property value="#change.amount"/></td>
+			 <td><s:property value="#change.reason"/></td>
+<%-- 			 <td><s:property value="#change.date"/></td> --%>
+			 <td><s:date name="#change.date" format="yyyy-MM-dd hh-mm-ss"/></td>
+			 </tr>
+		</s:iterator>
 	 	</tbody>
 	 </table>
 	 <div class="container" align="center">
-	 <a class="btn btn-primary">导出</a>	 
+	 	<a class="btn btn-primary"  href="<s:url action="specialSalary/exportChange"/>" >导出</a>	 
 	 </div>
 	 </form>
 </body>

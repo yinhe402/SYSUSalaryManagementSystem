@@ -55,11 +55,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
+<<<<<<< HEAD
 	<div style="margin-top:20px;margin-left:20px;"> 
     <s:form action="employee/importStopEmployeeInfo_remove" method="post" enctype="multipart/form-data" role="form">
      	<s:file class="btn btn-success" name="stopEmployeeFile" label="excelFile"/>
      	 
      	<button type="submit" class="btn btn-success" onclick="ok1">导入</button>
+=======
+	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
+		enctype="multipart/form-data" role="form">
+		<s:file name="stopEmployeeFile" label="excelFile" />
+		<button type="submit" class="btn btn-success">导入</button>
+>>>>>>> 3390d3adc927c6c40ded7cb3fb56dd3064c1e714
 	</s:form>
 	</div>
 	

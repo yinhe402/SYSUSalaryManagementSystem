@@ -52,11 +52,11 @@
 		</tr>
 
 		<tr>
-			<td>性别:</td> <td><s:if test="#session.eInfo.gender"> 男</s:if> <s:else>女</s:else> </td>
+			<td>性别:</td> <td><s:property  value="#session.eInfo.gender"/> </td>
 		</tr>
 
 		<tr>
-			<td>出生日期:</td> <td><s:property  value="#session.eInfo.birthday" /></td>
+			<td>出生日期:</td> <td><s:date  name="#session.eInfo.birthday" format="yyyy-MM-dd"/></td>
 		</tr>
 
 		<tr>
@@ -80,7 +80,7 @@
 		</tr>
 
 		<tr>
-			<td>入校报到时间:</td> <td><s:property  value="#session.eInfo.reachSchoolDate" /></td>
+			<td>入校报到时间:</td> <td><s:date  name="#session.eInfo.reachSchoolDate" format="yyyy-MM-dd"/></td>
 		</tr>
 
 		<tr>
@@ -88,7 +88,7 @@
 		</tr>
 
 		<tr>
-			<td>最高学历获得时间:</td> <td><s:property  value="#session.eInfo.maxEducationDate" /></td>
+			<td>最高学历获得时间:</td> <td><s:date  name="#session.eInfo.maxEducationDate" format="yyyy-MM-dd"/></td>
 		</tr>
 
 		<tr>
@@ -96,7 +96,7 @@
 		</tr>
 
 		<tr>
-			<td>最高学位获得时间:</td> <td><s:property  value="#session.eInfo.maxDegreeDate" /></td>
+			<td>最高学位获得时间:</td> <td><s:date  name="#session.eInfo.maxDegreeDate" format="yyyy-MM-dd"/></td>
 		</tr>
 
 		<tr>
@@ -107,7 +107,7 @@
 			<td>职务级别:</td> <td><s:property  value="#session.eInfo.workLevel" /></td>
 		</tr>
 		<tr>
-			<td>任职时间:</td> <td><s:property  value="#session.eInfo.startWorkDate" /></td>
+			<td>任职时间:</td> <td><s:date  name="#session.eInfo.startWorkDate" format="yyyy-MM-dd"/></td>
 		</tr>
 		<tr>
 			<td>聘任职称:</td> <td><s:property  value="#session.eInfo.hireTitle" /></td>
@@ -116,7 +116,7 @@
 			<td>职称级别:</td> <td><s:property  value="#session.eInfo.titleLevel" /></td>
 		</tr>
 		<tr>
-			<td>聘任时间:</td> <td><s:property  value="#session.eInfo.hireDate" /></td>
+			<td>聘任时间:</td> <td><s:date  name="#session.eInfo.hireDate" format="yyyy-MM-dd"/></td>
 		</tr>
 		<tr>
 			<td>（拟）聘任岗位:</td> <td><s:property  value="#session.eInfo.hireJob" /></td>
