@@ -51,6 +51,7 @@
 				<value>com.sms.entity.WorkChange</value>
 				<value>com.sms.entity.TitleChange</value>
 				<value>com.sms.entity.DepartmentChange</value>
+				<value>com.sms.entity.LeaveSchoolPerson</value>
 			</list>
 		</property>
 

@@ -27,11 +27,10 @@
 		<action name="userMain" class="userMainAction">
 			<result name="success">/userMain.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-		</action>
-		<action name="addEmployee" class="employeeAction" method="addEmployee">
-			<result name="success">/Employee.jsp</result>
-		</action>
-		<action name="getData" class="salaryStandardAction" method="getAllManagePositionSalary">
+		</action>	
+		
+		<action name="getData" class="salaryStandardAction" 
+			method="getAllSalaryStandard" >
 			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
 		<action name="*" >
@@ -106,6 +105,15 @@
 
 	<package name="bonusActions" namespace="/bonus" extends="abstract_struts">
 		<action name="*_*" class="bonusAction" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<result name="null" type="redirect">/success.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
+	<package name="changeActions" namespace="/change" extends="abstract_struts">
+		<action name="*_*" class="changeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="null" type="redirect">/success.jsp</result>

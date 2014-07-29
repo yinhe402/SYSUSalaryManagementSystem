@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%-- <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -39,9 +39,9 @@
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label" for="yesorno">是否进行工资减员:</label>
+					<label class="control-label" for="yesorno">业务处理:</label>
 					<div class="controls">
-					<select id="yesorno"><option selected="selected" value="是">是</option><option value="否">否</option></select>
+					<select id="yesorno"><option selected="selected" value="是">停薪</option><option value="否">取消工资关系</option></select>
 					</div>
 				</div>
 				
@@ -72,7 +72,18 @@
 				</thead>
 				
 				<tbody>
-					<s:iterator value="resultList" id="" status="st">  
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 <td>
+						 <a href="stopsalary.jsp" target="mainFrame"><font color="blue" size="3">停薪</font></a>/<a href="abolishrelation.jsp" target="mainFrame"><font color="blue" size="3">取消工资关系</font></a>
+					 	</td>
+					</tr>
+					<s:iterator value="" id="" status="">  
 					<tr >
 					 <td><s:property value=""/></td>
 					 <td><s:property value=""/></td>
@@ -81,7 +92,7 @@
 					 <td><s:property value=""/></td>
 					 <td><s:property value=""/></td>
 					 <td>
-						 <a href="stopsalary.jsp" target="mainFrame"><font color="blue" size="3">停薪</font></a>/<a><font color="blue" size="3">取消工资关系</font></a>
+						 <a href="stopsalary.jsp" target="mainFrame"><font color="blue" size="3">停薪</font></a href="abolishrelation.jsp" target="mainFrame">/<a><font color="blue" size="3">取消工资关系</font></a>
 					 </td>
 					</tr>
 					</s:iterator>
@@ -92,4 +103,44 @@
 		</form>
 	</div>
 </body>
+</html> --%>
+
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>减员停薪、取消工资关系</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  </head>
+  
+  <body>
+   <s:form action="employee/importStopEmployeeInfo_remove" method="post" enctype="multipart/form-data" role="form">
+     	<s:file class="btn btn-success" name="stopEmployeeFile" label="excelFile"/>
+     	 
+     	<button type="submit" class="btn btn-success">导入</button>
+	</s:form>
+	<s:iterator id="lList" value="#session.lList">
+		姓名：<td><s:textfield value="%{#lList.getName()}"/></td>
+		性别：<td><s:textfield value="%{#lList.getGender()}"/></td>
+		职工号：<td><s:textfield value="%{#lList.geteId()}"/></td>
+		单位：<td><s:textfield value="%{#lList.getDepartment()}"/></td>
+		离校时间：<td><s:textfield value="%{#lList.getLeaveDate()}"/></td>
+		离校原因：<td><s:textfield value="%{#lList.getReason()}"/></td>
+		人员工资状态：<td><s:textfield value="%{#lList.getState()}"/></td>
+		<br />
+	</s:iterator>
+  </body>
 </html>

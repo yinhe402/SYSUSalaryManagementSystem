@@ -21,6 +21,7 @@
 	function addSalaryInfo() {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
+
 		
 		var id = topWin.document.getElementById("f1").value;
 		
@@ -292,7 +293,7 @@
 	}
 
 	function addBreakExperience() {
-	    
+
 		label0 = document.createElement("label");
 		label0.setAttribute("id", "label" + l);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
@@ -304,9 +305,11 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
+
 		a.setAttribute("class", "datepicker");
 
 		a.setAttribute("name", "breakStartDate" + l);
+
 		a.setAttribute("id", "Title" + l);
 		label0.appendChild(a);
 
@@ -316,8 +319,11 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
+
 		b.setAttribute("class", "datepicker");
 		b.setAttribute("name", "breakEndDate" + l);
+
+
 		b.setAttribute("id", "Title" + l);
 		label0.appendChild(b);
 
@@ -340,11 +346,13 @@
 		experienceDiv.appendChild(label0);
 		l++;
 		topWin.document.getElementById("l").value = l;
+
         
 	    $(".datepicker").datepicker({
 			format : 'yyyy-mm-dd',
 			 language: 'zh-CN',
 		});
+
 	}
 
 	function delBreakExperience(o) {
@@ -356,8 +364,7 @@
 </script>
 </head>
 <body>
-
-	<s:form id="myform" style="display:none; ">
+<s:form id="myform" style="display:none; ">
 
 	职工号：<s:property value="#session.addedEmployee.id" />
 		<br />
@@ -547,7 +554,9 @@
 
 
 
+
 		<button type="button" style="margin-left: 45%; margin-top:50px; margin-bottom:300px;"
+
 			class="btn btn-success" onclick="addSalaryInfo()">提交</button>
 
 	</s:form>
@@ -559,10 +568,10 @@
 	<script type="text/javascript" src="js/liveValidation.js"></script>
 	<script type="text/javascript">
 		$(".datepicker").datepicker({
+
 			 ViewMode: 'years',
 			format : 'yyyy-mm-dd',
 	
-			
 			
 		});
 
@@ -577,6 +586,7 @@
 				failureMessage : "必填"
 			});
 		}
+
 	</script>
 
 

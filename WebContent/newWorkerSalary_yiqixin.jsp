@@ -303,7 +303,7 @@
 		</s:iterator>
 	</div>
 	
-	<button type="button" class="btn btn-success" onclick="SubmitSalaryInfo()"> 提交</button>
+	<button style="margin-left:47%; margin-top:5%;" type="button" class="btn btn-success" onclick="SubmitSalaryInfo()"> 提交</button>
 	
 </s:form>
 </body>
