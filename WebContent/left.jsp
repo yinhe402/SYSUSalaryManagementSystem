@@ -58,18 +58,13 @@
 </div> 
 <div id="pNode2" onclick="showList(this.id);" style="cursor:pointer;"> + 基本工资体系</div> 
 <div id="pNode2_ljf" style="display:none;"> 
-<<<<<<< HEAD
+
 
 <div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a  href="getData" target="mainFrame">基本工资标准</a></div>  
 <div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a href="salaryComputeFormula.jsp" target="mainFrame">工资计算公式</a></div> 
 <div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a>基本工资（津补贴）项目</a></div> 
 
 
-=======
-<div id="pNode2_sub1" style="padding-left:20px; cursor:pointer;">·<a class="emp" href="getData" target="mainFrame">基本工资标准</a></div>  
-<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·<a href="salaryComputeFormula.jsp" target="mainFrame">工资计算公式</a></div> 
-<div id="pNode2_sub2" style="padding-left:20px; cursor:pointer;">·基本工资（津补贴）项目</div> 
->>>>>>> 61a20c2c345e02c1ddb3459094d4d301ab105a1f
 </div> 
 
 <div id="pNode3" onclick="showList(this.id);" style="cursor:pointer;">+职工信息获取</div> 

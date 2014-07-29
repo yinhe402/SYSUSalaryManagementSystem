@@ -1465,6 +1465,7 @@ public class NewEmployeeAction extends ActionSupport {
 	public String addSalaryInfo() {
 		System.out.println("-------startSalaryInfoAction.importStaff--------"
 				+ startSalaryInfo.getEid());
+		startSalaryInfo.setOperateDate(new Date());
 		startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
 		return "success";
 	}
