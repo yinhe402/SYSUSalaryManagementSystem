@@ -27,24 +27,23 @@
 		<action name="userMain" class="userMainAction">
 			<result name="success">/userMain.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-		</action>	
-		
-		<action name="getData" class="salaryStandardAction" 
-			method="getAllSalaryStandard" >
+		</action>
+
+		<action name="getData" class="salaryStandardAction" method="getAllSalaryStandard">
 			<result name="success">/showSalaryStandard.jsp</result>
 		</action>
-		<action name="*" >
+		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>
 		<action name="autoSalary" class="autoSalary" method="computeSalary">
 			<result name="success">/showSalaryForAll.jsp</result>
 		</action>
-		
+
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
 		<action name="*_*" class="userAction" method="{1}">
-			
+
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
@@ -86,17 +85,21 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-	
-	<package name="specialSalaryActions" namespace="/specialSalary" extends="abstract_struts">
+
+	<package name="specialSalaryActions" namespace="/specialSalary"
+		extends="abstract_struts">
 		<action name="*" class="specialSalaryAction" method="{1}">
 			<result name="success" type="redirect">/{1}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="ok" type="redirect">/success.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-	
-	<package name="initSalaryCompute" namespace="/initSalaryCompute" extends="abstract_struts">
-		<action name="initSalaryCompute" class="initSalaryCompute" method="initSalaryCompute">
+
+	<package name="initSalaryCompute" namespace="/initSalaryCompute"
+		extends="abstract_struts">
+		<action name="initSalaryCompute" class="initSalaryCompute"
+			method="initSalaryCompute">
 			<result name="success" type="redirect">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
@@ -111,7 +114,7 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-	
+
 	<package name="changeActions" namespace="/change" extends="abstract_struts">
 		<action name="*_*" class="changeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
@@ -120,5 +123,5 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-
+	
 </struts>

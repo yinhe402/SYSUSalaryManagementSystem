@@ -1,9 +1,8 @@
 package com.sms.dao.impl;
 
-import org.hibernate.*;
+import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 
 import com.sms.dao.IEmployeeDao;
 import com.sms.entity.Employee;
@@ -45,4 +44,17 @@ public class EmployeeDaoImp implements IEmployeeDao {
 		
 	}
 	
+	@Override
+	public List<Employee> findEmployeesByName(String name) {
+		Query query = (Query)getSession().createQuery("from Employee as e where e.name = ?");
+		query.setString(0, name);	
+		return (List<Employee>)query.list();
+	}
+	
+	@Override
+	public List<Employee> findEmployeesByDepartment(String department) {
+		Query query = (Query)getSession().createQuery("from Employee as e where e.department = ?");
+		query.setString(0, department);	
+		return (List<Employee>)query.list();
+	}
 }

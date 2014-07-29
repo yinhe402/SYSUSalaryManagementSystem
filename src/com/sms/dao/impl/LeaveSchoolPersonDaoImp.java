@@ -42,11 +42,11 @@ public class LeaveSchoolPersonDaoImp implements ILeaveSchoolPersonDao{
 	}
 
 	@Override
-	public List<LeaveSchoolPerson> findLeaveSchoolPersonByEId(Integer eId) {
+	public LeaveSchoolPerson findLeaveSchoolPersonByEId(Integer eId) {
 		// TODO Auto-generated method stub
 		Query query = (Query)getSession().createQuery("from LeaveSchoolPerson where eId = ?");
 		query.setString(0, eId.toString());	
-		return (List<LeaveSchoolPerson>)query.list();
+		return (LeaveSchoolPerson)query.uniqueResult();
 	}
 
 }

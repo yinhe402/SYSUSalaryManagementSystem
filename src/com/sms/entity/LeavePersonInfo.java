@@ -10,6 +10,8 @@ public class LeavePersonInfo {
 	private Date leaveDate;
 	private String reason;
 	private String state;
+	private Date stopDate;
+	private String note;
 	
 	public String getName() {
 		return name;
@@ -53,6 +55,18 @@ public class LeavePersonInfo {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public Date getStopDate() {
+		return stopDate;
+	}
+	public void setStopDate(Date stopDate) {
+		this.stopDate = stopDate;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	
 	public LeavePersonInfo(){
 		name = null;
@@ -62,9 +76,11 @@ public class LeavePersonInfo {
 		leaveDate = null;
 		reason = null;
 		state = null;
+		stopDate = null;
+		note = null;
 	}
 	
-	public LeavePersonInfo(String s1, String s2, Integer i1, String s3, Date d1, String s4, String s5) {
+	public LeavePersonInfo(String s1, String s2, Integer i1, String s3, Date d1, String s4, String s5, Date d2, String s6) {
 		name = s1;
 		gender = s2;
 		eId = i1;
@@ -72,5 +88,7 @@ public class LeavePersonInfo {
 		leaveDate = d1;
 		reason = s4;
 		state = s5;
+		stopDate = d2;
+		note = s6;
 	}
 }
