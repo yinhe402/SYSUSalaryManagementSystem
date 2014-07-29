@@ -1,21 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>年终一次性奖金</title>
+<base href="<%=basePath%>">
 
-<script type="text/javascript">
-	//var myfrom=document.getElementById("myform1");
-	
-</script>
+<title>减员停薪、取消工资关系</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
+
 <body>
-<s:form action="bonus/importTestResult_success" method="post" enctype="multipart/form-data">
-    <s:file name="excelFile" label="excelFile 1"/>
-    <s:submit value="submit"/>
-</s:form>
+	<s:form style="text-align:center;"
+		action="bonus/importTestResult_success" method="post"
+		enctype="multipart/form-data" role="form">
+		<div>
+			<s:file name="excelFile" label="excelFile 1" />
+
+			<button type="submit" class="btn btn-success">导入</button>
+		</div>
+		
+		
+        <div style="margin-top:5%;">
+		<select  id="type"
+			onchange="show(this.selectedIndex)">
+
+			<option value="1">不发</option>
+			<option value="2">双薪</option>
+			<option value="3">部分双薪</option>
+
+		</select>
+		
+		<button type="button" style="margin-bottom:10px;"
+			 
+			class="btn btn-success" onclick="">提交
+		</button>
+		</div>
+
+
+
+        
+
+	</s:form>
+
 </body>
 </html>

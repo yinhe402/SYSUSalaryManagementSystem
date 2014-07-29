@@ -1,5 +1,7 @@
 package com.sms.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.sms.dao.IEmployeeDao;
@@ -41,4 +43,13 @@ public class EmployeeManageImp implements IEmployeeManage {
 		return (Employee)employeeDao.findEmployeeById(id);
 	}
 
+	@Override
+	public List<Employee> findEmployeesByName(String name) {
+		return (List<Employee>)employeeDao.findEmployeesByName(name);
+	}
+	
+	@Override
+	public List<Employee> findEmployeesByDepartment(String department) {
+		return (List<Employee>)employeeDao.findEmployeesByDepartment(department);
+	}
 }

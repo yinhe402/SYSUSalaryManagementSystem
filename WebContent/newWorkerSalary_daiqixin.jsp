@@ -22,7 +22,44 @@
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
 
+		
+		var id = topWin.document.getElementById("f1").value;
+		
+		var level= topWin.document.getElementById("f2").value;
+		
+		var startSalaryTime = topWin.document.getElementById("f3").value;
+		
+		var startWorkTime = topWin.document.getElementById("f4").value;
 	
+		var paySeries = topWin.document.getElementById("f5").value;
+		
+
+		if (null == id || "" == id) {
+			alert("职工号不能为空");
+			topWin.document.getElementById("f1").focus();
+			return false;
+		} else if (id.length != 6) {
+			alert("职工号长度必须为6位");
+			topWin.document.getElementById("f1").focus();
+			return false;
+		} else if (null == level || "" == level) {
+			alert("工资岗位级别不能为空");
+			topWin.document.getElementById("f2").focus();
+			return false;
+		} else if (null == startSalaryTime|| "" == startSalaryTime) {
+			alert("起薪时间不能为空");
+			topWin.document.getElementById("f3").focus();
+			return false;
+		} else if (null == startWorkTime || "" == startWorkTime) {
+			alert("起始工作时间不能为空");
+			topWin.document.getElementById("f4").focus();
+			return false;
+		} else if (null == paySeries || "" == paySeries) {
+			alert("工资系列不能为空");
+			topWin.document.getElementById("f5").focus();
+			return false;
+		}
+
 		myform.action = "newEmployee/importStaff_newWorkerSalary_yiqixin";
 		myform.method = "post";
 		myform.submit();
@@ -137,7 +174,7 @@
 		experienceDiv.appendChild(label0);
 		j++;
 		topWin.document.getElementById("j").value = j;
-		
+
 	}
 
 	function delProExperience(o) {
@@ -191,7 +228,7 @@
 		experienceDiv.appendChild(label0);
 		m++;
 		topWin.document.getElementById("m").value = m;
-		
+
 	}
 
 	function delWorkerExperience(o) {
@@ -246,7 +283,7 @@
 		experienceDiv.appendChild(label0);
 		k++;
 		topWin.document.getElementById("k").value = k;
-		
+
 	}
 
 	function delEduExperience(o) {
@@ -256,6 +293,7 @@
 	}
 
 	function addBreakExperience() {
+
 		label0 = document.createElement("label");
 		label0.setAttribute("id", "label" + l);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
@@ -267,7 +305,11 @@
 
 		var a = document.createElement("input");
 		a.setAttribute("type", "text");
-		a.setAttribute("name", "breakWorkDate" + l);
+
+		a.setAttribute("class", "datepicker");
+
+		a.setAttribute("name", "breakStartDate" + l);
+
 		a.setAttribute("id", "Title" + l);
 		label0.appendChild(a);
 
@@ -277,7 +319,11 @@
 
 		var b = document.createElement("input");
 		b.setAttribute("type", "text");
-		b.setAttribute("name", "breakExperience" + l);
+
+		b.setAttribute("class", "datepicker");
+		b.setAttribute("name", "breakEndDate" + l);
+
+
 		b.setAttribute("id", "Title" + l);
 		label0.appendChild(b);
 
@@ -300,7 +346,13 @@
 		experienceDiv.appendChild(label0);
 		l++;
 		topWin.document.getElementById("l").value = l;
-		
+
+        
+	    $(".datepicker").datepicker({
+			format : 'yyyy-mm-dd',
+			 language: 'zh-CN',
+		});
+
 	}
 
 	function delBreakExperience(o) {
@@ -312,6 +364,10 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+	<s:form id="myform" style="display:none; ">
+=======
+>>>>>>> 59aab23f38f4fe332996db6350fc09af5feb7b9e
 
 	职工号：<s:property value="#session.addedEmployee.id" />
 		<br />
@@ -319,7 +375,10 @@
 		<br />
 	邮箱:<s:property value="#session.addedEmployee.email" />
 		<br />
+<<<<<<< HEAD
+=======
 
+>>>>>>> 59aab23f38f4fe332996db6350fc09af5feb7b9e
 	性别：	<s:if test="#session.addedEmployee.gender"> 男</s:if>
 
 		<s:else>女</s:else>
@@ -502,7 +561,9 @@
 
 
 
-		<button type="button" style="margin-left: 45%; margin-top:50px;"
+
+		<button type="button" style="margin-left: 45%; margin-top:50px; margin-bottom:300px;"
+
 			class="btn btn-success" onclick="addSalaryInfo()">提交</button>
 
 	</s:form>
@@ -514,7 +575,11 @@
 	<script type="text/javascript" src="js/liveValidation.js"></script>
 	<script type="text/javascript">
 		$(".datepicker").datepicker({
+
+			 ViewMode: 'years',
 			format : 'yyyy-mm-dd',
+	
+			
 		});
 
 		for ( var y = 1; y < 6; y++) {
@@ -529,8 +594,6 @@
 			});
 		}
 
-		
-		
 	</script>
 
 
