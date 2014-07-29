@@ -14,7 +14,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://172.18.180.62:3306/sms?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="url"
+			value="jdbc:mysql://172.18.180.62:3306/sms?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
@@ -56,7 +57,7 @@
 		</property>
 
 	</bean>
-	
+
 
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
@@ -69,17 +70,16 @@
 		<tx:attributes>
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="modify*" propagation="REQUIRED" />		
-			 <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到 -->
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
 
 	<!-- 那些类那些方法使用事务 -->
 	<aop:config>
-	  <!-- 只对业务逻辑层实施事务 -->
-		<aop:pointcut id="allManagerMethod"
-			expression="execution(* com.sms.service.*.*(..))" />
+		<!-- 只对业务逻辑层实施事务 -->
+		<aop:pointcut id="allManagerMethod" expression="execution(* com.sms.service.*.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txadvice" />
 	</aop:config>
 

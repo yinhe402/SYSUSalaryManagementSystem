@@ -26,7 +26,7 @@ public class SpecialSalaryAction {
 	public String specialSalaryChange(){
 		//System.out.println(specialSalaryChange.getEId());
 		iSpecialSalaryChangeManage.addSpecialSalaryChange(specialSalaryChange);
-		Salary salary = iSalaryManage.findSalaryByEId(specialSalaryChange.getEId());
+		Salary salary = iSalaryManage.findLastSalaryByEId(specialSalaryChange.getEId());
 		//System.out.println(salary.getTotleSalary());
 		//System.out.println(specialSalaryChange.getAmount());
 		salary.setTotleSalary(salary.getTotleSalary()+specialSalaryChange.getAmount());
@@ -38,7 +38,7 @@ public class SpecialSalaryAction {
 	public String specialSalaryRecovery(){
 		//System.out.println(specialSalaryRecovery.getEId());
 		iSpecialSalaryRecoveryManage.addSpecialSalaryRecovery(specialSalaryRecovery);
-		Salary salary = iSalaryManage.findSalaryByEId(specialSalaryRecovery.getEId());
+		Salary salary = iSalaryManage.findLastSalaryByEId(specialSalaryRecovery.getEId());
 		salary.setTotleSalary();
 		iSalaryManage.modifySalary(salary);
 		

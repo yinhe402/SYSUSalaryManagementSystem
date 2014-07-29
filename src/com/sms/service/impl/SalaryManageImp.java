@@ -1,5 +1,7 @@
 package com.sms.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.sms.dao.ISalaryDao;
@@ -44,8 +46,12 @@ public class SalaryManageImp implements ISalaryManage{
 	}
 
 	@Override
-	public Salary findSalaryByEId(Integer eid) {
-		// TODO Auto-generated method stub
+	public List<Salary> findSalaryByEId(Integer eid) {
 		return salaryDao.findSalaryByEId(eid);
+	}
+
+	@Override
+	public Salary findLastSalaryByEId(Integer eid) {
+		return salaryDao.findLastSalaryById(eid);
 	}
 }

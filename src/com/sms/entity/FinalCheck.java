@@ -15,7 +15,7 @@ public class FinalCheck {
 	private Integer id;//主键
 	private Integer eId;//职工号
 	private Integer year;//年份
-	private Integer checkResult;//考核结果 ，0:不通过，1:通过，2:优秀
+	private String checkResult;//考核结果 ，0:不通过，1:通过，2:优秀
 	
 	@Id
 	@GeneratedValue
@@ -52,10 +52,10 @@ public class FinalCheck {
 	 * 考核结果
 	 */
 	@Column(name="checkResult")
-	public Integer getCheckResult() {
+	public String getCheckResult() {
 		return checkResult;
 	}
-	public void setCheckResult(Integer checkResult) {
+	public void setCheckResult(String checkResult) {
 		this.checkResult = checkResult;
 	}
 }
