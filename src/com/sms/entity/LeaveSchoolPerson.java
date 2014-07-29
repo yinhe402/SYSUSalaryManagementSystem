@@ -1,6 +1,6 @@
 package com.sms.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +19,8 @@ public class LeaveSchoolPerson {
 	private Date leaveSchoolDate;//离校时间
 	private String leaveReason;//离校原因
 	private String salaryState;//工资状态 在职,停职,取消工资关系
-	private Date stopData;//停发时间
+	private Date stopDate;//停发时间
+	private String note;//备注
 	
 	@Id
 	@GeneratedValue
@@ -75,10 +76,21 @@ public class LeaveSchoolPerson {
 	}
 	
 	@Column(name="stopDate",nullable=false)
-	public Date getStopData() {
-		return stopData;
+	public Date getStopDate() {
+		return stopDate;
 	}
-	public void setStopData(Date stopData) {
-		this.stopData = stopData;
+	public void setStopDate(Date stopDate) {
+		this.stopDate = stopDate;
+	}
+	
+	/*
+	 * 备注
+	 */
+	@Column(name="note")
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
 	}
 }
