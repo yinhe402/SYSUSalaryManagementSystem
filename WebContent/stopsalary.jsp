@@ -32,7 +32,7 @@
 	<div class="container">
 	<form class="form-horizontal">
 		<fieldset>
-			<table class="table table-bordered span8">
+			<table class="table table-bordered span9">
 				<thead>
 					<tr>
 						<th>工资停发表</th>
@@ -59,22 +59,15 @@
 					</tr>
 					
 					<tr>
-						<td>姓名</td>
-						<td></td>
-						<td>职工号</td>
-						<td></td>
-					</tr>
-					
-					<tr>
 						<td>工资停发时间</td>
-						<td><input type="text" /></td>
+						<td><input type="text" style="border-style:none;width:99%;"/></td>
 						<td>业务处理时间</td>
-						<td><input type="text" /></td>
+						<td><input type="text" style="border-style:none;width:99%;"/></td>
 					</tr>
 					
 					<tr>
 						<td>备注</td> 
-						<td colspan="3"><input type="text" class="input1" /></td>
+						<td colspan="3"><input type="text" style="border-style:none;width:99%" /></td>
 					</tr>
 				</tbody>
 			</table>

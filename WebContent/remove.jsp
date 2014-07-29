@@ -72,7 +72,18 @@
 				</thead>
 				
 				<tbody>
-					<s:iterator value="resultList" id="" status="st">  
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						 <td>
+						 <a href="stopsalary.jsp" target="mainFrame"><font color="blue" size="3">停薪</font></a>/<a href="abolishrelation.jsp" target="mainFrame"><font color="blue" size="3">取消工资关系</font></a>
+					 	</td>
+					</tr>
+					<s:iterator value="" id="" status="">  
 					<tr >
 					 <td><s:property value=""/></td>
 					 <td><s:property value=""/></td>
@@ -81,7 +92,7 @@
 					 <td><s:property value=""/></td>
 					 <td><s:property value=""/></td>
 					 <td>
-						 <a href="stopsalary.jsp" target="mainFrame"><font color="blue" size="3">停薪</font></a>/<a><font color="blue" size="3">取消工资关系</font></a>
+						 <a href="stopsalary.jsp" target="mainFrame"><font color="blue" size="3">停薪</font></a href="abolishrelation.jsp" target="mainFrame">/<a><font color="blue" size="3">取消工资关系</font></a>
 					 </td>
 					</tr>
 					</s:iterator>
