@@ -36,4 +36,10 @@ public class SpecialSalaryRecoveryManageImp implements ISpecialSalaryRecoveryMan
 		return iSpecialSalaryRecoveryDao.findSpecialSalaryRecoveryByEId(eId);
 	}
 
+	@Override
+	public List<SpecialSalaryRecovery> findAllSpecialSalaryRecovery() {
+		// TODO Auto-generated method stub
+		return iSpecialSalaryRecoveryDao.findAllSpecialSalaryRecovery();
+	}
+
 }

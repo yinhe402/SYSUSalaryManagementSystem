@@ -312,67 +312,59 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-<s:form id="myform" style="display:none">
-	职工号：<s:property value="#session.addedEmployee.id"/><br />
-	姓名:<s:property  value="#session.addedEmployee.name"/> <br />
-	邮箱:<s:property  value="#session.addedEmployee.email"/><br />
-=======
+	<s:form>
+	职工号：
+	<s:property value="#session.addedEmployee.id" />
+	<br /> 姓名:
+	<s:property value="#session.addedEmployee.name" />
+	<br /> 邮箱:
+	<s:property value="#session.addedEmployee.email" />
+	<br /> 性别：
+	<s:if test="#session.addedEmployee.gender"> 男</s:if>
 
-	<s:form id="myform" style="display:none; ">
-
-	职工号：<s:property value="#session.addedEmployee.id" />
-		<br />
-	姓名:<s:property value="#session.addedEmployee.name" />
-		<br />
-	邮箱:<s:property value="#session.addedEmployee.email" />
-		<br />
->>>>>>> 776c268596fd795d9f49ab379b665bc2d3968e52
-	性别：	<s:if test="#session.addedEmployee.gender"> 男</s:if>
-
-		<s:else>女</s:else>
-		<br />
-	出生日期：<s:property value="#session.addedEmployee.birthday" />
-		<br />
-	身份证号：<s:property value="#session.addedEmployee.uid" />
-		<br />
-	单位：<s:property value="#session.addedEmployee.department" />
-		<br />
-	岗位性质：<s:property value="#session.addedEmployee.jobType" />
-		<br />
-	人员身份：<s:property value="#session.addedEmployee.type" />
-		<br />
-	进校来源：<s:property value="#session.addedEmployee.source" />
-		<br />
-	入校报到时间：<s:property value="#session.addedEmployee.reachSchoolDate" />
-		<br />
-	最高学历：<s:property value="#session.addedEmployee.maxEducation" />
-		<br />
-	最高学历获得时间：<s:property value="#session.addedEmployee.maxEducationDate" />
-		<br />
-	最高学位：<s:property value="#session.addedEmployee.maxDegree" />
-		<br />
-	最高学位获得时间：<s:property value="#session.addedEmployee.maxDegreeDate" />
-		<br />
-	聘任职务：<s:property value="#session.addedEmployee.hireWork" />
-		<br />
-	职务级别：<s:property value="#session.addedEmployee.workLevel" />
-		<br />
-	任职时间：<s:property value="#session.addedEmployee.startWorkDate" />
-		<br />
-	聘任职称：<s:property value="#session.addedEmployee.hireTitle" />
-		<br />
-	职称级别：<s:property value="#session.addedEmployee.titleLevel" />
-		<br />
-	聘任时间：<s:property value="#session.addedEmployee.hireDate" />
-		<br />
-	（拟）聘任岗位：<s:property value="#session.addedEmployee.hireJob" />
-		<br />
-	聘岗级别：<s:property value="#session.addedEmployee.jobLevel" />
-		<br />
-	职工号	: <s:textfield name="startSalaryInfo.eid"
-			value="%{#session.addedEmployee.id}" />
-		<br />
+	<s:else>女</s:else>
+	<br /> 出生日期：
+	<s:property value="#session.addedEmployee.birthday" />
+	<br /> 身份证号：
+	<s:property value="#session.addedEmployee.uid" />
+	<br /> 单位：
+	<s:property value="#session.addedEmployee.department" />
+	<br /> 岗位性质：
+	<s:property value="#session.addedEmployee.jobType" />
+	<br /> 人员身份：
+	<s:property value="#session.addedEmployee.type" />
+	<br /> 进校来源：
+	<s:property value="#session.addedEmployee.source" />
+	<br /> 入校报到时间：
+	<s:property value="#session.addedEmployee.reachSchoolDate" />
+	<br /> 最高学历：
+	<s:property value="#session.addedEmployee.maxEducation" />
+	<br /> 最高学历获得时间：
+	<s:property value="#session.addedEmployee.maxEducationDate" />
+	<br /> 最高学位：
+	<s:property value="#session.addedEmployee.maxDegree" />
+	<br /> 最高学位获得时间：
+	<s:property value="#session.addedEmployee.maxDegreeDate" />
+	<br /> 聘任职务：
+	<s:property value="#session.addedEmployee.hireWork" />
+	<br /> 职务级别：
+	<s:property value="#session.addedEmployee.workLevel" />
+	<br /> 任职时间：
+	<s:property value="#session.addedEmployee.startWorkDate" />
+	<br /> 聘任职称：
+	<s:property value="#session.addedEmployee.hireTitle" />
+	<br /> 职称级别：
+	<s:property value="#session.addedEmployee.titleLevel" />
+	<br /> 聘任时间：
+	<s:property value="#session.addedEmployee.hireDate" />
+	<br /> （拟）聘任岗位：
+	<s:property value="#session.addedEmployee.hireJob" />
+	<br /> 聘岗级别：
+	<s:property value="#session.addedEmployee.jobLevel" />
+	<br /> 职工号 :
+	<s:textfield name="startSalaryInfo.eid"
+		value="%{#session.addedEmployee.id}" />
+	<br />
 	</s:form>
 
 	<s:form id="myform1">
