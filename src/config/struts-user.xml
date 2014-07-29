@@ -91,6 +91,7 @@
 		<action name="*" class="specialSalaryAction" method="{1}">
 			<result name="success" type="redirect">/{1}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="ok" type="redirect">/success.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
