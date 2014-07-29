@@ -107,7 +107,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			<s:iterator value="resultList" id="" status="st">
+			<s:iterator value="" id="" status="st">
 				 <tr>
 				 <td><s:property value=""/></td>
 				 <td><s:property value=""/></td>
