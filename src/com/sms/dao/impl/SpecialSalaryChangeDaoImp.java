@@ -49,4 +49,11 @@ public class SpecialSalaryChangeDaoImp implements ISpecialSalaryChangeDao{
 		return (List<SpecialSalaryChange>)query.list();
 	}
 
+	@Override
+	public List<SpecialSalaryChange> findAllSpecialSalaryChange() {
+		// TODO Auto-generated method stub
+		Query query = (Query)getSession().createQuery("from SpecialSalaryChange");
+		return (List<SpecialSalaryChange>)query.list();
+	}
+
 }

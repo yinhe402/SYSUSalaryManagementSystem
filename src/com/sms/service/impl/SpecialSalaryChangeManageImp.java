@@ -36,4 +36,10 @@ public class SpecialSalaryChangeManageImp implements ISpecialSalaryChangeManage{
 		return iSpecialSalaryChangeDao.findSpecialSalaryChangeByEId(eId);
 	}
 
+	@Override
+	public List<SpecialSalaryChange> findAllSpecialSalaryChange() {
+		// TODO Auto-generated method stub
+		return iSpecialSalaryChangeDao.findAllSpecialSalaryChange();
+	}
+
 }

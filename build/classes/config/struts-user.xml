@@ -88,8 +88,8 @@
 	</package>
 	
 	<package name="specialSalaryActions" namespace="/specialSalary" extends="abstract_struts">
-		<action name="*_*" class="specialSalaryAction" method="{1}">
-			<result name="success" type="redirect">/{2}.jsp</result>
+		<action name="*" class="specialSalaryAction" method="{1}">
+			<result name="success" type="redirect">/{1}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>

@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="textml; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/css/datepicker.css">
+<link rel="stylesheet" href="css/index.css">
+
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
@@ -57,14 +60,14 @@
 <s:form id="myform1">	
 <div class="addEmployeeSalary">增员起薪</div>
 <div class="container" style="font-size:18px;">
-			<div class="row">
+			<div class="row" style="margin-left:180px;">
 				<div class="span6" style="margin-left:65px;">
 					<dl class="dl-horizontal">
 						<dt>
 							职工号<span style="color:red">*</span>
 						</dt>
 						<dd>
-							<s:textfield id="f1" name="startSalaryInfo.eid"
+							<s:textfield  readonly="true" id="f1" name="startSalaryInfo.eid"
 								value="%{#session.ssInfo.eid}" maxlength="6" />
 
 						</dd>
@@ -75,23 +78,23 @@
 							起薪时间<span style="color:red">*</span>
 						</dt>
 						<dd>
-							<s:textfield id="f1" name="startSalaryInfo.startSalaryDate"
+							<s:textfield readonly="true" id="f1" name="startSalaryInfo.startSalaryDate"
 								value="%{#session.ssInfo.startSalaryDate}" />
 
 						</dd>
 					</dl>
 
 
-					<dl class="dl-horizontal" style="margin-bottom:30px; ">
+					<dl class="dl-horizontal" style="margin-bottom:25px; ">
 						<dt style="margin-left:-35px; overflow:visible;">
 							基本工资是否上调10%<span style="color:red ;">*</span>
 						</dt>
 						<dd>
 							<s:if test="%{#session.ssInfo.isRaised}">
-								<input type="radio" style="margin-top:-3px;"name="startSalaryInfo.isRaised" value="true" checked="checked"/>是&nbsp;&nbsp;&nbsp;<input type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="false"/>否<br />
+								<input disabled="disabled" type="radio" style="margin-top:-3px;"name="startSalaryInfo.isRaised" value="true" checked="checked"/>是&nbsp;&nbsp;&nbsp;<input disabled="disabled" type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="false"/>否<br />
 							</s:if> 
 							<s:else> 
-								<input type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="true"/>是&nbsp;&nbsp;&nbsp;<input style="margin-top:-3px;" type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
+								<input disabled="disabled" type="radio" style="margin-top:-3px;" name="startSalaryInfo.isRaised" value="true"/>是&nbsp;&nbsp;&nbsp;<input disabled="disabled" style="margin-top:-3px;" type="radio" name="startSalaryInfo.isRaised" value="false" checked="checked"/>否<br />
 							</s:else>
 							
 							
@@ -106,7 +109,7 @@
 						</dt>
 						<dd>
                             
-							<s:textfield id="f1" name="startSalaryInfo.startWorkYear"
+							<s:textfield readonly="true" id="f1" name="startSalaryInfo.startWorkYear"
 								value="%{#session.sYear}" />
 							
 						</dd>
@@ -117,7 +120,7 @@
 							考核不合格次数<span style="color:red">*</span>
 						</dt>
 						<dd>
-						<s:textfield id="f1" name="failYearTime"
+						<s:textfield readonly="true" id="f1" name="failYearTime"
 								value="%{#session.fTime}" />
 							
 							
@@ -129,7 +132,7 @@
 							工资系列<span style="color:red">*</span>
 						</dt>
 						<dd>
- 						<s:textfield id="f1" name="startSalaryInfo.salarySeries"
+ 						<s:textfield readonly="true" id="f1" name="startSalaryInfo.salarySeries"
 								value="%{#session.ssInfo.salarySeries}"/>
 							
 						</dd>
@@ -141,7 +144,7 @@
 							工资岗位级别<span style="color:red">*</span>
 						</dt>
 						<dd>
-						<s:textfield id="f1" name="startSalaryInfo.positionLevel"
+						<s:textfield readonly="true" id="f1" name="startSalaryInfo.positionLevel"
 								value="%{#session.ssInfo.positionLevel}"/>
 							
 						</dd>
@@ -149,8 +152,8 @@
 					
 					
 					<dl class="dl-horizontal">
-						<dt>
-							套改年限(自动套用)
+						<dt >
+							套改年限
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.changeYears"
@@ -161,7 +164,7 @@
 					
 					<dl class="dl-horizontal">
 						<dt>
-							中断工龄(自动套用)
+							中断工龄
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.breakOffSeniority"
@@ -171,8 +174,8 @@
 					</dl>
 					
 					<dl class="dl-horizontal">
-						<dt>
-							截至2006年6月30日实际工作年限(自动套用)
+						<dt style="margin-left:-117px; overflow:visible;">
+							截至2006年6月30日实际工作年限
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.workYears" 
@@ -183,8 +186,8 @@
 					
 					
 					<dl class="dl-horizontal">
-						<dt>
-							工作前工龄(自动套用)
+						<dt >
+							工作前工龄
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.seniorityBeforeWork"
@@ -194,8 +197,8 @@
 					</dl>
 					
 					<dl class="dl-horizontal">
-						<dt>
-							大专以上不计工龄年限(自动套用)
+						<dt style="margin-left:-31px; overflow:visible;">
+							大专以上不计工龄年限
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.learnSeniority"
@@ -205,8 +208,8 @@
 					</dl>
 					
 					<dl class="dl-horizontal">
-						<dt>
-							任职年限(自动套用)
+						<dt >
+							任职年限
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.hireYears"
@@ -217,7 +220,7 @@
 					
 					<dl class="dl-horizontal">
 						<dt>
-							薪级()
+							薪级
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.salaryLevel" 
@@ -227,8 +230,8 @@
 					</dl>
 					
 					<dl class="dl-horizontal">
-						<dt>
-							岗位工资(自动套用)
+						<dt >
+							岗位工资
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.positionSalary" 
@@ -238,8 +241,8 @@
 					</dl>
 					
 					<dl class="dl-horizontal">
-						<dt>
-							薪级工资(自动套用)
+						<dt >
+							薪级工资
 						</dt>
 						<dd>
 						<s:textfield id="f1" name="startSalaryInfo.levelSalary" 
@@ -249,7 +252,7 @@
 					</dl>
 					
 					<dl class="dl-horizontal">
-						<dt>
+						<dt >
 							备注
 						</dt>
 						<dd>
@@ -264,32 +267,43 @@
 </div>
   
 	
+	<br/>
 	
-	管理系列经历：<br />
-	<s:iterator id="mList" value="#session.mList">
-		<td><s:textfield value="%{#mList.getTime()}"/></td>
-		<td><s:textfield value="%{#mList.getGanhuo()}"/></td><br />
-	</s:iterator>
 	
-	专技系列经历：<br />
-	<s:iterator id="tList" value="#session.tList">
-		<td><s:textfield value="%{#tList.getTime()}"/></td>
-		<td><s:textfield value="%{#tList.getGanhuo()}"/></td><br />
-	</s:iterator>
 	
-	工人系列经历：<br />
-	<s:iterator id="wList" value="#session.wList">
-		<td><s:textfield value="%{#wList.getTime()}"/></td>
-		<td><s:textfield value="%{#wList.getGanhuo()}"/></td><br />
-	</s:iterator>
+	<div id="manExperience" style="text-align:center; margin-top:50px;">
+		<span style="font-size:25px; font-weight:bold; margin-bottom:20px;">管理系列经历</span><br />
+		<s:iterator id="mList" value="#session.mList">
+			<td><s:textfield readonly="true" value="%{#mList.getTime()}"/></td>
+			<td><s:textfield readonly="true" value="%{#mList.getGanhuo()}"/></td><br />
+		</s:iterator>
+	</div>
 	
-	教育经历:<br />
-	<s:iterator id="eList" value="#session.eList">
-		<td><s:textfield value="%{#eList.getTime()}"/></td>
-		<td><s:textfield value="%{#eList.getGanhuo()}"/></td><br />
-	</s:iterator>	
+	<div id="workExperience" style="text-align:center; margin-top:50px;">
+		<span style="font-size:25px; font-weight:bold; margin-bottom:20px;">专技系列经历</span><br />
+		<s:iterator id="tList" value="#session.tList">
+			<td><s:textfield readonly="true" value="%{#tList.getTime()}"/></td>
+			<td><s:textfield readonly="true" value="%{#tList.getGanhuo()}"/></td><br />
+		</s:iterator>
+	</div>
 	
-	<button type="button" class="btn btn-success" onclick="SubmitSalaryInfo()"> 提交</button>
+	<div id="workerExperience" style="text-align:center; margin-top:50px;">
+		<span style="font-size:25px; font-weight:bold; margin-bottom:20px;">工人系列经历</span><br />
+		<s:iterator id="wList" value="#session.wList">
+			<td><s:textfield readonly="true" value="%{#wList.getTime()}"/></td>
+			<td><s:textfield readonly="true" value="%{#wList.getGanhuo()}"/></td><br />
+		</s:iterator>
+	</div>
+	
+	<div id="eduExperience" style="text-align:center; margin-top:50px;">
+		<span style="font-size:25px; font-weight:bold; margin-bottom:20px;">教育经历</span><br />
+		<s:iterator id="eList" value="#session.eList">
+			<td><s:textfield readonly="true" value="%{#eList.getTime()}"/></td>
+			<td><s:textfield readonly="true" value="%{#eList.getGanhuo()}"/></td><br />
+		</s:iterator>
+	</div>
+	
+	<button style="margin-left:47%; margin-top:5%;" type="button" class="btn btn-success" onclick="SubmitSalaryInfo()"> 提交</button>
 	
 </s:form>
 </body>

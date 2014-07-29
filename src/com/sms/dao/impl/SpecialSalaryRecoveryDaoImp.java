@@ -49,4 +49,11 @@ public class SpecialSalaryRecoveryDaoImp implements ISpecialSalaryRecoveryDao{
 		return (List<SpecialSalaryRecovery>)query.list();
 	}
 
+	@Override
+	public List<SpecialSalaryRecovery> findAllSpecialSalaryRecovery() {
+		// TODO Auto-generated method stub
+		Query query = (Query)getSession().createQuery("from SpecialSalaryRecovery");	
+		return (List<SpecialSalaryRecovery>)query.list();
+	}
+
 }
