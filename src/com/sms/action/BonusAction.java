@@ -1,5 +1,6 @@
 package com.sms.action;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -77,4 +78,10 @@ public class BonusAction extends ActionSupport {
 	public String getSalaryResult() {
 		return null;
 	}
+=======
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BonusAction extends ActionSupport {
+
+>>>>>>> 59aab23f38f4fe332996db6350fc09af5feb7b9e
 }

@@ -77,4 +77,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<bean name="leaveSchoolPersonManage" class="com.sms.service.impl.LeaveSchoolPersonManageImp"></bean>
+	<bean name="leaveSchoolPersonDao" class="com.sms.dao.impl.LeaveSchoolPersonDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>

@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Date;
 
 import javax.annotation.Resource;
 
@@ -18,9 +19,12 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.Employee;
+import com.sms.entity.LeavePersonInfo;
+import com.sms.entity.LeaveSchoolPerson;
 import com.sms.exception.ExcelException;
 import com.sms.security.Md5;
 import com.sms.service.IEmployeeManage;
+import com.sms.service.ILeaveSchoolPersonManage;
 import com.sms.service.IUserManage;
 import com.sms.util.ExcelUtil;
 
@@ -30,11 +34,21 @@ public class EmployeeAction extends ActionSupport {
 	private File excelFile;
 	@Resource
 	private IEmployeeManage employeeManage;
+	@Resource
+	private ILeaveSchoolPersonManage leaveSchoolPersonManage;	
+
+	public ILeaveSchoolPersonManage getLeaveSchoolPersonManage() {
+		return leaveSchoolPersonManage;
+	}
+
+	public void setLeaveSchoolPersonManage(
+			ILeaveSchoolPersonManage leaveSchoolPersonManage) {
+		this.leaveSchoolPersonManage = leaveSchoolPersonManage;
+	}
 
 	public Employee getEmployee() {
 		return employee;
-	}
-	
+	}	
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
@@ -57,6 +71,17 @@ public class EmployeeAction extends ActionSupport {
 	public void setEmployeeFile(File employeeFile) {
 		this.employeeFile = employeeFile;
 	}
+	
+	private File stopEmployeeFile;	
+
+	public File getStopEmployeeFile() {
+		return stopEmployeeFile;
+	}
+
+	public void setStopEmployeeFile(File stopEmployeeFile) {
+		this.stopEmployeeFile = stopEmployeeFile;
+	}
+
 
 	public static boolean isValid(int value) {
 		if (value >= 100000 && value <= 999999)
@@ -133,10 +158,39 @@ public class EmployeeAction extends ActionSupport {
 			fieldMap.put("聘岗级别", "jobLevel");
 			String[] uniqueFields = {"职工号"};	
 			employeeList = ExcelUtil.excelToList(in, "Sheet1", Employee.class, fieldMap, uniqueFields);			
-			for (Employee e : employeeList) {
-				
+			for (Employee e : employeeList) {				
 				employeeManage.addEmployee(e);
 			}
+		}
+		return "success";
+	}
+	
+	public String importStopEmployeeInfo() throws FileNotFoundException, ExcelException {
+		if (stopEmployeeFile != null) {
+			List<LeaveSchoolPerson> leavePersonList = new ArrayList<LeaveSchoolPerson>();
+			InputStream in = new FileInputStream(stopEmployeeFile);
+			LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>();
+			fieldMap.put("职工号", "eId");
+			fieldMap.put("离校时间","leaveSchoolDate");
+			fieldMap.put("离校原因", "leaveReason");
+			fieldMap.put("工资状态", "salaryState");
+			String[] uniqueFields = {"职工号"};	
+			leavePersonList = ExcelUtil.excelToList(in, "Sheet1", LeaveSchoolPerson.class, fieldMap, uniqueFields);			
+			List<LeavePersonInfo> lPInfoList = new ArrayList<LeavePersonInfo>();
+			for (LeaveSchoolPerson lPerson : leavePersonList) {
+				LeavePersonInfo lPInfo = new LeavePersonInfo();
+				lPInfo.seteId(lPerson.getEId());				
+				lPInfo.setName(employeeManage.findEmployeeById(lPerson.getEId()).getName());
+				lPInfo.setGender(employeeManage.findEmployeeById(lPerson.getEId()).getGender());
+				lPInfo.setDepartment(employeeManage.findEmployeeById(lPerson.getEId()).getDepartment());
+				lPInfo.setLeaveDate(lPerson.getLeaveSchoolDate());
+				lPInfo.setReason(lPerson.getLeaveReason());
+				lPInfo.setState(lPerson.getSalaryState());
+				lPInfoList.add(lPInfo);
+			}
+			
+			Map session = ActionContext.getContext().getSession();
+			session.put("lList", lPInfoList);
 		}
 		return "success";
 	}
