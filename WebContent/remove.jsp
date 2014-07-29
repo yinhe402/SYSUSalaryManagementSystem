@@ -113,7 +113,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<<<<<<< HEAD
 <head>
 <base href="<%=basePath%>">
 
@@ -160,26 +159,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		enctype="multipart/form-data" role="form">
 		<s:file name="stopEmployeeFile" label="excelFile" />
 		<button type="submit" class="btn btn-success">导入</button>
-=======
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>减员停薪、取消工资关系</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  </head>
-  
-  <body>
-   <s:form action="employee/importStopEmployeeInfo_remove" method="post" enctype="multipart/form-data" role="form">
-     	<s:file class="btn btn-success" name="stopEmployeeFile" label="excelFile"/>
-     	 
-     	<button type="submit" class="btn btn-success">导入</button>
->>>>>>> 850b2cc20e6c91ac1bba4e9522e0784f7667f509
 	</s:form>
 	<form id="myform1">
 		<s:iterator id="lList" value="#session.lList">
