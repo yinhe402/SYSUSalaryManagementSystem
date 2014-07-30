@@ -22,30 +22,33 @@ public class FinalCheckDaoImp implements IFinalCheckDao{
 	
 	@Override
 	public void addFinalCheck(FinalCheck finalCheck) {
-		// TODO Auto-generated method stub
 		getSession().clear();
 		getSession().save(finalCheck);
 	}
 
 	@Override
 	public void deleteFinalCheck(FinalCheck finalCheck) {
-		// TODO Auto-generated method stub
 		getSession().clear();
 		getSession().delete(finalCheck);
 	}
 
 	@Override
 	public void modifyFinalCheck(FinalCheck finalCheck) {
-		// TODO Auto-generated method stub
 		getSession().clear();
 		getSession().update(finalCheck);
 	}
 
 	@Override
 	public List<FinalCheck> findFinalCheckByEId(Integer eId) {
-		// TODO Auto-generated method stub
 		Query query = (Query)getSession().createQuery("from FinalCheck where eId = ?");
 		query.setString(0, eId.toString());	
+		return (List<FinalCheck>)query.list();
+	}
+
+	@Override
+	public List<FinalCheck> findFinalChecksByResult(String result) {
+		Query query = (Query) getSession().createCriteria("from FinalCheck where checkResult = ?");
+		query.setString(0, result);
 		return (List<FinalCheck>)query.list();
 	}
 

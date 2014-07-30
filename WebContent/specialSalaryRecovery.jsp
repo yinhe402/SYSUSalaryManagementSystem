@@ -29,17 +29,17 @@
 	 	<tbody>
 	 	<s:iterator value="#session.infoRecovery" id="recovery">
 				 <tr>
-				 <td><s:property value="#recovery[0]"/></td>
-				 <td><s:property value="#recovery[1]"/></td>
-				 <td><s:property value="#recovery[2]"/></td>
-				 <td><s:property value="#recovery[3]"/></td>
-				 <td><s:property value="#recovery[4]"/></td>
+				 <td><s:property value="#recovery.eid"/></td>
+				 <td><s:property value="#recovery.name"/></td>
+				 <td><s:property value="#recovery.departmet"/></td>
+				 <td><s:property value="#recovery.reason"/></td>
+				 <td><s:date name="#recovery.date" format="yyyy-MM-dd hh-mm-ss"/></td>
 				 </tr>
 				</s:iterator>
 	 	</tbody>
 	 </table>
-	  <div class="container" align="center">
-	 <a class="btn btn-primary">导出</a>	 
+	 <div class="container" align="center">
+	 	<a class="btn btn-primary"  href="<s:url action="specialSalary/exportRecovery"/>" >导出</a>
 	 </div>
 	 </form>
 </body>

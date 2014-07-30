@@ -39,7 +39,7 @@
 														<td><s:property value="#proList.position" /></td>
 														<td><s:property value="#proList.level" /></td>
 														<td><s:property value="#proList.salaryStandard" /></td>
-														<td><s:property value="#proList.startPayLevel" /></td>
+														<td><s:property value="#proList.startPayLevel"/></td>
 														<td ><a href="
 														<s:url action="salaryStandard/getChangeInfo_posSalaryChange"> 
 														<s:param name="tableName"> posSalary</s:param>

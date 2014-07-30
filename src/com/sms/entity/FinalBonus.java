@@ -15,10 +15,17 @@ public class FinalBonus {
 	private Integer id;//主键
 	private Integer eId;//职工号
 	private Integer year;//年份
-	private Integer doubleSalaryType;//发放双薪类型  0:不发  1,2,3:部分发  4:全额发放
-	private Integer months;//实际发放月数
+	private String doubleSalaryType;//发放双薪类型  0:不发  1:部分发  2:全额发放
+	private Double months;//实际发放月数
 	private String cutReason;//部分双薪原因
-	
+	private Integer basis; //发放双薪基数
+    @Column(name="basis")
+	public Integer getBasis() {
+		return basis;
+	}
+	public void setBasis(Integer basis) {
+		this.basis = basis;
+	}
 	@Id
 	@GeneratedValue
 	public Integer getId() {
@@ -54,10 +61,10 @@ public class FinalBonus {
 	 * 发放双薪类型
 	 */
 	@Column(name="doubleSalaryType")
-	public Integer getDoubleSalaryType() {
+	public String getDoubleSalaryType() {
 		return doubleSalaryType;
 	}
-	public void setDoubleSalaryType(Integer doubleSalaryType) {
+	public void setDoubleSalaryType(String doubleSalaryType) {
 		this.doubleSalaryType = doubleSalaryType;
 	}
 	
@@ -65,10 +72,10 @@ public class FinalBonus {
 	 * 实际发放月数
 	 */
 	@Column(name="months")
-	public Integer getMonths() {
+	public Double getMonths() {
 		return months;
 	}
-	public void setMonths(Integer months) {
+	public void setMonths(Double months) {
 		this.months = months;
 	}
 	

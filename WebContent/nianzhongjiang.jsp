@@ -18,26 +18,30 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/nianzhongjiang.css">
 
-
+<script type="text/javascript">
+	function getFinalBonus() {
+	var myform = document.getElementById("queryForm");
+	myform.action="bonus/getSalaryResult_nianzhongjiang";
+	myform.method="post";
+	myform.submit();
+	}
+</script>
 
 </head>
-
 <body>
 	<s:form style="text-align:center;"
-		action="bonus/importTestResult_success" method="post"
+		action="bonus/importTestResult_nianzhongjiang" method="post"
 		enctype="multipart/form-data" role="form">
+
 		<br/>
 		<br/>
 			<input type="file" title="选择"  data-filename-placement="outside" class="file-input-wrapper btn btn-default btn-primary">
             
 
-		
-		
-		<br/>
-		<br/>
 		
 
 
@@ -52,11 +56,40 @@
 
 			<button type="button" style="margin-bottom:10px;"
 				class="btn btn-success" onclick="">提交</button>
-		</div>
+        </div>
 
-		<s:form name="professionalPositionForm">
-			<table width="85%" border="0" align="center" cellpadding="0"
-				cellspacing="0">
+		<div>
+			<s:file name="testResultFile" label="testResultFile" />
+
+			<button type="submit" class="btn btn-success">导入考核结果</button>
+		</div>
+	</s:form> 
+	
+	<s:form style="text-align:center;"
+		action="bonus/importOffInfoResult_nianzhongjiang" method="post"
+		enctype="multipart/form-data" role="form">
+		<div>
+			<s:file name="offInfoFile" label="offInfoFile" />
+			<button type="submit" class="btn btn-success">导入请假出国信息</button>
+		</div>
+	</s:form> 
+		
+
+		<s:form id="queryForm">
+		<div style="margin-top:5%;">
+			<select id="type" name="type" >
+				<option value="不发">不发</option>
+				<option value="全部双薪">全部双薪</option>
+				<option value="部分双薪">部分双薪</option>
+			</select>
+					<button type="button" style="margin-bottom:10px;"
+				class="btn btn-success" onclick="getFinalBonus()">查询</button>
+
+		</div>
+		</s:form>
+	
+			<table
+				width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
 					<td height="40">
 						<table width="100%" border="0" cellpadding="4" cellspacing="1"
@@ -67,24 +100,36 @@
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="10%">职工号</td>
-								<td width="10%">姓名</td>
+								<td width="10%">双薪基数</td>
 								<td width="10%">双薪类型</td>
 								<td width="10%">部分双薪原因</td>
 								<td width="10%">双薪月数</td>
-								<td width="10%">时间</td>
+								<td width="10%"> 时间</td>
 							</tr>
+							<s:iterator id="result" value="#session.result">
+							<tr bgcolor="#EEEEEE">
+								<td width="10%"><s:property value="#result.eId"/></td>
+								<td width="10%"><s:property value="#result.basis"/></td>
+								<td width="10%"><s:property value="#result.doubleSalaryType"/></td>
+								<td width="10%"><s:property value="#result.cutReason"/></td>
+								<td width="10%"><s:property value="#result.months"/></td>
+								<td width="10%"><s:property value="#result.year"/></td>
+							</tr>
+							</s:iterator>
 
 
+						
 
-						</table></td>
+						</table>
+					</td>
 				</tr>
 			</table>
-
-		</s:form>
-
+		
 
 
-	</s:form>
+
+
+	
 
 </body>
 

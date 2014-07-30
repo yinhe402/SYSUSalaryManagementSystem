@@ -10,9 +10,11 @@ import java.util.Map;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.components.Else;
 import org.hibernate.Session;
-import org.omg.CORBA.Request;
 
 import java.util.List;
 
@@ -22,16 +24,24 @@ import com.sms.entity.Employee;
 import com.sms.entity.LeavePersonInfo;
 import com.sms.entity.LeaveSchoolPerson;
 import com.sms.exception.ExcelException;
-import com.sms.security.Md5;
 import com.sms.service.IEmployeeManage;
 import com.sms.service.ILeaveSchoolPersonManage;
-import com.sms.service.IUserManage;
 import com.sms.util.ExcelUtil;
 
 public class EmployeeAction extends ActionSupport {
 
 	private Employee employee;
+	
 	private File excelFile;
+	
+	public File getExcelFile() {
+		return excelFile;
+	}
+
+	public void setExcelFile(File excelFile) {
+		this.excelFile = excelFile;
+	}
+
 	@Resource
 	private IEmployeeManage employeeManage;
 	@Resource
@@ -82,7 +92,99 @@ public class EmployeeAction extends ActionSupport {
 		this.stopEmployeeFile = stopEmployeeFile;
 	}
 
+	private Integer eId;
+	private Date leaveDate;
+	private String leaveReason;
+	private String business;
+	
+	public Integer geteId() {
+		return eId;
+	}
 
+	public void seteId(Integer eId) {
+		this.eId = eId;
+	}
+
+	public Date getLeaveDate() {
+		return leaveDate;
+	}
+
+	public void setLeaveDate(Date leaveDate) {
+		this.leaveDate = leaveDate;
+	}
+
+	public String getLeaveReason() {
+		return leaveReason;
+	}
+
+	public void setLeaveReason(String leaveReason) {
+		this.leaveReason = leaveReason;
+	}
+
+	public String getBusiness() {
+		return business;
+	}
+
+	public void setBusiness(String business) {
+		this.business = business;
+	}
+
+	private String salaryState;
+	private Date stopDate;
+	private String remark;
+	
+	public String getSalaryState() {
+		return salaryState;
+	}
+
+	public void setSalaryState(String salaryState) {
+		this.salaryState = salaryState;
+	}
+
+	public Date getStopDate() {
+		return stopDate;
+	}
+
+	public void setStopDate(Date stopDate) {
+		this.stopDate = stopDate;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	private Integer queryId;
+	private String queryName;
+	private String queryDepartment;
+	
+	public Integer getQueryId() {
+		return queryId;
+	}
+
+	public void setQueryId(Integer queryId) {
+		this.queryId = queryId;
+	}
+
+	public String getQueryName() {
+		return queryName;
+	}
+
+	public void setQueryName(String queryName) {
+		this.queryName = queryName;
+	}
+
+	public String getQueryDepartment() {
+		return queryDepartment;
+	}
+
+	public void setQueryDepartment(String queryDepartment) {
+		this.queryDepartment = queryDepartment;
+	}
+		
 	public static boolean isValid(int value) {
 		if (value >= 100000 && value <= 999999)
 			return true;
@@ -129,6 +231,7 @@ public class EmployeeAction extends ActionSupport {
 	}
 	
 	public String importEmployeeInfo() throws FileNotFoundException, ExcelException {
+		System.out.println("-------employeeAction.importEmployeeInfo--------");
 		if (employeeFile != null) {
 			List<Employee> employeeList = new ArrayList<Employee>();
 			InputStream in = new FileInputStream(employeeFile);
@@ -166,6 +269,7 @@ public class EmployeeAction extends ActionSupport {
 	}
 	
 	public String importStopEmployeeInfo() throws FileNotFoundException, ExcelException {
+		System.out.println("-------employeeAction.importStopEmployeeInfo--------");
 		if (stopEmployeeFile != null) {
 			List<LeaveSchoolPerson> leavePersonList = new ArrayList<LeaveSchoolPerson>();
 			InputStream in = new FileInputStream(stopEmployeeFile);
@@ -174,24 +278,155 @@ public class EmployeeAction extends ActionSupport {
 			fieldMap.put("离校时间","leaveSchoolDate");
 			fieldMap.put("离校原因", "leaveReason");
 			fieldMap.put("工资状态", "salaryState");
+			fieldMap.put("停发时间", "stopDate");
+			fieldMap.put("备注", "note");
 			String[] uniqueFields = {"职工号"};	
 			leavePersonList = ExcelUtil.excelToList(in, "Sheet1", LeaveSchoolPerson.class, fieldMap, uniqueFields);			
 			List<LeavePersonInfo> lPInfoList = new ArrayList<LeavePersonInfo>();
 			for (LeaveSchoolPerson lPerson : leavePersonList) {
 				LeavePersonInfo lPInfo = new LeavePersonInfo();
-				lPInfo.seteId(lPerson.getEId());				
+				lPInfo.seteId(lPerson.getEId());
+				if (employeeManage.findEmployeeById(lPInfo.geteId()) == null) {
+					System.out.println("您输入的数据有误，职工号"+lPInfo.geteId()+"不存在！");
+					return "fail";
+				}
 				lPInfo.setName(employeeManage.findEmployeeById(lPerson.getEId()).getName());
 				lPInfo.setGender(employeeManage.findEmployeeById(lPerson.getEId()).getGender());
 				lPInfo.setDepartment(employeeManage.findEmployeeById(lPerson.getEId()).getDepartment());
 				lPInfo.setLeaveDate(lPerson.getLeaveSchoolDate());
 				lPInfo.setReason(lPerson.getLeaveReason());
 				lPInfo.setState(lPerson.getSalaryState());
+				lPInfo.setStopDate(lPerson.getStopDate());
+				lPInfo.setNote(lPerson.getNote());
 				lPInfoList.add(lPInfo);
 			}
 			
 			Map session = ActionContext.getContext().getSession();
 			session.put("lList", lPInfoList);
+			session.put("leaveList", leavePersonList);
 		}
 		return "success";
+	}
+	
+	public String infoSubmit() {
+		System.out.println("-------employeeAction.infoSubmit--------");
+		Map session = ActionContext.getContext().getSession();
+		List<LeaveSchoolPerson> leavePersonList = (ArrayList<LeaveSchoolPerson>)session.get("leaveList");
+		for (LeaveSchoolPerson lPerson : leavePersonList) {
+			System.out.println(lPerson.getNote());
+			leaveSchoolPersonManage.addLeaveSchoolPerson(lPerson);
+		}
+		return "success";
+	}
+	
+	public String infoSubmit2() {
+		System.out.println("-------employeeAction.infoSubmit2--------");
+		if (!isValid(eId)) {
+			System.out.println("您的输入有误！职工号"+eId+"不存在");
+			return "fail";
+		}
+		if (employeeManage.findEmployeeById(eId) == null) {
+			System.out.println("您的输入有误！职工号"+eId+"不存在");
+			return "fail";
+		}
+		LeaveSchoolPerson lSPerson = new LeaveSchoolPerson();
+		lSPerson.setEId(eId);
+		lSPerson.setLeaveReason(leaveReason);
+		lSPerson.setLeaveSchoolDate(leaveDate);
+		lSPerson.setNote(remark);
+		lSPerson.setSalaryState(salaryState);
+		lSPerson.setStopDate(stopDate);
+		leaveSchoolPersonManage.addLeaveSchoolPerson(lSPerson);
+		
+		return "success";
+	}
+	
+	public String query() {
+		System.out.println("-------employeeAction.query--------");
+		if (queryId != null) {
+			System.out.println("Query_ID");
+			if (!isValid(queryId)) {
+				System.out.println("职工号不符合规范！");
+				return "fail";
+			} else {
+				if (employeeManage.findEmployeeById(queryId) == null) {
+					System.out.println("查询职工号不存在！");
+					return "fail";
+				} else {
+					List<LeavePersonInfo> lPInfoList = new ArrayList<LeavePersonInfo>();
+					LeavePersonInfo lPInfo = new LeavePersonInfo();
+					lPInfo.setName(employeeManage.findEmployeeById(queryId).getName());
+					lPInfo.setGender(employeeManage.findEmployeeById(queryId).getGender());
+					lPInfo.setDepartment(employeeManage.findEmployeeById(queryId).getDepartment());
+					lPInfo.setLeaveDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getLeaveSchoolDate());
+					lPInfo.setReason(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getLeaveReason());
+					lPInfo.setState(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getSalaryState());
+					lPInfo.setStopDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getStopDate());
+					lPInfo.setNote(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getNote());
+					lPInfoList.add(lPInfo);
+					
+					Map session = ActionContext.getContext().getSession();
+					session.put("idList", lPInfoList);
+					
+					return "success";
+				}
+			}
+		} else {
+			if (!queryName.equals("")) {
+				System.out.println("Query_Name");
+				List<LeavePersonInfo> lPInfoList = new ArrayList<LeavePersonInfo>();
+				List<Employee> nameList = new ArrayList<Employee>();
+				nameList = employeeManage.findEmployeesByName(queryName);
+				for (Employee e : nameList) {
+					Integer q_id = e.getId();
+					LeavePersonInfo lPInfo = new LeavePersonInfo();
+					lPInfo.setName(employeeManage.findEmployeeById(q_id).getName());
+					lPInfo.setGender(employeeManage.findEmployeeById(q_id).getGender());
+					lPInfo.setDepartment(employeeManage.findEmployeeById(q_id).getDepartment());
+					if (leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id) != null) {
+						lPInfo.setLeaveDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getLeaveSchoolDate());
+						lPInfo.setReason(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getLeaveReason());
+						lPInfo.setState(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getSalaryState());
+						lPInfo.setStopDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getStopDate());
+						lPInfo.setNote(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getNote());
+						
+						lPInfoList.add(lPInfo);
+					}
+				}
+				Map session = ActionContext.getContext().getSession();
+				session.put("nameList", lPInfoList);
+				
+				return "success";
+			} else {				
+				if (!queryDepartment.equals("")) {
+					System.out.println("Query_Department");
+					List<LeavePersonInfo> lPInfoList = new ArrayList<LeavePersonInfo>();
+					List<Employee> departmentList = new ArrayList<Employee>();
+					departmentList = employeeManage.findEmployeesByDepartment(queryDepartment);
+					for (Employee e : departmentList) {
+						Integer q_id = e.getId();
+						LeavePersonInfo lPInfo = new LeavePersonInfo();
+						lPInfo.setName(employeeManage.findEmployeeById(q_id).getName());
+						lPInfo.setGender(employeeManage.findEmployeeById(q_id).getGender());
+						lPInfo.setDepartment(employeeManage.findEmployeeById(q_id).getDepartment());
+						if (leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id) != null) {
+							lPInfo.setLeaveDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getLeaveSchoolDate());
+							lPInfo.setReason(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getLeaveReason());
+							lPInfo.setState(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getSalaryState());
+							lPInfo.setStopDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getStopDate());
+							lPInfo.setNote(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(q_id).getNote());
+						
+							lPInfoList.add(lPInfo);
+						}
+					}
+					Map session = ActionContext.getContext().getSession();
+					session.put("departmentList", lPInfoList);
+					
+					return "success";
+				} else {
+					return "fail";
+				}
+			}
+		}
 	}
 }
