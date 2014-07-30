@@ -16,15 +16,24 @@
 	</script>
 </head>
 <body>
-	<form id="myform">
-  		地区差：<input type="text" name="areaDifference"/><br />
-  		岗位津贴：<input type="text" name="positionAllowance"/><br />
-  		教护补贴：<input type="text" name="educationAllowance"/><br />
-  		特殊津贴(岗位加权)：<input type="text" name="specialPositionParas"/>特殊津贴(薪级加权)：<input type="text" name="specialLevelParas"/><br />
-  		独生子女：<input type="text" name="onlyChildAllowance"/><br />
-  		其它补贴(岗位加权)：<input type="text" name="otherPositionParas"/>其它补贴(薪级加权)：<input type="text" name="otherLevelParas"/><br />
-  		电话补贴(岗位加权)：<input type="text" name="phonePositionParam"/>电话补贴(薪级加权)：<input type="text" name="phoneLevelParam"/><br />
+	<div class="container" style="margin-top:20px;text-align:center;">
+	<form id="myform" class="form-horizontal">
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+  		 地区差：<input type="text" name="areaDifference"/><br/>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  		 岗位津贴： <input type="text" name="positionAllowance"/><br/>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  		 教护补贴： <input type="text" name="educationAllowance"  /><br/>
+  		  特殊津贴(岗位加权)： <input type="text" name="specialPositionParas" /><br/>
+  		  特殊津贴(薪级加权)： <input type="text" name="specialLevelParas" /><br/>
+  		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+  		  独生子女： <input type="text" name="onlyChildAllowance"  /><br/>
+  		 其它补贴(岗位加权)： <input type="text" name="otherPositionParas"  /><br/>
+  		 其它补贴(薪级加权)： <input type="text" name="otherLevelParas"  /><br/>
+  	    &nbsp;电话补贴(岗位加权)：<input type="text" name="phonePositionParam"  /><br/>
+  		 电话补贴(薪级加权)： <input type="text" name="phoneLevelParam"  /><br/>
   		<input type="button" name="btnOk" onclick="initSalaryCompute()" value="确定" />
   	</form>
+  	</div>
 </body>
 </html>
