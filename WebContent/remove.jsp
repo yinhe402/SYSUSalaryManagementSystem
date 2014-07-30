@@ -55,6 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			else
 				a.style.display="none";
 		}
+		
+		function ok2()
+		{
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
+			else
+				b.style.display="none";
+		}
 	</script>
 </head>
 
@@ -64,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		enctype="multipart/form-data" role="form">
 		<s:file name="stopEmployeeFile" label="上传文件" />
 		<!--<button type="submit" class="btn btn-success" onclick="ok1()">导入</button>-->
-		<input type="button" class="btn btn-success" onclick="ok1" value="导入" />
+		<input type="submit" class="btn btn-success" onclick="ok1" value="导入" />
 	</s:form>
 	</div>
 	
@@ -128,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	</div>
 	
-	<div style="margin:0 auto;text-align:center;width:80%;">
+	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
 	<form id="myform4">
 	<table class="table table-bordered">
 	<thead>
@@ -163,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	</div>
 	
-	<div style="margin:0 auto;text-align:center;width:80%;">
+	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
 	<form id="myform5">
 		<table class="table tabel-bordered">
 		<thead>
@@ -198,8 +207,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	</div>
 	
-	<div>
-	<form id="myform6" style="margin:0 auto;text-align:center;width:80%;">
+	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
+	<form id="myform6" style="margin:0 auto;text-align:center;width:80%;display:none;">
 	<table class="table table-bordered">
 		<thead>
 			<tr>

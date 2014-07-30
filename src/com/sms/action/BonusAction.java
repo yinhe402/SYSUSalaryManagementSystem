@@ -1,5 +1,11 @@
 package com.sms.action;
 
+<<<<<<< HEAD
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BonusAction extends ActionSupport {
+
+=======
 import java.io.*;
 import java.util.*;
 
@@ -198,4 +204,5 @@ public String importOffInfoResult() throws FileNotFoundException, ExcelException
 	}
 
  
+>>>>>>> d2b6196cbebe7266df1036e40c7c8e34c6ac7b42
 }
