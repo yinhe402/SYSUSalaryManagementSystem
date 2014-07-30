@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Session;
+
 import oracle.sql.DATE;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.dao.IEmployeeDao;
 import com.sms.dao.IFinalBonusDao;
@@ -129,14 +133,30 @@ public class BonusAction extends ActionSupport {
 						else {
 							Integer offDay = 0;
 							for(OffInfo o:offInfos) {
-								Date startDate = (o.getStartDate().getYear() < new Date().getYear())?new Date(new Date().getYear(),1,1):o.getStartDate();
-								Date endDate = (o.getEndDate().getYear() > new Date().getYear())?new Date(new Date().getYear(),12,31):o.getStartDate();
+								Date startDate = (o.getStartDate().getYear() < new Date().getYear())?new Date(new Date().getYear(),0,1):o.getStartDate();
+								Date endDate = (o.getEndDate().getYear() > new Date().getYear())?new Date(new Date().getYear(),11,31):o.getStartDate();
 								offDay += (int) ((endDate.getTime()-startDate.getTime())/1000 / 60 / 60 / 24); 
 							}
 							double offMonth = (int)(offDay / 15)/2.0f;
-							
+							if(offMonth > 11.5) {
+								finalBonus.setBasis(0);
+								finalBonus.setCutReason("全年请假");
+								finalBonus.setDoubleSalaryType("不发");
+								finalBonus.setEId(c.getEId());
+								finalBonus.setMonths(0.0);
+								finalBonus.setYear(c.getYear());
+								finalBonusManage.addFinalBonus(finalBonus);
+							} else	if (offMonth < 0.5) {
+								finalBonus.setBasis(salaryManage.findLastSalaryByEId(c.getEId()).getTotleSalary());
+								finalBonus.setCutReason("无");
+								finalBonus.setDoubleSalaryType("全部双薪");
+								finalBonus.setEId(c.getEId());
+								finalBonus.setMonths(12.0);
+								finalBonus.setYear(c.getYear());
+								finalBonusManage.addFinalBonus(finalBonus);	
+							}
 							finalBonus.setBasis(salaryManage.findLastSalaryByEId(c.getEId()).getTotleSalary());
-							finalBonus.setCutReason("请假或者出国累计达"+offMonth);
+							finalBonus.setCutReason("请假或者出国累计达"+offMonth+"个月");
 							finalBonus.setDoubleSalaryType("部分双薪");
 							finalBonus.setEId(c.getEId());
 							finalBonus.setMonths(12.0-offMonth);
@@ -157,6 +177,9 @@ public class BonusAction extends ActionSupport {
 		List<FinalBonus> allBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("全部双薪");
 		System.out.print(type);
 		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
+		System.out.println(result);
+		Map session = ActionContext.getContext().getSession();
+		session.put("result", result);
          return "success";
 	}
 	

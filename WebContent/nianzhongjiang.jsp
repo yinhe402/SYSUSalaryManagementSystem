@@ -20,15 +20,15 @@
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="css/index.css">
-</head>
 <script type="text/javascript">
 	function getFinalBonus() {
-	var myform = document.getElementById("professionalPositionForm");
+	var myform = document.getElementById("queryForm");
 	myform.action="bonus/getSalaryResult_nianzhongjiang";
 	myform.method="post";
 	myform.submit();
 	}
 </script>
+</head>
 <body>
 	<s:form style="text-align:center;"
 		action="bonus/importTestResult_nianzhongjiang" method="post"
@@ -50,15 +50,15 @@
 	</s:form> 
 		
 
-		<s:form name="professionalPositionForm">
+		<s:form id="queryForm">
 		<div style="margin-top:5%;">
 			<select id="type" name="type" >
-				<option value="1">不发</option>
-				<option value="2">双薪</option>
-				<option value="3">部分双薪</option>
+				<option value="不发">不发</option>
+				<option value="全部双薪">全部双薪</option>
+				<option value="部分双薪">部分双薪</option>
 			</select>
 					<button type="button" style="margin-bottom:10px;"
-				class="btn btn-success" onclick="">查询</button>
+				class="btn btn-success" onclick="getFinalBonus()">查询</button>
 		</div>
 		</s:form>
 	
@@ -80,9 +80,9 @@
 								<td width="10%">双薪月数</td>
 								<td width="10%"> 时间</td>
 							</tr>
-							<s:iterator id="result" value="#result">
+							<s:iterator id="result" value="#session.result">
 							<tr bgcolor="#EEEEEE">
-								<td width="10%"><s:property value="#result.eid"/></td>
+								<td width="10%"><s:property value="#result.eId"/></td>
 								<td width="10%"><s:property value="#result.basis"/></td>
 								<td width="10%"><s:property value="#result.doubleSalaryType"/></td>
 								<td width="10%"><s:property value="#result.cutReason"/></td>
