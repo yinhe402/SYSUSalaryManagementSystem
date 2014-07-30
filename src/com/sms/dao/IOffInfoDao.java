@@ -10,5 +10,5 @@ public interface IOffInfoDao {
 	public void modifyOffInfo(OffInfo offInfo);
 	public List<OffInfo> findOffInfoByEId(Integer eId);
 	public List<OffInfo> findOffInfoThisYear();
-	public List<OffInfo> findOffInfoThisYearById(Integer eId);
+	public List<OffInfo> findOffInfoThisYearByEId(Integer eId);
 }

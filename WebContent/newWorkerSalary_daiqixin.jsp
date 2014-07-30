@@ -366,13 +366,16 @@
 <body>
 
 	<s:form id="myform" style="display:none; ">
+
 	职工号：<s:property value="#session.addedEmployee.id" />
 		<br />
 	姓名:<s:property value="#session.addedEmployee.name" />
 		<br />
 	邮箱:<s:property value="#session.addedEmployee.email" />
 		<br />
+
 	性别：	<s:if test="%{#session.addedEmployee.gender == '男'}">男</s:if>
+
 		<s:else>女</s:else>
 		<br />
 	出生日期：<s:property value="#session.addedEmployee.birthday" />
