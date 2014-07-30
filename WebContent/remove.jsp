@@ -55,22 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-<<<<<<< HEAD
 	<div style="margin-top:20px;margin-left:20px;"> 
-    <s:form action="employee/importStopEmployeeInfo_remove" method="post" enctype="multipart/form-data" role="form">
-     	<s:file class="btn btn-success" name="stopEmployeeFile" label="excelFile"/>
-     	 
-     	<button type="submit" class="btn btn-success" onclick="ok1">导入</button>
-=======
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
 		enctype="multipart/form-data" role="form">
 		<s:file name="stopEmployeeFile" label="excelFile" />
-		<button type="submit" class="btn btn-success">导入</button>
->>>>>>> 3390d3adc927c6c40ded7cb3fb56dd3064c1e714
+		<button type="submit" class="btn btn-success" onclick="ok1">导入</button>
 	</s:form>
 	</div>
 	
-	<div id="div1" syle="display:none;margin:0 auto;text-align:center;width:80%;">
+	<div id="div1" style="display:none;margin:0 auto;text-align:center;width:80%;">
 	<form id="myform1">
 		<s:iterator id="lList" value="#session.lList">
 		姓名：<td><s:textfield value="%{#lList.getName()}" /></td>
