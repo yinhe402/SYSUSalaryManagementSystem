@@ -26,7 +26,7 @@
 			</interceptor-stack>
 		</interceptors>
 
-		<!-- <default-interceptor-ref name="myInterceptor" /> -->
+		<default-interceptor-ref name="myInterceptor" /> 
 
 		<global-results>
 			<result name="checkLoginFail">/login.jsp</result>

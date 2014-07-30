@@ -57,15 +57,15 @@ public class OffInfoDaoImp implements IOffInfoDao {
 		return (List<OffInfo>)query.list();
 	}
 	@Override
-	public List<OffInfo> findOffInfoThisYearById(Integer eId) {
-		Query query = (Query)getSession().createQuery("from OffInfo where startDate between ? and ? or endDate between ? and ? and eid=?");
-		Date yearStart = new Date(new Date().getYear(), 1, 1);
-		Date yearEnd = new Date(new Date().getYear(), 12, 31);
-		query.setDate(0, yearStart);
-		query.setDate(1, yearEnd);
-		query.setDate(2, yearStart);
-		query.setDate(3, yearEnd);
-		query.setInteger(4, eId);
+	public List<OffInfo> findOffInfoThisYearByEId(Integer eId) {
+		Query query = (Query)getSession().createQuery("from OffInfo where eid=? and (startDate between ? and ? or endDate between ? and ?)");
+		Date yearStart = new Date(new Date().getYear(), 0, 1);
+		Date yearEnd = new Date(new Date().getYear(), 11, 31);
+		query.setDate(1, yearStart);
+		query.setDate(2, yearEnd);
+		query.setDate(3, yearStart);
+		query.setDate(4, yearEnd);
+		query.setInteger(0, eId);
 		return (List<OffInfo>)query.list();
 	}
 
