@@ -97,7 +97,7 @@ public class BonusAction extends ActionSupport {
 			String[] uniqueFields = {"职工号", "年份"};
 			checks = ExcelUtil.excelToList(in, "Sheet1", FinalCheck.class, fieldMap, uniqueFields);
 			FinalBonus finalBonus = new FinalBonus();
-			List<OffInfo> offInfosThisYear = offInfoManage.findOffInfoThisYear(); 
+			
 			for (FinalCheck c : checks) {
 				finalCheckManage.addFinalCheck(c);
 				if (c.getCheckResult().equals("基本称职")||c.getCheckResult().equals("不称职")) {
@@ -110,7 +110,8 @@ public class BonusAction extends ActionSupport {
 					finalBonusManage.addFinalBonus(finalBonus);
 				}
 				else {
-					List<OffInfo> offInfos = offInfoManage.findOffInfoThisYearByEId(c.getEId());				
+					List<OffInfo> offInfos = offInfoManage.findOffInfoThisYearByEId(c.getEId());	
+					System.out.println(offInfos.size());
 						if(offInfos.isEmpty()) {
 							finalBonus.setBasis(salaryManage.findLastSalaryByEId(c.getEId()).getTotleSalary());
 							finalBonus.setCutReason("无");
@@ -124,11 +125,16 @@ public class BonusAction extends ActionSupport {
 							Integer offDay = 0;
 							for(OffInfo o:offInfos) {
 								Date startDate = (o.getStartDate().getYear() < new Date().getYear())?new Date(new Date().getYear(),0,1):o.getStartDate();
-								Date endDate = (o.getEndDate().getYear() > new Date().getYear())?new Date(new Date().getYear(),11,31):o.getStartDate();
+								Date endDate = (o.getEndDate().getYear() > new Date().getYear())?new Date(new Date().getYear(),11,31):o.getEndDate();
+								System.out.println(startDate);
+								System.out.println(endDate);
 								offDay += (int) ((endDate.getTime()-startDate.getTime())/1000 / 60 / 60 / 24); 
+								
 							}
-							double offMonth = (int)(offDay / 15)/2.0f;
-							if(offMonth > 11.5) {
+							System.out.println(offDay);
+							double offMonth = ((int)(offDay / 15))/2.0f;
+							System.out.println(offMonth);
+							if(offMonth < 0.5) {
 								finalBonus.setBasis(0);
 								finalBonus.setCutReason("全年请假");
 								finalBonus.setDoubleSalaryType("不发");
@@ -136,7 +142,7 @@ public class BonusAction extends ActionSupport {
 								finalBonus.setMonths(0.0);
 								finalBonus.setYear(c.getYear());
 								finalBonusManage.addFinalBonus(finalBonus);
-							} else	if (offMonth < 0.5) {
+							} else	if (offMonth > 11.5) {
 								finalBonus.setBasis(salaryManage.findLastSalaryByEId(c.getEId()).getTotleSalary());
 								finalBonus.setCutReason("无");
 								finalBonus.setDoubleSalaryType("全部双薪");
@@ -171,6 +177,22 @@ public class BonusAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		session.put("result", result);
          return "success";
+	}
+public String importOffInfoResult() throws FileNotFoundException, ExcelException {
+		List<OffInfo> checks = new ArrayList<OffInfo>();
+		InputStream in = new FileInputStream(offInfoFile);
+		LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>();
+		fieldMap.put("职工号", "eid");
+		fieldMap.put("开始时间", "startDate");
+		fieldMap.put("结束时间", "endDate");
+		fieldMap.put("原因", "reason");
+		String[] uniqueFields = {"职工号", "开始时间", "结束时间", "原因"};
+		checks = ExcelUtil.excelToList(in, "Sheet1", OffInfo.class, fieldMap, uniqueFields);
+		for(OffInfo o:checks) {
+			offInfoManage.addOffInfo(o);
+		}
+		return "success";
+
 	}
 	
 }
