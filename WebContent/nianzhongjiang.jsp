@@ -29,6 +29,10 @@
 		myform.method = "post";
 		myform.submit();
 	}
+	
+	function succeed(){
+	    alert("导入成功！");
+	}
 </script>
 
 </head>
@@ -42,7 +46,7 @@
 					label="testResultFile"
 					class="file-input-wrapper btn btn-default btn-primary" />
 
-				<button type="submit" class="btn btn-success">导入考核结果</button>
+				<button type="submit" class="btn btn-success" onclick="succeed()">导入考核结果</button>
 			</div>
 		</s:form>
 
@@ -53,7 +57,7 @@
 				<input type="file" title="选择文件" name="offInfoFile"
 					label="offInfoFile"
 					class="file-input-wrapper btn btn-default btn-primary" />
-				<button type="submit" class="btn btn-success">导入请假出国信息</button>
+				<button type="submit" class="btn btn-success" onclick="succeed()">导入请假出国信息</button>
 			</div>
 		</s:form>
 	</div>

@@ -477,7 +477,13 @@ public class ExcelUtil  {
                 	field.set(o, new SimpleDateFormat("yy-MM-dd").parse(fieldValue.toString()));  
                 	}
                 	catch (java.text.ParseException e) {
+                		try {
                 		field.set(o, new SimpleDateFormat("yyyy.MM.dd").parse(fieldValue.toString()));  
+                		}
+                		catch (java.text.ParseException e2) {
+                			field.set(o, new SimpleDateFormat("yyyy/MM/dd").parse(fieldValue.toString()));  
+                		
+                		}
 				}
                 }else{  
                     field.set(o, fieldValue);  
