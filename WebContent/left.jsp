@@ -27,7 +27,7 @@
 <div id="pNode1_sub1_ljf" style="display:none;">  
 <div id="pNode1_sub1_s2" style="padding-left:40px;">·<a href="#" target="_blank">晋升薪级工资</a></div> 
 <div id="pNode1_sub1_s3" style="padding-left:40px;">·<a href="nianzhongjiang.jsp" target="mainFrame">年终一次性奖金</a></div> 
-<div id="pNode1_sub1_s4" style="padding-left:40px;">·<a href="#" target="_blank">年终考核优秀奖金</a></div> 
+<div id="pNode1_sub1_s4" style="padding-left:40px;">·<a href="AnnualEvaluation.jsp" target="mainFrame">年终考核优秀奖金</a></div> 
 </div> 
 <div id="pNode1_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">+ 日常工资处理</div> 
 <div id="pNode1_sub2_ljf" style="display:none;"> 
