@@ -1,18 +1,12 @@
 package com.sms.action;
-
-<<<<<<< HEAD
-import com.opensymphony.xwork2.ActionSupport;
-
-public class BonusAction extends ActionSupport {
-
-=======
 import java.io.*;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.*;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Session;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.dao.IEmployeeDao;
 import com.sms.dao.IFinalBonusDao;
@@ -179,6 +173,8 @@ public class BonusAction extends ActionSupport {
 		List<FinalBonus> partBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("部分双薪");
 		List<FinalBonus> allBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("全部双薪");
 		System.out.print(type);
+		Map session = ActionContext.getContext().getSession();
+		session.put("type", type);
 		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
          return "success";
 	}
@@ -200,6 +196,4 @@ public String importOffInfoResult() throws FileNotFoundException, ExcelException
 
 	}
 
- 
->>>>>>> d2b6196cbebe7266df1036e40c7c8e34c6ac7b42
 }
