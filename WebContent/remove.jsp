@@ -45,11 +45,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		function ok1()
 		{
-			var a=document.getElementById( "div1");
+			/* var a=document.getElementById("div1");
 			if(a.style.display=="none")
 				a.style.display="block";
 			else
-				a.style.display="none";
+				a.style.display="none"; */
+			var myform1=document.getElementById("myform1");
+			myform1.style.display="block";
 		}
 	</script>
 </head>
@@ -59,11 +61,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
 		enctype="multipart/form-data" role="form">
 		<s:file name="stopEmployeeFile" label="excelFile" />
-		<button type="submit" class="btn btn-success" onclick="ok1">导入</button>
+		<button type="submit" class="btn btn-success" onclick="ok1()">导入</button>
 	</s:form>
 	</div>
 	
-	<div id="div1" style="display:none;margin:0 auto;text-align:center;width:80%;">
 	<form id="myform1">
 		<s:iterator id="lList" value="#session.lList">
 		姓名：<td><s:textfield value="%{#lList.getName()}" /></td>
@@ -80,7 +81,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input type="button" name="btnSubmit" value="确认"
 			onclick="yesToSubmit()" />
 	</form>
-	</div>
 	<hr/>
 	
 	<div style="margin-left:30px;">
