@@ -1,11 +1,5 @@
 package com.sms.action;
-<<<<<<< HEAD
-
 import com.opensymphony.xwork2.ActionSupport;
-
-public class BonusAction extends ActionSupport {
-
-=======
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,19 +9,8 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
-
-import org.hibernate.Session;
-
-import oracle.sql.DATE;
-
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.sms.dao.IEmployeeDao;
-import com.sms.dao.IFinalBonusDao;
-import com.sms.dao.IOffInfoDao;
-import com.sms.entity.Employee;
 import com.sms.entity.FinalBonus;
 import com.sms.entity.FinalCheck;
 import com.sms.entity.OffInfo;
@@ -190,21 +173,4 @@ public class BonusAction extends ActionSupport {
          return "success";
 	}
 	
-	public String importOffInfoResult() throws FileNotFoundException, ExcelException {
-		List<OffInfo> checks = new ArrayList<OffInfo>();
-		InputStream in = new FileInputStream(offInfoFile);
-		LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>();
-		fieldMap.put("职工号", "eid");
-		fieldMap.put("开始时间", "startDate");
-		fieldMap.put("结束时间", "endDate");
-		fieldMap.put("原因", "reason");
-		String[] uniqueFields = {"职工号", "开始时间", "结束时间", "原因"};
-		checks = ExcelUtil.excelToList(in, "Sheet1", OffInfo.class, fieldMap, uniqueFields);
-		for(OffInfo o:checks) {
-			offInfoManage.addOffInfo(o);
-		}
-		return "success";
-
-	}
->>>>>>> 3390d3adc927c6c40ded7cb3fb56dd3064c1e714
 }
