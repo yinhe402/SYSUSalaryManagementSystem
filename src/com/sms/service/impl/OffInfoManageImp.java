@@ -47,7 +47,7 @@ public class OffInfoManageImp implements IOffInfoManage {
 
 	@Override
 	public List<OffInfo> findOffInfoThisYearByEId(Integer eId) {
-		return offInfoDao.findOffInfoThisYearById(eId);
+		return offInfoDao.findOffInfoThisYearByEId(eId);
 	}
 
 }

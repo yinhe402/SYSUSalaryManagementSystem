@@ -1,84 +1,84 @@
-.top{
-	width:100%;
+.top {
+	width: 100%;
 }
 
-.title{
+.title {
 	margin: 10px;
 }
 
-.user{
+.user {
 	margin: 17px;
 }
 
-.user-btn{
+.user-btn {
 	margin-top: 10px;
 }
 
-.body{
-	width:100%;
+.body {
+	width: 100%;
 	padding-left: 10px;
 }
 
-
-div{font-size:18px;  line-height:200%;} 
-a
-{
-font-size:15px; 
-
-color:black;
-}
-.emp{
-font-size:18px;
-color:#292421;
+div {
+	font-size: 18px;
+	line-height: 200%;
 }
 
-.employeeinfo{
+a {
+	font-size: 15px;
+	color: black;
+}
+
+.emp {
+	font-size: 18px;
+	color: #292421;
+}
+
+.employeeinfo {
 	font-weight: bold;
 	font-size: 30px;
 	text-align: center;
 }
 
-.addEmployeeSalary{
+.addEmployeeSalary {
 	font-weight: bold;
 	font-size: 30px;
 	text-align: center;
 }
 
-.center{
-	text-align:center; padding-top:30px;
+.center {
+	text-align: center;
+	padding-top: 30px;
 }
 
-.LV_validation_message{
+.LV_validation_message {
 	font-size: 10px;
-	font-weight:bold;
-    margin:0 0 0 5px;
+	font-weight: bold;
+	margin: 0 0 0 5px;
 }
 
 .LV_valid {
-    color:#00CC00;
-}
-	
-.LV_invalid {
-    color:#CC0000;
-}
-    
-.LV_valid_field,
-input.LV_valid_field:hover, 
-input.LV_valid_field:active,
-textarea.LV_valid_field:hover, 
-textarea.LV_valid_field:active {
-    border: 1px solid #00CC00;
-}
-    
-.LV_invalid_field, 
-input.LV_invalid_field:hover, 
-input.LV_invalid_field:active,
-textarea.LV_invalid_field:hover, 
-textarea.LV_invalid_field:active {
-    border: 1px solid #CC0000;
+	color: #00CC00;
 }
 
-dl{
+.LV_invalid {
+	color: #CC0000;
+}
+
+.LV_valid_field,input.LV_valid_field:hover,input.LV_valid_field:active,textarea.LV_valid_field:hover,textarea.LV_valid_field:active
+	{
+	border: 1px solid #00CC00;
+}
+
+.LV_invalid_field,input.LV_invalid_field:hover,input.LV_invalid_field:active,textarea.LV_invalid_field:hover,textarea.LV_invalid_field:active
+	{
+	border: 1px solid #CC0000;
+}
+
+dl {
 	margin-bottom: -15px;
 }
+
+
+
 
