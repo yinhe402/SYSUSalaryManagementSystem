@@ -1,4 +1,11 @@
 package com.sms.action;
+<<<<<<< HEAD
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BonusAction extends ActionSupport {
+
+=======
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -199,4 +206,5 @@ public class BonusAction extends ActionSupport {
 		return "success";
 
 	}
+>>>>>>> 3390d3adc927c6c40ded7cb3fb56dd3064c1e714
 }
