@@ -37,6 +37,13 @@
 	}
 
 	function setType() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+		
  		var result = "<%=session.getAttribute("type")%>";
 		if( result!=null) {
 	 	  $("#type").find("option[value='"+result+"']").attr("selected",true);     

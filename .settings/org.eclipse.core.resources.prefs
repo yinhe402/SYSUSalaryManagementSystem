@@ -1,6 +1,11 @@
 =\=\=\=\=\=\=
 eclipse.preferences.version=1
 encoding//WebContent/SchoolInnerChange.jsp=UTF-8
+encoding//WebContent/ZhichengChange.jsp=UTF-8
+encoding//WebContent/ZhiwuChange.jsp=UTF-8
+encoding//WebContent/initCaptcha.jsp=UTF-8
+encoding//WebContent/initLogin.jsp=UTF-8
+encoding//WebContent/newWorkerSalary_daiqixin.jsp=UTF-8
 encoding//WebContent/showSalaryForAll.jsp=UTF-8
 encoding//WebContent/specialSalaryChange.jsp=UTF-8
 encoding//src/com/sms/entity/ExperienceInfo.java=UTF-8

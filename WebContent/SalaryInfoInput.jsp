@@ -35,11 +35,18 @@
 		myform.submit();
 	}
 	
-	
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 
 </script>
 </head>
-<body>
+<body onload="checkLogin()">
 <form id="myform1" >
 	职工号：<input type="text" name="salary.eid" /><br />
 	岗位工资：<input type="text" name="salary.positionSalary" /><br />

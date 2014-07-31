@@ -29,9 +29,17 @@
 		myform.submit();
 	}
 	
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 </script>
 </head>
-<body>
+<body onload="checkLogin()">
 	<br />
 	<!-- <a href="specialSalaryChange.jsp">特殊工资变动</a><br /><br />
 	<a href="specialSalaryRecovery.jsp">特殊工资恢复</a>-->

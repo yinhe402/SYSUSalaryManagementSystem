@@ -22,11 +22,20 @@
 			myform.method="post";
 			myform.submit();
 		}
+		
+		function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 
 	</script>
 	
 </head>
-<body>
+<body onload="checkLogin()">
 	<div class="container">
 		<form class="form-horizontal">
 		<h2>校内工资变动</h2>

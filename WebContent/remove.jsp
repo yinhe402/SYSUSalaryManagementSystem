@@ -55,27 +55,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		function ok1()
 		{
-			var a=document.getElementById( "div1");
+			/* var a=document.getElementById("div1");
 			if(a.style.display=="none")
 				a.style.display="block";
 			else
-				a.style.display="none";
+				a.style.display="none"; */
+			var myform1=document.getElementById("myform1");
+			myform1.style.display="block";
 		}
 		
+		function checkLogin() {
+			var nid = "<%=session.getAttribute("user.id")%>";
+			
+			if (nid == "null" || nid == "") {			
+				window.location.href="login.jsp";
+				$(".alert").alert("请先登录！");
+			}
+		}
 	</script>
 </head>
 
-<body>
+<body onload="checkLogin()">
 	<div style="margin-top:20px;margin-left:20px;"> 
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
 		enctype="multipart/form-data" role="form">
+
 		<s:file name="stopEmployeeFile" label="上传文件" />
 		<!--<button type="submit" class="btn btn-success" onclick="ok1()">导入</button>-->
-		<input type="submit" class="btn btn-success" onclick="ok1" value="导入" />
+		<input type="submit" class="btn btn-success" onclick="ok1()" value="导入" />
 	</s:form>
 	</div>
 	
-	<div id="div1" style="display:none;margin:0 auto;text-align:center;width:80%;">
 	<form id="myform1">
 	<table class="table table-bordered">
 		<thead>
@@ -94,22 +104,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tbody>
 		<s:iterator id="lList" value="#session.lList">
 		 <tr>
-			<td><s:textfield value="%{#lList.getName()}" /></td>
-			<td><s:textfield value="%{#lList.getGender()}" /></td>
-			<td><s:textfield value="%{#lList.geteId()}" /></td>
-			<td><s:textfield value="%{#lList.getDepartment()}" /></td>
-			<td><s:textfield value="%{#lList.getLeaveDate()}" /></td>
-			<td><s:textfield value="%{#lList.getReason()}" /></td>
-			<td><s:textfield value="%{#lList.getState()}" /></td>
-			<td><s:textfield value="%{#lList.getStopDate()}" /></td>
-			<td><s:textfield value="%{#lList.getNote()}" /></td>
+			<td><s:property value="%{#lList.getName()}" /></td>
+			<td><s:property value="%{#lList.getGender()}" /></td>
+			<td><s:property value="%{#lList.geteId()}" /></td>
+			<td><s:property value="%{#lList.getDepartment()}" /></td>
+			<td><s:property value="%{#lList.getLeaveDate()}" /></td>
+			<td><s:property value="%{#lList.getReason()}" /></td>
+			<td><s:property value="%{#lList.getState()}" /></td>
+			<td><s:property value="%{#lList.getStopDate()}" /></td>
+			<td><s:property value="%{#lList.getNote()}" /></td>
 		</tr>
 	  </s:iterator>
 		</tbody>
 	</table>
 	  <input type="button" name="btnSubmit" value="确认"onclick="yesToSubmit()" />
 	</form>
-	</div>
 	<hr/>
 	
 	<div style="margin-left:30px;">

@@ -19,10 +19,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+<script type="text/javascript">
+			function checkLogin() {
+				var nid = "<%=session.getAttribute("user.id")%>";
 
+				if (nid == "null" || nid == "") {
+				window.location.href = "login.jsp";
+				$(".alert").alert("请先登录！");
+				}
+			}
+</script>
   </head>
   
-  <body>
+  <body onload="checkLogin()">
     <form id="myform1">
     	<a href="BasicSalaryStandard.jsp">Basic Salary Standard</a><br/>
     	<!-- <a href="BasicSalarySystem/"></a><br/>

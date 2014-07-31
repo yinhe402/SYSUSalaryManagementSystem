@@ -1285,6 +1285,7 @@ public class NewEmployeeAction extends ActionSupport {
 						}
 					}
 				}
+				level = level + (new Date().getYear() + 1900 - 2006);
 			} else {
 				int eduLength = eduList.size();
 				for (int i = 0; i < eduLength; i++) {
