@@ -11,8 +11,18 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+</script>
 </head>
-<body>
+<body onload="checkLogin()">
 <form name="promotiontable" method="post" action="">
 	<table border="1" width="500" cellspacing="0" cellpadding="2" align="center">
 	<caption>晋升职称表</caption>

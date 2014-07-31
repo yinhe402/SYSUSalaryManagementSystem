@@ -64,10 +64,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			myform1.style.display="block";
 		}
 		
+		function checkLogin() {
+			var nid = "<%=session.getAttribute("user.id")%>";
+			
+			if (nid == "null" || nid == "") {			
+				window.location.href="login.jsp";
+				$(".alert").alert("请先登录！");
+			}
+		}
 	</script>
 </head>
 
-<body>
+<body onload="checkLogin()">
 	<div style="margin-top:20px;margin-left:20px;"> 
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
 		enctype="multipart/form-data" role="form">

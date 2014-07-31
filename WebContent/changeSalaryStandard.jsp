@@ -36,9 +36,18 @@ function link(){
    document.getElementById("fom").submit();
 }
 
+function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+
 </SCRIPT>
 
-<body>
+<body onload="checkLogin()">
 <form name="fom" id="fom" method="post" action="">
 <table width="60%" border="0" cellspacing="0" cellpadding="0">
   

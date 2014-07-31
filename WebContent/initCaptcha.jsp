@@ -6,10 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript">
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 	window.location.href="initCaptcha";
+	
 </script>
 </head>
-<body>
+<body onload="checkLogin()">
 
 </body>
 </html>

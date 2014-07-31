@@ -14,9 +14,18 @@
 		myform.method = "post";
 		myform.submit();
 	}
+	
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+
+		if (nid == "null" || nid == "") {
+			window.location.href = "login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 </script>
 </head>
-<body>
+<body onload="checkLogin()">
 	<form id="myform1">
 		级别：<input type="text" name="manageSalaryChange.positionLevel" /><br />
 		任职年限下限：<input type="text"
