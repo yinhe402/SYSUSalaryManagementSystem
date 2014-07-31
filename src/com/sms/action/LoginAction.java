@@ -8,6 +8,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
+import org.aspectj.weaver.bcel.AtAjAttributes;
+import org.hibernate.Session;
+import org.junit.internal.runners.statements.Fail;
 import org.springframework.web.client.HttpServerErrorException;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -132,16 +135,19 @@ public class LoginAction extends ActionSupport {
 			session.put("user.id", userIdString);
 			return "success";
 		}
-
+		
+		Map session = ActionContext.getContext().getSession();
+		autoCaptcha=(String)session.get("SESSION_SECURITY_CODE");
+		
 		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
-			if(inputCaptcha.equals(autoCaptcha)){
-				Map session = ActionContext.getContext().getSession();
+			System.out.println(inputCaptcha);
+			System.out.println(autoCaptcha);
+			if(inputCaptcha.equalsIgnoreCase(autoCaptcha)){
 				session.put("user.id", userIdString);
 				System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
-				
 				Employee employeeLogin = iEmployeeManage.findEmployeeById(user.getId());
+				session.put("employeeLogin", employeeLogin);
 				
-				ActionContext.getContext().getSession().put("employeeLogin", employeeLogin);
 				return "success";
 			}
 			else {
@@ -154,5 +160,15 @@ public class LoginAction extends ActionSupport {
 
 		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
 		return "fail";
+	}
+	public String logout(){
+		Map session = ActionContext.getContext().getSession();
+		if(session.containsKey("user.id")) {
+			session.remove("user.id");
+			return "success";
+		}
+		else {
+			return "fail";
+		}
 	}
 }

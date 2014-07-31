@@ -23,14 +23,23 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
-		<action name="initCaptcha" class="initCaptcha" method="makeCaptcha">
+		<action name="logout" class="loginAction" method="logout">
 			<result name="success" type="redirect">/login.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
-		<action name="*" class="userMainAction">
-			<result name="success">/success.jsp</result>
+		<action name="initCaptcha" class="initCaptcha">
+			 <result name="success" type="stream">
+            	<param name="contentType">image/jpeg</param>
+             	<param name="inputName">imageStream</param>
+            	<param name="bufferSize">2048</param>
+         	 </result>
+		</action>
+		
+		<action name="*" >
 			<interceptor-ref name="myInterceptor"/>
+			<result name="success">/{1}.jsp</result>
+			
 		</action>
 		
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->

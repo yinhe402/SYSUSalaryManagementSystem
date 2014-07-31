@@ -17,14 +17,12 @@
 		
 		if (nid == "null" || nid == "") {			
 			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
+		
 		}
 	}
 </script>
 	</head>
-	<body onload="checkLogin()">
-
-		
+	<body >
 		<div class="body">
 		    <div class="span3 well">
 		      <!--LeftSidebar content-->
