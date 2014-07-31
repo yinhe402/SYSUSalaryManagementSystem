@@ -19,10 +19,19 @@ s<%@page import="javax.print.DocFlavor.INPUT_STREAM"%>
 		myform.submit();
 	}	
 	
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+	
 
 </script>
 </head>
-<body>
+<body onload="checkLogin()">
 <form id="myform1" >
 	用户名：<input type="text" name="employee.id" /><br />		
 	<input type="button" name="btncheck" onclick="checkEmployee()" value="查询" /><br />

@@ -128,6 +128,8 @@ public class LoginAction extends ActionSupport {
 	
 		if(user.getId() == 999999){
 			System.out.println("测试用");
+			Map session = ActionContext.getContext().getSession();
+			session.put("user.id", userIdString);
 			return "success";
 		}
 		

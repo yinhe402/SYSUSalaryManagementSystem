@@ -223,4 +223,13 @@ public class ChangeAction {
 		}
 		return "fail";
 	}
+	
+	public String PosChange() {
+		
+		return "success";
+	}
+	
+	public String PayLevelChange() {
+		return "success";
+	}
 }
