@@ -23,10 +23,18 @@
 	{
 		top.location='test.jsp'; 
 	}
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 </script>
 </head>
 
-<body>
+<body onload="checkLogin()">
 	
 <form id="myform1" >
 	<input type="button" name="btnaddCha" onclick="addCha()" value="添加套改记录" /><br />

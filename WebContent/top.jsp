@@ -12,17 +12,22 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
+		
 		function logout() {
-		<%
-		if(session.getAttribute("user.id") != null) {
-			session.removeAttribute("user.id");
-		}
-		%>	
+
 		alert("确认注销?");
-		$(".alert").alert("确认注销？");
-		top.location.href="login.jsp";
+		top.location.href="logout";
 		}
-		</script>
+		
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+</script>
 	</head>
 	<body>
 

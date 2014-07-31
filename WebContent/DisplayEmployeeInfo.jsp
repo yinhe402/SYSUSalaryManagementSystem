@@ -20,10 +20,18 @@
 			myform1.method = "post";
 			myform1.submit();
 		}
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		alert(nid);
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 </script>
 </head>
 
-<body>
+<body onload="checkLogin()">
 <br>
 <s:form id="myform1" style="margin-left:300px; margin-bottom:-20px;" >
 	<span style="font-weight:bold;">输入职工号：</span><input type="text" name="employee.id" id="input" style="margin-top:10px;">

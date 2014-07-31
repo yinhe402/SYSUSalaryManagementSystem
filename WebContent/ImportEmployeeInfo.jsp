@@ -17,9 +17,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript">
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+</script>
   </head>
   
-  <body>
+  <body onload="checkLogin()">
    <s:form action="employee/importEmployeeInfo_success" method="post" enctype="multipart/form-data" role="form">
      	<s:file name="employeeFile" label="excelFile"/>
      	<button type="submit" class="btn btn-success">导入</button>
