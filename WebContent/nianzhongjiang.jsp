@@ -95,7 +95,7 @@
 	</s:form>
 
 	<table width="85%" border="0" align="center" cellpadding="0"
-		cellspacing="0">
+		cellspacing="0" style="margin-bottom:10%;">
 		<tr>
 			<td height="40">
 				<table width="100%" border="0" cellpadding="4" cellspacing="1"

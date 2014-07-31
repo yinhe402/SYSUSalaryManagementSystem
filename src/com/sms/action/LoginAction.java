@@ -28,7 +28,7 @@ public class LoginAction extends ActionSupport {
 
 	@Resource
 	private IUserManage userManage;
-	
+
 	@Resource
 	private IEmployeeManage iEmployeeManage;
 
@@ -47,7 +47,7 @@ public class LoginAction extends ActionSupport {
 	public void setUserManage(IUserManage userManage) {
 		this.userManage = userManage;
 	}
-	
+
 	public String getInputCaptcha() {
 		return inputCaptcha;
 	}
@@ -95,17 +95,18 @@ public class LoginAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss E");
+		SimpleDateFormat dateFormat = new SimpleDateFormat(
+				"yyyy年MM月dd日 HH:mm:ss E");
 		System.out.println(dateFormat.format(new Date()));
-		
+
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getCharacterEncoding());
 
 		System.out.println("用户登录，用户名=" + user.getId());
-		String userIdString = user.getId().toString(), UserPassword = user.getPassword();
+		String userIdString = user.getId().toString(), UserPassword = user
+				.getPassword();
 
-		if (!isInteger(userIdString))
-		{
+		if (!isInteger(userIdString)) {
 			System.out.println("登录失败，用户名=" + userIdString + "，用户名应为纯数字");
 			return "fail";
 		}
@@ -113,40 +114,45 @@ public class LoginAction extends ActionSupport {
 		Integer userNameInteger = Integer.parseInt(userIdString);
 
 		if (!isValid(userNameInteger)) {
-			System.out.println("登录失败，用户名=" + user.getId().toString() + "，用户名应为满足职工号范围的6位数字");
+			System.out.println("登录失败，用户名=" + user.getId().toString()
+					+ "，用户名应为满足职工号范围的6位数字");
 			return "fail";
 		}
 
 		if (userManage.findUserById(userNameInteger) == null) {
-			System.out.println("登录失败，用户名=" + user.getId().toString()	+ "，用户名不存在");
+			System.out.println("登录失败，用户名=" + user.getId().toString()
+					+ "，用户名不存在");
 			return "fail";
 		}
 
-		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
+		String CorrectUserPassword = userManage.findUserById(user.getId())
+				.getPassword();
 
 		System.out.println(CorrectUserPassword);
-	
-		if(user.getId() == 999999){
+
+		if (user.getId() == 999999) {
 			System.out.println("测试用");
 			Map session = ActionContext.getContext().getSession();
 			session.put("user.id", userIdString);
 			return "success";
 		}
-		
+
 		Map session = ActionContext.getContext().getSession();
-		autoCaptcha=(String)session.get("SESSION_SECURITY_CODE");
-		
+		autoCaptcha = (String) session.get("SESSION_SECURITY_CODE");
+
 		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
-			if(inputCaptcha.equals(autoCaptcha)){
+			if (inputCaptcha.equals(autoCaptcha)) {
 				session.put("user.id", userIdString);
-				System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
-				
-				Employee employeeLogin = iEmployeeManage.findEmployeeById(user.getId());
-				
-				ActionContext.getContext().getSession().put("employeeLogin", employeeLogin);
+				System.out.println("登录成功，用户名=" + userIdString + "  密码Md5="
+						+ CorrectUserPassword);
+
+				Employee employeeLogin = iEmployeeManage.findEmployeeById(user
+						.getId());
+
+				ActionContext.getContext().getSession()
+						.put("employeeLogin", employeeLogin);
 				return "success";
-			}
-			else {
+			} else {
 				System.out.println(inputCaptcha);
 				System.out.println(autoCaptcha);
 				System.out.println("验证码错误");
@@ -154,7 +160,9 @@ public class LoginAction extends ActionSupport {
 			}
 		}
 
-		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
+		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5="
+				+ CorrectUserPassword + "   您的密码Md5="
+				+ Md5.generatePassword(UserPassword));
 		return "fail";
 	}
 }

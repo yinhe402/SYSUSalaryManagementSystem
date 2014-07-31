@@ -1,7 +1,7 @@
 table {
 	background-color: black;
 	border-collapse: separate;
-	border-spacing: 1;
+	border-spacing: 1px;
 }
 
 .top{
