@@ -11,25 +11,24 @@
 	<constant name="struts.action.extension" value=","></constant>
 	<!-- 取消标签自动换行 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
-<!-- 	utf-8编码 -->
-	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<!-- utf-8编码 -->
+	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
- 	<!-- 公共包 -->
+	<!-- 公共包 -->
 
-	<package name="abstract_struts" abstract="true" extends="struts-default"
-		namespace="/">
+	<package name="abstract_struts" abstract="true" extends="struts-default" namespace="/">
 		<interceptors>
-			<interceptor name="checkLogin" class="checkLoginInterceptor" />
+			<interceptor name="checkLogin" class="com.sms.interceptor.CheckLogin" />
 			<interceptor-stack name="myInterceptor">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="checkLogin" />
 			</interceptor-stack>
 		</interceptors>
 
-<!-- 		<default-interceptor-ref name="myInterceptor" />  -->
+		<!-- <default-interceptor-ref name="myInterceptor" /> -->
 
 		<global-results>
-			<result name="checkLoginFail">/login.jsp</result>
+			<result name="checkLoginFail">/initLogin.jsp</result>
 		</global-results>
 	</package>
 

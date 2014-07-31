@@ -13,17 +13,24 @@ import org.springframework.web.client.HttpServerErrorException;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.dao.impl.UserDaoImp;
+import com.sms.entity.Employee;
 import com.sms.entity.User;
 import com.sms.security.Md5;
+import com.sms.service.IEmployeeManage;
 import com.sms.service.IUserManage;
 import com.sms.service.impl.UserManageImp;
 import com.sms.security.Md5;
 
 public class LoginAction extends ActionSupport {
 	private User user;
+	private String inputCaptcha;
+	private String autoCaptcha;
 
 	@Resource
 	private IUserManage userManage;
+	
+	@Resource
+	private IEmployeeManage iEmployeeManage;
 
 	public User getUser() {
 		return user;
@@ -39,6 +46,30 @@ public class LoginAction extends ActionSupport {
 
 	public void setUserManage(IUserManage userManage) {
 		this.userManage = userManage;
+	}
+	
+	public String getInputCaptcha() {
+		return inputCaptcha;
+	}
+
+	public void setInputCaptcha(String inputCaptcha) {
+		this.inputCaptcha = inputCaptcha;
+	}
+
+	public String getAutoCaptcha() {
+		return autoCaptcha;
+	}
+
+	public void setAutoCaptcha(String autoCaptcha) {
+		this.autoCaptcha = autoCaptcha;
+	}
+
+	public IEmployeeManage getiEmployeeManage() {
+		return iEmployeeManage;
+	}
+
+	public void setiEmployeeManage(IEmployeeManage iEmployeeManage) {
+		this.iEmployeeManage = iEmployeeManage;
 	}
 
 	/*
@@ -94,17 +125,34 @@ public class LoginAction extends ActionSupport {
 		String CorrectUserPassword = userManage.findUserById(user.getId()).getPassword();
 
 		System.out.println(CorrectUserPassword);
-
-		if (Md5.validatePassword(CorrectUserPassword, UserPassword) || (user.getId() == 999999)) {
-
+	
+		if(user.getId() == 999999){
+			System.out.println("测试用");
 			Map session = ActionContext.getContext().getSession();
 			session.put("user.id", userIdString);
-			System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
 			return "success";
+		}
+
+		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
+			if(inputCaptcha.equals(autoCaptcha)){
+				Map session = ActionContext.getContext().getSession();
+				session.put("user.id", userIdString);
+				System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
+				
+				Employee employeeLogin = iEmployeeManage.findEmployeeById(user.getId());
+				
+				ActionContext.getContext().getSession().put("employeeLogin", employeeLogin);
+				return "success";
+			}
+			else {
+				System.out.println(inputCaptcha);
+				System.out.println(autoCaptcha);
+				System.out.println("验证码错误");
+				return "fail";
+			}
 		}
 
 		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5=" + CorrectUserPassword + "   您的密码Md5="	+ Md5.generatePassword(UserPassword));
 		return "fail";
 	}
-
 }

@@ -11,8 +11,18 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+</script>
 	</head>
-	<body>
+	<body onload="checkLogin()">
 
 		<div class="top">
 			
@@ -27,8 +37,8 @@
 
 			<div class="span4 offset1" style="margin-left:180px;">
 				<div class="pull-right user">
-					<span class="label label-success">当前用户</span>
-					<span class="label label-info">覃蓓（11331285）</span>
+					<span class="label label-success">当前用户</span><br>	
+					<span class="label label-info"><s:property value="#session.employeeLogin.name"/>(<s:property value="#session.employeeLogin.id"/>)</span>
 
 					<div class="btn-group user-btn">
 					  <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> 用户操作</a>

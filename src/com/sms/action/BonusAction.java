@@ -179,7 +179,7 @@ public class BonusAction extends ActionSupport {
          return "success";
 	}
 	
-public String importOffInfoResult() throws FileNotFoundException, ExcelException {
+	public String importOffInfoResult() throws FileNotFoundException, ExcelException {
 		List<OffInfo> checks = new ArrayList<OffInfo>();
 		InputStream in = new FileInputStream(offInfoFile);
 		LinkedHashMap<String, String> fieldMap = new LinkedHashMap<String, String>();
@@ -195,5 +195,4 @@ public String importOffInfoResult() throws FileNotFoundException, ExcelException
 		return "success";
 
 	}
-
 }

@@ -19,10 +19,19 @@ pageEncoding="utf-8"%>
 			myform.method="post";
 			myform.submit();
 		}
+		
+		function checkLogin() {
+			var nid = "<%=session.getAttribute("user.id")%>";
+			
+			if (nid == "null" || nid == "") {			
+				window.location.href="login.jsp";
+				$(".alert").alert("请先登录！");
+			}
+		}
 	</script>
 </head>
 
-<body>
+<body onload="checkLogin()">
 	<s:form id="myform" style="text-align:center;">
 	    <br/>
 	    <span style="font-size:22px; font-weight:bold;">请输入修改后的工资标准：</span>	<br/>	

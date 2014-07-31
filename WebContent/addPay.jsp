@@ -15,9 +15,18 @@
 		myform.method="post";
 		myform.submit();
 	}
+	
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+
+		if (nid == "null" || nid == "") {
+			window.location.href = "login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
 </script>
 </head>
-<body>
+<body onload="checkLogin()">
 <form id="myform1" >
 	薪级：<input type="text" name="managePaylevelSalary.payLevel" /><br />
 	工资标准：<input type="text" name="managePaylevelSalary.salaryStandard" /><br />

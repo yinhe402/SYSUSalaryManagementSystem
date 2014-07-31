@@ -6,10 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>中山大学职工工资管理系统</title>
-
+<script type="text/javascript">
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+</script>
 </head>
 
-<body>
+<body onload="checkLogin()">
 	<s:form name="professionalPositionForm">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:30px;">
 			<tr>

@@ -11,8 +11,18 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+</script>
 </head>
-<body>
+<body onload="checkLogin()">
 	 <form>
 	 <h2>特殊情况工资恢复人员列表</h2>
 	 <table class="table table-bordered">

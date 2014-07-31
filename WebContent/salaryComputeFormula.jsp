@@ -14,13 +14,29 @@
 			myform.submit();
 		}
 		
+<<<<<<< HEAD
+=======
+		function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
+		}
+	}
+>>>>>>> cb80547fe23191148ba02e0e37d05aca92f1f5f6
 	</script>
 	<!--[if IE]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
+<<<<<<< HEAD
 <body>
 	<div class="container" style="margin-top:20px;text-align:center;font-family:'宋体'；">
+=======
+<body onload="checkLogin()">
+	<div class="container" style="margin-top:20px;text-align:center;">
+>>>>>>> cb80547fe23191148ba02e0e37d05aca92f1f5f6
 	<form id="myform" class="form-horizontal">
 	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
   		 地区差：<input type="text" name="areaDifference"/><br/><br/>
