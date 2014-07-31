@@ -27,8 +27,8 @@
 
 			<div class="span4 offset1" style="margin-left:180px;">
 				<div class="pull-right user">
-					<span class="label label-success">当前用户</span>
-					<span class="label label-info">覃蓓（11331285）</span>
+					<span class="label label-success">当前用户</span><br>	
+					<span class="label label-info"><s:property value="#session.employeeLogin.name"/>(<s:property value="#session.employeeLogin.id"/>)</span>
 
 					<div class="btn-group user-btn">
 					  <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> 用户操作</a>

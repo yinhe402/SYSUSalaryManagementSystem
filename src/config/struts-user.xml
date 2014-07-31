@@ -22,31 +22,48 @@
 			<result name="success" type="redirect">/userMain.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
-
+		
+		<action name="initCaptcha" class="initCaptcha" method="makeCaptcha">
+			<result name="success" type="redirect">/login.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		
+		<action name="*" class="userMainAction">
+			<result name="success">/success.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
+		
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->
 		<action name="userMain" class="userMainAction">
+			<interceptor-ref name="myInterceptor"/>
 			<result name="success">/userMain.jsp</result>
-			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="myInterceptor"/>
 		</action>
 
 		<action name="getData" class="salaryStandardAction" method="getAllSalaryStandard">
 			<result name="success">/showSalaryStandard.jsp</result>
-			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="myInterceptor"/>
 		</action>
-		<action name="*">
-			<result>/{1}.jsp</result>
-			<interceptor-ref name="myInterceptor" />
+		
+		<action name="specialSalaryChange">
+			<result>/specialSalaryChange.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
 		</action>
+		
+		<action name="specialSalaryRecovery">
+			<result>/specialSalaryRecovery.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
+		
 		<action name="autoSalary" class="autoSalary" method="computeSalary">
 			<result name="success">/showSalaryForAll.jsp</result>
-			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="myInterceptor"/>
 		</action>
 
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
 		<action name="*_*" class="userAction" method="{1}">
-
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
@@ -123,7 +140,7 @@
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="null" type="redirect">/success.jsp</result>
-			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="myInterceptor"/>
 		</action>
 	</package>
 	

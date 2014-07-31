@@ -46,6 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			myform.action="employee/query_remove";
 			myform.method="post";
 			myform.submit();
+			
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
+			else
+				b.style.display="none";
 		}
 		function ok1()
 		{
@@ -56,14 +62,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				a.style.display="none";
 		}
 		
-		function ok2()
-		{
-			var b=document.getElementById("div2");
-			if(b.style.display=="none")
-				b.style.display="block";
-			else
-				b.style.display="none";
-		}
 	</script>
 </head>
 
