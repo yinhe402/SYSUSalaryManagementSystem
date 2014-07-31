@@ -11,11 +11,22 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+		function logout() {
+		<%
+		if(session.getAttribute("user.id") != null) {
+			session.removeAttribute("user.id");
+		}
+		%>	
+		alert("确认注销?");
+		$(".alert").alert("确认注销？");
+		top.location.href="login.jsp";
+		}
+		</script>
 	</head>
 	<body>
 
 		<div class="top">
-			
 			<div class="span4">
 				<img src="img/logo.gif" alt="" width="381" height="130">
 			</div>
@@ -24,15 +35,13 @@
 					<h2>中山大学教职工工资系统</h2>
 				</span>
 			</div>
-
 			<div class="span4 offset1" style="margin-left:180px;">
 				<div class="pull-right user">
-					<span class="label label-success">当前用户</span><br>	
+					<span class="label label-success">当前用户</span>	
 					<span class="label label-info"><s:property value="#session.employeeLogin.name"/>(<s:property value="#session.employeeLogin.id"/>)</span>
-
+					<br/>
 					<div class="btn-group user-btn">
-					  <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> 用户操作</a>
-					  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+					  <a class="btn btn-primary" onclick="logout()"><i class="icon-user icon-white"></i> 注销</a>
 					  <ul class="dropdown-menu">
 					    <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
 					    <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
