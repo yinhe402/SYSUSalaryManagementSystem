@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="css/nianzhongjiang.css">
 
 <script type="text/javascript">
+
 	function getFinalBonus() {
 		var myform = document.getElementById("queryForm");
 		myform.action = "bonus/getSalaryResult_nianzhongjiang";
@@ -30,13 +31,23 @@
 		myform.submit();
 	}
 	
+
 	function succeed(){
 	    alert("导入成功！");
 	}
-</script>
 
+	function setType() {
+ 		var result = "<%=session.getAttribute("type")%>";
+		if( result!=null) {
+	 	  $("#type").find("option[value='"+result+"']").attr("selected",true);     
+	 	}
+	}
+     
+
+</script>
+ 
 </head>
-<body>
+<body onload="setType()">
 	<div class="inputfile">
 		<s:form style="text-align:center;"
 			action="bonus/importTestResult_nianzhongjiang" method="post"
@@ -64,9 +75,8 @@
 
 
 	<s:form id="queryForm">
-
 		<div class="top">
-			<select id="type" name="type">
+			<select id="type" name="type" >
 				<option value="不发">不发放双薪</option>
 				<option value="全部双薪">全部双薪</option>
 				<option value="部分双薪">部分双薪</option>

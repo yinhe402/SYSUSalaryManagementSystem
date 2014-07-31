@@ -17,6 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
 	//var myfrom=document.getElementById("myform1");
 	
@@ -42,6 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			myform.action="employee/query_remove";
 			myform.method="post";
 			myform.submit();
+			
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
+			else
+				b.style.display="none";
 		}
 		function ok1()
 		{
@@ -51,6 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			else
 				a.style.display="none";
 		}
+		
 	</script>
 </head>
 
@@ -58,27 +69,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="margin-top:20px;margin-left:20px;"> 
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
 		enctype="multipart/form-data" role="form">
-		<s:file name="stopEmployeeFile" label="excelFile" />
-		<button type="submit" class="btn btn-success" onclick="ok1">导入</button>
+		<s:file name="stopEmployeeFile" label="上传文件" />
+		<!--<button type="submit" class="btn btn-success" onclick="ok1()">导入</button>-->
+		<input type="submit" class="btn btn-success" onclick="ok1" value="导入" />
 	</s:form>
 	</div>
 	
 	<div id="div1" style="display:none;margin:0 auto;text-align:center;width:80%;">
 	<form id="myform1">
+	<table class="table table-bordered">
+		<thead>
+		<tr>
+	 		<th>姓名</th>
+	 		<th>性别</th>
+	 		<th>职工号</th>
+	 		<th>单位</th>
+	 		<th>离校时间</th>
+	 		<th>离校原因</th>
+	 		<th>人员工资状态</th>
+	 		<th>停发时间</th>
+	 		<th>备注</th>
+	 	</tr>
+		</thead>
+		<tbody>
 		<s:iterator id="lList" value="#session.lList">
-		姓名：<td><s:textfield value="%{#lList.getName()}" /></td>
-		性别：<td><s:textfield value="%{#lList.getGender()}" /></td>
-		职工号：<td><s:textfield value="%{#lList.geteId()}" /></td>
-		单位：<td><s:textfield value="%{#lList.getDepartment()}" /></td>
-		离校时间：<td><s:textfield value="%{#lList.getLeaveDate()}" /></td>
-		离校原因：<td><s:textfield value="%{#lList.getReason()}" /></td>
-		人员工资状态：<td><s:textfield value="%{#lList.getState()}" /></td>
-		停发时间：<td><s:textfield value="%{#lList.getStopDate()}" /></td>
-		备注：<td><s:textfield value="%{#lList.getNote()}" /></td>
-			<br />
-		</s:iterator>
-		<input type="button" name="btnSubmit" value="确认"
-			onclick="yesToSubmit()" />
+		 <tr>
+			<td><s:textfield value="%{#lList.getName()}" /></td>
+			<td><s:textfield value="%{#lList.getGender()}" /></td>
+			<td><s:textfield value="%{#lList.geteId()}" /></td>
+			<td><s:textfield value="%{#lList.getDepartment()}" /></td>
+			<td><s:textfield value="%{#lList.getLeaveDate()}" /></td>
+			<td><s:textfield value="%{#lList.getReason()}" /></td>
+			<td><s:textfield value="%{#lList.getState()}" /></td>
+			<td><s:textfield value="%{#lList.getStopDate()}" /></td>
+			<td><s:textfield value="%{#lList.getNote()}" /></td>
+		</tr>
+	  </s:iterator>
+		</tbody>
+	</table>
+	  <input type="button" name="btnSubmit" value="确认"onclick="yesToSubmit()" />
 	</form>
 	</div>
 	<hr/>
@@ -106,54 +135,108 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	</div>
 	
-	<div style="margin:0 auto;text-align:center;width:80%;">
+	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
 	<form id="myform4">
+	<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>职工号</th>
+			<th>单位</th>
+			<th>离校时间</th>
+			<th>离校原因</th>
+			<th>人员工资状态</th>
+			<th>停发时间</th>
+			<th>备注</th>
+		</tr>
+	</thead>
+	<tbody>
 		<s:iterator id="idList" value="#session.idList">
-		姓名：<td><s:textfield value="%{#idList.getName()}" /></td>
-		性别：<td><s:textfield value="%{#idList.getGender()}" /></td>
-		职工号：<td><s:textfield value="%{#idList.geteId()}" /></td>
-		单位：<td><s:textfield value="%{#idList.getDepartment()}" /></td>
-		离校时间：<td><s:textfield value="%{#idList.getLeaveDate()}" /></td>
-		离校原因：<td><s:textfield value="%{#idList.getReason()}" /></td>
-		人员工资状态：<td><s:textfield value="%{#idList.getState()}" /></td>
-		停发时间：<td><s:textfield value="%{#idList.getStopDate()}" /></td>
-		备注：<td><s:textfield value="%{#idList.getNote()}" /></td>
-			<br />
+		<tr>
+			<td><s:textfield value="%{#idList.getName()}" /></td>
+			<td><s:textfield value="%{#idList.getGender()}" /></td>
+			<td><s:textfield value="%{#idList.geteId()}" /></td>
+			<td><s:textfield value="%{#idList.getDepartment()}" /></td>
+			<td><s:textfield value="%{#idList.getLeaveDate()}" /></td>
+			<td><s:textfield value="%{#idList.getReason()}" /></td>
+			<td><s:textfield value="%{#idList.getState()}" /></td>
+			<td><s:textfield value="%{#idList.getStopDate()}" /></td>
+			<td><s:textfield value="%{#idList.getNote()}" /></td>
+		</tr>
 		</s:iterator>
+		</tbody>
+		</table>
 	</form>
 	</div>
 	
-	<div style="margin:0 auto;text-align:center;width:80%;">
+	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
 	<form id="myform5">
+		<table class="table tabel-bordered">
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>职工号</th>
+				<th>单位</th>
+				<th>离校时间</th>
+				<th>离校原因</th>
+				<th>人员工资状态</th>
+				<th>停发时间</th>
+				<th>备注</th> 
+			</tr>
+		</thead>
+		<tbody>
 		<s:iterator id="nameList" value="#session.nameList">
-		姓名：<td><s:textfield value="%{#nameList.getName()}" /></td>
-		性别：<td><s:textfield value="%{#nameList.getGender()}" /></td>
-		职工号：<td><s:textfield value="%{#nameList.geteId()}" /></td>
-		单位：<td><s:textfield value="%{#nameList.getDepartment()}" /></td>
-		离校时间：<td><s:textfield value="%{#nameList.getLeaveDate()}" /></td>
-		离校原因：<td><s:textfield value="%{#nameList.getReason()}" /></td>
-		人员工资状态：<td><s:textfield value="%{#nameList.getState()}" /></td>
-		停发时间：<td><s:textfield value="%{#nameList.getStopDate()}" /></td>
-		备注：<td><s:textfield value="%{#nameList.getNote()}" /></td>
-			<br />
+		<tr>
+		<td><s:textfield value="%{#nameList.getName()}" /></td>
+	    <td><s:textfield value="%{#nameList.getGender()}" /></td>
+		<td><s:textfield value="%{#nameList.geteId()}" /></td>
+		<td><s:textfield value="%{#nameList.getDepartment()}" /></td>
+		<td><s:textfield value="%{#nameList.getLeaveDate()}" /></td>
+		<td><s:textfield value="%{#nameList.getReason()}" /></td>
+		<td><s:textfield value="%{#nameList.getState()}" /></td>
+		<td><s:textfield value="%{#nameList.getStopDate()}" /></td>
+		<td><s:textfield value="%{#nameList.getNote()}" /></td>
+		</tr>
 		</s:iterator>
+		</tbody>
+		</table>
 	</form>
 	</div>
 	
-	<div>
-	<form id="myform6" style="margin:0 auto;text-align:center;width:80%;">
+	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
+	<form id="myform6" style="margin:0 auto;text-align:center;width:80%;display:none;">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>职工号</th>
+				<th>单位</th>
+				<th>离校时间</th>
+				<th>离校原因</th>
+				<th>人员工资状态</th>
+				<th>停发时间</th>
+				<th>备注</th> 
+			</tr>
+		</thead>
+		<tbody>
 		<s:iterator id="departmentList" value="#session.departmentList">
-		姓名：<td><s:textfield value="%{#departmentList.getName()}" /></td>
-		性别：<td><s:textfield value="%{#departmentList.getGender()}" /></td>
-		职工号：<td><s:textfield value="%{#departmentList.geteId()}" /></td>
-		单位：<td><s:textfield value="%{#departmentList.getDepartment()}" /></td>
-		离校时间：<td><s:textfield value="%{#departmentList.getLeaveDate()}" /></td>
-		离校原因：<td><s:textfield value="%{#departmentList.getReason()}" /></td>
-		人员工资状态：<td><s:textfield value="%{#departmentList.getState()}" /></td>
-		停发时间：<td><s:textfield value="%{#departmentList.getStopDate()}" /></td>
-		备注：<td><s:textfield value="%{#departmentList.getNote()}" /></td>
-			<br />
+		<tr>
+			<td><s:textfield value="%{#departmentList.getName()}" /></td>
+			<td><s:textfield value="%{#departmentList.getGender()}" /></td>
+			<td><s:textfield value="%{#departmentList.geteId()}" /></td>
+			<td><s:textfield value="%{#departmentList.getDepartment()}" /></td>
+			<td><s:textfield value="%{#departmentList.getLeaveDate()}" /></td>
+			<td><s:textfield value="%{#departmentList.getReason()}" /></td>
+			<td><s:textfield value="%{#departmentList.getState()}" /></td>
+			<td><s:textfield value="%{#departmentList.getStopDate()}" /></td>
+			<td><s:textfield value="%{#departmentList.getNote()}" /></td>
+		</tr>
 		</s:iterator>
+		</tbody>
+		</table>
 	</form>
 	</div>
 </body>

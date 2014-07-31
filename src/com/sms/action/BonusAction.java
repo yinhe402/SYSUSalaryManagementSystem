@@ -1,16 +1,17 @@
 package com.sms.action;
-import com.opensymphony.xwork2.ActionSupport;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
+
 import javax.annotation.Resource;
+
+import org.hibernate.Session;
+
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.sms.dao.IEmployeeDao;
+import com.sms.dao.IFinalBonusDao;
+import com.sms.dao.IOffInfoDao;
+import com.sms.entity.Employee;
 import com.sms.entity.FinalBonus;
 import com.sms.entity.FinalCheck;
 import com.sms.entity.OffInfo;
@@ -173,9 +174,12 @@ public class BonusAction extends ActionSupport {
 		List<FinalBonus> allBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("全部双薪");
 		System.out.print(type);
 		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
+		
+		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
 		System.out.println(result);
 		Map session = ActionContext.getContext().getSession();
 		session.put("result", result);
+		session.put("type", type);
          return "success";
 	}
 	
@@ -195,6 +199,4 @@ public class BonusAction extends ActionSupport {
 		return "success";
 
 	}
-
-	
 }
