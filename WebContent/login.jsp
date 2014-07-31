@@ -17,7 +17,7 @@
 					</script>
 					<script type="text/javascript" src="js/jquery.SuperSlide.js">
 					</script>
-					<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
+						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
 					</script>
 					<script type="text/javascript">
 						window.onload = function() {
