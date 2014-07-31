@@ -23,9 +23,12 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
-		<action name="initCaptcha" class="initCaptcha" method="makeCaptcha">
-			<result name="success" type="redirect">/login.jsp</result>
-			<result name="fail">/fail.jsp</result>
+		<action name="initCaptcha" class="initCaptcha">
+			 <result name="success" type="stream">
+            	<param name="contentType">image/jpeg</param>
+             	<param name="inputName">imageStream</param>
+            	<param name="bufferSize">2048</param>
+         	 </result>
 		</action>
 		
 		<action name="*" class="userMainAction">
