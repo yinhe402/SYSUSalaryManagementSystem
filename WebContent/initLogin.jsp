@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript">
-	top.window.location.href = 'initCaptcha.jsp' ;
+	top.window.location.href = "initCaptcha"  ;
+	top.window.location.href = "login.jsp" ;	
 </script>
 </head>
 <body>
