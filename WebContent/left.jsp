@@ -13,8 +13,6 @@
 		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	<body>
-
-		
 		<div class="body">
 		    <div class="span3 well">
 		      <!--LeftSidebar content-->

@@ -216,7 +216,13 @@
 								岗位性质<span style="color:red">*</span>
 							</dt>
 							<dd>
-								<input id="f8" type="text" name="employee.jobType" size=20>
+								<select id="f8" name="employee.jobType">
+									<option value="管理">管理</option>
+									<option value="专技">专技</option>
+									<option value="工人">工人</option>
+									<option value="其它" selected>其它</option>
+								</select>
+<!-- 								<input id="f8" type="text" name="employee.jobType" size=20> -->
 							</dd>
 						</dl>
 
