@@ -24,10 +24,10 @@
 </script>
 </head>
 <body onload="checkLogin()">
-	
+	<div class="container" style="height:100%;">
 	<h2 style="text-align:center;">月工资生成列表</h2>
 	
-	<table width="85%" border="0" align="center" cellpadding="0"
+	<table width="85%" border="0px" align="center" cellpadding="0"
 		cellspacing="0" style="margin-bottom:10%;">
 		<tr>
 			<td height="40">
@@ -38,15 +38,23 @@
 							style="font-size:16px; "></td>
 					</tr>
 					<tr bgcolor="#EEEEEE">
-						<td width="10%">职工号</td>
+						<td width="15%">职工号</td>
+						<td width="15%">姓名</td>
+						<td width="15%">单位</td>
+						<td width="15%">岗位工资</td>
+						<td width="15%">薪级工资</td>
 						<td width="10%">月薪</td>					
-						<td width="10%">时间</td>
+						<td width="15%">时间</td>
 					</tr>
 					<s:iterator id="salaryList" value="#session.newSalaryList">
 						<tr bgcolor="#EEEEEE">
 							
 							<td width="10%"><s:property value="#salaryList.eid"/></td>
-							<td width="10%"><s:property value="#salaryList.totleSalary"/></td>
+							<td width="10%"><s:property value="#salaryList."/></td>
+							<td width="10%"><s:property value="#salaryList."/></td>
+							<td width="10%"><s:property value="#salaryList."/></td>
+							<td width="10%"><s:property value="#salaryList."/></td>
+							<td width="10%"><s:property value="#salaryList."/></td>
 							<td width="10%"><s:date name="#salaryList.time" format="yyyy-MM-dd" /></td>
 						</tr>
 					</s:iterator>
@@ -54,5 +62,9 @@
 			</td>
 		</tr>
 	</table>
+	<div style="text-align:center;">
+	<button class="btn btn-success">导出</button>	
+	</div>
+	</div>
 </body>
 </html>
