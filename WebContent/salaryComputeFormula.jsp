@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/index.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
 <title>公式计算公式</title>
 	<script type="text/javascript">
 		function initSalaryCompute()
@@ -30,9 +35,10 @@
  
  
 <body onload="checkLogin()">
-	<div class="container" style="margin-top:20px;text-align:center;font-family:'宋体'">
- 
-	<form id="myform" class="form-horizontal">
+	<div class="container" style="margin-top:20px;font-family:'宋体'">
+    <h2>工资计算公式</h2>
+    <hr/>
+	<!-- <form id="myform" class="form-horizontal">
 	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
   		 地区差：<input type="text" name="areaDifference"/><br/><br/>
   		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
@@ -40,14 +46,43 @@
   		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   		 教护补贴： <input type="text" name="educationAllowance"  /><br/><br/>
   		  特殊津贴(岗位加权)： <input type="text" name="specialPositionParas" /><br/><br/>
-  		  特殊津贴(薪级加权)： <input type="text" name="specialLevelParas" /><br/><br/>
+  		  特殊津贴(岗位加权)： <input type="text" name="specialLevelParas" /><br/><br/>
   		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;独生子女： <input type="text" name="onlyChildAllowance"  /><br/><br/>
   		 其它补贴(岗位加权)： <input type="text" name="otherPositionParas"  /><br/><br/>
   		 其它补贴(薪级加权)： <input type="text" name="otherLevelParas"  /><br/><br/>
   	    &nbsp;电话补贴(岗位加权)：<input type="text" name="phonePositionParam"  /><br/><br/>
   		 电话补贴(薪级加权)： <input type="text" name="phoneLevelParam"  /><br/><br/>
   		<input type="button" name="btnOk" onclick="initSalaryCompute()" value="确定" />
-  	</form>
+  	</form>-->
+   <div class="row" >
+   <div class="span2.2" >
+   
+   	<span>地区差：</span><br/>
+   	<span>岗位津贴： </span><br/>
+   	<span>教护补贴：</span><br/>
+   	<span>特殊津贴(岗位加权)：</span><br/>
+   	<span>特殊津贴(岗位加权)：</span><br/>
+   	<span>其它补贴(岗位加权)：</span><br/>
+   	<span>其它补贴(薪级加权)：</span><br/>
+   	<span>电话补贴(岗位加权)：</span><br/>
+   	<span>电话补贴(薪级加权)：</span><br/>	
+   	 			
+   </div>
+   <div class="span6">
+   <input type="text" name="areaDifference" style="height:16px;"/><br/>
+   <input type="text" name="positionAllowance" style="height:16px;"/><br/>
+   <input type="text" name="educationAllowance" style="height:16px;" /><br/>
+   <input type="text" name="specialPositionParas" style="height:16px;"/><br/>
+   <input type="text" name="specialLevelParas" style="height:16px;"/><br/>
+   <input type="text" name="otherPositionParas" style="height:16px;"/><br/>
+   <input type="text" name="otherLevelParas" style="height:16px;"/><br/>
+   <input type="text" name="phonePositionParam" style="height:16px;"/><br/>
+    <input type="text" name="phoneLevelParam"  style="height:16px;"/><br/>
+   </div>
+   </div>
+   <div style="margin-left:150px;margin-top:30px;">
+   <input class="btn btn-success" type="button" name="btnOk" onclick="initSalaryCompute()" value="确定" />
+   </div>
   	</div>
 </body>
 </html>
