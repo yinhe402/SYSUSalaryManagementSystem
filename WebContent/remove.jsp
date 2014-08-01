@@ -8,7 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-
+<script type="text/javascript">
+			var nid = "<%=session.getAttribute("user.id")%>";
+			if (nid == "null" || nid == "") {			
+				window.location.href="login.jsp";
+				$(".alert").alert("请先登录！");
+			}
+</script>
 <title>减员停薪、取消工资关系</title>
 
 <meta http-equiv="pragma" content="no-cache">
@@ -20,9 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="css/nianzhongjiang.css">
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
 	//var myfrom=document.getElementById("myform1");
-	
 		function yesToSubmit()
 		{
 			var myform=document.getElementById("myform1");
@@ -74,7 +79,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 </head>
 
-<body onload="checkLogin()">
+<body >
+	
 	<div style="margin-top:20px;margin-left:20px;"> 
 	<h2 style="margin-left:40.3%;">批量导入</h2>
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"

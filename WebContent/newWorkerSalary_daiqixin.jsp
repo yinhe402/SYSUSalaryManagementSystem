@@ -365,11 +365,12 @@
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
 		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
+		if (nid == "null" || nid == "") {	
+			alert("请先登录！");
+			window.location.href="login.jsp";	
 		}
 	}
+	checkLogin();
 </script>
 </head>
 <body onload="checkLogin()">
@@ -383,10 +384,7 @@
 	邮箱:<s:property value="#session.addedEmployee.email" />
 		<br />
 
-	性别：	<s:if test="%{#session.addedEmployee.gender == '男'}">男</s:if>
-
-		<s:else>女</s:else>
-		<br />
+	性别：	<s:property value="%{#session.addedEmployee.gender}"></s:property>
 	出生日期：<s:property value="#session.addedEmployee.birthday" />
 		<br />
 	身份证号：<s:property value="#session.addedEmployee.uid" />

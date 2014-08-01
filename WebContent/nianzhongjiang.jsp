@@ -36,20 +36,19 @@
 	    alert("导入成功！");
 	}
 
-	function setType() {
-		var nid = "<%=session.getAttribute("user.id")%>";
-		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
-		}
-		
+	function setType() {	
  		var result = "<%=session.getAttribute("type")%>";
 		if( result!=null) {
 	 	  $("#type").find("option[value='"+result+"']").attr("selected",true);     
 	 	}
 	}
-     
+     var nid = "<%=session.getAttribute("user.id")%>";
+		
+		if (nid == "null" || nid == "") {	
+			alert("请先登录！");		
+			window.location.href="login.jsp";
+			
+		}
 
 </script>
  
