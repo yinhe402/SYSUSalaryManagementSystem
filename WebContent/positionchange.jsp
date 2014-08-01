@@ -59,7 +59,7 @@
 			</tbody>
 		</table>
 	</div>
-	 <a name="edit2" id="value">&nbsp</a>
+	 <a name="edit2" id="value">&nbsp;</a>
 	 
     <div class="container">
 		 
@@ -112,6 +112,7 @@
 				<div class="controls">
 				     <input id="apartment" type="text" readonly="readonly" name="employee.department"/>
 				</div> 
+				</div>
 				
 			<div class="control-group">	
 				<label class="control-label" for="popro">岗位性质：</label>
@@ -311,9 +312,9 @@
 			</div>
 			
 			<div class="form-actions">
-				<input type="button" name="btnmodify"  onclick="importStaff()" value="增加"  />
-				<a href="overdealt.jsp" target="mainFrame"><input type="button" name="btncomp" value="完成" /></a>
-			</div>
+				<input class="btn btn-success" type="button" name="btnmodify"  onclick="importStaff()" value="增加"  />
+			     <input class="btn btn-success" type="button" name="btncomp" value="完成" />
+			     </div>
 			</fieldset>
 		</form>
 	</div>

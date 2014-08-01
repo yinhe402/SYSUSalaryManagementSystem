@@ -23,6 +23,11 @@
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
+		<action name="logout" class="loginAction" method="logout">
+			<result name="success" type="redirect">/login.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		
 		<action name="initCaptcha" class="initCaptcha">
 			 <result name="success" type="stream">
             	<param name="contentType">image/jpeg</param>
@@ -31,9 +36,10 @@
          	 </result>
 		</action>
 		
-		<action name="*" class="userMainAction">
-			<result name="success">/success.jsp</result>
+		<action name="*" >
 			<interceptor-ref name="myInterceptor"/>
+			<result name="success">/{1}.jsp</result>
+			
 		</action>
 		
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->
@@ -121,6 +127,9 @@
 
 	<package name="initSalaryCompute" namespace="/initSalaryCompute"
 		extends="abstract_struts">
+		<action name="*_*" class="initSalaryCompute" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			</action>
 		<action name="initSalaryCompute" class="initSalaryCompute"
 			method="initSalaryCompute">
 			<result name="success" type="redirect">/success.jsp</result>
