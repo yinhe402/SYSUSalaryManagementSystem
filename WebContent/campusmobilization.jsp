@@ -60,9 +60,9 @@
 				<td><input name="departmentChange.newDepartment" type="text" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"/></td>
 				<td><input name="departmentChange.oldDepartment" type="text" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"/></td>
 				<td><input name="departmentChange.according" type="text" value="填写变更依据" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"
-				onfocus="this.value=''" onblur="this.value='填写变更依据'"/></td>
+				onfocus="this.value=''" /></td>
 				<td><input name="departmentChange.note" type="text" value="填写备注" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"
-				onfocus="this.value=''" onblur="this.value='填写备注'"/></td>
+				onfocus="this.value=''" /></td>
 			    </tr>
 			    </tbody>
 				 
