@@ -127,6 +127,9 @@
 
 	<package name="initSalaryCompute" namespace="/initSalaryCompute"
 		extends="abstract_struts">
+		<action name="*_*" class="initSalaryCompute" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			</action>
 		<action name="initSalaryCompute" class="initSalaryCompute"
 			method="initSalaryCompute">
 			<result name="success" type="redirect">/success.jsp</result>

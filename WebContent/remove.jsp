@@ -17,10 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/index.css">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<link rel="stylesheet" href="css/nianzhongjiang.css">
+
+
 <script type="text/javascript">
 	//var myfrom=document.getElementById("myform1");
 	
@@ -77,176 +76,99 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body onload="checkLogin()">
 	<div style="margin-top:20px;margin-left:20px;"> 
+	<h2 style="margin-left:40.3%;">批量导入</h2>
 	<s:form action="employee/importStopEmployeeInfo_remove" method="post"
 		enctype="multipart/form-data" role="form">
-
-		<s:file name="stopEmployeeFile" label="上传文件" />
-		<!--<button type="submit" class="btn btn-success" onclick="ok1()">导入</button>-->
+      <div style="margin-left:40%;">
+		<input type="file" name="stopEmployeeFile"  title="选择文件" class="file-input-wrapper btn btn-default btn-primary" />
+		
 		<input type="submit" class="btn btn-success" onclick="ok1()" value="导入" />
+		</div>
 	</s:form>
 	</div>
 	
 	<form id="myform1">
-	<table class="table table-bordered">
-		<thead>
+	<table width="85%" border="0" align="center" cellpadding="0"
+		cellspacing="0" style="margin-bottom:2%;">
 		<tr>
-	 		<th>姓名</th>
-	 		<th>性别</th>
-	 		<th>职工号</th>
-	 		<th>单位</th>
-	 		<th>离校时间</th>
-	 		<th>离校原因</th>
-	 		<th>人员工资状态</th>
-	 		<th>停发时间</th>
-	 		<th>备注</th>
-	 	</tr>
-		</thead>
-		<tbody>
-		<s:iterator id="lList" value="#session.lList">
-		 <tr>
-			<td><s:property value="%{#lList.getName()}" /></td>
-			<td><s:property value="%{#lList.getGender()}" /></td>
-			<td><s:property value="%{#lList.geteId()}" /></td>
-			<td><s:property value="%{#lList.getDepartment()}" /></td>
-			<td><s:property value="%{#lList.getLeaveDate()}" /></td>
-			<td><s:property value="%{#lList.getReason()}" /></td>
-			<td><s:property value="%{#lList.getState()}" /></td>
-			<td><s:property value="%{#lList.getStopDate()}" /></td>
-			<td><s:property value="%{#lList.getNote()}" /></td>
+			<td height="40">
+				<table width="100%" border="0" cellpadding="4" cellspacing="1"
+					bgcolor="#000000" class="newfont03">
+					<tr class="CTitle" bgcolor="#CAE1FF">
+						<td height="22" colspan="9" align="center"
+							style="font-size:16px; "></td>
+					</tr>
+					<tr bgcolor="#EEEEEE">
+						<td width="10%">姓名</td>
+						<td width="10%">性别</td>
+						<td width="10%">职工号</td>
+						<td width="10%">单位</td>
+						<td width="10%">离校时间</td>
+						<td width="10%">离校原因</td>
+						<td width="10%">人员工资状态</td>
+						<td width="10%">停发时间</td>
+						<td width="10%">备注</td>
+					</tr>
+					<s:iterator id="lList" value="#session.lList">
+						<tr bgcolor="#EEEEEE">
+							<td><s:property value="%{#lList.getName()}" /></td>
+							<td><s:property value="%{#lList.getGender()}" /></td>
+							<td><s:property value="%{#lList.geteId()}" /></td>
+							<td><s:property value="%{#lList.getDepartment()}" /></td>
+							<td><s:date name="%{#lList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
+							<td><s:property value="%{#lList.getReason()}" /></td>
+							<td><s:property value="%{#lList.getState()}" /></td>
+							<td><s:date name="%{#lList.getStopDate()}" format="yyyy-MM-dd"/></td>
+							<td><s:property value="%{#lList.getNote()}" /></td>
+						</tr>
+					</s:iterator>
+				</table>
+			</td>
 		</tr>
-	  </s:iterator>
-		</tbody>
 	</table>
-	  <input type="button" name="btnSubmit" value="确认"onclick="yesToSubmit()" />
+	  <input style="margin-left:45%;" type="button"  class="btn btn-success" name="btnSubmit" value="确认"onclick="yesToSubmit()" />
 	</form>
-	<hr/>
 	
-	<div style="margin-left:30px;">
-	<form id="myform2">
-		职工号 ：&nbsp;&nbsp;<input type="text" name="eId" /><br /> 
+	
+	
+	<hr />
+	<div >
+	<h2 style="margin-left:40.3%;">单个导入</h2>
+	
+	<form id="myform2" style="margin-left:34%; font-size:20px; font-weight:bold;">
+		职工号 ：<input style="margin-left:2.3%;" type="text" name="eId" /><br /> 
 		离校时间：<input type="text" name="leaveDate" /><br /> 
 		离校原因：<input type="text" name="leaveReason" /><br /> 
 		工资状态：<input type="text" name="salaryState" /><br /> 
 		停发时间：<input type="text" name="stopDate" /><br />
-		备注 ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="remark" /><br /> 
+		备注 ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="remark" /><br /> 
 		业务处理：<input type="radio" name="business" value="停薪" checked="checked" />&nbsp;停薪&nbsp;&nbsp;&nbsp;<input	type="radio" name="business" value="取消工资关系" />&nbsp;取消工资关系<br /> 
-		<input type="button" name="btnsubmit" value="确认" onclick="yestoSubmit()" />
+		<input style="margin-left:16%; margin-top:3%;" type="button" name="btnsubmit" value="确认" onclick="yestoSubmit()" class="btn btn-success" />
 	</form>
 	</div>
+	
 	<hr/>
 	
-	<div>
-	<form id="myform3" style="margin-left:30px;">
+	<form id="myform3" style="margin-left:43%; font-size:20px; font-weight:bold;"">
+	    <h2>查询</h2>
+	    <div style="margin-left:-15%;">
 		职工号：<input type="text" name="queryId" /><br />
 		姓名：&nbsp;&nbsp;&nbsp;<input type="text" name="queryName" /><br />
 		单位：&nbsp;&nbsp;&nbsp;<input type="text" name="queryDepartment" /><br />
-		<input type="button" name="btnsmit" onclick="Query()" value="查询">
-	</form>
-	</div>
+		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="Query()" value="查询" class="btn btn-success">
+		</div>
+	</form>				
 	
-	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
-	<form id="myform4">
-	<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th>姓名</th>
-			<th>性别</th>
-			<th>职工号</th>
-			<th>单位</th>
-			<th>离校时间</th>
-			<th>离校原因</th>
-			<th>人员工资状态</th>
-			<th>停发时间</th>
-			<th>备注</th>
-		</tr>
-	</thead>
-	<tbody>
-		<s:iterator id="idList" value="#session.idList">
-		<tr>
-			<td><s:textfield value="%{#idList.getName()}" /></td>
-			<td><s:textfield value="%{#idList.getGender()}" /></td>
-			<td><s:textfield value="%{#idList.geteId()}" /></td>
-			<td><s:textfield value="%{#idList.getDepartment()}" /></td>
-			<td><s:textfield value="%{#idList.getLeaveDate()}" /></td>
-			<td><s:textfield value="%{#idList.getReason()}" /></td>
-			<td><s:textfield value="%{#idList.getState()}" /></td>
-			<td><s:textfield value="%{#idList.getStopDate()}" /></td>
-			<td><s:textfield value="%{#idList.getNote()}" /></td>
-		</tr>
-		</s:iterator>
-		</tbody>
-		</table>
-	</form>
-	</div>
-	
-	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
-	<form id="myform5">
-		<table class="table tabel-bordered">
-		<thead>
-			<tr>
-				<th>姓名</th>
-				<th>性别</th>
-				<th>职工号</th>
-				<th>单位</th>
-				<th>离校时间</th>
-				<th>离校原因</th>
-				<th>人员工资状态</th>
-				<th>停发时间</th>
-				<th>备注</th> 
-			</tr>
-		</thead>
-		<tbody>
-		<s:iterator id="nameList" value="#session.nameList">
-		<tr>
-		<td><s:textfield value="%{#nameList.getName()}" /></td>
-	    <td><s:textfield value="%{#nameList.getGender()}" /></td>
-		<td><s:textfield value="%{#nameList.geteId()}" /></td>
-		<td><s:textfield value="%{#nameList.getDepartment()}" /></td>
-		<td><s:textfield value="%{#nameList.getLeaveDate()}" /></td>
-		<td><s:textfield value="%{#nameList.getReason()}" /></td>
-		<td><s:textfield value="%{#nameList.getState()}" /></td>
-		<td><s:textfield value="%{#nameList.getStopDate()}" /></td>
-		<td><s:textfield value="%{#nameList.getNote()}" /></td>
-		</tr>
-		</s:iterator>
-		</tbody>
-		</table>
-	</form>
-	</div>
-	
-	<div id="div2" style="margin-top:20px;text-align:center;width:80%;display:none;">
-	<form id="myform6" style="margin:0 auto;text-align:center;width:80%;display:none;">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>姓名</th>
-				<th>性别</th>
-				<th>职工号</th>
-				<th>单位</th>
-				<th>离校时间</th>
-				<th>离校原因</th>
-				<th>人员工资状态</th>
-				<th>停发时间</th>
-				<th>备注</th> 
-			</tr>
-		</thead>
-		<tbody>
-		<s:iterator id="departmentList" value="#session.departmentList">
-		<tr>
-			<td><s:textfield value="%{#departmentList.getName()}" /></td>
-			<td><s:textfield value="%{#departmentList.getGender()}" /></td>
-			<td><s:textfield value="%{#departmentList.geteId()}" /></td>
-			<td><s:textfield value="%{#departmentList.getDepartment()}" /></td>
-			<td><s:textfield value="%{#departmentList.getLeaveDate()}" /></td>
-			<td><s:textfield value="%{#departmentList.getReason()}" /></td>
-			<td><s:textfield value="%{#departmentList.getState()}" /></td>
-			<td><s:textfield value="%{#departmentList.getStopDate()}" /></td>
-			<td><s:textfield value="%{#departmentList.getNote()}" /></td>
-		</tr>
-		</s:iterator>
-		</tbody>
-		</table>
-	</form>
-	</div>
 </body>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.file-input.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+		$('input[type=file]').bootstrapFileInput();
+		$('.file-inputs').bootstrapFileInput();
+
+</script>
+
+
 </html>

@@ -98,7 +98,7 @@ public class BonusAction extends ActionSupport {
 			String[] uniqueFields = {"职工号", "年份"};
 			checks = ExcelUtil.excelToList(in, "Sheet1", FinalCheck.class, fieldMap, uniqueFields);
 			FinalBonus finalBonus = new FinalBonus();
-			
+			List<OffInfo> offInfosThisYear = offInfoManage.findOffInfoThisYear(); 
 			for (FinalCheck c : checks) {
 				finalCheckManage.addFinalCheck(c);
 				if (c.getCheckResult().equals("基本称职")||c.getCheckResult().equals("不称职")) {
@@ -153,7 +153,7 @@ public class BonusAction extends ActionSupport {
 								finalBonusManage.addFinalBonus(finalBonus);	
 							}
 							finalBonus.setBasis(salaryManage.findLastSalaryByEId(c.getEId()).getTotleSalary());
-							finalBonus.setCutReason("请假或者出国累计达"+offMonth);
+							finalBonus.setCutReason("请假或者出国累计达"+offMonth+"个月");
 							finalBonus.setDoubleSalaryType("部分双薪");
 							finalBonus.setEId(c.getEId());
 							finalBonus.setMonths(12.0-offMonth);
@@ -173,9 +173,13 @@ public class BonusAction extends ActionSupport {
 		List<FinalBonus> partBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("部分双薪");
 		List<FinalBonus> allBonusList = finalBonusManage.findFinalBonusByDoubleBonusType("全部双薪");
 		System.out.print(type);
-		Map session = ActionContext.getContext().getSession();
-		session.put("type", type);
 		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
+		
+		result = finalBonusManage.findFinalBonusByDoubleBonusType(type);
+		System.out.println(result);
+		Map session = ActionContext.getContext().getSession();
+		session.put("result", result);
+		session.put("type", type);
          return "success";
 	}
 	
