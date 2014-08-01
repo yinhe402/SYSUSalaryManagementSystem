@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 		<title>工资生成列表</title>
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/index.css">
+				
+		<link rel="stylesheet" href="css/nianzhongjiang.css">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
@@ -23,27 +24,35 @@
 </script>
 </head>
 <body onload="checkLogin()">
-	<div class="span9" align="center">
-	<h2>月工资生成列表</h2>
-	<table class="table table-bordered">
-	<thead>
-	<tr>
-		<th>职工号</th>
-		<th>月薪</th>
-		<th>时间</th>
-	</tr>
-	</thead>
 	
-	<tbody>
-	<s:iterator id="salaryList" value="#session.newSalaryList">
-	<tr>
-	<td><s:property value="#salaryList.eid"/></td>
-	<td><s:property value="#salaryList.totleSalary"/></td>
-	<td><s:property value="#salaryList.time"/></td>
-	</tr>
-	</s:iterator>
-	</tbody>
+	<h2 style="text-align:center;">月工资生成列表</h2>
+	
+	<table width="85%" border="0" align="center" cellpadding="0"
+		cellspacing="0" style="margin-bottom:10%;">
+		<tr>
+			<td height="40">
+				<table width="100%" border="0" cellpadding="4" cellspacing="1"
+					bgcolor="#000000" class="newfont03">
+					<tr class="CTitle" bgcolor="#CAE1FF">
+						<td height="22" colspan="7" align="center"
+							style="font-size:16px; "></td>
+					</tr>
+					<tr bgcolor="#EEEEEE">
+						<td width="10%">职工号</td>
+						<td width="10%">月薪</td>					
+						<td width="10%">时间</td>
+					</tr>
+					<s:iterator id="salaryList" value="#session.newSalaryList">
+						<tr bgcolor="#EEEEEE">
+							
+							<td width="10%"><s:property value="#salaryList.eid"/></td>
+							<td width="10%"><s:property value="#salaryList.totleSalary"/></td>
+							<td width="10%"><s:date name="#salaryList.time" format="yyyy-MM-dd" /></td>
+						</tr>
+					</s:iterator>
+				</table>
+			</td>
+		</tr>
 	</table>
-	</div>
 </body>
 </html>

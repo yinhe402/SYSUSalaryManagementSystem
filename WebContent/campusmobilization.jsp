@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 		<title>中山大学教职工工资系统</title>
@@ -36,36 +36,40 @@
 	
 </head>
 <body onload="checkLogin()">
-	<div class="container">
+	<div class="container" style="text-align:center;width:90%；margin-top:25px;">
 		<form class="form-horizontal">
-		<h2>校内工资变动</h2>
-			<table class="table table-bordered">
+		<h2><font color="blue">校内工资变动</font></h2>
+		<table border="1px" bordercolor="grey" width="100%" cellspacing="0"style="border:1px;">
 				<thead>
 				<tr>
-				<th> 职工号</th> 
-				<th> 姓名</th> 
-				<th> 新单位名称</th> 
-				<th> 原单位名称</th> 
-				<th> 变更依据</th> 
-				<th> 备注</th> 
+				<th width="10%"> 职工号</th> 
+				<th width="10%"> 姓名</th> 
+				<th width="20%"> 新单位名称</th> 
+				<th width="20%"> 原单位名称</th> 
+				<th width="20%"> 变更依据</th> 
+				<th width="20%"> 备注</th> 
 				</tr>
 				</thead>
 				
 				<tbody>
 				 
-				
+				 
 				<tr>
-				<td><input name="departmentChange.eId" type="text" value="" class="input1"/></td>
-				<td><input name="departmentChange.name" type="text" value="" class="input1"/></td>
-				<td><input name="departmentChange.newDepartment" type="text" value="" class="input1"/></td>
-				<td><input name="departmentChange.oldDepartment" type="text" value="" class="input1"/></td>
-				<td><input name="departmentChange.according" type="text" value="填写变更依据" class="input1"/></td>
-				<td><input name="departmentChange.note" type="text" value="填写备注" class="input1"/></td>
-			    <tr>
-				
-				</tbody>
+				<td><input name="departmentChange.eId" type="text" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"/></td>
+				<td><input name="departmentChange.name" type="text" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"/></td>
+				<td><input name="departmentChange.newDepartment" type="text" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"/></td>
+				<td><input name="departmentChange.oldDepartment" type="text" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"/></td>
+				<td><input name="departmentChange.according" type="text" value="填写变更依据" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"
+				onfocus="this.value=''" onblur="this.value='填写变更依据'"/></td>
+				<td><input name="departmentChange.note" type="text" value="填写备注" style="width:99%;padding-left:0px;padding-right:0px;border: 1px none #CCCCCC;"
+				onfocus="this.value=''" onblur="this.value='填写备注'"/></td>
+			    </tr>
+			    </tbody>
+				 
 			</table>
-			<input type="button" value="导出" onclick="exportExcel()"/>
+			<div style="margin-top:10px">
+			<input class="btn btn-success" type="button" value="增加" onclick="exportExcel()"/>
+			</div>
 		</form>
 	</div>
 </body>

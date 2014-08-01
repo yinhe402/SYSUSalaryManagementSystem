@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>年终奖</title>
+<title>年终考核优秀奖金</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="css/nianzhongjiang.css">
 
 <script type="text/javascript">
-
 	function getFinalBonus() {
 		var myform = document.getElementById("queryForm");
 		myform.action = "bonus/getSalaryResult_nianzhongjiang";
@@ -31,30 +30,13 @@
 		myform.submit();
 	}
 	
-
 	function succeed(){
 	    alert("导入成功！");
 	}
-
-	function setType() {
-		var nid = "<%=session.getAttribute("user.id")%>";
-		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
-		}
-		
- 		var result = "<%=session.getAttribute("type")%>";
-		if( result!=null) {
-	 	  $("#type").find("option[value='"+result+"']").attr("selected",true);     
-	 	}
-	}
-     
-
 </script>
- 
+
 </head>
-<body onload="setType()">
+<body>
 	<div class="inputfile">
 		<s:form style="text-align:center;"
 			action="bonus/importTestResult_nianzhongjiang" method="post"
@@ -68,26 +50,13 @@
 			</div>
 		</s:form>
 
-		<s:form style="text-align:center;"
-			action="bonus/importOffInfoResult_nianzhongjiang" method="post"
-			enctype="multipart/form-data" role="form">
-			<div>
-				<input type="file" title="选择文件" name="offInfoFile"
-					label="offInfoFile"
-					class="file-input-wrapper btn btn-default btn-primary" />
-				<button type="submit" class="btn btn-success" onclick="succeed()">导入请假出国信息</button>
-			</div>
-		</s:form>
 	</div>
 
 
 	<s:form id="queryForm">
-		<div class="top">
-			<select id="type" name="type" >
-				<option value="不发">不发放双薪</option>
-				<option value="全部双薪">全部双薪</option>
-				<option value="部分双薪">部分双薪</option>
-			</select>
+
+		<div class="top" style="margin-left:-4%;">
+			
 			<button type="button" style="margin-bottom:10px;"
 				class="btn btn-success" onclick="getFinalBonus()">查询</button>
 
@@ -95,7 +64,7 @@
 	</s:form>
 
 	<table width="85%" border="0" align="center" cellpadding="0"
-		cellspacing="0" style="margin-bottom:10%;">
+		cellspacing="0">
 		<tr>
 			<td height="40">
 				<table width="100%" border="0" cellpadding="4" cellspacing="1"
@@ -105,12 +74,13 @@
 							style="font-size:16px; "></td>
 					</tr>
 					<tr bgcolor="#EEEEEE">
+						<td width="10%">姓名</td>
 						<td width="10%">职工号</td>
-						<td width="10%">双薪基数</td>
-						<td width="10%">双薪类型</td>
-						<td width="10%">部分双薪原因</td>
-						<td width="10%">双薪月数</td>
-						<td width="10%">时间</td>
+						<td width="10%">单位</td>
+						<td width="10%">考核结果</td>
+						<td width="10%">岗位工资</td>
+						<td width="10%">薪级工资</td>
+						<td width="10%">发放金额</td>
 					</tr>
 					<s:iterator id="result" value="#session.result">
 						<tr bgcolor="#EEEEEE">

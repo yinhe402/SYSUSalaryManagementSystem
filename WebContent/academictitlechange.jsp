@@ -46,8 +46,8 @@
 			</tbody>
 		</table>
 	</div>
-
-	<a name="edit1" id="value">&nbsp</a>
+	<hr/>
+	<a name="edit1" id="value">&nbsp;</a>
 	<div class="container">
 
 		<form class="form-horizontal">
@@ -107,6 +107,7 @@
 					<div class="controls">
 						<input id="apartment" type="text" readonly="readonly"
 							name="employee.department" />
+					</div>
 					</div>
 
 					<div class="control-group">
@@ -282,49 +283,48 @@
 					<div class="control-group">
 						<label class="control-label" for="chansaltime">变动起薪时间：</label>
 						<div class="controls">
-							<input id="chansaltime" type="text" value="可手动输入" />
+							<input id="chansaltime" type="text" value="可手动输入" onfocus="this.value=''" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="dealwithtime">业务处理时间：</label>
 						<div class="controls">
-							<input id="dealwithtime" type="text" value="自动获取" />
+							<input id="dealwithtime" type="text"  />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="positionsalary">岗位工资：</label>
 						<div class="controls">
-							<input id="positionsalary" type="text" value="自动读取" />
+							<input id="positionsalary" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="salary">薪级工资：</label>
 						<div class="controls">
-							<input id="salary" type="text" value="自动读取" />
+							<input id="salary" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="according">变更依据：</label>
 						<div class="controls">
-							<input type="text" value="可手动输入" />
+							<input type="text" value="可手动输入" onfocus="this.value=''"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="remark">备注：</label>
 						<div class="controls">
-							<input id="remark" type="text" value="可手动输入" />
+							<input id="remark" type="text" value="可手动输入" onfocus="this.value=''"/>
 						</div>
 					</div>
 
 					<div class="form-actions">
-						<input type="button" name="btnmodify" onclick="modifyEmployee()"
-							value="修改" /> <a href="overdeal.html" target="mainFrame"><input
-							type="button" name="btncomp" value="完成" /></a>
+						<input type="button" class="btn btn-success" name="btnmodify" value="修改" /> 
+						<input class="btn btn-success" type="button" name="btncomp" value="完成" />
 					</div>
 			</fieldset>
 		</form>
