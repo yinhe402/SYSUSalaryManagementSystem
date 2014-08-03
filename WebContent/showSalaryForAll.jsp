@@ -50,12 +50,12 @@
 						<tr bgcolor="#EEEEEE">
 							
 							<td width="10%"><s:property value="#salaryList.eid"/></td>
-							<td width="10%"><s:property value="#salaryList."/></td>
-							<td width="10%"><s:property value="#salaryList."/></td>
-							<td width="10%"><s:property value="#salaryList."/></td>
-							<td width="10%"><s:property value="#salaryList."/></td>
-							<td width="10%"><s:property value="#salaryList."/></td>
-							<td width="10%"><s:date name="#salaryList.time" format="yyyy-MM-dd" /></td>
+							<td width="10%"><s:property value="#salaryList.name"/></td>
+							<td width="10%"><s:property value="#salaryList.department"/></td>
+							<td width="10%"><s:property value="#salaryList.positionSalary"/></td>
+							<td width="10%"><s:property value="#salaryList.levelSalary"/></td>
+							<td width="10%"><s:property value="#salaryList.salary"/></td>
+							<td width="10%"><s:date name="#salaryList.date" format="yyyy-MM-dd" /></td>
 						</tr>
 					</s:iterator>
 				</table>
@@ -63,7 +63,7 @@
 		</tr>
 	</table>
 	<div style="text-align:center;">
-	<button class="btn btn-success">导出</button>	
+		<a class="btn btn-primary"  href="<s:url action="exportSalary"/>" >导出</a>	 
 	</div>
 	</div>
 </body>
