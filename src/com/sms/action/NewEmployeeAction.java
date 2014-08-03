@@ -404,7 +404,7 @@ public class NewEmployeeAction extends ActionSupport {
 		int level = 0;
 
 		if (worList.size() == 0) {
-			if (attendWorkDate.before(baseWorkDate)) {
+			if (attendWorkDate.before(baseWorkDate)) {				
 				// 管理系第一大，第二大
 				int manageMaxLevel = 0;
 				int manageMinYear1 = 2006;
@@ -423,6 +423,30 @@ public class NewEmployeeAction extends ActionSupport {
 					if (manageList.get(0).getTime() <= 2006) {
 						manageMaxLevel = manageList.get(0).getGanhuoLevel();
 						manageMinYear1 = manageList.get(0).getTime();
+					} else {
+						System.out.println("管理系列倒推");
+						int posLevel = manageList.get(0).getGanhuoLevel();
+						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						while (startPosYear > 2006) {
+							if (posLevel == 7) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 6) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 5) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 4) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 3) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							}
+						}
+						manageMaxLevel = posLevel;
+						manageMinYear1 = startPosYear;
 					}
 				} else {
 					for (int i = 0; i < manageLength - 1; i++) {
@@ -452,14 +476,108 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 					}
+					
+					if (count1 == 0) {
+						System.out.println("管理系列倒推");
+						for (int i = 0; i < manageLength - 1; i++) {
+							for (int j = i + 1; j < manageLength; j++) {
+								if (manageList.get(i).getTime() > manageList
+										.get(j).getTime()) {
+									ExperienceInfo tempExperienceInfo = manageList
+											.get(i);
+									manageList.set(i, manageList.get(j));
+									manageList.set(j, tempExperienceInfo);
+								}
+							}
+						}
+						int posLevel = manageList.get(0).getGanhuoLevel();
+						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						while (startPosYear > 2006) {
+							if (posLevel == 7) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 6) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 5) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 4) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 3) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							}
+						}
+						manageMaxLevel = posLevel;
+						manageMinYear1 = startPosYear;
+					}
 				}
 
+				int eduMax = 0;
+				for (int i = 0; i < eduList.size(); i++) {
+					if (eduList.get(i).getGanhuo().equals("博士")) {
+						eduMax = 4;
+						break;
+					} else if (eduList.get(i).getGanhuo().equals("硕士")) {
+						if (eduMax < 3) {
+							eduMax = 3;
+						}
+					} else if (eduList.get(i).getGanhuo().equals("本科")) {
+						if (eduMax < 2) {
+							eduMax = 2;
+						}
+					} else if (eduList.get(i).getGanhuo().equals("专科")) {
+						if (eduMax < 1) {
+							eduMax = 1;
+						}
+					}
+				}
+				
 				int techLength = techList.size();
 				if (techLength == 0) {
 				} else if (techLength == 1) {
 					if (techList.get(0).getTime() <= 2006) {
 						techMaxLevel = techList.get(0).getGanhuoLevel();
 						techMinYear1 = techList.get(0).getTime();
+					} else {							
+						System.out.println("专技系列倒推");
+						int payLevel = techList.get(0).getGanhuoLevel();
+						int startPayYear = techList.get(0).getTime();//开始任职年份
+						while (startPayYear > 2006) {
+							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+								startPayYear = startPayYear - 5;
+								payLevel = 9;
+							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 3;
+									payLevel = 6;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 6;
+								}
+							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 2;
+									payLevel = 3;
+								} else if (eduMax == 3) {
+									startPayYear = startPayYear - 3;
+									payLevel = 3;
+								} else if (eduMax == 2) {
+									startPayYear = startPayYear - 4;
+									payLevel = 3;
+								} else if (eduMax == 1) {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								}
+							}
+						}
+						techMaxLevel = payLevel;
+						techMinYear1 = startPayYear;
 					}
 				} else {
 					for (int i = 0; i < techLength - 1; i++) {
@@ -487,6 +605,56 @@ public class NewEmployeeAction extends ActionSupport {
 								break;
 							}
 						}
+					}
+					
+					if (count2 == 0) {
+						System.out.println("专技系列倒推");
+						for (int i = 0; i < techLength - 1; i++) {
+							for (int j = i + 1; j < techLength; j++) {
+								if (techList.get(i).getTime() > techList
+										.get(j).getTime()) {
+									ExperienceInfo tempExperienceInfo = techList
+											.get(i);
+									techList.set(i, techList.get(j));
+									techList.set(j, tempExperienceInfo);
+								}
+							}
+						}
+						int payLevel = techList.get(0).getGanhuoLevel();
+						int startPayYear = techList.get(0).getTime();//开始任职年份
+						while (startPayYear > 2006) {
+							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+								startPayYear = startPayYear - 5;
+								payLevel = 9;
+							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 3;
+									payLevel = 6;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 6;
+								}
+							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 2;
+									payLevel = 3;
+								} else if (eduMax == 3) {
+									startPayYear = startPayYear - 3;
+									payLevel = 3;
+								} else if (eduMax == 2) {
+									startPayYear = startPayYear - 4;
+									payLevel = 3;
+								} else if (eduMax == 1) {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								}
+							}
+						}
+						techMaxLevel = payLevel;
+						techMinYear1 = startPayYear;
 					}
 				}
 
@@ -850,6 +1018,30 @@ public class NewEmployeeAction extends ActionSupport {
 					if (manageList.get(0).getTime() <= 2006) {
 						manageMaxLevel = manageList.get(0).getGanhuoLevel();
 						manageMinYear1 = manageList.get(0).getTime();
+					} else {
+						System.out.println("管理系列倒推");
+						int posLevel = manageList.get(0).getGanhuoLevel();
+						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						while (startPosYear > 2006) {
+							if (posLevel == 7) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 6) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 5) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 4) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 3) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							}
+						}
+						manageMaxLevel = posLevel;
+						manageMinYear1 = startPosYear;
 					}
 				} else {
 					for (int i = 0; i < manageLength - 1; i++) {
@@ -879,14 +1071,109 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 					}
+					
+					if (count1 == 0) {
+						System.out.println("管理系列倒推");
+						for (int i = 0; i < manageLength - 1; i++) {
+							for (int j = i + 1; j < manageLength; j++) {
+								if (manageList.get(i).getTime() > manageList
+										.get(j).getTime()) {
+									ExperienceInfo tempExperienceInfo = manageList
+											.get(i);
+									manageList.set(i, manageList.get(j));
+									manageList.set(j, tempExperienceInfo);
+								}
+							}
+						}
+						int posLevel = manageList.get(0).getGanhuoLevel();
+						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						while (startPosYear > 2006) {
+							if (posLevel == 7) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 6) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 5) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							} else if (posLevel == 4) {
+								startPosYear = startPosYear - 2;
+								posLevel--;
+							} else if (posLevel == 3) {
+								startPosYear = startPosYear - 3;
+								posLevel--;
+							}
+						}
+						manageMaxLevel = posLevel;
+						manageMinYear1 = startPosYear;
+					}
 				}
 
+				
+				int eduMax = 0;
+				for (int i = 0; i < eduList.size(); i++) {
+					if (eduList.get(i).getGanhuo().equals("博士")) {
+						eduMax = 4;
+						break;
+					} else if (eduList.get(i).getGanhuo().equals("硕士")) {
+						if (eduMax < 3) {
+							eduMax = 3;
+						}
+					} else if (eduList.get(i).getGanhuo().equals("本科")) {
+						if (eduMax < 2) {
+							eduMax = 2;
+						}
+					} else if (eduList.get(i).getGanhuo().equals("专科")) {
+						if (eduMax < 1) {
+							eduMax = 1;
+						}
+					}
+				}
+				
 				int techLength = techList.size();
 				if (techLength == 0) {
 				} else if (techLength == 1) {
 					if (techList.get(0).getTime() <= 2006) {
 						techMaxLevel = techList.get(0).getGanhuoLevel();
 						techMinYear1 = techList.get(0).getTime();
+					} else {							
+						System.out.println("专技系列倒推");
+						int payLevel = techList.get(0).getGanhuoLevel();
+						int startPayYear = techList.get(0).getTime();//开始任职年份
+						while (startPayYear > 2006) {
+							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+								startPayYear = startPayYear - 5;
+								payLevel = 9;
+							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 3;
+									payLevel = 6;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 6;
+								}
+							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 2;
+									payLevel = 3;
+								} else if (eduMax == 3) {
+									startPayYear = startPayYear - 3;
+									payLevel = 3;
+								} else if (eduMax == 2) {
+									startPayYear = startPayYear - 4;
+									payLevel = 3;
+								} else if (eduMax == 1) {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								}
+							}
+						}
+						techMaxLevel = payLevel;
+						techMinYear1 = startPayYear;
 					}
 				} else {
 					for (int i = 0; i < techLength - 1; i++) {
@@ -914,6 +1201,56 @@ public class NewEmployeeAction extends ActionSupport {
 								break;
 							}
 						}
+					}
+					
+					if (count2 == 0) {
+						System.out.println("专技系列倒推");
+						for (int i = 0; i < techLength - 1; i++) {
+							for (int j = i + 1; j < techLength; j++) {
+								if (techList.get(i).getTime() > techList
+										.get(j).getTime()) {
+									ExperienceInfo tempExperienceInfo = techList
+											.get(i);
+									techList.set(i, techList.get(j));
+									techList.set(j, tempExperienceInfo);
+								}
+							}
+						}
+						int payLevel = techList.get(0).getGanhuoLevel();
+						int startPayYear = techList.get(0).getTime();//开始任职年份
+						while (startPayYear > 2006) {
+							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+								startPayYear = startPayYear - 5;
+								payLevel = 9;
+							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 3;
+									payLevel = 6;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 6;
+								}
+							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+								if (eduMax == 4) {
+									startPayYear = startPayYear - 2;
+									payLevel = 3;
+								} else if (eduMax == 3) {
+									startPayYear = startPayYear - 3;
+									payLevel = 3;
+								} else if (eduMax == 2) {
+									startPayYear = startPayYear - 4;
+									payLevel = 3;
+								} else if (eduMax == 1) {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								} else {
+									startPayYear = startPayYear - 5;
+									payLevel = 3;
+								}
+							}
+						}
+						techMaxLevel = payLevel;
+						techMinYear1 = startPayYear;
 					}
 				}
 
