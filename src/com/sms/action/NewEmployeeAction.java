@@ -14,9 +14,13 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.Employee;
 import com.sms.entity.ExperienceInfo;
+import com.sms.entity.Experiences;
+import com.sms.entity.OffInfo;
 import com.sms.entity.StartSalaryInfo;
 import com.sms.service.IEmployeeManage;
+import com.sms.service.IExperiencesManage;
 import com.sms.service.IManageSalaryManage;
+import com.sms.service.IOffInfoManage;
 import com.sms.service.IProfSalaryManage;
 import com.sms.service.IStartSalaryInfoManage;
 import com.sms.service.IWorkerSalaryManage;
@@ -165,6 +169,28 @@ public class NewEmployeeAction extends ActionSupport {
 
 	public void setWorkerSalaryManage(IWorkerSalaryManage workerSalaryManage) {
 		this.workerSalaryManage = workerSalaryManage;
+	}
+
+	@Resource
+	private IExperiencesManage experiencesManage;
+
+	public IExperiencesManage getExperiencesManage() {
+		return experiencesManage;
+	}
+
+	public void setExperiencesManage(IExperiencesManage experiencesManage) {
+		this.experiencesManage = experiencesManage;
+	}
+
+	@Resource
+	private IOffInfoManage offInfoManage;	
+	
+	public IOffInfoManage getOffInfoManage() {
+		return offInfoManage;
+	}
+
+	public void setOffInfoManage(IOffInfoManage offInfoManage) {
+		this.offInfoManage = offInfoManage;
 	}
 
 	public static boolean isValid(int value) {
@@ -1707,6 +1733,10 @@ public class NewEmployeeAction extends ActionSupport {
 				HttpServletRequest request = ServletActionContext.getRequest();
 				startSalaryInfo.setOperateDate(new Date());
 
+				Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
+				String baseDateStr = "2006-07-01";
+				baseWorkDate = strToDate(baseDateStr);
+				
 				Date attendWorkDate = strToDate(startWorkYear);
 
 				ArrayList<Date> array1 = new ArrayList<Date>(), array2 = new ArrayList<Date>();
@@ -1727,6 +1757,11 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("manExperience" + count), Integer
 							.parseInt(request.getParameter("manWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 1,
+							Integer.parseInt(request.getParameter("manWorkDate"
+									+ count)),
+							request.getParameter("manExperience" + count)));
 				}
 
 				for (int count = 0; count < j; count++) {
@@ -1738,6 +1773,11 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("proExperience" + count), Integer
 							.parseInt(request.getParameter("proWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 2,
+							Integer.parseInt(request.getParameter("proWorkDate"
+									+ count)),
+							request.getParameter("proExperience" + count)));
 				}
 
 				for (int count = 0; count < k; count++) {
@@ -1749,6 +1789,11 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("eduExperience" + count), Integer
 							.parseInt(request.getParameter("eduWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 0,
+							Integer.parseInt(request.getParameter("eduWorkDate"
+									+ count)),
+							request.getParameter("eduExperience" + count)));
 				}
 
 				for (int count = 0; count < m; count++) {
@@ -1760,17 +1805,27 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("workerExperience" + count), Integer
 							.parseInt(request.getParameter("workerWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 3,
+							Integer.parseInt(request
+									.getParameter("workerWorkDate" + count)),
+							request.getParameter("workerExperience" + count)));
 				}
 
 				for (int count = 0; count < l; count++) {
-					System.out.println(request.getParameter("breakStartDate"
-							+ count));
-					System.out.println(request.getParameter("breakEndDate"
-							+ count));
-					array1.add(strToDate(request.getParameter("breakStartDate"
-							+ count)));
-					array2.add(strToDate(request.getParameter("breakEndDate"
-							+ count)));
+					Date sDate = strToDate(request.getParameter("breakStartDate" + count));
+					Date eDate = strToDate(request.getParameter("breakEndDate" + count));
+					if (eDate.before(baseWorkDate)) {
+						array1.add(sDate);
+						array2.add(eDate);
+					}
+					else {
+						if (sDate.before(baseWorkDate)) {
+							array1.add(sDate);
+							array2.add(baseWorkDate);
+						}
+					}
+					offInfoManage.addOffInfo(new OffInfo(startSalaryInfo.getEid(), strToDate(request.getParameter("breakStartDate" + count)), strToDate(request.getParameter("breakEndDate" + count)), "不详"));
 				}
 
 				startSalaryInfo.setBreakOffSeniority(getBreakUpYears(array1,
