@@ -12,9 +12,7 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
-		
 		function logout() {
-
 		alert("确认注销?");
 		top.location.href="logout";
 		}
@@ -62,7 +60,7 @@
 
 		</div>
 	
-	<div class="modal fade" id="logoutModel">
+	<div class="modal fade" id="logoutModel" >
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">

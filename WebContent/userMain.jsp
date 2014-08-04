@@ -12,39 +12,72 @@
 <link rel="stylesheet" href="css/index.css"/>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/employee.js"></script>
 <script type="text/javascript">
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
 		
 		if (nid == "null" || nid == "") {	
-			alert("请先登录！");	
-			$(".alert").alert();		
+			alert("请先登录！");		
 			window.location.href="login.jsp";	
 		}
 	}
 	checkLogin();
 </script>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/liveValidation.js"></script>
-<script type="text/javascript" src="js/employee.js"></script>
 </head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid"  id="top">
+            <%@ include file="top.jsp" %> 
+      </div>
+    </div>
+ </div>
+ <div class="container-fluid" >
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav" id="left">
+			<%@ include file="left.jsp" %> 
+          </div><!--/.well -->
+        </div><!--/span-->
 
-<frameset rows="110,*" cols="*"  border="1" framespacing="0" onload="checkLogin()">
-  <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame" />
+        <div class="span9">
+          <div class="leaderboard" id="main">
+                 <%@ include file="main.jsp" %> 
+            </div>
+        </div><!--/span-->
+      </div><!--/row-->
+          <hr>
+    </div><!--/.fluid-container-->
+
+
+<!-- <frameset rows="110,*" cols="*"  border="1" framespacing="0" onload="checkLogin()">
+  <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame" marginheight="250"> </frame>
     <frameset  cols="300,*" border="3" >
-    <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" />  
-       <frame  name="mainFrame"  noresize="noresize" id="mainFrame" title="mainFrame" />
+    <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" > </frame>  
+       <frame  name="mainFrame"  noresize="noresize" id="mainFrame" title="mainFrame" > </frame>
   </frameset>
 </frameset>
 <noframes>
-</noframes>
-<body>
-	<div class="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		<strong>Title!</strong> Alert body ...
+<div class="modal fade" id="logoutModel" >
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">确认注销?</h4>
+				</div>
+				<div class="modal-body">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  onclick="logout()">确定</button>
+					<button type="button" class="btn btn-default" onclick="" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
 	</div>
+</noframes> -->
 </body>
 </html>
