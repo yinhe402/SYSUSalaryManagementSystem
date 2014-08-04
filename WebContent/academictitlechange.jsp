@@ -42,7 +42,6 @@
 						<td><a href="#edit1">编辑</a></td>
 					</tr>
 				</s:iterator>
-
 			</tbody>
 		</table>
 	</div>
