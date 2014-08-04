@@ -55,6 +55,7 @@
 				<value>com.sms.entity.OffInfo</value>
 				<value>com.sms.entity.FinalBonus</value>
 				<value>com.sms.entity.FinalCheck</value>
+				<value>com.sms.entity.Experiences</value>
 			</list>
 		</property>
 
