@@ -51,10 +51,8 @@ public class StartSalaryInfoDaoImp implements IStartSalaryInfoDao {
 	@Override
 	public List<StartSalaryInfo> getAllStartSalaryInfo() {
 		// TODO Auto-generated method stub
-		System.out.println("这里是起薪");
 		Query query = (Query)getSession().createQuery("from StartSalaryInfo");
-		System.out.println(query.list().size());
+		//System.out.println(query.list().size());
 		return (List<StartSalaryInfo>)query.list();
 	}
-
 }
