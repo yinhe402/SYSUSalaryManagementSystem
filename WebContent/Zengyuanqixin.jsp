@@ -8,9 +8,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	//var myfrom=document.getElementById("myform1");
 
-	
 	function importStaff()
 	{
 		var myform=document.forms[0];
@@ -27,9 +25,10 @@
 			$(".alert").alert("请先登录！");
 		}
 	}
+	checkLogin();
 </script>
 </head>
-<body onload="checkLogin()">
+<body >
 <form id="myform1" >
 	职工号：<input type="text" name="employee.id" /><br />
 	姓名：<input type="text" name="employee.name" /><br />
@@ -73,6 +72,10 @@
 	备注：<input type="text" name="startSalaryInfo.remarks" value="无" onfocus="if (value =='无'){value =''}" onblur="if (value ==''){value='无'}"/><br />
 	
 	<input type="button" name="btnadd" onclick="importStaff()" value="增加" />
+	<div class="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<strong>Title!</strong> Alert body ...
+	</div>
  </form>
 </body>
 </html>

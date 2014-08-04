@@ -10,13 +10,16 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="bootstrap/css/datepicker.css"/>
 <link rel="stylesheet" href="css/index.css"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
 		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
+		if (nid == "null" || nid == "") {	
+			alert("请先登录！");	
+			$(".alert").alert();		
+			window.location.href="login.jsp";	
 		}
 	}
 	checkLogin();
@@ -30,40 +33,18 @@
 </head>
 
 <frameset rows="110,*" cols="*"  border="1" framespacing="0" onload="checkLogin()">
-  <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame">
+  <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame" />
     <frameset  cols="300,*" border="3" >
     <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" />  
        <frame  name="mainFrame"  noresize="noresize" id="mainFrame" title="mainFrame" />
   </frameset>
 </frameset>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <noframes>
 </noframes>
 <body>
+	<div class="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<strong>Title!</strong> Alert body ...
+	</div>
 </body>
 </html>

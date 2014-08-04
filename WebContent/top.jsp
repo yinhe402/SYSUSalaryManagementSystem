@@ -46,7 +46,7 @@
 					<span class="label label-info"><s:property value="#session.employeeLogin.name"/>(<s:property value="#session.employeeLogin.id"/>)</span>
 					<br/>
 					<div class="btn-group user-btn">
-					  <a class="btn btn-primary" onclick="logout()"><i class="icon-user icon-white"></i> 注销</a>
+					  <a class="btn btn-primary" data-toggle="modal" data-target="#logoutModel"><i class="icon-user icon-white"></i> 注销</a>
 					  <ul class="dropdown-menu">
 					    <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
 					    <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
@@ -61,7 +61,24 @@
 			<div style="height:100%;clear:both;"></div>
 
 		</div>
-
+	
+	<div class="modal fade" id="logoutModel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">确认注销?</h4>
+				</div>
+				<div class="modal-body">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  onclick="logout()">确定</button>
+					<button type="button" class="btn btn-default" onclick="" data-dismiss="modal">取消</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 		
 
 		
