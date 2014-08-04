@@ -39,7 +39,7 @@ label.form-label {
 }
 
 #o-box-up,#o-box-down {
-    width:320px;
+    width:300px;
     height:380px;
     position:absolute;
 	border-radius:5px;
