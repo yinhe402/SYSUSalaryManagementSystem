@@ -17,6 +17,10 @@
 		<script type="text/javascript" src="js/index.js"></script>
 		
 		<script type="text/javascript">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
 		$(function(){ 
 		    $("#date_1").datepicker({
 	    		format: 'yyyy-mm-dd',
@@ -36,8 +40,9 @@
 				window.location.href="login.jsp";
 				$(".alert").alert("请先登录！");
 			}
-	}
+		}
 		
+<<<<<<< HEAD
  
 			function salaryQuery()
 			{
@@ -48,6 +53,18 @@
 			}
 		</script>
  
+=======
+
+
+		function salaryQuery()
+		{
+			var myform=document.forms[0];
+			myform.action="salaryQuery";
+			myform.method="post";
+			myform.submit();
+		}
+		</script>
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
 </head>
 <body onload="checkLogin()">
 	<form class="form-horizontal">
@@ -63,6 +80,7 @@
 		</div>
 		 <div class="row" style="text-align:center; margin:0 auto;">
 			<div class="span6">
+<<<<<<< HEAD
 			<span>查询起始年月：</span><input type="text" id="date_1"/>
 			</div>
 			
@@ -70,12 +88,19 @@
 			<span>查询结束年月：</span><input type="text" id="date_2"/>
  
  
+=======
+
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
 			<span>查询起始年月：</span><input type="text" name="startDate"/>
 			</div>
 			
 			<div class="span5">
 			<span>查询结束年月：</span><input type="text" name="endDate"/>
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
 			</div>
 		  </div>
 		  
