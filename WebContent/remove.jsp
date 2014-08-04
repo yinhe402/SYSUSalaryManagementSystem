@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<hr/>
 	
-	<form id="myform3" style="margin-left:43%; font-size:20px; font-weight:bold;"">
+	<form id="myform3" style="margin-left:43%; font-size:20px; font-weight:bold;">
 	    <h2>查询</h2>
 	    <div style="margin-left:-15%;">
 		职工号：<input type="text" name="queryId" /><br />
