@@ -78,7 +78,8 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 
 	@Override
 	public ProfessionalPositionSalary findProfPosSalByLevel(Integer level) {
-		return IProfSalaryDao.findProfPosSalByLevel(level);
+		this.profPositionSalary = IProfSalaryDao.findProfPosSalByLevel(level);
+		return this.profPositionSalary;
 	}
 	
 	@Override
@@ -117,7 +118,7 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 	@Override
 	public void modifyProfSalCha(ProfessionalSalaryChange ProfSalaryChange) {
 		// TODO Auto-generated method stub
-		setProfSalChaByLevel(ProfSalaryChange.getPositionLevel(), ProfSalaryChange.getUpperBoundOfChangeYear(), ProfSalaryChange.getUpperBoundOfChangeYear());
+		findProfSalChaByLevel(ProfSalaryChange.getPositionLevel(), ProfSalaryChange.getUpperBoundOfChangeYear(), ProfSalaryChange.getUpperBoundOfChangeYear());
 		getProfessionalSalaryChange().setPayLevel(ProfSalaryChange.getPayLevel());
 		IProfSalaryDao.modifyProfSalCha(ProfSalaryChange);
 	}
@@ -129,9 +130,10 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 	}
 
 	@Override
-	public void setProfSalChaByLevel(Integer level,Integer off,Integer cha) {
+	public ProfessionalSalaryChange findProfSalChaByLevel(Integer level,Integer off,Integer cha) {
 		// TODO Auto-generated method stub
 		this.profSalaryChange=IProfSalaryDao.findProfSalChaByLevel(level,off,cha);
+		return this.profSalaryChange;
 	}
 
 	@Override
@@ -143,11 +145,18 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 	@Override
 	public void setAllManage(Integer level,Integer off,Integer cha) {
 		//System.out.println(level);
-		// TODO Auto-generated method stub
-		setProfSalChaByLevel(level,off,cha);
-		System.out.println(getProfessionalSalaryChange().getPayLevel());
-		setProfPaySalByPayLevel(getProfessionalSalaryChange().getPayLevel());
-		setProfPosSalByLevel(level);
+		// TODO Auto-generated method stub				
+		Integer payLevel;
+		findProfPosSalByLevel(level);
+		findProfSalChaByLevel(level,off,cha);
+		if(getProfessionalSalaryChange()==null){
+			payLevel=profPositionSalary.getStartPayLevel();
+		}
+		else {
+			payLevel=profSalaryChange.getPayLevel();
+		}
+		//System.out.println(.getPayLevel());
+		findProfPaySalByPayLevel(payLevel);
 	}
 
 	@Override
@@ -167,13 +176,15 @@ public class ProfSalaryManageImp implements IProfSalaryManage{
 		// TODO Auto-generated method stub
 		setAllManage(level, off, cha);
 		
-		return getProfessionalSalaryChange().getPayLevel();
+		return profPaylevelSalary.getPayLevel();
 	}
 
 	@Override
-	public ProfessionalPaylevelSalary findProfPaySalByPayLevel(Integer level) {
+	public ProfessionalPaylevelSalary findProfPaySalByPayLevel(Integer payLevel) {
 		// TODO Auto-generated method stub
-		return IProfSalaryDao.findProfPaySalByPayLevel(level);
+		this.profPaylevelSalary=IProfSalaryDao.findProfPaySalByPayLevel(payLevel);
+		
+		return this.profPaylevelSalary;
 	}
 	
 	

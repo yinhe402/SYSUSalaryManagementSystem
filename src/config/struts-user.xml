@@ -68,6 +68,16 @@
 			<result name="success">/showSalaryForAll.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
+		
+		<action name="salaryQuery" class="salaryQuery" method="querySalary">
+			<result name="success" type = "redirect">/Querystatistics.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
+		
+		<action name="exportSalary" class="autoSalary" method="exportSalary">
+			<result name="success">/success.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
 
 	</package>
 

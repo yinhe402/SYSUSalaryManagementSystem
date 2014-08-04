@@ -20,7 +20,8 @@
 						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
 					</script>
 					<script type="text/javascript">
-						window.onload = function() {
+							
+						function initCaptcha() {
 							var verifyObj = document.getElementById("Verify");
 							verifyObj.onclick = function() {
 								this.src = "initCaptcha?timestamp=" + new Date().getTime();
@@ -28,7 +29,7 @@
 						}
 					</script>
 				</head>
-				<body>
+				<body onload="initCaptcha()">
 					<div class="header">
 						<h1 class="headerLogo">
 							<a title="" target="_blank" href="http://www.baidu.com/">

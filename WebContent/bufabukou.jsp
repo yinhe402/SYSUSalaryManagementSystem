@@ -135,9 +135,8 @@
 			</tbody>
 		</table>
 	 </div>
-	 <table>
 	 </div>
-	</div>
+
 
 </body>
 </html>
