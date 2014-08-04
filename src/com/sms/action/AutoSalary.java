@@ -36,23 +36,30 @@ public class AutoSalary {
 	@Resource
 	private IStartSalaryInfoManage iStartSalaryInfoManage;
 	
-	public String computeSalary(){
-		newSalaryList=new ArrayList<SalaryExport>();
+	public void initSalaryList(){		
 		//System.out.println("heh");
+		newSalaryList=new ArrayList<SalaryExport>();
 		List<StartSalaryInfo> list = iStartSalaryInfoManage.getAllStartSalaryInfo();
 		
 		for(int i=0;i<list.size();i++){
 			StartSalaryInfo startSalaryInfo=list.get(i);
-			//System.out.println(startSalaryInfo.getPositionLevel());
-			//System.out.println(startSalaryInfo.getLevelSalary());
+			
 			Salary salary =new Salary(startSalaryInfo.getEid(),startSalaryInfo.getPositionSalary(),startSalaryInfo.getLevelSalary());
 			computeSalarySingleton.setSalary(salary);
 			iSalaryManage.addSalary(salary);
 			
 			Employee employee=iEmployeeManage.findEmployeeById(startSalaryInfo.getEid());
+			if(employee==null){
+				System.out.println("cao");
+				System.out.println(startSalaryInfo.getEid());
+			}
 			SalaryExport salaryExport=new SalaryExport(startSalaryInfo.getEid(), employee.getName(), employee.getDepartment(), salary.getPositionSalary(), salary.getLevelSalary(), salary.getTotleSalary(), salary.getTime());
 			newSalaryList.add(salaryExport);
 		}
+	}
+	
+	public String computeSalary(){
+		initSalaryList();
 		
 		ActionContext.getContext().getSession().put("newSalaryList", newSalaryList);
 		return Action.SUCCESS;
@@ -65,13 +72,14 @@ public class AutoSalary {
 		fieldMap.put("name", "姓名");
 		fieldMap.put("department", "单位");
 		fieldMap.put("positionSalary", "岗位工资");
-		fieldMap.put("levleSalary", "级别工资");
+		fieldMap.put("levelSalary", "级别工资");
 		fieldMap.put("salary", "月薪");
 		fieldMap.put("date", "发放日期");
 		 
 		String sheetName="Sheet1";
 		HttpServletResponse response = ServletActionContext.getResponse();
-
+		
+		initSalaryList();
 		ExcelUtil.listToExcel(newSalaryList, fieldMap, sheetName, response);
 		
 		return Action.SUCCESS;
