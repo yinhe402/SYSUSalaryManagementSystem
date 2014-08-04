@@ -21,6 +21,7 @@
 	<bean name="autoSalary" class="com.sms.action.AutoSalary" scope="prototype"></bean>
 	<bean name="changeAction" class="com.sms.action.ChangeAction" scope="prototype"></bean>
 	<bean name="initCaptcha" class="com.sms.action.InitCaptcha" scope="prototype"></bean>
+	<bean name="salaryQuery" class="com.sms.action.SalaryQuery" scope="prototype"></bean>
 		
 	<bean name="levelSalaryChange" class="com.sms.action.LevelSalaryChange" scope="prototype"></bean>
 	
