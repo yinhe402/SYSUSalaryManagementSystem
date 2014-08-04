@@ -126,7 +126,16 @@
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("manExperience").removeChild(o.parentNode);
-
+		
+		i--;
+        topWin.document.getElementById("i").value = i;
+        var x = mainDocument.getElementById("manExperience").getElementsByTagName("label");
+        for(var a = 0;a < i; a++)
+        {
+        	var y = x[a].getElementsByTagName("input");
+        	y[0].setAttribute("name", "manWorkDate" + a);
+        	y[1].setAttribute("name", "manExperience" + a);
+        }
 	}
 
 	function addProExperience() {
@@ -181,6 +190,16 @@
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("proExperience").removeChild(o.parentNode);
+		
+		j--;
+        topWin.document.getElementById("j").value = j;
+        var x = mainDocument.getElementById("proExperience").getElementsByTagName("label");
+        for(var a = 0;a < j; a++)
+        {
+        	var y = x[a].getElementsByTagName("input");
+        	y[0].setAttribute("name", "proWorkDate" + a);
+        	y[1].setAttribute("name", "proExperience" + a);
+        }
 	}
 
 	function addWorkerExperience() {
@@ -236,6 +255,16 @@
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("workerExperience").removeChild(
 				o.parentNode);
+								
+		m--;
+        topWin.document.getElementById("m").value = m;
+        var x = mainDocument.getElementById("workerExperience").getElementsByTagName("label");
+        for(var a = 0;a < m; a++)
+        {
+        	var y = x[a].getElementsByTagName("input");
+        	y[0].setAttribute("name", "workerWorkDate" + a);
+        	y[1].setAttribute("name", "workerExperience" + a);
+        }
 	}
 
 	function addEduExperience() {
@@ -290,6 +319,16 @@
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("eduExperience").removeChild(o.parentNode);
+		
+		k--;
+        topWin.document.getElementById("k").value = k;
+        var x = mainDocument.getElementById("eduExperience").getElementsByTagName("label");
+        for(var a = 0;a < k; a++)
+        {
+        	var y = x[a].getElementsByTagName("input");
+        	y[0].setAttribute("name", "eduWorkDate" + a);
+        	y[1].setAttribute("name", "eduExperience" + a);
+        }
 	}
 
 	function addBreakExperience() {
@@ -346,13 +385,13 @@
 		experienceDiv.appendChild(label0);
 		l++;
 		topWin.document.getElementById("l").value = l;
-
-        
-	    $(".datepicker").datepicker({
-			format : 'yyyy-mm-dd',
-			 language: 'zh-CN',
+		
+		
+		$(".datepicker").datepicker({
+			format : 'yyyy-mm-dd',			 
 		});
-
+	
+	    
 	}
 
 	function delBreakExperience(o) {
@@ -360,6 +399,16 @@
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("breakExperience")
 				.removeChild(o.parentNode);
+				
+		l--;
+        topWin.document.getElementById("l").value = l;
+        var x = mainDocument.getElementById("breakExperience").getElementsByTagName("label");
+        for(var a = 0;a < l; a++)
+        {
+        	var y = x[a].getElementsByTagName("input");
+        	y[0].setAttribute("name", "breakStartDate" + a);
+        	y[1].setAttribute("name", "breakEndDate" + a);
+        }
 	}
 	
 	function checkLogin() {
@@ -370,6 +419,7 @@
 			$(".alert").alert("请先登录！");
 		}
 	}
+	
 </script>
 </head>
 <body onload="checkLogin()">
@@ -532,43 +582,38 @@
 			<span style="font-size:25px; font-weight:bold;">管理系列经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addManExperience()">增加</button>
+			<s:textarea name="i" id="i" style="display:none;"></s:textarea>
 			<br />
 		</div>
-		<s:textarea name="i" id="i" style="display:none;"></s:textarea>
-
-
+		
 		<div id="proExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">专技系列经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addProExperience()">增加</button>
+			<s:textarea name="j" id="j" style="display:none;"></s:textarea>
 		</div>
-		<s:textarea name="j" id="j" style="display:none;"></s:textarea>
-
-
-
+		
 		<div id="workerExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">工人系列经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addWorkerExperience()">增加</button>
+			<s:textarea name="m" id="m" style="display:none;"></s:textarea>
 		</div>
-		<s:textarea name="m" id="m" style="display:none;"></s:textarea>
-
+		
 		<div id="eduExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">教育经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addEduExperience()">增加</button>
+			<s:textarea name="k" id="k" style="display:none;"></s:textarea>
 		</div>
-		<s:textarea name="k" id="k" style="display:none;"></s:textarea>
-
+		
 		<div id="breakExperience" style="text-align:center; margin-top:50px;">
 			<span style="font-size:25px; font-weight:bold;">中断工作经历</span>
 			<button type="button" style="margin-top:-5px; margin-left:5px;"
 				class="btn btn-success" onclick="addBreakExperience()">增加</button>
+			<s:textarea name="l" id="l" style="display:none;"></s:textarea>
 		</div>
-		<s:textarea name="l" id="l" style="display:none;"></s:textarea>
-
-
-
+		
 
 		<button type="button" style="margin-left: 45%; margin-top:50px; margin-bottom:300px;"
 
