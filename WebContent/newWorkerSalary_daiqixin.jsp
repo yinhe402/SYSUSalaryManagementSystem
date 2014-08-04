@@ -123,10 +123,11 @@
 	}
 
 	function delManExperience(o) {
+		i=i-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("manExperience").removeChild(o.parentNode);
-
+		topWin.document.getElementById("i").value=i;
 	}
 
 	function addProExperience() {
@@ -178,9 +179,11 @@
 	}
 
 	function delProExperience(o) {
+		j=j-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("proExperience").removeChild(o.parentNode);
+		topWin.document.getElementById("j").value=j;
 	}
 
 	function addWorkerExperience() {
@@ -232,10 +235,12 @@
 	}
 
 	function delWorkerExperience(o) {
+		m=m-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("workerExperience").removeChild(
 				o.parentNode);
+		topWin.document.getElementById("m").value=m;
 	}
 
 	function addEduExperience() {
@@ -287,9 +292,11 @@
 	}
 
 	function delEduExperience(o) {
+		k=k-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("eduExperience").removeChild(o.parentNode);
+		topWin.document.getElementById("k").value=k;
 	}
 
 	function addBreakExperience() {
@@ -356,10 +363,12 @@
 	}
 
 	function delBreakExperience(o) {
+		l=l-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("breakExperience")
 				.removeChild(o.parentNode);
+		topWin.document.getElementById("l").value=l;
 	}
 	
 	function checkLogin() {
