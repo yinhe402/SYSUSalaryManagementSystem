@@ -8,18 +8,34 @@
 		<title>中山大学教职工工资系统</title>
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="bootstrap/css/datepicker.css">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript">
-	function checkLogin() {
-		var nid = "<%=session.getAttribute("user.id")%>";
 		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
-		}
+		<script type="text/javascript">
+		$(function(){ 
+		    $("#date_1").datepicker({
+	    		format: 'yyyy-mm-dd',
+	    	}); 
+		}); 
+		
+		$(function(){ 
+		    $("#date_2").datepicker({
+	    		format: 'yyyy-mm-dd',
+	    	}); 
+		}); 
+		
+		function checkLogin() {
+			var nid = "<%=session.getAttribute("user.id")%>";
+			
+			if (nid == "null" || nid == "") {			
+				window.location.href="login.jsp";
+				$(".alert").alert("请先登录！");
+			}
 	}
+		
 </script>
 </head>
 <body onload="checkLogin()">
@@ -36,11 +52,11 @@
 		</div>
 		 <div class="row" style="text-align:center; margin:0 auto;">
 			<div class="span6">
-			<span>查询起始年月：</span><input type="text"/>
+			<span>查询起始年月：</span><input type="text" id="date_1"/>
 			</div>
 			
 			<div class="span5">
-			<span>查询结束年月：</span><input type="text" />
+			<span>查询结束年月：</span><input type="text" id="date_2"/>
 			</div>
 		  </div>
 		  
