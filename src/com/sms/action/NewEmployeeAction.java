@@ -404,7 +404,7 @@ public class NewEmployeeAction extends ActionSupport {
 		int level = 0;
 
 		if (worList.size() == 0) {
-			if (attendWorkDate.before(baseWorkDate)) {				
+			if (attendWorkDate.before(baseWorkDate)) {
 				// 管理系第一大，第二大
 				int manageMaxLevel = 0;
 				int manageMinYear1 = 2006;
@@ -426,7 +426,7 @@ public class NewEmployeeAction extends ActionSupport {
 					} else {
 						System.out.println("管理系列倒推");
 						int posLevel = manageList.get(0).getGanhuoLevel();
-						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						int startPosYear = manageList.get(0).getTime();// 开始任职年份
 						while (startPosYear > 2006) {
 							if (posLevel == 7) {
 								startPosYear = startPosYear - 3;
@@ -476,7 +476,7 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 					}
-					
+
 					if (count1 == 0) {
 						System.out.println("管理系列倒推");
 						for (int i = 0; i < manageLength - 1; i++) {
@@ -491,7 +491,7 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 						int posLevel = manageList.get(0).getGanhuoLevel();
-						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						int startPosYear = manageList.get(0).getTime();// 开始任职年份
 						while (startPosYear > 2006) {
 							if (posLevel == 7) {
 								startPosYear = startPosYear - 3;
@@ -534,22 +534,24 @@ public class NewEmployeeAction extends ActionSupport {
 						}
 					}
 				}
-				
+
 				int techLength = techList.size();
 				if (techLength == 0) {
 				} else if (techLength == 1) {
 					if (techList.get(0).getTime() <= 2006) {
 						techMaxLevel = techList.get(0).getGanhuoLevel();
 						techMinYear1 = techList.get(0).getTime();
-					} else {							
+					} else {
 						System.out.println("专技系列倒推");
 						int payLevel = techList.get(0).getGanhuoLevel();
-						int startPayYear = techList.get(0).getTime();//开始任职年份
+						int startPayYear = techList.get(0).getTime();// 开始任职年份
 						while (startPayYear > 2006) {
-							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+							if (payLevel == 13 || payLevel == 12
+									|| payLevel == 11 || payLevel == 10) {
 								startPayYear = startPayYear - 5;
 								payLevel = 9;
-							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+							} else if (payLevel == 9 || payLevel == 8
+									|| payLevel == 7) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 3;
 									payLevel = 6;
@@ -557,7 +559,8 @@ public class NewEmployeeAction extends ActionSupport {
 									startPayYear = startPayYear - 5;
 									payLevel = 6;
 								}
-							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+							} else if (payLevel == 6 || payLevel == 5
+									|| payLevel == 4) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 2;
 									payLevel = 3;
@@ -606,13 +609,13 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 					}
-					
+
 					if (count2 == 0) {
 						System.out.println("专技系列倒推");
 						for (int i = 0; i < techLength - 1; i++) {
 							for (int j = i + 1; j < techLength; j++) {
-								if (techList.get(i).getTime() > techList
-										.get(j).getTime()) {
+								if (techList.get(i).getTime() > techList.get(j)
+										.getTime()) {
 									ExperienceInfo tempExperienceInfo = techList
 											.get(i);
 									techList.set(i, techList.get(j));
@@ -621,12 +624,14 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 						int payLevel = techList.get(0).getGanhuoLevel();
-						int startPayYear = techList.get(0).getTime();//开始任职年份
+						int startPayYear = techList.get(0).getTime();// 开始任职年份
 						while (startPayYear > 2006) {
-							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+							if (payLevel == 13 || payLevel == 12
+									|| payLevel == 11 || payLevel == 10) {
 								startPayYear = startPayYear - 5;
 								payLevel = 9;
-							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+							} else if (payLevel == 9 || payLevel == 8
+									|| payLevel == 7) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 3;
 									payLevel = 6;
@@ -634,7 +639,8 @@ public class NewEmployeeAction extends ActionSupport {
 									startPayYear = startPayYear - 5;
 									payLevel = 6;
 								}
-							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+							} else if (payLevel == 6 || payLevel == 5
+									|| payLevel == 4) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 2;
 									payLevel = 3;
@@ -791,6 +797,13 @@ public class NewEmployeeAction extends ActionSupport {
 						System.out.println("职务等级：  " + techMaxLevel);
 						System.out.println("任职年限：  " + officeTime1);
 						int curLevel1 = 0;
+						if (profSalaryManage == null) {
+							System.out.println("ProfSalaryManage is null!");
+						}
+						System.out.println(techMaxLevel);
+						System.out.println(officeTime1);
+						System.out.println(getSalaryChangeYears(attendWorkDate,
+								array1, array2, arrayNum, eduList, failTime));
 						if (profSalaryManage.getPayLevel(
 								techMaxLevel,
 								officeTime1,
@@ -819,6 +832,7 @@ public class NewEmployeeAction extends ActionSupport {
 						System.out.println("职务等级：  " + techSecMaxLevel);
 						System.out.println("任职年限：  " + officeTime2);
 						int curLevel2 = 0;
+
 						if (profSalaryManage.getPayLevel(
 								techSecMaxLevel,
 								officeTime2,
@@ -1021,7 +1035,7 @@ public class NewEmployeeAction extends ActionSupport {
 					} else {
 						System.out.println("管理系列倒推");
 						int posLevel = manageList.get(0).getGanhuoLevel();
-						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						int startPosYear = manageList.get(0).getTime();// 开始任职年份
 						while (startPosYear > 2006) {
 							if (posLevel == 7) {
 								startPosYear = startPosYear - 3;
@@ -1071,7 +1085,7 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 					}
-					
+
 					if (count1 == 0) {
 						System.out.println("管理系列倒推");
 						for (int i = 0; i < manageLength - 1; i++) {
@@ -1086,7 +1100,7 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 						int posLevel = manageList.get(0).getGanhuoLevel();
-						int startPosYear = manageList.get(0).getTime();//开始任职年份
+						int startPosYear = manageList.get(0).getTime();// 开始任职年份
 						while (startPosYear > 2006) {
 							if (posLevel == 7) {
 								startPosYear = startPosYear - 3;
@@ -1110,7 +1124,6 @@ public class NewEmployeeAction extends ActionSupport {
 					}
 				}
 
-				
 				int eduMax = 0;
 				for (int i = 0; i < eduList.size(); i++) {
 					if (eduList.get(i).getGanhuo().equals("博士")) {
@@ -1130,22 +1143,24 @@ public class NewEmployeeAction extends ActionSupport {
 						}
 					}
 				}
-				
+
 				int techLength = techList.size();
 				if (techLength == 0) {
 				} else if (techLength == 1) {
 					if (techList.get(0).getTime() <= 2006) {
 						techMaxLevel = techList.get(0).getGanhuoLevel();
 						techMinYear1 = techList.get(0).getTime();
-					} else {							
+					} else {
 						System.out.println("专技系列倒推");
 						int payLevel = techList.get(0).getGanhuoLevel();
-						int startPayYear = techList.get(0).getTime();//开始任职年份
+						int startPayYear = techList.get(0).getTime();// 开始任职年份
 						while (startPayYear > 2006) {
-							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+							if (payLevel == 13 || payLevel == 12
+									|| payLevel == 11 || payLevel == 10) {
 								startPayYear = startPayYear - 5;
 								payLevel = 9;
-							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+							} else if (payLevel == 9 || payLevel == 8
+									|| payLevel == 7) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 3;
 									payLevel = 6;
@@ -1153,7 +1168,8 @@ public class NewEmployeeAction extends ActionSupport {
 									startPayYear = startPayYear - 5;
 									payLevel = 6;
 								}
-							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+							} else if (payLevel == 6 || payLevel == 5
+									|| payLevel == 4) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 2;
 									payLevel = 3;
@@ -1202,13 +1218,13 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 					}
-					
+
 					if (count2 == 0) {
 						System.out.println("专技系列倒推");
 						for (int i = 0; i < techLength - 1; i++) {
 							for (int j = i + 1; j < techLength; j++) {
-								if (techList.get(i).getTime() > techList
-										.get(j).getTime()) {
+								if (techList.get(i).getTime() > techList.get(j)
+										.getTime()) {
 									ExperienceInfo tempExperienceInfo = techList
 											.get(i);
 									techList.set(i, techList.get(j));
@@ -1217,12 +1233,14 @@ public class NewEmployeeAction extends ActionSupport {
 							}
 						}
 						int payLevel = techList.get(0).getGanhuoLevel();
-						int startPayYear = techList.get(0).getTime();//开始任职年份
+						int startPayYear = techList.get(0).getTime();// 开始任职年份
 						while (startPayYear > 2006) {
-							if (payLevel == 13 || payLevel == 12 || payLevel == 11 || payLevel == 10) {
+							if (payLevel == 13 || payLevel == 12
+									|| payLevel == 11 || payLevel == 10) {
 								startPayYear = startPayYear - 5;
 								payLevel = 9;
-							} else if (payLevel == 9 || payLevel == 8 || payLevel == 7) {
+							} else if (payLevel == 9 || payLevel == 8
+									|| payLevel == 7) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 3;
 									payLevel = 6;
@@ -1230,7 +1248,8 @@ public class NewEmployeeAction extends ActionSupport {
 									startPayYear = startPayYear - 5;
 									payLevel = 6;
 								}
-							} else if (payLevel == 6 || payLevel == 5 || payLevel == 4) {
+							} else if (payLevel == 6 || payLevel == 5
+									|| payLevel == 4) {
 								if (eduMax == 4) {
 									startPayYear = startPayYear - 2;
 									payLevel = 3;
@@ -1684,134 +1703,143 @@ public class NewEmployeeAction extends ActionSupport {
 		System.out.println("-------startSalaryInfoAction.importStaff--------"
 				+ startSalaryInfo.getEid());
 		if (isValid(startSalaryInfo.getEid())) {
-			HttpServletRequest request = ServletActionContext.getRequest();
-			startSalaryInfo.setOperateDate(new Date());
+			if (employeeManage.findEmployeeById(startSalaryInfo.getEid()) != null) {
+				HttpServletRequest request = ServletActionContext.getRequest();
+				startSalaryInfo.setOperateDate(new Date());
 
-			Date attendWorkDate = strToDate(startWorkYear);
+				Date attendWorkDate = strToDate(startWorkYear);
 
-			ArrayList<Date> array1 = new ArrayList<Date>(), array2 = new ArrayList<Date>();
-			ArrayList<ExperienceInfo> manageList = new ArrayList<ExperienceInfo>(), techList = new ArrayList<ExperienceInfo>(), eduList = new ArrayList<ExperienceInfo>(), worList = new ArrayList<ExperienceInfo>();
+				ArrayList<Date> array1 = new ArrayList<Date>(), array2 = new ArrayList<Date>();
+				ArrayList<ExperienceInfo> manageList = new ArrayList<ExperienceInfo>(), techList = new ArrayList<ExperienceInfo>(), eduList = new ArrayList<ExperienceInfo>(), worList = new ArrayList<ExperienceInfo>();
 
-			System.out.println("管理i:" + i);
-			System.out.println("专技j:" + j);
-			System.out.println("教育k:" + k);
-			System.out.println("中断l:" + l);
-			System.out.println("工人m:" + m);
+				System.out.println("管理i:" + i);
+				System.out.println("专技j:" + j);
+				System.out.println("教育k:" + k);
+				System.out.println("中断l:" + l);
+				System.out.println("工人m:" + m);
 
-			for (int count = 0; count < i; count++) {
-				System.out.println(request
-						.getParameter("manExperience" + count));
-				System.out.println(request.getParameter("manWorkDate" + count));
-				manageList
-						.add(new ExperienceInfo(request
-								.getParameter("manExperience" + count), Integer
-								.parseInt(request.getParameter("manWorkDate"
-										+ count))));
-			}
+				for (int count = 0; count < i; count++) {
+					System.out.println(request.getParameter("manExperience"
+							+ count));
+					System.out.println(request.getParameter("manWorkDate"
+							+ count));
+					manageList.add(new ExperienceInfo(request
+							.getParameter("manExperience" + count), Integer
+							.parseInt(request.getParameter("manWorkDate"
+									+ count))));
+				}
 
-			for (int count = 0; count < j; count++) {
-				System.out.println(request
-						.getParameter("proExperience" + count));
-				System.out.println(request.getParameter("proWorkDate" + count));
-				techList.add(new ExperienceInfo(request
-						.getParameter("proExperience" + count), Integer
-						.parseInt(request.getParameter("proWorkDate" + count))));
-			}
+				for (int count = 0; count < j; count++) {
+					System.out.println(request.getParameter("proExperience"
+							+ count));
+					System.out.println(request.getParameter("proWorkDate"
+							+ count));
+					techList.add(new ExperienceInfo(request
+							.getParameter("proExperience" + count), Integer
+							.parseInt(request.getParameter("proWorkDate"
+									+ count))));
+				}
 
-			for (int count = 0; count < k; count++) {
-				System.out.println(request
-						.getParameter("eduExperience" + count));
-				System.out.println(request.getParameter("eduWorkDate" + count));
-				eduList.add(new ExperienceInfo(request
-						.getParameter("eduExperience" + count), Integer
-						.parseInt(request.getParameter("eduWorkDate" + count))));
-			}
+				for (int count = 0; count < k; count++) {
+					System.out.println(request.getParameter("eduExperience"
+							+ count));
+					System.out.println(request.getParameter("eduWorkDate"
+							+ count));
+					eduList.add(new ExperienceInfo(request
+							.getParameter("eduExperience" + count), Integer
+							.parseInt(request.getParameter("eduWorkDate"
+									+ count))));
+				}
 
-			for (int count = 0; count < m; count++) {
-				System.out.println(request.getParameter("workerExperience"
-						+ count));
-				System.out.println(request.getParameter("workerWorkDate"
-						+ count));
-				worList.add(new ExperienceInfo(request
-						.getParameter("workerExperience" + count), Integer
-						.parseInt(request
-								.getParameter("workerWorkDate" + count))));
-			}
+				for (int count = 0; count < m; count++) {
+					System.out.println(request.getParameter("workerExperience"
+							+ count));
+					System.out.println(request.getParameter("workerWorkDate"
+							+ count));
+					worList.add(new ExperienceInfo(request
+							.getParameter("workerExperience" + count), Integer
+							.parseInt(request.getParameter("workerWorkDate"
+									+ count))));
+				}
 
-			for (int count = 0; count < l; count++) {
-				System.out.println(request.getParameter("breakStartDate"
-						+ count));
+				for (int count = 0; count < l; count++) {
+					System.out.println(request.getParameter("breakStartDate"
+							+ count));
+					System.out.println(request.getParameter("breakEndDate"
+							+ count));
+					array1.add(strToDate(request.getParameter("breakStartDate"
+							+ count)));
+					array2.add(strToDate(request.getParameter("breakEndDate"
+							+ count)));
+				}
+
+				startSalaryInfo.setBreakOffSeniority(getBreakUpYears(array1,
+						array2, l));// 获取中断工龄
+
+				startSalaryInfo.setWorkYears(getRealWorkTime(attendWorkDate,
+						array1, array2, l));// 获取实际工作年限
+
+				startSalaryInfo
+						.setSeniorityBeforeWork(getBeforeWorkTime(eduList));// 获取工作前工龄
+
+				startSalaryInfo
+						.setLearnSeniority(getStudyInSchoolTime(eduList));// 获取大专以上不计工龄年限
+
+				startSalaryInfo.setChangeYears(getSalaryChangeYears(
+						attendWorkDate, array1, array2, l, eduList, failTime));// 获取套改年限
 				System.out
-						.println(request.getParameter("breakEndDate" + count));
-				array1.add(strToDate(request.getParameter("breakStartDate"
-						+ count)));
-				array2.add(strToDate(request.getParameter("breakEndDate"
-						+ count)));
+						.println("套改年限：  " + startSalaryInfo.getChangeYears());
+
+				startSalaryInfo.setHireYears(getOfficeTime(manageList,
+						techList, eduList, attendWorkDate, array1, array2, l,
+						failTime, worList));// 获取任职年限
+				System.out.println("任职年限：  " + startSalaryInfo.getHireYears());
+
+				startSalaryInfo.setSalaryLevel(getSalaryLevel(manageList,
+						techList, eduList, attendWorkDate, array1, array2, l,
+						failTime, worList));// 获取薪级
+				System.out.println("薪级：  " + startSalaryInfo.getSalaryLevel());
+
+				if (startSalaryInfo.getSalarySeries().equals("管理")) {
+					startSalaryInfo.setPositionSalary(manageSalaryManage
+							.findManPosSalByLevel(
+									startSalaryInfo.getPositionLevel())
+							.getSalaryStandard());
+					startSalaryInfo.setLevelSalary(manageSalaryManage
+							.findManPaySalByPayLevel(
+									startSalaryInfo.getSalaryLevel())
+							.getSalaryStandard());
+				} else if (startSalaryInfo.getSalarySeries().equals("专技")) {
+					startSalaryInfo.setPositionSalary(profSalaryManage
+							.findProfPosSalByLevel(
+									startSalaryInfo.getPositionLevel())
+							.getSalaryStandard());
+					startSalaryInfo.setLevelSalary(profSalaryManage
+							.findProfPaySalByPayLevel(
+									startSalaryInfo.getSalaryLevel())
+							.getSalaryStandard());
+				} else if (startSalaryInfo.getSalarySeries().equals("工人")) {
+					startSalaryInfo.setPositionSalary(workerSalaryManage
+							.findWorkerPosSalByLevel(
+									startSalaryInfo.getPositionLevel())
+							.getSalaryStandard());
+					startSalaryInfo.setLevelSalary(workerSalaryManage
+							.findWorkerPaySalByPayLevel(
+									startSalaryInfo.getSalaryLevel())
+							.getSalaryStandard());
+				}
+
+				Map session = ActionContext.getContext().getSession();
+				session.put("ssInfo", startSalaryInfo);
+				session.put("sYear", startWorkYear);
+				session.put("fTime", failTime + "");
+				session.put("mList", manageList);
+				session.put("tList", techList);
+				session.put("wList", worList);
+				session.put("eList", eduList);
+
+				return "success";
 			}
-
-			startSalaryInfo.setBreakOffSeniority(getBreakUpYears(array1,
-					array2, l));// 获取中断工龄
-
-			startSalaryInfo.setWorkYears(getRealWorkTime(attendWorkDate,
-					array1, array2, l));// 获取实际工作年限
-
-			startSalaryInfo.setSeniorityBeforeWork(getBeforeWorkTime(eduList));// 获取工作前工龄
-
-			startSalaryInfo.setLearnSeniority(getStudyInSchoolTime(eduList));// 获取大专以上不计工龄年限
-
-			startSalaryInfo.setChangeYears(getSalaryChangeYears(attendWorkDate,
-					array1, array2, l, eduList, failTime));// 获取套改年限
-			System.out.println("套改年限：  " + startSalaryInfo.getChangeYears());
-
-			startSalaryInfo.setHireYears(getOfficeTime(manageList, techList,
-					eduList, attendWorkDate, array1, array2, l, failTime,
-					worList));// 获取任职年限
-			System.out.println("任职年限：  " + startSalaryInfo.getHireYears());
-
-			startSalaryInfo.setSalaryLevel(getSalaryLevel(manageList, techList,
-					eduList, attendWorkDate, array1, array2, l, failTime,
-					worList));// 获取薪级
-			System.out.println("薪级：  " + startSalaryInfo.getSalaryLevel());
-
-			if (startSalaryInfo.getSalarySeries().equals("管理")) {
-				startSalaryInfo.setPositionSalary(manageSalaryManage
-						.findManPosSalByLevel(
-								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());
-				startSalaryInfo.setLevelSalary(manageSalaryManage
-						.findManPaySalByPayLevel(
-								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());
-			} else if (startSalaryInfo.getSalarySeries().equals("专技")) {
-				startSalaryInfo.setPositionSalary(profSalaryManage
-						.findProfPosSalByLevel(
-								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());
-				startSalaryInfo.setLevelSalary(profSalaryManage
-						.findProfPaySalByPayLevel(
-								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());
-			} else if (startSalaryInfo.getSalarySeries().equals("工人")) {
-				startSalaryInfo.setPositionSalary(workerSalaryManage
-						.findWorkerPosSalByLevel(
-								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());
-				startSalaryInfo.setLevelSalary(workerSalaryManage
-						.findWorkerPaySalByPayLevel(
-								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());
-			}
-
-			Map session = ActionContext.getContext().getSession();
-			session.put("ssInfo", startSalaryInfo);
-			session.put("sYear", startWorkYear);
-			session.put("fTime", failTime + "");
-			session.put("mList", manageList);
-			session.put("tList", techList);
-			session.put("wList", worList);
-			session.put("eList", eduList);
-
-			return "success";
 		}
 		return "fail";
 	}
