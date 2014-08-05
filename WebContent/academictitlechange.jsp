@@ -20,10 +20,18 @@
 				$(".alert").alert("请先登录！");
 				}
 			}
+			
+			function academictitlechange()
+			{
+				var myform=document.getElementById("form1");
+				myform.action="";
+				myform.method="post";
+				myform.submit();
+			}
 </script>
 </head>
 <body onload="checkLogin()">
-	<div class="container">
+	<!--  <div class="container">
 		<h2>职称变动人员名单</h2>
 		<table class="table table-bordered">
 			<thead>
@@ -46,16 +54,15 @@
 		</table>
 	</div>
 	<hr/>
-	<a name="edit1" id="value">&nbsp;</a>
+	<a name="edit1" id="value">&nbsp;</a>-->
 	<div class="container">
 
-		<form class="form-horizontal">
+		<form class="form-horizontal" id="form1">
 			<fieldset>
 				<div class="control-group">
 					<label class="control-label" for="workerid">职工号：</label>
 					<div class="controls">
-						<input id="workerid" type="text" readonly="readonly"
-							name="employee.id" />
+						<input id="workerid" type="text" name="employee.id" />
 					</div>
 				</div>
 
@@ -242,7 +249,7 @@
 						</div>
 					</div>
 
-					<div class="control-group">
+				<!-- 	<div class="control-group">
 						<label class="control-label" for="originalposition">原聘任岗位：</label>
 						<div class="controls">
 							<input id="originalposition" type="text" readonly="readonly" />
@@ -275,7 +282,7 @@
 						<div class="controls">
 							<input id="currentlabel" type="text" readonly="readonly" />
 						</div>
-					</div>
+					</div>-->
 
 					<br />
 					<br />
@@ -322,8 +329,8 @@
 					</div>
 
 					<div class="form-actions">
-						<input type="button" class="btn btn-success" name="btnmodify" value="修改" /> 
-						<input class="btn btn-success" type="button" name="btncomp" value="完成" />
+						<!-- <input type="button" class="btn btn-success" name="btnmodify" value="修改" /> -->
+						<input class="btn btn-success" type="submit" name="btncomp" value="提交" onclick=""/>
 					</div>
 			</fieldset>
 		</form>

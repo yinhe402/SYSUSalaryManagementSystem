@@ -36,7 +36,7 @@
 </head>
 
 <body onload="checkLogin()">
-	<div class="container"> 
+	<!--  <div class="container"> 
 	<h2>职务变动人员名单</h2>
 		<table class="table table-bordered">
 			<thead>
@@ -59,7 +59,7 @@
 			</tbody>
 		</table>
 	</div>
-	 <a name="edit2" id="value">&nbsp;</a>
+	 <a name="edit2" id="value">&nbsp;</a>-->
 	 
     <div class="container">
 		 
