@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="js/index.js"></script>
 		
 		<script type="text/javascript">
-<<<<<<< HEAD
+
 
 		$(function(){ 
 		    $("#date_1").datepicker({
@@ -30,23 +30,7 @@
 	    		format: 'yyyy-mm-dd',
 	    	}); 
 		}); 
-		
-		function checkLogin() {
-			var nid = "<%=session.getAttribute("user.id")%>";
-=======
-			$(function(){ 
-			    $("#date_1").datepicker({
-		    		format: 'yyyy-mm-dd',
-		    	}); 
-			}); 
-			
-			$(function(){ 
-			    $("#date_2").datepicker({
-		    		format: 'yyyy-mm-dd',
-		    	}); 
-			}); 
->>>>>>> b2aa401532f2cbf5b02cde9570d232422a4d2789
-			
+
 			function checkLogin() {
 				var nid = "<%=session.getAttribute("user.id")%>";
 				
@@ -55,13 +39,9 @@
 					$(".alert").alert("请先登录！");
 				}
 			}
-<<<<<<< HEAD
-		}
 		
-
  
-=======
->>>>>>> b2aa401532f2cbf5b02cde9570d232422a4d2789
+ 
 			function salaryQuery()
 			{
 				var myform=document.forms[0];
@@ -79,80 +59,28 @@
 			<div class="span6">
 			<span>职工号：</span><input type="text" name="eid"/>
 			</div>
+			
 			<div class="span5">
 			<span>姓名：</span><input type="text" name="name"/>
 			</div>
 		</div>
+		
 		 <div class="row" style="text-align:center; margin:0 auto;">
 			<div class="span6">
-<<<<<<< HEAD
- 
-			<span>查询起始年月：</span><input type="text" id="date_1"/>
-			</div>
-			
-			<div class="span5">
-			<span>查询结束年月：</span><input type="text" id="date_2"/>
-=======
 			<span>查询起始年月：</span><input type="text" name="startDate" id="date_1"/>
 			</div>
 			
 			<div class="span5">
 			<span>查询结束年月：</span><input type="text" name="endDate" id="date_2"/>
 			</div>
->>>>>>> b2aa401532f2cbf5b02cde9570d232422a4d2789
-		  </div>
-		  
-		 <div class="span12">
-		 	<a class="btn btn-primary" onclick="salaryQuery()">查询</a>
-		 </div>
+		</div>
+ 
+		<div class="span12">
+			<a href="Queryresult.jsp" target="mainFrame" class="btn btn-primary" onclick="salaryQuery()">查询</a>
+		</div>
 		
 	</div>
-	<hr/>
-	
-	<div class="container" style="text-align:center;">
-	<table class="table table-bordered" width="40%">
-	<thead>
-		<tr>
-			<th></th>
-			<th>职工号</th>
-			<th>岗位工资</th>
-			<th>薪级工资</th>
-			<th>本月工资总额</th>
-			<th>发放日期</th>
-		</tr>
-	</thead>
-	 
-	<tbody>
-	<s:iterator value="#session.salaryList" id="salary"> 
-		<tr>
-		<td><%out.print(i++);%></td>
-		<td><s:property value="#salary.eid"/></td>
-		<td><s:property value="#salary.positionSalary"/></td>
-		<td><s:property value="#salary.levelSalary"/></td>
-		<td><s:property value="#salary.totleSalary"/></td>
-		<td><s:date name="#salary.time" format="yyyy-MM-dd" /></td>
-		</tr>
-		</s:iterator>
-		<tr>
-			<td>总额</td>
-			<td></td>
-			<td><s:property value="#session.totalPosition"/></td>
-			<td><s:property value="#session.totalLevel"/></td>
-			<td><s:property value="#session.totalAmount"/></td>
-			<td></td>
-		</tr>
-		
-		<tr>
-			<td>平均额</td>
-			<td></td>
-			<td><s:property value="#session.averagePosition"/></td>
-			<td><s:property value="#session.averageLevel"/></td>
-			<td><s:property value="#session.averageAmount"/></td>
-			<td></td>
-		</tr>
-	 </tbody>
-	</table>
-	</div>
+	<hr/>	
 </form>
 </body>
 </html>
