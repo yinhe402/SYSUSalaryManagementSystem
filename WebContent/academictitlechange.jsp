@@ -21,16 +21,42 @@
 				}
 			}
 			
+<<<<<<< HEAD
 			function academictitlechange()
 			{
 				var myform=document.getElementById("form1");
 				myform.action="";
 				myform.method="post";
+=======
+			function search(){			
+			    var myform = document.getElementById("changeInfo");
+				myform.action = "";
+				myform.method = "post";
+				myform.submit();
+			}
+			
+			function check(){			
+			    var myform = document.getElementById("changeInfo");
+				myform.action = "";
+				myform.method = "post";
+				myform.submit();
+				var x = document.getElementById("positionsalary");
+				x.readOnly = "false";
+				var y = document.getElementById("salary");
+				y.readOnly = "false";
+			}
+			
+			function modify(){			
+			    var myform = document.getElementById("changeInfo");
+				myform.action = "";
+				myform.method = "post";
+>>>>>>> c8c31e6c359eca4888799130516cbcacb7801c7d
 				myform.submit();
 			}
 </script>
 </head>
 <body onload="checkLogin()">
+<<<<<<< HEAD
 	<!--  <div class="container">
 		<h2>职称变动人员名单</h2>
 		<table class="table table-bordered">
@@ -58,12 +84,28 @@
 	<div class="container">
 
 		<form class="form-horizontal" id="form1">
+=======
+	<div class="container">
+		<h2 style="text-align:center;">职称变动人员名单</h2>
+	</div>
+	<hr/>
+	
+	<div class="container" style="margin-left:23%;">
+
+		<form class="form-horizontal" id="changeInfo">
+>>>>>>> c8c31e6c359eca4888799130516cbcacb7801c7d
 			<fieldset>
 				<div class="control-group">
 					<label class="control-label" for="workerid">职工号：</label>
 					<div class="controls">
 						<input id="workerid" type="text" name="employee.id" />
+<<<<<<< HEAD
+=======
+						<input type="button" class="btn btn-success" value="查询" onclick="search()"/>
+>>>>>>> c8c31e6c359eca4888799130516cbcacb7801c7d
 					</div>
+					 
+					
 				</div>
 
 				<div class="control-group">
@@ -86,7 +128,7 @@
 					<label class="control-label" for="sex">性别：</label>
 					<div class="controls">
 						<input id="sex" type="radio" value="true" checked="checked"
-							readonly="readonly" name="employee.gender" />男<input id="sex"
+							readonly="readonly" name="employee.gender" />男&nbsp&nbsp<input id="sex"
 							type="radio" name="employee.gender" value="false"
 							readonly="readonly" name="employee.gender" />女
 					</div>
@@ -231,20 +273,21 @@
 					<div class="control-group">
 						<label class="control-label" for="currenttitle">现聘任职称：</label>
 						<div class="controls">
-							<input id="currenttitle" type="text" readonly="readonly" />
+							<input id="currenttitle" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="currentlabel">现职称级别：</label>
 						<div class="controls">
-							<input id="currentlabel" type="text" readonly="readonly" />
+							<input id="currentlabel" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="titlechangetime">职称变动时间：</label>
 						<div class="controls">
+<<<<<<< HEAD
 							<input id="titlechangetime" type="text" readonly="readonly" />
 						</div>
 					</div>
@@ -281,59 +324,72 @@
 						<label class="control-label" for="currentlabel">现聘岗级别：</label>
 						<div class="controls">
 							<input id="currentlabel" type="text" readonly="readonly" />
+=======
+							<input id="titlechangetime" type="text" class="datepicker" />
+>>>>>>> c8c31e6c359eca4888799130516cbcacb7801c7d
 						</div>
 					</div>-->
 
-					<br />
-					<br />
+				
 					<div class="control-group">
 						<label class="control-label" for="chansaltime">变动起薪时间：</label>
 						<div class="controls">
-							<input id="chansaltime" type="text" value="可手动输入" onfocus="this.value=''" />
+							<input id="chansaltime" type="text" class="datepicker"/>
 						</div>
 					</div>
+
 
 					<div class="control-group">
-						<label class="control-label" for="dealwithtime">业务处理时间：</label>
+						<label class="control-label" for="according">变更依据：</label>
 						<div class="controls">
-							<input id="dealwithtime" type="text"  />
+							<input type="text"/>
 						</div>
 					</div>
-
+					
+					
 					<div class="control-group">
 						<label class="control-label" for="positionsalary">岗位工资：</label>
 						<div class="controls">
-							<input id="positionsalary" type="text" />
+							<input id="positionsalary" type="text"  readonly="readonly"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="salary">薪级工资：</label>
 						<div class="controls">
-							<input id="salary" type="text" />
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="according">变更依据：</label>
-						<div class="controls">
-							<input type="text" value="可手动输入" onfocus="this.value=''"/>
+							<input id="salary" type="text"  readonly="readonly"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="remark">备注：</label>
 						<div class="controls">
-							<input id="remark" type="text" value="可手动输入" onfocus="this.value=''"/>
+							<input id="remark" type="text"/>
 						</div>
 					</div>
 
 					<div class="form-actions">
+<<<<<<< HEAD
 						<!-- <input type="button" class="btn btn-success" name="btnmodify" value="修改" /> -->
 						<input class="btn btn-success" type="submit" name="btncomp" value="提交" onclick=""/>
+=======
+						<input type="button" class="btn btn-success" value="提交" onclick="check()"/> 
+						<input class="btn btn-success" type="button" value="更改" onclick="modify()"/>
+>>>>>>> c8c31e6c359eca4888799130516cbcacb7801c7d
 					</div>
 			</fieldset>
 		</form>
 	</div>
+<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+		$(".datepicker").datepicker({
+
+			 ViewMode: 'years',
+			format : 'yyyy-mm-dd',
+	
+			
+		});
+	
+</script>
 </body>
 </html>
