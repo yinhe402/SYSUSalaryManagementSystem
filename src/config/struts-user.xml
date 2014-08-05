@@ -19,7 +19,8 @@
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 
 		<action name="login" class="loginAction">
-			<result name="success" type="redirect">/userMain.jsp</result>
+			<result name="admin" type="redirect">/userMain.jsp</result>
+			<result name="success" type="redirect">/userQuerySalary.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
 		
@@ -69,16 +70,22 @@
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 		
-		<action name="salaryQuery" class="salaryQuery" method="querySalary">
-			<result name="success" type = "redirect">/Querystatistics.jsp</result>
-			<interceptor-ref name="myInterceptor"/>
-		</action>
-		
 		<action name="exportSalary" class="autoSalary" method="exportSalary">
 			<result name="success">/success.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 
+	</package>
+	
+	<package name="salaryQuery" namespace="/salaryQuery" extends="abstract_struts">
+		<action name="salaryQuery" class="salaryQuery" method="querySalary">
+			<result name="success" type = "redirect">/Querystatistics.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
+		<action name="userSalaryQuery" class="salaryQuery" method="userSalaryQuery">
+			<result name="success" type = "redirect">/userQuerySalary.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">

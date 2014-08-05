@@ -19,10 +19,10 @@
 					</script>
 						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
 					</script>
-					<script type="text/javascript">
-							
+					<script type="text/javascript">						
 						function initCaptcha() {
 							var verifyObj = document.getElementById("Verify");
+							this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							verifyObj.onclick = function() {
 								this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							};
