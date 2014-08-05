@@ -162,60 +162,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		职工号：<input type="text" name="queryId" /><br />
 		姓名：&nbsp;&nbsp;&nbsp;<input type="text" name="queryName" /><br />
 		单位：&nbsp;&nbsp;&nbsp;<input type="text" name="queryDepartment" /><br />
-		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="ok2()" value="查询" class="btn btn-success">
+		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="Query()" value="查询" class="btn btn-success">
 		</div>
 	</form>
-	<div id="div2" style="display:block;margin-left:16%;" class="span6">
+	
+	<div id="div2" style="margin-left:26%;" class="span6">
 	<hr/>
 	 
  
 	<form class="form-horizontal" id="myform4">
 	 
-		<table class="table table-bordered" width="100%">
+		<table class="table table-bordered" width="100%"  >
 		<thead>
 		<tr>
-		<td colspan="8" bgcolor="#CCFFFF"></td>
+		<td colspan="8" bgcolor="#CCFFFF" height="20px"></td>
 		</tr>
 		</thead>
 		<tbody>
 		<tr>
-		<td class="span3">姓名：</td>
-		<td class="span3"><s:property value="%{#queryList.getName()}" /></td>
+		<td class="span3" bgcolor="#FFFFFF">姓名：</td>
+		<td class="span3" bgcolor="#FFFFFF"><s:property value="%{#queryList.name}" /></td>
 		</tr>
 		
 		<tr>
-		<td>性别：</td>
-		<td><s:property value="%{#queryList.getGender()}" /></td>
+		<td bgcolor="#FFFFFF" >性别：</td>
+		<td bgcolor="#FFFFFF" ><s:property value="%{#queryList.getGender()}" /></td>
 		</tr>
 		
 		<tr>
-		<td>单位：</td>
-		<td><s:property value="%{#queryList.getDepartment()}" /></td>
+		<td bgcolor="#FFFFFF" >单位：</td>
+		<td bgcolor="#FFFFFF" ><s:property value="%{#queryList.getDepartment()}" /></td>
 		</tr>
 		
 		<tr>
-		<td>离校时间：</td>
-		<td><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
+		<td bgcolor="#FFFFFF">离校时间：</td>
+		<td bgcolor="#FFFFFF"><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
 		</tr>
 		
 		<tr>
-		<td>离校原因：</td>
-		<td><s:property value="%{#queryList.getReason()}" /></td>
+		<td bgcolor="#FFFFFF">离校原因：</td>
+		<td bgcolor="#FFFFFF"><s:property value="%{#queryList.getReason()}" /></td>
 		</tr>
 		
 		<tr>
-		<td>工资状态：</td>
-		<td><s:property value="%{#queryList.getState()}" /></td>
+		<td bgcolor="#FFFFFF">工资状态：</td>
+		<td bgcolor="#FFFFFF"><s:property value="%{#queryList.getState()}" /></td>
 		</tr>
 		
 		<tr>
-		<td>停薪时间：</td>
-		<td><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
+		<td bgcolor="#FFFFFF">停薪时间：</td>
+		<td bgcolor="#FFFFFF"><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
 		</tr>
 		
 		<tr>
-		<td>备注：</td>
-		<td><s:property value="%{#queryList.getNote()}" /></td>
+		<td bgcolor="#FFFFFF">备注：</td>
+		<td bgcolor="#FFFFFF"><s:property value="%{#queryList.getNote()}" /></td>
 		</tr>
 		</tbody>
 		</table>
