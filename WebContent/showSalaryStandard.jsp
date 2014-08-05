@@ -109,8 +109,8 @@
 														<s:param name="payLevel" value= "#proPayLevelList.payLevel" />
 														<s:param name="payLevelSalaryStandard" value= "#proPayLevelList.salaryStandard" />
 														</s:url>">修改</a></td>
-													</tr></td>
-																</tr>
+													</tr>
+															
 												</s:iterator>
 								
 

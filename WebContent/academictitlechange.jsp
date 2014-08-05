@@ -50,7 +50,6 @@
 <body onload="checkLogin()">
 	<div class="container">
 		<h2 style="text-align:center;">职称变动人员名单</h2>
-		
 	</div>
 	<hr/>
 	
