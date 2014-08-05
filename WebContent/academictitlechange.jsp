@@ -14,7 +14,7 @@
 <script type="text/javascript">
 			function checkLogin() {
 				var nid = "<%=session.getAttribute("user.id")%>";
-
+				
 				if (nid == "null" || nid == "") {
 				window.location.href = "login.jsp";
 				$(".alert").alert("请先登录！");
@@ -225,21 +225,21 @@
 					<div class="control-group">
 						<label class="control-label" for="currenttitle">现聘任职称：</label>
 						<div class="controls">
-							<input id="currenttitle" type="text" readonly="readonly" />
+							<input id="currenttitle" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="currentlabel">现职称级别：</label>
 						<div class="controls">
-							<input id="currentlabel" type="text" readonly="readonly" />
+							<input id="currentlabel" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="titlechangetime">职称变动时间：</label>
 						<div class="controls">
-							<input id="titlechangetime" type="text" readonly="readonly" />
+							<input id="titlechangetime" type="text" />
 						</div>
 					</div>
 
@@ -260,21 +260,21 @@
 					<div class="control-group">
 						<label class="control-label" for="poschangetime">岗位变动时间：</label>
 						<div class="controls">
-							<input id="poschangetime" type="text" readonly="readonly" />
+							<input id="poschangetime" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="currentpos">现聘任岗位：</label>
 						<div class="controls">
-							<input id="currentpos" type="text" readonly="readonly" />
+							<input id="currentpos" type="text" />
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="currentlabel">现聘岗级别：</label>
 						<div class="controls">
-							<input id="currentlabel" type="text" readonly="readonly" />
+							<input id="currentlabel" type="text" />
 						</div>
 					</div>
 

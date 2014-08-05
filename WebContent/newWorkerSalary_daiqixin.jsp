@@ -123,7 +123,6 @@
 	}
 
 	function delManExperience(o) {
-		i=i-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("manExperience").removeChild(o.parentNode);
@@ -190,7 +189,6 @@
 	}
 
 	function delProExperience(o) {
-		j=j-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("proExperience").removeChild(o.parentNode);
@@ -258,7 +256,6 @@
 	}
 
 	function delWorkerExperience(o) {
-		m=m-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("workerExperience").removeChild(
@@ -324,7 +321,6 @@
 	}
 
 	function delEduExperience(o) {
-		k=k-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("eduExperience").removeChild(o.parentNode);
@@ -404,7 +400,6 @@
 	}
 
 	function delBreakExperience(o) {
-		l=l-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("breakExperience")
