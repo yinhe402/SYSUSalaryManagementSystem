@@ -35,14 +35,16 @@ public class SalaryQuery {
 		salaryList=new ArrayList<Salary>();
 		List<Salary> templist=new ArrayList<Salary>();
 		List<Employee> employList = iEmployeeManage.findEmployeesByName(name);
+		System.out.println(employList.size());
 		if(eid==null){		
 			if(employList!=null){
 				for(int j=0;j<employList.size();j++){
 					templist=iSalaryManage.findSalaryByEId(employList.get(j).getId());
+					System.out.println(templist.size());
 					for(int i=0;i<templist.size();i++){
-						if((endDate==null || Integer.parseInt(templist.get(0).getTime().toString()) < Integer.parseInt(endDate.toString())) && 
-						   (startDate==null || Integer.parseInt(templist.get(0).getTime().toString()) > Integer.parseInt(startDate.toString())))
-							salaryList.add(templist.get(0));
+						if((endDate==null || (templist.get(i).getTime().getTime()) < (endDate.getTime())) && 
+								   (startDate==null || (templist.get(i).getTime().getTime()) > (startDate.getTime())))
+							salaryList.add(templist.get(i));
 					}
 				}
 			}
@@ -52,8 +54,6 @@ public class SalaryQuery {
 			System.out.println("hehe"+eid);
 			Employee emploee=iEmployeeManage.findEmployeeById(eid);
 			if(name.isEmpty() || emploee.getName().equals(name)){
-				System.out.println("wocao");
-				System.out.println(templist.size());
 				for(int i=0;i<templist.size();i++){
 					if((endDate==null || (templist.get(i).getTime().getTime()) < (endDate.getTime())) && 
 					   (startDate==null || (templist.get(i).getTime().getTime()) > (startDate.getTime())))
