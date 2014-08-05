@@ -1931,7 +1931,7 @@ public class ChangeAction {
 		return level;
 	}
 
-	public String PosChange() {
+	/*public String PosChange() {
 		int x = 111111;
 		int year = new Date().getYear();
 		String title = "TO DO";
@@ -1997,15 +1997,15 @@ public class ChangeAction {
 				
 				
 				//岗位工资确定
-				/*startSalaryInfo.setPositionSalary(manageSalaryManage
+				startSalaryInfo.setPositionSalary(manageSalaryManage
 						.findManPosSalByLevel(
 								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());*/
+						.getSalaryStandard());
 				//薪级工资确定
-				/*startSalaryInfo.setLevelSalary(manageSalaryManage
+				startSalaryInfo.setLevelSalary(manageSalaryManage
 						.findManPaySalByPayLevel(
 								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());*/
+						.getSalaryStandard());
 				
 			}
 		}
@@ -2076,21 +2076,21 @@ public class ChangeAction {
 				getSalaryLevel(manageList, techList, eduList, attendWorkDate, array1, array2, array1.size(), failTime, worList, psals);
 								
 				//岗位工资确定
-				/*startSalaryInfo.setPositionSalary(manageSalaryManage
+				startSalaryInfo.setPositionSalary(manageSalaryManage
 						.findManPosSalByLevel(
 								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());*/
+						.getSalaryStandard());
 				//薪级工资确定
-				/*startSalaryInfo.setLevelSalary(manageSalaryManage
+				startSalaryInfo.setLevelSalary(manageSalaryManage
 						.findManPaySalByPayLevel(
 								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());*/
+						.getSalaryStandard());
 				
 			}
 		}
 		return "fail";
 	}
-	
+	*/
 	public static class posSalaryAndlevelSalary {
 		public static int positionSalary;
 		public static int levelSalary;

@@ -188,6 +188,7 @@
 
 	}
 
+
 	function delProExperience(o) {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
@@ -337,7 +338,6 @@
 	}
 
 	function addBreakExperience() {
-
 		label0 = document.createElement("label");
 		label0.setAttribute("id", "label" + l);
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;

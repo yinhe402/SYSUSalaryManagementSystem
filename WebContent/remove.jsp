@@ -41,16 +41,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		function Query()
 		{
+					
 			var myform=document.getElementById("myform3");
 			myform.action="employee/query_remove";
 			myform.method="post";
-			myform.submit();
+			myform.submit();			
 			
-			var b=document.getElementById("div2");
-			if(b.style.display=="none")
-				b.style.display="block";
-			else
-				b.style.display="none";
 		}
 		function ok1()
 		{
@@ -61,6 +57,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				a.style.display="none"; */
 			var myform1=document.getElementById("myform1");
 			myform1.style.display="block";
+		}
+		function ok2()
+		{
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
+			else
+				b.style.display="none";
 		}
 		
 		function checkLogin() {
@@ -157,8 +161,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		单位：&nbsp;&nbsp;&nbsp;<input type="text" name="queryDepartment" /><br />
 		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="Query()" value="查询" class="btn btn-success">
 		</div>
-	</form>				
+	</form>
+	<div id="div2" style="display:none;width:85%;margin-left:20px;">
+	<hr/>
 	
+	<div class="row">
+	<div class="span2" style="text-align:right;">
+		<span>姓名：</span><br/>
+		<span>性别：</span><br/>
+		<span>单位：</span><br/>
+		<span>离校时间： </span><br/>
+		<span>离校原因：</span><br/>
+		<span>工资状态：</span><br/>
+		<span>停薪时间：</span><br/>
+		<span>备注：</span><br/>
+	</div>
+	<div>
+	<form class="form-horizontal" id="myform4" >
+		<input type="text" name="name" style="height:16px;"/><br />
+		<input type="text" name="gental" style="height:16px;"/><br />
+		<input type="text" name="department" style="height:16px;" /><br />
+		<input type="text" name="leaveDate" style="height:16px;"/><br />
+		<input type="text" name="leaveReason" style="height:16px;"/><br />
+		<input type="text" name="salaryState" style="height:16px;"/><br />
+		<input type="text" name="stopDate" style="height:16px;"/><br />
+		<input type="text" name="note" style="height:16px;"/><br />
+	</form>
+	</div>
+	</div>	
+	</div>
 </body>
 
 <script type="text/javascript" src="js/jquery.js"></script>

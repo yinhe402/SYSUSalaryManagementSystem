@@ -30,18 +30,19 @@
 					</script>
 				</head>
 				<body onload="initCaptcha()">
-					<div class="header">
+					<div class="header" style="width:900px;">
 						<h1 class="headerLogo">
-							<a title="" target="_blank" href="http://www.baidu.com/">
-								<img alt="logo" src="images/logo.jpg">
+							<a title="" target="_blank" >
+								<img alt="logo" src="img/logo.gif" style="margin-top:-3.6%;">
 							</a>
+							<h style="font-weight:bold;">职工基本工资信息管理系统</h>
 						</h1>
 					</div>
 					<div class="banner">
 						<div class="login-aside">
-							<div id="o-box-up">
+							<div id="o-box-up" style="margin-left:-15.4%;">
 							</div>
-							<div id="o-box-down" style="table-layout:fixed;">
+							<div id="o-box-down" style="table-layout:fixed; margin-left:-10.4%;">
 								<div class="error-box">
 								</div>
 								<form class="registerform" action="login" method="post">
@@ -78,7 +79,7 @@
 										</div>
 									</div>
 									<div class="fm-item">
-										<div class="span12">
+										<div class="span12" style="margin-left:20%; margin-top:30%;">
 											<button class="btn btn-info btn-block btn-large" type="submit">
 												登陆
 											</button>
