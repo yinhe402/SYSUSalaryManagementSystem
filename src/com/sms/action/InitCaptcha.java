@@ -23,6 +23,7 @@ public class InitCaptcha{
 
     
     public String execute() throws Exception {     
+    	
         //获取默认难度和长度的验证码
         String securityCode = SecurityCode.getSecurityCode();
         System.out.println(securityCode);

@@ -20,16 +20,16 @@ public class ComputeSalarySingleton {
 	//private Integer supplementSalary;//补发工资
 	 
 	private ComputeSalarySingleton(){
-		 areaDifference=0;
-		 positionAllowance=0;
-		 educationAllowance=0;
-		 specialPositionParas=(double) 0.0;
-		 specialLevelParas=(double) 0.0;
-		 onlyChildAllowance=0;
-		 otherPositionParas=(double) 0.0;
-		 otherLevelParas=(double) 0.0;
-		 phonePositionParam=(double) 0.0;
-		 phoneLevelParam=(double) 0.0;
+		 areaDifference=30;
+		 positionAllowance=40;
+		 educationAllowance=50;
+		 specialPositionParas=(double) 0.1;
+		 specialLevelParas=(double) 0.2;
+		 onlyChildAllowance=100;
+		 otherPositionParas=(double) 0.1;
+		 otherLevelParas=(double) 0.3;
+		 phonePositionParam=(double) 0.2;
+		 phoneLevelParam=(double) 0.3;
 	 }
 	 
 	 synchronized public static ComputeSalarySingleton getInstance(){
