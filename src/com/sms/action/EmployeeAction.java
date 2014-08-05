@@ -235,6 +235,7 @@ public class EmployeeAction extends ActionSupport {
 	
 	public String importEmployeeInfo() throws FileNotFoundException, ExcelException {
 		System.out.println("-------employeeAction.importEmployeeInfo--------");
+		Map session = ActionContext.getContext().getSession();
 		if (employeeFile != null) {
 			List<Employee> employeeList = new ArrayList<Employee>();
 			InputStream in = new FileInputStream(employeeFile);
@@ -263,14 +264,28 @@ public class EmployeeAction extends ActionSupport {
 			fieldMap.put("（拟）聘任岗位", "hireJob");
 			fieldMap.put("聘岗级别", "jobLevel");
 			String[] uniqueFields = {"职工号"};	
+			try {
 			employeeList = ExcelUtil.excelToList(in, "Sheet1", Employee.class, fieldMap, uniqueFields);			
 			for (Employee e : employeeList) {				
 				employeeManage.addEmployee(e);
 			}
+			
+			session.put("employeeList", employeeList);
+			session
+			.put("alertInfo", "导入完成！");
+			return "success";
+			}
+			catch (ExcelException e) {
+				session
+				.put("alertInfo", e.getMessage());
+				return "importFail";
+			}
 		}
-		ActionContext.getContext().getSession()
-		.put("alertInfo", "导入完成！");
-		return "success";
+		else {
+			session.put("alertInfo", "文件有错请重新选择!");
+			return "importFail";
+		}
+		
 	}
 	
 	public String importStopEmployeeInfo() throws FileNotFoundException, ExcelException {

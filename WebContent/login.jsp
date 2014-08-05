@@ -54,7 +54,7 @@
 										<label for="logonId" class="form-label">
 											账号
 										</label>
-										<input type="text" maxlength="10" name="user.id" class="i-text" datatype="s6-18"
+										<input type="text" maxlength="6" name="user.id" class="i-text" datatype="s6-18"
 										/>
 										<div class="ui-form-explain">
 										</div>

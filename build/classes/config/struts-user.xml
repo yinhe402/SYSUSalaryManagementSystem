@@ -93,6 +93,7 @@
 		<action name="*_*" class="employeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="importFail"> /ImportEmployeeInfo.jsp </result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>

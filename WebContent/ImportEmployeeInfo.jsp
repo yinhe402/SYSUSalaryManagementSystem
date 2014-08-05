@@ -48,8 +48,52 @@
 				class="file-input-wrapper btn btn-default btn-primary" />
 			<button type="submit" class="btn btn-success" onclick="succeed()">导入</button>
 		</div>
-
 	</s:form>
+	
+	<s:form name="EmployeeInfo">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:30px;">
+			<tr>
+				<td><table id="subtree1" style="DISPLAY: " width="100%"
+						border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td><table width="85%" border="0" align="center"
+									cellpadding="0" cellspacing="0" >
+									<tr>
+										<td height="40" class="font42">
+											<table width="100%" border="0" cellpadding="4"
+												cellspacing="1"  bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF">
+													<td height="22" colspan="7" align="center" 
+														style="font-size:16px; ">职工基本信息</td>
+												</tr>
+												<tr bgcolor="#EEEEEE">
+													<td width="10%">职工号</td>
+													<td width="10%">姓名</td>
+													<td width="10%">性别</td>
+													<td width="10%">邮箱</td>
+													<td width="10%">单位</td>
+												</tr>
+												
+												<s:iterator id="employeeList" value="#session.employeeList">
+													<tr bgcolor="#FFFFFF">
+														<td><s:property value="#employeeList.id" /></td>
+														<td><s:property value="#employeeList.name" /></td>
+														<td><s:property value="#employeeList.gender" /></td>
+														<td><s:property value="#employeeList.email"/></td>
+														<td><s:property value="#employeeList.department"/></td>
+													</tr>
+												</s:iterator>
+												
+											</table>
+										</td>
+									</tr>
+								</table></td>
+						</tr>
+					</table></td>
+			</tr>
+		</table>
+	</s:form>
+	
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.file-input.js"></script>
