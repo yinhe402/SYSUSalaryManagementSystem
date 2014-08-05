@@ -371,7 +371,7 @@ public class EmployeeAction extends ActionSupport {
 					lPInfoList.add(lPInfo);
 					
 					Map session = ActionContext.getContext().getSession();
-					session.put("idList", lPInfoList);
+					session.put("queryList", lPInfoList);
 					
 					return "success";
 				}
@@ -399,7 +399,7 @@ public class EmployeeAction extends ActionSupport {
 					}
 				}
 				Map session = ActionContext.getContext().getSession();
-				session.put("nameList", lPInfoList);
+				session.put("queryList", lPInfoList);
 				
 				return "success";
 			} else {				
@@ -425,7 +425,7 @@ public class EmployeeAction extends ActionSupport {
 						}
 					}
 					Map session = ActionContext.getContext().getSession();
-					session.put("departmentList", lPInfoList);
+					session.put("queryList", lPInfoList);
 					
 					return "success";
 				} else {

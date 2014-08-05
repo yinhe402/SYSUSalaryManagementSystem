@@ -17,6 +17,13 @@
 		<script type="text/javascript" src="js/index.js"></script>
 		
 		<script type="text/javascript">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
+>>>>>>> dbcb822002c0a60282c57a74325ea0e987f45f27
 		$(function(){ 
 		    $("#date_1").datepicker({
 	    		format: 'yyyy-mm-dd',
@@ -36,6 +43,7 @@
 				window.location.href="login.jsp";
 				$(".alert").alert("请先登录！");
 			}
+<<<<<<< HEAD
 	}
 			function checkLogin() {
 				var nid = "<%=session.getAttribute("user.id")%>";
@@ -45,6 +53,12 @@
 					$(".alert").alert("请先登录！");
 				}
 			}
+=======
+		}
+		
+<<<<<<< HEAD
+ 
+>>>>>>> dbcb822002c0a60282c57a74325ea0e987f45f27
 			function salaryQuery()
 			{
 				var myform=document.forms[0];
@@ -53,6 +67,22 @@
 				myform.submit();
 			}
 		</script>
+<<<<<<< HEAD
+=======
+ 
+=======
+
+
+		function salaryQuery()
+		{
+			var myform=document.forms[0];
+			myform.action="salaryQuery";
+			myform.method="post";
+			myform.submit();
+		}
+		</script>
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
+>>>>>>> dbcb822002c0a60282c57a74325ea0e987f45f27
 </head>
 <body onload="checkLogin()">
 	<form class="form-horizontal">
@@ -68,11 +98,35 @@
 		</div>
 		 <div class="row" style="text-align:center; margin:0 auto;">
 			<div class="span6">
+<<<<<<< HEAD
 			<span>查询起始年月：</span><input type="text" id="date_1" name="startDate"/>
 			</div>
 			
 			<div class="span5">
 			<span>查询结束年月：</span><input type="text" id="date_2" name="endDate"/>
+=======
+<<<<<<< HEAD
+			<span>查询起始年月：</span><input type="text" id="date_1"/>
+			</div>
+			
+			<div class="span5">
+			<span>查询结束年月：</span><input type="text" id="date_2"/>
+ 
+ 
+=======
+
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
+			<span>查询起始年月：</span><input type="text" name="startDate"/>
+			</div>
+			
+			<div class="span5">
+			<span>查询结束年月：</span><input type="text" name="endDate"/>
+<<<<<<< HEAD
+ 
+=======
+
+>>>>>>> 4731ad030fb59e4ec6e51e1b7e6d63b589722ad2
+>>>>>>> dbcb822002c0a60282c57a74325ea0e987f45f27
 			</div>
 		  </div>
 		  

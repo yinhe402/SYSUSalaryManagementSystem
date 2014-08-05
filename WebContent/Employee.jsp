@@ -20,7 +20,7 @@
 
 	function showInfo() {
 		var info = "<%=session.getAttribute("alertInfo")%>";
-		<%session.remove("alertInfo")%>
+		<%session.removeAttribute("alertInfo");%>
 		if(info != "null" && info != "") {
 			alert(info);
 		}

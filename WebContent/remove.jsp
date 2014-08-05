@@ -46,11 +46,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			myform.method="post";
 			myform.submit();
 			
-			var b=document.getElementById("div2");
+			/*var b=document.getElementById("div2");
 			if(b.style.display=="none")
 				b.style.display="block";
 			else
-				b.style.display="none";
+				b.style.display="none";*/
+				 
+		}
+		function ok2()
+		{
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
 		}
 		function ok1()
 		{
@@ -157,8 +164,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		单位：&nbsp;&nbsp;&nbsp;<input type="text" name="queryDepartment" /><br />
 		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="Query()" value="查询" class="btn btn-success">
 		</div>
-	</form>				
+	</form>
 	
+	<div id="div2" style="margin-left:10px; width:100%:">
+	<hr/>
+	<form class="form-horizontal" id="myform4">
+	<table class="table table-bordered" width="100%" >
+	<thead>
+	<tr bgcolor="#CCFFFF">
+		<td>姓名</td>
+		<td>性别</td>
+		<td>单位</td>
+		<td>离校时间</td>
+		<td>离校原因</td>
+		<td>工资状态</td>
+		<td>停薪时间</td>
+		<td>备注</td>
+	</tr>
+	</thead>
+	<tbody>
+		<s:iterator id="queryList" value="#session.queryList">
+			<tr bgcolor="#EEEEEE">
+				<td><s:property value="%{#queryList.getName()}" /></td>
+				<td><s:property value="%{#queryList.getGender()}" /></td>
+				<td><s:property value="%{#queryList.getDepartment()}" /></td>
+				<td><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
+				<td><s:property value="%{#queryList.getReason()}" /></td>
+				<td><s:property value="%{#queryList.getState()}" /></td>
+				<td><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
+				<td><s:property value="%{#queryList.getNote()}" /></td>
+			</tr>
+		</s:iterator>
+
+	</tbody>
+	</table>
+	</form> 
+	</div>
 </body>
 
 <script type="text/javascript" src="js/jquery.js"></script>
