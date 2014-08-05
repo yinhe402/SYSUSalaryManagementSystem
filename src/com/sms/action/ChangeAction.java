@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +22,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 import org.omg.CORBA.Current;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.sms.entity.DepartmentChange;
+import com.sms.entity.Employee;
 import com.sms.entity.ExperienceInfo;
 import com.sms.entity.Experiences;
 import com.sms.entity.OffInfo;
@@ -72,6 +75,16 @@ public class ChangeAction {
 
 	public void setEmployeeManage(IEmployeeManage employeeManage) {
 		this.employeeManage = employeeManage;
+	}
+	
+	private Integer workerid;	
+
+	public Integer getWorkerid() {
+		return workerid;
+	}
+
+	public void setWorkerid(Integer workerid) {
+		this.workerid = workerid;
 	}
 
 	// 职工号是否有效
@@ -1931,6 +1944,20 @@ public class ChangeAction {
 		return level;
 	}
 
+	public String search() {
+		System.out.println("-------changeAction.search--------"
+				+ workerid);
+		if (isValid(workerid)) {
+			if (employeeManage.findEmployeeById(workerid) != null) {
+				Employee tmpEmployee = employeeManage.findEmployeeById(workerid);
+				Map session = ActionContext.getContext().getSession();
+				session.put("queryEmployee", tmpEmployee);
+				
+				return "success";
+			}
+		}
+		return "fail";
+	}
 	/*public String PosChange() {
 		int x = 111111;
 		int year = new Date().getYear();
