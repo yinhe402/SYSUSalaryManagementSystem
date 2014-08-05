@@ -46,11 +46,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			myform.method="post";
 			myform.submit();
 			
-			var b=document.getElementById("div2");
+			/*var b=document.getElementById("div2");
 			if(b.style.display=="none")
 				b.style.display="block";
 			else
-				b.style.display="none";
+				b.style.display="none";*/
+				 
+		}
+		function ok2()
+		{
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
 		}
 		function ok1()
 		{
@@ -155,36 +162,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		职工号：<input type="text" name="queryId" /><br />
 		姓名：&nbsp;&nbsp;&nbsp;<input type="text" name="queryName" /><br />
 		单位：&nbsp;&nbsp;&nbsp;<input type="text" name="queryDepartment" /><br />
-		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="Query()" value="查询" class="btn btn-success">
+		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="ok2()" value="查询" class="btn btn-success">
 		</div>
 	</form>
-	<div id="div2" style="display:none;width:85%;margin-left:20px;">
+	<div id="div2" style="display:block;margin-left:16%;" class="span6">
 	<hr/>
-	
-	<div class="row">
-	<div class="span2" style="text-align:right;">
-		<span>姓名：</span><br/>
-		<span>性别：</span><br/>
-		<span>单位：</span><br/>
-		<span>离校时间： </span><br/>
-		<span>离校原因：</span><br/>
-		<span>工资状态：</span><br/>
-		<span>停薪时间：</span><br/>
-		<span>备注：</span><br/>
-	</div>
-	<div>
-	<form class="form-horizontal" id="myform4" >
-		<input type="text" name="name" style="height:16px;"/><br />
-		<input type="text" name="gental" style="height:16px;"/><br />
-		<input type="text" name="department" style="height:16px;" /><br />
-		<input type="text" name="leaveDate" style="height:16px;"/><br />
-		<input type="text" name="leaveReason" style="height:16px;"/><br />
-		<input type="text" name="salaryState" style="height:16px;"/><br />
-		<input type="text" name="stopDate" style="height:16px;"/><br />
-		<input type="text" name="note" style="height:16px;"/><br />
+	 
+ 
+	<form class="form-horizontal" id="myform4">
+	 
+		<table class="table table-bordered" width="100%">
+		<thead>
+		<tr>
+		<td colspan="8" bgcolor="#CCFFFF"></td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td class="span3">姓名：</td>
+		<td class="span3"><s:property value="%{#queryList.getName()}" /></td>
+		</tr>
+		
+		<tr>
+		<td>性别：</td>
+		<td><s:property value="%{#queryList.getGender()}" /></td>
+		</tr>
+		
+		<tr>
+		<td>单位：</td>
+		<td><s:property value="%{#queryList.getDepartment()}" /></td>
+		</tr>
+		
+		<tr>
+		<td>离校时间：</td>
+		<td><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
+		</tr>
+		
+		<tr>
+		<td>离校原因：</td>
+		<td><s:property value="%{#queryList.getReason()}" /></td>
+		</tr>
+		
+		<tr>
+		<td>工资状态：</td>
+		<td><s:property value="%{#queryList.getState()}" /></td>
+		</tr>
+		
+		<tr>
+		<td>停薪时间：</td>
+		<td><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
+		</tr>
+		
+		<tr>
+		<td>备注：</td>
+		<td><s:property value="%{#queryList.getNote()}" /></td>
+		</tr>
+		</tbody>
+		</table>
 	</form>
-	</div>
-	</div>	
 	</div>
 </body>
 
