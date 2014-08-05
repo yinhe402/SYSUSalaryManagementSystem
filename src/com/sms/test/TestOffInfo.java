@@ -15,7 +15,7 @@ import com.sms.dao.impl.EmployeeDaoImp;
 import com.sms.entity.Employee;
 import com.sms.entity.User;
 
-public class TestSalaryDaoImp {
+public class TestOffInfo {
 	 public static IUserDao iemployeeDao;
 	 
 	@BeforeClass

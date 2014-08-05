@@ -16,6 +16,18 @@ public class OffInfo {
 	private Date startDate; //开始时间
 	private Date endDate; //结束时间
 	private String reason; //原因
+	
+	public OffInfo() {
+		this.eid = 000000;
+	}
+	
+	public OffInfo(Integer eid, Date sDate, Date eDate, String reason) {
+		this.eid = eid;
+		this.startDate = sDate;
+		this.endDate = eDate;
+		this.reason = reason;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {

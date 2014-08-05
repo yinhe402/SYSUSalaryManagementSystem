@@ -41,23 +41,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		function Query()
 		{
+					
 			var myform=document.getElementById("myform3");
 			myform.action="employee/query_remove";
 			myform.method="post";
 			myform.submit();
-			
-			/*var b=document.getElementById("div2");
-			if(b.style.display=="none")
-				b.style.display="block";
-			else
-				b.style.display="none";*/
-				 
-		}
-		function ok2()
-		{
-			var b=document.getElementById("div2");
-			if(b.style.display=="none")
-				b.style.display="block";
 		}
 		function ok1()
 		{
@@ -68,6 +56,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				a.style.display="none"; */
 			var myform1=document.getElementById("myform1");
 			myform1.style.display="block";
+		}
+		function ok2()
+		{
+			var b=document.getElementById("div2");
+			if(b.style.display=="none")
+				b.style.display="block";
+			else
+				b.style.display="none";
 		}
 		
 		function checkLogin() {
@@ -206,8 +202,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/bootstrap.file-input.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-		$('input[type=file]').bootstrapFileInput();
-		$('.file-inputs').bootstrapFileInput();
+$('input[type=file]').bootstrapFileInput();
+$('.file-inputs').bootstrapFileInput();
 
 </script>
 

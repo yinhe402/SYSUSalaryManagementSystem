@@ -42,7 +42,7 @@ public class OffInfoDaoImp implements IOffInfoDao {
 	@Override
 	public List<OffInfo> findOffInfoByEId(Integer eid) {
 		Query query = (Query)getSession().createQuery("from OffInfo where eid= ?");
-		query.setString(0, eid.toString());	
+		query.setInteger(0, eid);	
 		return (List<OffInfo>)query.list();
 	}
 	@Override

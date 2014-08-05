@@ -14,9 +14,13 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sms.entity.Employee;
 import com.sms.entity.ExperienceInfo;
+import com.sms.entity.Experiences;
+import com.sms.entity.OffInfo;
 import com.sms.entity.StartSalaryInfo;
 import com.sms.service.IEmployeeManage;
+import com.sms.service.IExperiencesManage;
 import com.sms.service.IManageSalaryManage;
+import com.sms.service.IOffInfoManage;
 import com.sms.service.IProfSalaryManage;
 import com.sms.service.IStartSalaryInfoManage;
 import com.sms.service.IWorkerSalaryManage;
@@ -165,6 +169,28 @@ public class NewEmployeeAction extends ActionSupport {
 
 	public void setWorkerSalaryManage(IWorkerSalaryManage workerSalaryManage) {
 		this.workerSalaryManage = workerSalaryManage;
+	}
+
+	@Resource
+	private IExperiencesManage experiencesManage;
+
+	public IExperiencesManage getExperiencesManage() {
+		return experiencesManage;
+	}
+
+	public void setExperiencesManage(IExperiencesManage experiencesManage) {
+		this.experiencesManage = experiencesManage;
+	}
+
+	@Resource
+	private IOffInfoManage offInfoManage;	
+	
+	public IOffInfoManage getOffInfoManage() {
+		return offInfoManage;
+	}
+
+	public void setOffInfoManage(IOffInfoManage offInfoManage) {
+		this.offInfoManage = offInfoManage;
 	}
 
 	public static boolean isValid(int value) {
@@ -402,6 +428,7 @@ public class NewEmployeeAction extends ActionSupport {
 
 		int officeTime = 0;
 		int level = 0;
+		int wageMax = 0;
 
 		if (worList.size() == 0) {
 			if (attendWorkDate.before(baseWorkDate)) {
@@ -690,7 +717,12 @@ public class NewEmployeeAction extends ActionSupport {
 								11 - manageMaxLevel).getStartPayLevel())
 							curLevel = manageSalaryManage.findManPosSalByLevel(
 									11 - manageMaxLevel).getStartPayLevel();
-						if (curLevel > level) {
+						/*if (curLevel > level) {
+							level = curLevel;
+							officeTime = curOfficeTime;
+						}*/
+						if (manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard();
 							level = curLevel;
 							officeTime = curOfficeTime;
 						}
@@ -720,7 +752,12 @@ public class NewEmployeeAction extends ActionSupport {
 							curLevel1 = manageSalaryManage
 									.findManPosSalByLevel(11 - manageMaxLevel)
 									.getStartPayLevel();
-						if (curLevel1 > level) {
+						/*if (curLevel1 > level) {
+							level = curLevel1;
+							officeTime = officeTime1;
+						}*/
+						if (manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard();
 							level = curLevel1;
 							officeTime = officeTime1;
 						}
@@ -751,7 +788,12 @@ public class NewEmployeeAction extends ActionSupport {
 									.findManPosSalByLevel(
 											11 - manageSecMaxLevel)
 									.getStartPayLevel();
-						if (curLevel2 > level) {
+						/*if (curLevel2 > level) {
+							level = curLevel2;
+							officeTime = officeTime2;
+						}*/
+						if (manageSalaryManage.findManPosSalByLevel(manageSecMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageSecMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = manageSalaryManage.findManPosSalByLevel(manageSecMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageSecMaxLevel).getSalaryStandard();
 							level = curLevel2;
 							officeTime = officeTime2;
 						}
@@ -785,7 +827,12 @@ public class NewEmployeeAction extends ActionSupport {
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel = profSalaryManage.findProfPosSalByLevel(
 									14 - techMaxLevel).getStartPayLevel();
-						if (curLevel > level) {
+						/*if (curLevel > level) {
+							level = curLevel;
+							officeTime = curOfficeTime;
+						}*/
+						if (profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard();
 							level = curLevel;
 							officeTime = curOfficeTime;
 						}
@@ -820,7 +867,12 @@ public class NewEmployeeAction extends ActionSupport {
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel1 = profSalaryManage.findProfPosSalByLevel(
 									14 - techMaxLevel).getStartPayLevel();
-						if (curLevel1 > level) {
+						/*if (curLevel1 > level) {
+							level = curLevel1;
+							officeTime = officeTime1;
+						}*/
+						if (profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard();
 							level = curLevel1;
 							officeTime = officeTime1;
 						}
@@ -849,7 +901,12 @@ public class NewEmployeeAction extends ActionSupport {
 								14 - techSecMaxLevel).getStartPayLevel())
 							curLevel2 = profSalaryManage.findProfPosSalByLevel(
 									14 - techSecMaxLevel).getStartPayLevel();
-						if (curLevel2 > level) {
+						/*if (curLevel2 > level) {
+							level = curLevel2;
+							officeTime = officeTime2;
+						}*/
+						if (profSalaryManage.findProfPosSalByLevel(techSecMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techSecMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = profSalaryManage.findProfPosSalByLevel(techSecMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techSecMaxLevel).getSalaryStandard();
 							level = curLevel2;
 							officeTime = officeTime2;
 						}
@@ -927,7 +984,12 @@ public class NewEmployeeAction extends ActionSupport {
 								curLevel = profSalaryManage
 										.findProfPosSalByLevel(7 - worMaxLevel)
 										.getStartPayLevel();
-							if (curLevel > level) {
+							/*if (curLevel > level) {
+								level = curLevel;
+								officeTime = curOfficeTime;
+							}*/
+							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel).getSalaryStandard() > wageMax) {
+								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel).getSalaryStandard();
 								level = curLevel;
 								officeTime = curOfficeTime;
 							}
@@ -957,7 +1019,12 @@ public class NewEmployeeAction extends ActionSupport {
 								curLevel1 = profSalaryManage
 										.findProfPosSalByLevel(7 - worMaxLevel)
 										.getStartPayLevel();
-							if (curLevel1 > level) {
+							/*if (curLevel1 > level) {
+								level = curLevel1;
+								officeTime = officeTime1;
+							}*/
+							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel1).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel1).getSalaryStandard() > wageMax) {
+								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel1).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel1).getSalaryStandard();
 								level = curLevel1;
 								officeTime = officeTime1;
 							}
@@ -987,7 +1054,12 @@ public class NewEmployeeAction extends ActionSupport {
 								curLevel2 = profSalaryManage
 										.findProfPosSalByLevel(7 - worMaxLevel)
 										.getStartPayLevel();
-							if (curLevel2 > level) {
+							/*if (curLevel2 > level) {
+								level = curLevel2;
+								officeTime = officeTime2;
+							}*/
+							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel2).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel2).getSalaryStandard() > wageMax) {
+								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel2).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel2).getSalaryStandard();
 								level = curLevel2;
 								officeTime = officeTime2;
 							}
@@ -1007,6 +1079,7 @@ public class NewEmployeeAction extends ActionSupport {
 			ArrayList<Date> array1, ArrayList<Date> array2, int arrayNum,
 			int failTime, ArrayList<ExperienceInfo> worList) {
 		int level = 0;
+		int wageMax = 0;
 
 		Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
 		String baseDateStr = "2006-07-01";
@@ -1299,7 +1372,11 @@ public class NewEmployeeAction extends ActionSupport {
 								11 - manageMaxLevel).getStartPayLevel())
 							curLevel = manageSalaryManage.findManPosSalByLevel(
 									11 - manageMaxLevel).getStartPayLevel();
-						if (curLevel > level) {
+						/*if (curLevel > level) {
+							level = curLevel;
+						}*/
+						if (manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard();
 							level = curLevel;
 						}
 						System.out.println("对应薪级：  " + curLevel);
@@ -1329,7 +1406,11 @@ public class NewEmployeeAction extends ActionSupport {
 									.findManPosSalByLevel(11 - manageMaxLevel)
 									.getStartPayLevel();
 						System.out.println("level=" + level);
-						if (curLevel1 > level) {
+						/*if (curLevel1 > level) {
+							level = curLevel1;
+						}*/
+						if (manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard();
 							level = curLevel1;
 						}
 						System.out.println("level=" + level);
@@ -1361,7 +1442,11 @@ public class NewEmployeeAction extends ActionSupport {
 											11 - manageSecMaxLevel)
 									.getStartPayLevel();
 						System.out.println("level=" + level);
-						if (curLevel2 > level) {
+						/*if (curLevel2 > level) {
+							level = curLevel2;
+						}*/
+						if (manageSalaryManage.findManPosSalByLevel(manageSecMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageSecMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = manageSalaryManage.findManPosSalByLevel(manageSecMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageSecMaxLevel).getSalaryStandard();
 							level = curLevel2;
 						}
 						System.out.println("level=" + level);
@@ -1395,7 +1480,11 @@ public class NewEmployeeAction extends ActionSupport {
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel = profSalaryManage.findProfPosSalByLevel(
 									14 - techMaxLevel).getStartPayLevel();
-						if (curLevel > level) {
+						/*if (curLevel > level) {
+							level = curLevel;
+						}*/
+						if (profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard();
 							level = curLevel;
 						}
 						System.out.println("对应薪级：  " + curLevel);
@@ -1422,7 +1511,11 @@ public class NewEmployeeAction extends ActionSupport {
 								14 - techMaxLevel).getStartPayLevel())
 							curLevel1 = profSalaryManage.findProfPosSalByLevel(
 									14 - techMaxLevel).getStartPayLevel();
-						if (curLevel1 > level) {
+						/*if (curLevel1 > level) {
+							level = curLevel1;
+						}*/
+						if (profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard();
 							level = curLevel1;
 						}
 						System.out.println("对应薪级：  " + curLevel1);
@@ -1449,7 +1542,11 @@ public class NewEmployeeAction extends ActionSupport {
 								14 - techSecMaxLevel).getStartPayLevel())
 							curLevel2 = profSalaryManage.findProfPosSalByLevel(
 									14 - techSecMaxLevel).getStartPayLevel();
-						if (curLevel2 > level) {
+						/*if (curLevel2 > level) {
+							level = curLevel2;
+						}*/
+						if (profSalaryManage.findProfPosSalByLevel(techSecMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techSecMaxLevel).getSalaryStandard() > wageMax) {
+							wageMax = profSalaryManage.findProfPosSalByLevel(techSecMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techSecMaxLevel).getSalaryStandard();
 							level = curLevel2;
 						}
 						System.out.println("对应薪级：  " + curLevel2);
@@ -1576,7 +1673,11 @@ public class NewEmployeeAction extends ActionSupport {
 								curLevel = profSalaryManage
 										.findProfPosSalByLevel(7 - worMaxLevel)
 										.getStartPayLevel();
-							if (curLevel > level) {
+							/*if (curLevel > level) {
+								level = curLevel;
+							}*/
+							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel).getSalaryStandard() > wageMax) {
+								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel).getSalaryStandard();
 								level = curLevel;
 							}
 							System.out.println("对应薪级：  " + curLevel);
@@ -1605,7 +1706,11 @@ public class NewEmployeeAction extends ActionSupport {
 								curLevel1 = profSalaryManage
 										.findProfPosSalByLevel(7 - worMaxLevel)
 										.getStartPayLevel();
-							if (curLevel1 > level) {
+							/*if (curLevel1 > level) {
+								level = curLevel1;
+							}*/
+							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel1).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel1).getSalaryStandard() > wageMax) {
+								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel1).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel1).getSalaryStandard();
 								level = curLevel1;
 							}
 							System.out.println("对应薪级：  " + curLevel1);
@@ -1634,7 +1739,11 @@ public class NewEmployeeAction extends ActionSupport {
 								curLevel2 = profSalaryManage
 										.findProfPosSalByLevel(7 - worMaxLevel)
 										.getStartPayLevel();
-							if (curLevel2 > level) {
+							/*if (curLevel2 > level) {
+								level = curLevel2;
+							}*/
+							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel2).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel2).getSalaryStandard() > wageMax) {
+								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel2).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel2).getSalaryStandard();
 								level = curLevel2;
 							}
 							System.out.println("对应薪级：  " + curLevel2);
@@ -1707,6 +1816,10 @@ public class NewEmployeeAction extends ActionSupport {
 				HttpServletRequest request = ServletActionContext.getRequest();
 				startSalaryInfo.setOperateDate(new Date());
 
+				Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
+				String baseDateStr = "2006-07-01";
+				baseWorkDate = strToDate(baseDateStr);
+				
 				Date attendWorkDate = strToDate(startWorkYear);
 
 				ArrayList<Date> array1 = new ArrayList<Date>(), array2 = new ArrayList<Date>();
@@ -1727,6 +1840,11 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("manExperience" + count), Integer
 							.parseInt(request.getParameter("manWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 1,
+							Integer.parseInt(request.getParameter("manWorkDate"
+									+ count)),
+							request.getParameter("manExperience" + count)));
 				}
 
 				for (int count = 0; count < j; count++) {
@@ -1738,6 +1856,11 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("proExperience" + count), Integer
 							.parseInt(request.getParameter("proWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 2,
+							Integer.parseInt(request.getParameter("proWorkDate"
+									+ count)),
+							request.getParameter("proExperience" + count)));
 				}
 
 				for (int count = 0; count < k; count++) {
@@ -1749,6 +1872,11 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("eduExperience" + count), Integer
 							.parseInt(request.getParameter("eduWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 0,
+							Integer.parseInt(request.getParameter("eduWorkDate"
+									+ count)),
+							request.getParameter("eduExperience" + count)));
 				}
 
 				for (int count = 0; count < m; count++) {
@@ -1760,17 +1888,27 @@ public class NewEmployeeAction extends ActionSupport {
 							.getParameter("workerExperience" + count), Integer
 							.parseInt(request.getParameter("workerWorkDate"
 									+ count))));
+					experiencesManage.addExperiences(new Experiences(
+							startSalaryInfo.getEid(), 3,
+							Integer.parseInt(request
+									.getParameter("workerWorkDate" + count)),
+							request.getParameter("workerExperience" + count)));
 				}
 
 				for (int count = 0; count < l; count++) {
-					System.out.println(request.getParameter("breakStartDate"
-							+ count));
-					System.out.println(request.getParameter("breakEndDate"
-							+ count));
-					array1.add(strToDate(request.getParameter("breakStartDate"
-							+ count)));
-					array2.add(strToDate(request.getParameter("breakEndDate"
-							+ count)));
+					Date sDate = strToDate(request.getParameter("breakStartDate" + count));
+					Date eDate = strToDate(request.getParameter("breakEndDate" + count));
+					if (eDate.before(baseWorkDate)) {
+						array1.add(sDate);
+						array2.add(eDate);
+					}
+					else {
+						if (sDate.before(baseWorkDate)) {
+							array1.add(sDate);
+							array2.add(baseWorkDate);
+						}
+					}
+					offInfoManage.addOffInfo(new OffInfo(startSalaryInfo.getEid(), strToDate(request.getParameter("breakStartDate" + count)), strToDate(request.getParameter("breakEndDate" + count)), "不详"));
 				}
 
 				startSalaryInfo.setBreakOffSeniority(getBreakUpYears(array1,

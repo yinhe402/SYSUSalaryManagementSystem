@@ -150,13 +150,15 @@ public class LoginAction extends ActionSupport {
 			if(inputCaptcha.equalsIgnoreCase(autoCaptcha)){
 				session.put("user.id", userIdString);
 				System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
-				Employee employeeLogin = iEmployeeManage.findEmployeeById(user.getId());
+				
+				Employee employeeLogin = iEmployeeManage.findEmployeeById(userNameInteger);
+				
 				session.put("employeeLogin", employeeLogin);
 				
 				if (userManage.findUserById(userNameInteger).getUserType()==1) {
 					return "admin";
 				}
-				else if(user.getUserType()==0)
+				else if(userManage.findUserById(userNameInteger).getUserType()==0)
 					return "success";
 				else{
 					System.out.println("用户类型未定义");
