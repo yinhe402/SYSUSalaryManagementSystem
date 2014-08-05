@@ -13,10 +13,21 @@
 					<link href="css/demo.css" rel="stylesheet" rev="stylesheet" type="text/css"
 					media="all" />
 					<link href="css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 					<script type="text/javascript">
 							
+=======
+					<script type="text/javascript" src="js/jquery1.42.min.js">
+					</script>
+					<script type="text/javascript" src="js/jquery.SuperSlide.js">
+					</script>
+						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
+					</script>
+					<script type="text/javascript">						
+>>>>>>> b2aa401532f2cbf5b02cde9570d232422a4d2789
 						function initCaptcha() {
 							var verifyObj = document.getElementById("Verify");
+							this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							verifyObj.onclick = function() {
 								this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							};

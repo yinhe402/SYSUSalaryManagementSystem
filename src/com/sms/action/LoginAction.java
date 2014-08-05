@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.poi.hssf.usermodel.examples.OfficeDrawing;
 import org.apache.struts2.ServletActionContext;
 import org.aspectj.weaver.bcel.AtAjAttributes;
 import org.hibernate.Session;
@@ -137,13 +138,8 @@ public class LoginAction extends ActionSupport {
 
 		System.out.println(CorrectUserPassword);
 
-		if (user.getId() == 999999) {
-			System.out.println("测试用");
-			session.put("user.id", userIdString);
-			return "success";
-		}
-
 		
+
 		autoCaptcha = (String) session.get("SESSION_SECURITY_CODE");
 
 		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
@@ -157,8 +153,15 @@ public class LoginAction extends ActionSupport {
 				Employee employeeLogin = iEmployeeManage.findEmployeeById(user.getId());
 				session.put("employeeLogin", employeeLogin);
 				
-
-				return "success";
+				if (userManage.findUserById(userNameInteger).getUserType()==1) {
+					return "admin";
+				}
+				else if(user.getUserType()==0)
+					return "success";
+				else{
+					System.out.println("用户类型未定义");
+					return "fail";
+				}
 			} else {
 				System.out.println(inputCaptcha);
 				System.out.println(autoCaptcha);
