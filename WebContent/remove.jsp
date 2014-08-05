@@ -166,61 +166,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</form>
 	
-	<div id="div2" style="margin-left:26%;" class="span6">
+	<div id="div2" style="margin-left:10px; width:100%:">
 	<hr/>
-	 
- 
 	<form class="form-horizontal" id="myform4">
-	 
-		<table class="table table-bordered" width="100%"  >
-		<thead>
-		<tr>
-		<td colspan="8" bgcolor="#CCFFFF" height="20px"></td>
-		</tr>
-		</thead>
-		<tbody>
-		<tr>
-		<td class="span3" bgcolor="#FFFFFF">姓名：</td>
-		<td class="span3" bgcolor="#FFFFFF"><s:property value="%{#queryList.name}" /></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF" >性别：</td>
-		<td bgcolor="#FFFFFF" ><s:property value="%{#queryList.getGender()}" /></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF" >单位：</td>
-		<td bgcolor="#FFFFFF" ><s:property value="%{#queryList.getDepartment()}" /></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF">离校时间：</td>
-		<td bgcolor="#FFFFFF"><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF">离校原因：</td>
-		<td bgcolor="#FFFFFF"><s:property value="%{#queryList.getReason()}" /></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF">工资状态：</td>
-		<td bgcolor="#FFFFFF"><s:property value="%{#queryList.getState()}" /></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF">停薪时间：</td>
-		<td bgcolor="#FFFFFF"><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
-		</tr>
-		
-		<tr>
-		<td bgcolor="#FFFFFF">备注：</td>
-		<td bgcolor="#FFFFFF"><s:property value="%{#queryList.getNote()}" /></td>
-		</tr>
-		</tbody>
-		</table>
-	</form>
+	<table class="table table-bordered" width="100%" >
+	<thead>
+	<tr bgcolor="#CCFFFF">
+		<td>姓名</td>
+		<td>性别</td>
+		<td>单位</td>
+		<td>离校时间</td>
+		<td>离校原因</td>
+		<td>工资状态</td>
+		<td>停薪时间</td>
+		<td>备注</td>
+	</tr>
+	</thead>
+	<tbody>
+		<s:iterator id="queryList" value="#session.queryList">
+			<tr bgcolor="#EEEEEE">
+				<td><s:property value="%{#queryList.getName()}" /></td>
+				<td><s:property value="%{#queryList.getGender()}" /></td>
+				<td><s:property value="%{#queryList.getDepartment()}" /></td>
+				<td><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
+				<td><s:property value="%{#queryList.getReason()}" /></td>
+				<td><s:property value="%{#queryList.getState()}" /></td>
+				<td><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
+				<td><s:property value="%{#queryList.getNote()}" /></td>
+			</tr>
+		</s:iterator>
+
+	</tbody>
+	</table>
+	</form> 
 	</div>
 </body>
 
