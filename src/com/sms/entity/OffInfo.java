@@ -17,6 +17,10 @@ public class OffInfo {
 	private Date endDate; //结束时间
 	private String reason; //原因
 	
+	public OffInfo() {
+		this.eid = 000000;
+	}
+	
 	public OffInfo(Integer eid, Date sDate, Date eDate, String reason) {
 		this.eid = eid;
 		this.startDate = sDate;

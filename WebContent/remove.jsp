@@ -45,8 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var myform=document.getElementById("myform3");
 			myform.action="employee/query_remove";
 			myform.method="post";
-			myform.submit();			
-			
+			myform.submit();
 		}
 		function ok1()
 		{
@@ -162,33 +161,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input style="margin-left:15%;" type="button" name="btnsmit" onclick="Query()" value="查询" class="btn btn-success">
 		</div>
 	</form>
-	<div id="div2" style="display:none;width:85%;margin-left:20px;">
-	<hr/>
 	
-	<div class="row">
-	<div class="span2" style="text-align:right;">
-		<span>姓名：</span><br/>
-		<span>性别：</span><br/>
-		<span>单位：</span><br/>
-		<span>离校时间： </span><br/>
-		<span>离校原因：</span><br/>
-		<span>工资状态：</span><br/>
-		<span>停薪时间：</span><br/>
-		<span>备注：</span><br/>
-	</div>
-	<div>
-	<form class="form-horizontal" id="myform4" >
-		<input type="text" name="name" style="height:16px;"/><br />
-		<input type="text" name="gental" style="height:16px;"/><br />
-		<input type="text" name="department" style="height:16px;" /><br />
-		<input type="text" name="leaveDate" style="height:16px;"/><br />
-		<input type="text" name="leaveReason" style="height:16px;"/><br />
-		<input type="text" name="salaryState" style="height:16px;"/><br />
-		<input type="text" name="stopDate" style="height:16px;"/><br />
-		<input type="text" name="note" style="height:16px;"/><br />
-	</form>
-	</div>
-	</div>	
+	<div id="div2" style="margin-left:10px; width:100%:">
+	<hr/>
+	<form class="form-horizontal" id="myform4">
+	<table class="table table-bordered" width="100%" >
+	<thead>
+	<tr bgcolor="#CCFFFF">
+		<td>姓名</td>
+		<td>性别</td>
+		<td>单位</td>
+		<td>离校时间</td>
+		<td>离校原因</td>
+		<td>工资状态</td>
+		<td>停薪时间</td>
+		<td>备注</td>
+	</tr>
+	</thead>
+	<tbody>
+		<s:iterator id="queryList" value="#session.queryList">
+			<tr bgcolor="#EEEEEE">
+				<td><s:property value="%{#queryList.getName()}" /></td>
+				<td><s:property value="%{#queryList.getGender()}" /></td>
+				<td><s:property value="%{#queryList.getDepartment()}" /></td>
+				<td><s:date name="%{#queryList.getLeaveDate()}" format="yyyy-MM-dd" /></td>
+				<td><s:property value="%{#queryList.getReason()}" /></td>
+				<td><s:property value="%{#queryList.getState()}" /></td>
+				<td><s:date name="%{#queryList.getStopDate()}" format="yyyy-MM-dd"/></td>
+				<td><s:property value="%{#queryList.getNote()}" /></td>
+			</tr>
+		</s:iterator>
+
+	</tbody>
+	</table>
+	</form> 
 	</div>
 </body>
 
@@ -196,8 +202,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/bootstrap.file-input.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-		$('input[type=file]').bootstrapFileInput();
-		$('.file-inputs').bootstrapFileInput();
+$('input[type=file]').bootstrapFileInput();
+$('.file-inputs').bootstrapFileInput();
 
 </script>
 

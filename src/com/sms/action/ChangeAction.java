@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -322,6 +323,81 @@ public class ChangeAction {
 	public void setOffInfoManage(IOffInfoManage offInfoManage) {
 		this.offInfoManage = offInfoManage;
 	}
+	
+	//职称变动
+	private String newLevelName;//现聘任职称
+	private Integer newLevelRank;//现职称级别
+	private String levelChangeTime;//职称变动时间
+	private String changeTime;//变动起薪时间
+	private String accordings;//变更依据
+	private String remarks;//备注
+	private String startTime;//起始工作时间
+	
+	private Integer failTimes;//考核失败次数
+	
+	public String getNewLevelName() {
+		return newLevelName;
+	}
+
+	public void setNewLevelName(String newLevelName) {
+		this.newLevelName = newLevelName;
+	}
+
+	public Integer getNewLevelRank() {
+		return newLevelRank;
+	}
+
+	public void setNewLevelRank(Integer newLevelRank) {
+		this.newLevelRank = newLevelRank;
+	}
+
+	public String getLevelChangeTime() {
+		return levelChangeTime;
+	}
+
+	public void setLevelChangeTime(String levelChangeTime) {
+		this.levelChangeTime = levelChangeTime;
+	}
+
+	public String getChangeTime() {
+		return changeTime;
+	}
+
+	public void setChangeTime(String changeTime) {
+		this.changeTime = changeTime;
+	}
+
+	public String getAccordings() {
+		return accordings;
+	}
+
+	public void setAccordings(String accordings) {
+		this.accordings = accordings;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public Integer getFailTimes() {
+		return failTimes;
+	}
+
+	public void setFailTimes(Integer failTimes) {
+		this.failTimes = failTimes;
+	}	
 
 	// 字符串到日期格式转化函数，输入字符串，返回日期
 	public Date strToDate(String str) {
@@ -1208,6 +1284,40 @@ public class ChangeAction {
 		Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
 		String baseDateStr = "2006-07-01";
 		baseWorkDate = strToDate(baseDateStr);
+		
+		/*Map<String, Integer> posAndLevelMap = new HashMap<String, Integer>();
+		
+		posAndLevelMap.put("正部级", 1);
+		posAndLevelMap.put("副部级", 2);
+		posAndLevelMap.put("正厅级", 3);
+		posAndLevelMap.put("副厅级", 4);
+		posAndLevelMap.put("正处级", 5);
+		posAndLevelMap.put("副处级", 6);
+		posAndLevelMap.put("正科级", 7);
+		posAndLevelMap.put("副科级", 8);
+		posAndLevelMap.put("科员", 9);
+		posAndLevelMap.put("办事员", 10);
+		
+		posAndLevelMap.put("正高一级", 1);
+		posAndLevelMap.put("正高二级", 2);
+		posAndLevelMap.put("正高三级", 3);
+		posAndLevelMap.put("正高四级", 4);
+		posAndLevelMap.put("副高五级", 5);
+		posAndLevelMap.put("副高六级", 6);
+		posAndLevelMap.put("副高七级", 7);
+		posAndLevelMap.put("中八级", 8);
+		posAndLevelMap.put("中九级", 9);
+		posAndLevelMap.put("中十级", 10);
+		posAndLevelMap.put("助理十一级", 11);
+		posAndLevelMap.put("助理十二级", 12);
+		posAndLevelMap.put("员是三级", 13);
+		
+		posAndLevelMap.put("技工一级", 1);
+		posAndLevelMap.put("技工二级", 2);
+		posAndLevelMap.put("技工三级", 3);
+		posAndLevelMap.put("技工四级", 4);
+		posAndLevelMap.put("技工五级", 5);
+		posAndLevelMap.put("普通工", 6);	*/	
 
 		if (worList.size() == 0) {
 			if (attendWorkDate.before(baseWorkDate)) {
@@ -1502,7 +1612,7 @@ public class ChangeAction {
 						if (manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard() > wageMax) {
 							wageMax = manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard();
 							level = curLevel;
-							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(level).getStartPayLevel();
+							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(11-manageMaxLevel).getSalaryStandard();
 							psAls.levelSalary = manageSalaryManage.findManPaySalByPayLevel(level).getSalaryStandard();
 						}
 						System.out.println("对应薪级：  " + curLevel);
@@ -1538,7 +1648,7 @@ public class ChangeAction {
 						if (manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard() > wageMax) {
 							wageMax = manageSalaryManage.findManPosSalByLevel(manageMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageMaxLevel).getSalaryStandard();
 							level = curLevel1;
-							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(level).getStartPayLevel();
+							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(11-manageMaxLevel).getSalaryStandard();
 							psAls.levelSalary = manageSalaryManage.findManPaySalByPayLevel(level).getSalaryStandard();
 						}
 						System.out.println("level=" + level);
@@ -1576,7 +1686,7 @@ public class ChangeAction {
 						if (manageSalaryManage.findManPosSalByLevel(manageSecMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageSecMaxLevel).getSalaryStandard() > wageMax) {
 							wageMax = manageSalaryManage.findManPosSalByLevel(manageSecMaxLevel).getSalaryStandard() + manageSalaryManage.findManPaySalByPayLevel(manageSecMaxLevel).getSalaryStandard();
 							level = curLevel2;
-							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(level).getStartPayLevel();
+							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(11-manageSecMaxLevel).getSalaryStandard();
 							psAls.levelSalary = manageSalaryManage.findManPaySalByPayLevel(level).getSalaryStandard();
 						}
 						System.out.println("level=" + level);
@@ -1616,8 +1726,8 @@ public class ChangeAction {
 						if (profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard() > wageMax) {
 							wageMax = profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard();
 							level = curLevel;
-							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(level).getStartPayLevel();
-							psAls.levelSalary = manageSalaryManage.findManPaySalByPayLevel(level).getSalaryStandard();
+							psAls.positionSalary = profSalaryManage.findProfPosSalByLevel(14-techMaxLevel).getSalaryStandard();
+							psAls.levelSalary = profSalaryManage.findProfPaySalByPayLevel(level).getSalaryStandard();
 						}
 						System.out.println("对应薪级：  " + curLevel);
 					} else {
@@ -1649,8 +1759,8 @@ public class ChangeAction {
 						if (profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard() > wageMax) {
 							wageMax = profSalaryManage.findProfPosSalByLevel(techMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techMaxLevel).getSalaryStandard();
 							level = curLevel1;
-							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(level).getStartPayLevel();
-							psAls.levelSalary = manageSalaryManage.findManPaySalByPayLevel(level).getSalaryStandard();
+							psAls.positionSalary = profSalaryManage.findProfPosSalByLevel(14-techMaxLevel).getSalaryStandard();
+							psAls.levelSalary = profSalaryManage.findProfPaySalByPayLevel(level).getSalaryStandard();
 						}
 						System.out.println("对应薪级：  " + curLevel1);
 
@@ -1682,8 +1792,8 @@ public class ChangeAction {
 						if (profSalaryManage.findProfPosSalByLevel(techSecMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techSecMaxLevel).getSalaryStandard() > wageMax) {
 							wageMax = profSalaryManage.findProfPosSalByLevel(techSecMaxLevel).getSalaryStandard() + profSalaryManage.findProfPaySalByPayLevel(techSecMaxLevel).getSalaryStandard();
 							level = curLevel2;
-							psAls.positionSalary = manageSalaryManage.findManPosSalByLevel(level).getStartPayLevel();
-							psAls.levelSalary = manageSalaryManage.findManPaySalByPayLevel(level).getSalaryStandard();
+							psAls.positionSalary = profSalaryManage.findProfPosSalByLevel(14-techSecMaxLevel).getSalaryStandard();
+							psAls.levelSalary = profSalaryManage.findProfPaySalByPayLevel(level).getSalaryStandard();
 						}
 						System.out.println("对应薪级：  " + curLevel2);
 					}
@@ -1815,6 +1925,8 @@ public class ChangeAction {
 							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel).getSalaryStandard() > wageMax) {
 								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel).getSalaryStandard();
 								level = curLevel;
+								psAls.positionSalary = workerSalaryManage.findWorkerPosSalByLevel(7-curLevel).getSalaryStandard();
+								psAls.levelSalary = workerSalaryManage.findWorkerPaySalByPayLevel(level).getSalaryStandard();
 							}
 							System.out.println("对应薪级：  " + curLevel);
 						} else {
@@ -1848,6 +1960,8 @@ public class ChangeAction {
 							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel1).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel1).getSalaryStandard() > wageMax) {
 								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel1).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel1).getSalaryStandard();
 								level = curLevel1;
+								psAls.positionSalary = workerSalaryManage.findWorkerPosSalByLevel(7-curLevel1).getSalaryStandard();
+								psAls.levelSalary = workerSalaryManage.findWorkerPaySalByPayLevel(level).getSalaryStandard();
 							}
 							System.out.println("对应薪级：  " + curLevel1);
 
@@ -1881,6 +1995,8 @@ public class ChangeAction {
 							if (workerSalaryManage.findWorkerPosSalByLevel(curLevel2).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel2).getSalaryStandard() > wageMax) {
 								wageMax = workerSalaryManage.findWorkerPosSalByLevel(curLevel2).getSalaryStandard() + workerSalaryManage.findWorkerPaySalByPayLevel(curLevel2).getSalaryStandard();
 								level = curLevel2;
+								psAls.positionSalary = workerSalaryManage.findWorkerPosSalByLevel(7-curLevel2).getSalaryStandard();
+								psAls.levelSalary = workerSalaryManage.findWorkerPaySalByPayLevel(level).getSalaryStandard();
 							}
 							System.out.println("对应薪级：  " + curLevel2);
 						}
@@ -1958,7 +2074,8 @@ public class ChangeAction {
 		}
 		return "fail";
 	}
-	/*public String PosChange() {
+	/*
+	public String PosChange() {
 		int x = 111111;
 		int year = new Date().getYear();
 		String title = "TO DO";
@@ -2039,18 +2156,24 @@ public class ChangeAction {
 		return "fail";
 	}
 
+	*/
 	public String PayLevelChange() {
-		int x = 111111;
+		System.out.println("-------changeAction.PayLevelChange--------"
+				+ workerid);
+		int x = workerid;
 		int year = new Date().getYear();
-		String title = "TO DO";
+		String title = newLevelName;
+		
 		if (isValid(x)) {
 			if (employeeManage.findEmployeeById(x) != null) {
 				
 				//更新Employee数据表中职务信息
-				//TODO
-				employeeManage.findEmployeeById(x).setHireTitle(hireTitle);
-				employeeManage.findEmployeeById(x).setTitleLevel(workLevel);
-				employeeManage.findEmployeeById(x).setHireDate(hireDate);
+				employeeManage.findEmployeeById(x).setHireTitle(newLevelName);
+				employeeManage.findEmployeeById(x).setTitleLevel(newLevelRank);
+				employeeManage.findEmployeeById(x).setHireDate(strToDate(levelChangeTime));
+				//更新StartSalaryInfo数据表中信息
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setStartSalaryDate(strToDate(changeTime));
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setRemarks(remarks);
 				
 				Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
 				String baseDateStr = "2006-07-01";
@@ -2096,28 +2219,22 @@ public class ChangeAction {
 					}
 				}
 				
-				//TODO
-				Date attendWorkDate = strToDate(str);
-				int failTime = 0;//自己填写
+				Date attendWorkDate = strToDate(startTime);
+				int failTime = failTimes;
 				posSalaryAndlevelSalary psals = new posSalaryAndlevelSalary();
 				getSalaryLevel(manageList, techList, eduList, attendWorkDate, array1, array2, array1.size(), failTime, worList, psals);
 								
 				//岗位工资确定
-				startSalaryInfo.setPositionSalary(manageSalaryManage
-						.findManPosSalByLevel(
-								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setPositionSalary(psals.positionSalary);
 				//薪级工资确定
-				startSalaryInfo.setLevelSalary(manageSalaryManage
-						.findManPaySalByPayLevel(
-								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setLevelSalary(psals.levelSalary);
 				
+				return "success";
 			}
 		}
 		return "fail";
 	}
-	*/
+	
 	public static class posSalaryAndlevelSalary {
 		public static int positionSalary;
 		public static int levelSalary;

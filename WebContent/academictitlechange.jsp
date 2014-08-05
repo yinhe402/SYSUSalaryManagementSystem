@@ -20,15 +20,15 @@
 				$(".alert").alert("请先登录！");
 				}
 			}
-		
-			function search(){
-				var myform = document.getElementById("changeInfo");
-				myform.action = "change/search_academictitlechange";
+
+			function search(){			
+			    var myform = document.getElementById("changeInfo");
+			    myform.action = "change/search_academictitlechange";
 				myform.method = "post";
 				myform.submit();
 			}
 			
-			function PayLevelChange(){
+			function levelChange(){
 				var myform = document.getElementById("changeInfo");
 				myform.action = "change/PayLevelChange_success";
 				myform.method = "post";
@@ -57,140 +57,140 @@
 				<div class="control-group">
 					<label class="control-label" for="name">姓名：</label>
 					<div class="controls">
-						<s:textfield id="name" name="employee.name" value="%{#session.queryEmployee.name}"/>
+						<s:textfield id="name" readonly="true" value="%{#session.queryEmployee.name}"/>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="mail">邮箱：</label>
 					<div class="controls">
-						<s:textfield id="email" value="%{#session.queryEmployee.email}"/>
+						<s:textfield id="email" readonly="true" value="%{#session.queryEmployee.email}"/>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="sex">性别：</label>
 					<div class="controls">
-						<s:textfield id="sex" value="%{#session.queryEmployee.gender}"/>
+						<s:textfield id="sex" readonly="true" value="%{#session.queryEmployee.gender}"/>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="birthday">出生日期：</label>
 					<div class="controls">
-						<s:textfield id="birthday" value="%{#session.queryEmployee.birthday}"/>
+						<s:textfield id="birthday" readonly="true" value="%{#session.queryEmployee.birthday}"/>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="identity">身份证号：</label>
 					<div class="controls">
-						<s:textfield id="uid" value="%{#session.queryEmployee.uid}"/>
+						<s:textfield id="uid" readonly="true" value="%{#session.queryEmployee.uid}"/>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="apartment">单位：</label>
 					<div class="controls">
-						<s:textfield id="department" value="%{#session.queryEmployee.department}"/>
+						<s:textfield id="department" readonly="true" value="%{#session.queryEmployee.department}"/>
 					</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="popro">岗位性质：</label>
 						<div class="controls">
-							<s:textfield id="jobType" value="%{#session.queryEmployee.jobType}"/>
+							<s:textfield id="jobType" readonly="true" value="%{#session.queryEmployee.jobType}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="capacity">人员身份：</label>
 						<div class="controls">
-							<s:textfield id="type" value="%{#session.queryEmployee.type}"/>
+							<s:textfield id="type" readonly="true" value="%{#session.queryEmployee.type}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="camefrom">进校来源：</label>
 						<div class="controls">
-							<s:textfield id="source" value="%{#session.queryEmployee.source}"/>
+							<s:textfield id="source" readonly="true" value="%{#session.queryEmployee.source}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="entrytime">入校报到时间：</label>
 						<div class="controls">
-							<s:textfield id="reachSchoolDate" value="%{#session.queryEmployee.reachSchoolDate}"/>
+							<s:textfield id="reachSchoolDate" readonly="true" value="%{#session.queryEmployee.reachSchoolDate}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="hteduexp">最高学历：</label>
 						<div class="controls">
-							<s:textfield id="maxEducation" value="%{#session.queryEmployee.maxEducation}"/>
+							<s:textfield id="maxEducation" readonly="true" value="%{#session.queryEmployee.maxEducation}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="gaintime">最高学历获得时间：</label>
 						<div class="controls">
-							<s:textfield id="maxEducationDate" value="%{#session.queryEmployee.maxEducationDate}"/>
+							<s:textfield id="maxEducationDate" readonly="true" value="%{#session.queryEmployee.maxEducationDate}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="htedupos">最高学位：</label>
 						<div class="controls">
-							<s:textfield id="maxDegree" value="%{#session.queryEmployee.maxDegree}"/>
+							<s:textfield id="maxDegree" readonly="true" value="%{#session.queryEmployee.maxDegree}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="gaintime2">最高学位获得时间：</label>
 						<div class="controls">
-							<s:textfield id="maxDegreeDate" value="%{#session.queryEmployee.maxDegreeDate}"/>
+							<s:textfield id="maxDegreeDate" readonly="true" value="%{#session.queryEmployee.maxDegreeDate}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="position">聘任职务：</label>
 						<div class="controls">
-							<s:textfield id="hireWork" value="%{#session.queryEmployee.hireWork}"/>
+							<s:textfield id="hireWork" readonly="true" value="%{#session.queryEmployee.hireWork}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="poslabel">职务级别：</label>
 						<div class="controls">
-							<s:textfield id="workLevel" value="%{#session.queryEmployee.workLevel}"/>
+							<s:textfield id="workLevel" readonly="true" value="%{#session.queryEmployee.workLevel}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="assumetime">任职时间：</label>
 						<div class="controls">
-							<s:textfield id="startWorkDate" value="%{#session.queryEmployee.startWorkDate}"/>
+							<s:textfield id="startWorkDate" readonly="true" value="%{#session.queryEmployee.startWorkDate}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="originaltitle">原聘任职称：</label>
 						<div class="controls">
-							<s:textfield id="hireTitle" value="%{#session.queryEmployee.hireTitle}"/>
+							<s:textfield id="hireTitle" readonly="true" value="%{#session.queryEmployee.hireTitle}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="originallabel">原职称级别：</label>
 						<div class="controls">
-							<s:textfield id="titleLevel" value="%{#session.queryEmployee.titleLevel}"/>
+							<s:textfield id="titleLevel" readonly="true" value="%{#session.queryEmployee.titleLevel}"/>
 						</div>
 					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="originaltime">原聘任时间：</label>
 						<div class="controls">
-							<s:textfield id="hireDate" value="%{#session.queryEmployee.hireDate}"/>
+							<s:textfield id="hireDate" readonly="true" value="%{#session.queryEmployee.hireDate}"/>
 						</div>
 					</div>
 
@@ -214,15 +214,27 @@
 							<input id="titlechangetime" type="text" class="datepicker" name="levelChangeTime"/>
 						</div>
 					</div>
-
-				
+									
 					<div class="control-group">
 						<label class="control-label" for="chansaltime">变动起薪时间：</label>
 						<div class="controls">
 							<input id="chansaltime" type="text" class="datepicker" name="changeTime"/>
 						</div>
 					</div>
-
+					
+					<div class="control-group">
+						<label class="control-label" for="chansaltime">起始工作时间：</label>
+						<div class="controls">
+							<input id="starttime" type="text" class="datepicker" name="startTime"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="currentlabel">考核不合格次数：</label>
+						<div class="controls">
+							<input id="currentlabel" type="text" name="failTimes"/>
+						</div>
+					</div>
 
 					<div class="control-group">
 						<label class="control-label" for="according">变更依据：</label>
