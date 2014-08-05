@@ -19,13 +19,17 @@ public class EmployeeManageImp implements IEmployeeManage {
 
 	@Override
 	public void addEmployee(Employee employee) {
-		employeeDao.addEmployee(employee);
-		
-		User user = new User();
-		user.setId(employee.getId());
-		user.setPassword(Md5.generatePassword(employee.getId().toString()));
-		user.setUserType(0);
-		userDao.AddUser(user);
+		if (findEmployeeById(employee.getId()) != null)
+			modifyEmployee(employee);
+		else {
+			employeeDao.addEmployee(employee);
+
+			User user = new User();
+			user.setId(employee.getId());
+			user.setPassword(Md5.generatePassword(employee.getId().toString()));
+			user.setUserType(0);
+			userDao.AddUser(user);
+		}
 	}
 
 	@Override
@@ -40,16 +44,17 @@ public class EmployeeManageImp implements IEmployeeManage {
 
 	@Override
 	public Employee findEmployeeById(Integer id) {
-		return (Employee)employeeDao.findEmployeeById(id);
+		return (Employee) employeeDao.findEmployeeById(id);
 	}
 
 	@Override
 	public List<Employee> findEmployeesByName(String name) {
-		return (List<Employee>)employeeDao.findEmployeesByName(name);
+		return (List<Employee>) employeeDao.findEmployeesByName(name);
 	}
-	
+
 	@Override
 	public List<Employee> findEmployeesByDepartment(String department) {
-		return (List<Employee>)employeeDao.findEmployeesByDepartment(department);
+		return (List<Employee>) employeeDao
+				.findEmployeesByDepartment(department);
 	}
 }

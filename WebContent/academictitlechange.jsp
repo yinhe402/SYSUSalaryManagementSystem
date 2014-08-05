@@ -23,7 +23,7 @@
 
 			function search(){			
 			    var myform = document.getElementById("changeInfo");
-			    myform.action = "change/search_academictitlechange";
+			    myform.action = "change/search1_academictitlechange";
 				myform.method = "post";
 				myform.submit();
 			}

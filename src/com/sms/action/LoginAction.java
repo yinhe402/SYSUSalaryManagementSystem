@@ -151,7 +151,7 @@ public class LoginAction extends ActionSupport {
 				if (userManage.findUserById(userNameInteger).getUserType()==1) {
 					return "admin";
 				}
-				else if(user.getUserType()==0)
+				else if(userManage.findUserById(userNameInteger).getUserType()==0)
 					return "success";
 				else{
 					System.out.println("用户类型未定义");
