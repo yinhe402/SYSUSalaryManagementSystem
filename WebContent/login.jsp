@@ -13,12 +13,6 @@
 					<link href="css/demo.css" rel="stylesheet" rev="stylesheet" type="text/css"
 					media="all" />
 					<link href="css/bootstrap.min.css" rel="stylesheet">
-					<script type="text/javascript" src="js/jquery1.42.min.js">
-					</script>
-					<script type="text/javascript" src="js/jquery.SuperSlide.js">
-					</script>
-						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
-					</script>
 					<script type="text/javascript">
 							
 						function initCaptcha() {
@@ -27,9 +21,19 @@
 								this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							};
 						}
+						function showError() {
+							var errorInfo = "<%=session.getAttribute("loginErrorInfo")%>";
+							if (errorInfo != "null" && errorInfo != "") {			
+									alert(errorInfo);
+								}
+
+						}
+
+						showError();
 					</script>
 				</head>
 				<body onload="initCaptcha()">
+
 					<div class="header">
 						<h1 class="headerLogo">
 							<a title="" target="_blank" href="http://www.baidu.com/">
@@ -100,5 +104,10 @@
 						</p>
 					</div>
 				</body>
-			
+			<script type="text/javascript" src="js/jquery1.42.min.js">
+					</script>
+					<script type="text/javascript" src="js/jquery.SuperSlide.js">
+					</script>
+						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
+					</script>
 			</html>

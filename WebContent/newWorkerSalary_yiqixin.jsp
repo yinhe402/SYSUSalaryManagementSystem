@@ -28,12 +28,10 @@
 		var nid = "<%=session.getAttribute("user.id")%>";
 		
 		if (nid == "null" || nid == "") {			
-			alert("请先登录！");
 			window.location.href="login.jsp";
-		
+			$(".alert").alert("请先登录！");
 		}
 	}
-	checkLogin();
 </script>
 </head>
 <body onload="checkLogin()">

@@ -20,12 +20,12 @@
 
 		<action name="login" class="loginAction">
 			<result name="success" type="redirect">/userMain.jsp</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="fail" type="redirect">/login.jsp</result>
 		</action>
 		
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success" type="redirect">/login.jsp</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="fail">/userMain.jsp</result>
 		</action>
 		
 		<action name="initCaptcha" class="initCaptcha">
@@ -66,6 +66,11 @@
 		
 		<action name="autoSalary" class="autoSalary" method="computeSalary">
 			<result name="success">/showSalaryForAll.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
+		
+		<action name="salaryQuery" class="salaryQuery" method="querySalary">
+			<result name="success" type = "redirect">/Querystatistics.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 		

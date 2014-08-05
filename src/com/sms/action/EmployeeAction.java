@@ -198,9 +198,12 @@ public class EmployeeAction extends ActionSupport {
 			employeeManage.addEmployee(employee);
 			ActionContext.getContext().getSession()
 					.put("addedEmployee", employee);
+			ActionContext.getContext().getSession()
+			.put("alertInfo", "增加成功！");
 			return "success";
 		}
 		return "fail";
+		
 	}
 
 	public String modifyEmployee() {
@@ -265,6 +268,8 @@ public class EmployeeAction extends ActionSupport {
 				employeeManage.addEmployee(e);
 			}
 		}
+		ActionContext.getContext().getSession()
+		.put("alertInfo", "导入完成！");
 		return "success";
 	}
 	

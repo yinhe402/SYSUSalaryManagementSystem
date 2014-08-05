@@ -100,8 +100,9 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(
 				"yyyy年MM月dd日 HH:mm:ss E");
+		String loginErrorInfo;
 		System.out.println(dateFormat.format(new Date()));
-
+		Map session = ActionContext.getContext().getSession();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		System.out.println(request.getCharacterEncoding());
 
@@ -111,6 +112,7 @@ public class LoginAction extends ActionSupport {
 
 		if (!isInteger(userIdString)) {
 			System.out.println("登录失败，用户名=" + userIdString + "，用户名应为纯数字");
+			session.put("loginErrorInfo", "职工号应为纯数字！");
 			return "fail";
 		}
 
@@ -119,12 +121,14 @@ public class LoginAction extends ActionSupport {
 		if (!isValid(userNameInteger)) {
 			System.out.println("登录失败，用户名=" + user.getId().toString()
 					+ "，用户名应为满足职工号范围的6位数字");
+			session.put("loginErrorInfo", "职工号应为六位数字！");
 			return "fail";
 		}
 
 		if (userManage.findUserById(userNameInteger) == null) {
 			System.out.println("登录失败，用户名=" + user.getId().toString()
 					+ "，用户名不存在");
+			session.put("loginErrorInfo", "职工号不存在！");
 			return "fail";
 		}
 
@@ -135,12 +139,11 @@ public class LoginAction extends ActionSupport {
 
 		if (user.getId() == 999999) {
 			System.out.println("测试用");
-			Map session = ActionContext.getContext().getSession();
 			session.put("user.id", userIdString);
 			return "success";
 		}
 
-		Map session = ActionContext.getContext().getSession();
+		
 		autoCaptcha = (String) session.get("SESSION_SECURITY_CODE");
 
 		if (Md5.validatePassword(CorrectUserPassword, UserPassword)) {
@@ -160,6 +163,7 @@ public class LoginAction extends ActionSupport {
 				System.out.println(inputCaptcha);
 				System.out.println(autoCaptcha);
 				System.out.println("验证码错误");
+				session.put("loginErrorInfo","验证码错误！");
 				return "fail";
 			}
 		}
@@ -167,12 +171,15 @@ public class LoginAction extends ActionSupport {
 		System.out.println("登录失败，用户名=" + userIdString + "  正确密码Md5="
 				+ CorrectUserPassword + "   您的密码Md5="
 				+ Md5.generatePassword(UserPassword));
+		session.put("loginErrorInfo", "密码错误！");
 		return "fail";
 	}
 	public String logout(){
 		Map session = ActionContext.getContext().getSession();
 		if(session.containsKey("user.id")) {
 			session.remove("user.id");
+			session.clear();
+			session.put("loginErrorInfo", "注销成功！");
 			return "success";
 		}
 		else {

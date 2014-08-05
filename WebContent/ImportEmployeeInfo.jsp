@@ -22,16 +22,19 @@
 <script type="text/javascript">
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
-
 		if (nid == "null" || nid == "") {
 			window.location.href = "login.jsp";
-			$(".alert").alert("请先登录！");
+			alert("请先登录！");
 		}
 	}
 
-	function succeed() {
-		alert("导入成功！");
+	function showInfo() {
+		var info = "<%=session.getAttribute("alertInfo")%>";
+		if (info != "null" && info != "") {			
+									alert(info);
+								}
 	}
+	showInfo();
 </script>
 </head>
 

@@ -123,10 +123,11 @@
 	}
 
 	function delManExperience(o) {
+		i=i-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("manExperience").removeChild(o.parentNode);
-
+		topWin.document.getElementById("i").value=i;
 	}
 
 	function addProExperience() {
@@ -178,9 +179,11 @@
 	}
 
 	function delProExperience(o) {
+		j=j-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("proExperience").removeChild(o.parentNode);
+		topWin.document.getElementById("j").value=j;
 	}
 
 	function addWorkerExperience() {
@@ -232,10 +235,12 @@
 	}
 
 	function delWorkerExperience(o) {
+		m=m-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("workerExperience").removeChild(
 				o.parentNode);
+		topWin.document.getElementById("m").value=m;
 	}
 
 	function addEduExperience() {
@@ -287,9 +292,11 @@
 	}
 
 	function delEduExperience(o) {
+		k=k-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("eduExperience").removeChild(o.parentNode);
+		topWin.document.getElementById("k").value=k;
 	}
 
 	function addBreakExperience() {
@@ -356,21 +363,22 @@
 	}
 
 	function delBreakExperience(o) {
+		l=l-1;
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("breakExperience")
 				.removeChild(o.parentNode);
+		topWin.document.getElementById("l").value=l;
 	}
 	
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
 		
-		if (nid == "null" || nid == "") {	
-			alert("请先登录！");
-			window.location.href="login.jsp";	
+		if (nid == "null" || nid == "") {			
+			window.location.href="login.jsp";
+			$(".alert").alert("请先登录！");
 		}
 	}
-	checkLogin();
 </script>
 </head>
 <body onload="checkLogin()">
@@ -384,7 +392,10 @@
 	邮箱:<s:property value="#session.addedEmployee.email" />
 		<br />
 
-	性别：	<s:property value="%{#session.addedEmployee.gender}"></s:property>
+	性别：	<s:if test="%{#session.addedEmployee.gender == '男'}">男</s:if>
+
+		<s:else>女</s:else>
+		<br />
 	出生日期：<s:property value="#session.addedEmployee.birthday" />
 		<br />
 	身份证号：<s:property value="#session.addedEmployee.uid" />

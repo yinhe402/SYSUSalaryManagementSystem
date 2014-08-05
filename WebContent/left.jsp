@@ -14,16 +14,12 @@
 		<script type="text/javascript">
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
-		if (nid == "null" || nid == "") {
-			alert("请先登录");			
+		
+		if (nid == "null" || nid == "") {			
 			window.location.href="login.jsp";
+		
 		}
 	}
-
-	function mainLoad(x) {
-		$("#main").load(x);
-	}
-	checkLogin();
 </script>
 	</head>
 	<body >
@@ -32,13 +28,14 @@
 		      <!--LeftSidebar content-->
 		      	<fieldset style="border:2px">
 <legend style="border:1px;color:red">工资管理</legend>
+
 <div id="pNode1" onclick="showList(this.id);" style="cursor:pointer;">+ 基本工资（津补贴）管理</div> 
 <div id="pNode1_ljf" style="display:none;"> 
 <div id="pNode1_sub1" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">+ 工资普调处理</div> 
 <div id="pNode1_sub1_ljf" style="display:none;">  
 <div id="pNode1_sub1_s2" style="padding-left:40px;">·<a  target="_blank">晋升薪级工资</a></div> 
-<div id="pNode1_sub1_s3" style="padding-left:40px;">·<a onclick="mainLoad('nianzhongjiang.jsp')"  style="cursor:pointer">年终一次性奖金</a></div> 
-<div id="pNode1_sub1_s4" style="padding-left:40px;">·<a href="AnnualEvaluation.jsp" target="mainFrame" style="cursor:pointer">年终考核优秀奖金</a></div> 
+<div id="pNode1_sub1_s3" style="padding-left:40px;">·<a href="nianzhongjiang.jsp" target="mainFrame">年终一次性奖金</a></div> 
+<div id="pNode1_sub1_s4" style="padding-left:40px;">·<a href="AnnualEvaluation.jsp" target="mainFrame">年终考核优秀奖金</a></div> 
 </div> 
 <div id="pNode1_sub2" onclick="showList(this.id);" style="padding-left:20px; cursor:pointer;">+ 日常工资处理</div> 
 <div id="pNode1_sub2_ljf" style="display:none;"> 

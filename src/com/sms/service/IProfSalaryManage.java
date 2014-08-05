@@ -24,7 +24,7 @@ public interface IProfSalaryManage {
 	public void addProfSalCha(ProfessionalSalaryChange profSalaryChange);//增加专业人员套改工资映射
 	public void modifyProfSalCha(ProfessionalSalaryChange profSalaryChange);//修改专业人员套改工资映射
 	public void deleteProfSalCha();//删除专业人员套改工资映射
-	public void setProfSalChaByLevel(Integer level,Integer off,Integer cha);//根据级别和相应工作年限设置套改工资映射记录
+	public ProfessionalSalaryChange findProfSalChaByLevel(Integer level,Integer off,Integer cha);//根据级别和相应工作年限设置套改工资映射记录
 	
 	public ProfessionalPaylevelSalary findProfPaySalByPayLevel(Integer level);
 	public void setAllManage(Integer level,Integer off,Integer cha);//设置所有私有成员
