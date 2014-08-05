@@ -76,8 +76,8 @@
 		</div>
  
 		<div class="span12">
-			<a href="Queryresult.jsp" target="mainFrame" class="btn btn-primary" onclick="salaryQuery()">查询</a>
-		</div>
+		 	<a class="btn btn-primary" onclick="salaryQuery()">查询</a>
+		 </div>
 		
 	</div>
 	<hr/>	
