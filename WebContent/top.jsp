@@ -14,7 +14,6 @@
 		<script type="text/javascript">
 		
 		function logout() {
-
 		alert("确认注销?");
 		top.location.href="logout";
 		}

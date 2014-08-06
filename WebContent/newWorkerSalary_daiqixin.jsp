@@ -123,7 +123,6 @@
 	}
 
 	function delManExperience(o) {
-		
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("manExperience").removeChild(o.parentNode);
@@ -189,7 +188,8 @@
 
 	}
 
-	function delProExperience(o) {	
+
+	function delProExperience(o) {
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var mainDocument = window.top.document.getElementById("mainFrame").contentWindow.document;
 		mainDocument.getElementById("proExperience").removeChild(o.parentNode);

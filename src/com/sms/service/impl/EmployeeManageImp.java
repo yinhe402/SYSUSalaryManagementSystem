@@ -19,13 +19,21 @@ public class EmployeeManageImp implements IEmployeeManage {
 
 	@Override
 	public void addEmployee(Employee employee) {
+		if(findEmployeeById(employee.getId())!=null)
+			modifyEmployee(employee);
+		else {
 		employeeDao.addEmployee(employee);
 		
 		User user = new User();
 		user.setId(employee.getId());
 		user.setPassword(Md5.generatePassword(employee.getId().toString()));
 		user.setUserType(0);
-		userDao.AddUser(user);
+		if(userDao.findUserById(user.getId()) != null)
+			userDao.modifyUser(user);
+		else {
+			userDao.AddUser(user);
+		}
+		}
 	}
 
 	@Override

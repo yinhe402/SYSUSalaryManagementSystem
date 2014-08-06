@@ -99,4 +99,9 @@
 	<bean name="offInfoDao" class="com.sms.dao.impl.OffInfoDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean name="ExperiencesManage" class="com.sms.service.impl.ExperiencesManageImp"></bean>
+	<bean name="ExperiencesDao" class="com.sms.dao.impl.ExperiencesDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>

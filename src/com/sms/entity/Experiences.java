@@ -30,21 +30,21 @@ public class Experiences {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="exId")
-	public Integer getEid() {
-		return eid;
-	}
-
-	public void setEid(Integer eid) {
-		this.eid = eid;
-	}
-
-	@Column(name="eid")
 	public Integer getExId() {
 		return exId;
 	}
 
 	public void setExId(Integer exId) {
 		this.exId = exId;
+	}
+
+	@Column(name="eid")	
+	public Integer getEid() {
+		return eid;
+	}
+
+	public void setEid(Integer eid) {
+		this.eid = eid;
 	}
 
 	@Column(name="type")

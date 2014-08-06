@@ -19,13 +19,14 @@
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 
 		<action name="login" class="loginAction">
-			<result name="success" type="redirect">/userMain.jsp</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="admin" type="redirect">/userMain.jsp</result>
+			<result name="success" type="redirect">/userQuerySalary.jsp</result>
+			<result name="fail">/login.jsp</result>
 		</action>
 		
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success" type="redirect">/login.jsp</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="fail">/userMain.jsp</result>
 		</action>
 		
 		<action name="initCaptcha" class="initCaptcha">
@@ -69,16 +70,22 @@
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 		
-		<action name="salaryQuery" class="salaryQuery" method="querySalary">
-			<result name="success" type = "redirect">/Querystatistics.jsp</result>
-			<interceptor-ref name="myInterceptor"/>
-		</action>
-		
 		<action name="exportSalary" class="autoSalary" method="exportSalary">
 			<result name="success">/success.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 
+	</package>
+	
+	<package name="salaryQuery" namespace="/salaryQuery" extends="abstract_struts">
+		<action name="salaryQuery" class="salaryQuery" method="querySalary">
+			<result name="success" type = "redirect">/Queryresult.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
+		<action name="userSalaryQuery" class="salaryQuery" method="userSalaryQuery">
+			<result name="success" type = "redirect">/userQueryResult.jsp</result>
+			<interceptor-ref name="myInterceptor"/>
+		</action>
 	</package>
 
 	<package name="userActions" namespace="/user" extends="abstract_struts">
@@ -93,6 +100,7 @@
 		<action name="*_*" class="employeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="importFail"> /ImportEmployeeInfo.jsp </result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>

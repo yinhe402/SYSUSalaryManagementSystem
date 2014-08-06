@@ -19,14 +19,23 @@
 					</script>
 						<script type="text/javascript" src="js/Validform_v5.3.2_min.js">
 					</script>
-					<script type="text/javascript">
-							
+					<script type="text/javascript">						
 						function initCaptcha() {
-							var verifyObj = document.getElementById("Verify");
+							
 							verifyObj.onclick = function() {
 								this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							};
 						}
+						function showError() {
+							var errorInfo = "<%=session.getAttribute("loginErrorInfo")%>";
+							<%session.removeAttribute("loginErrorInfo");%>
+							if (errorInfo != "null" && errorInfo != "" && errorInfo != null) {			
+									alert(errorInfo);
+								}
+
+						}
+
+						showError();
 					</script>
 				</head>
 				<body onload="initCaptcha()">
@@ -50,7 +59,7 @@
 										<label for="logonId" class="form-label">
 											账号
 										</label>
-										<input type="text" maxlength="10" name="user.id" class="i-text" datatype="s6-18"
+										<input type="text" maxlength="6" name="user.id" class="i-text" datatype="s6-18"
 										/>
 										<div class="ui-form-explain">
 										</div>
@@ -101,5 +110,4 @@
 						</p>
 					</div>
 				</body>
-			
 			</html>
