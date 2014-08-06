@@ -28,7 +28,11 @@ public class EmployeeManageImp implements IEmployeeManage {
 			user.setId(employee.getId());
 			user.setPassword(Md5.generatePassword(employee.getId().toString()));
 			user.setUserType(0);
-			userDao.AddUser(user);
+			if (userDao.findUserById(user.getId()) != null)
+				userDao.modifyUser(user);
+			else {
+				userDao.AddUser(user);
+			}
 		}
 	}
 

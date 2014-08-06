@@ -11,13 +11,21 @@
 <link rel="stylesheet" href="css/index.css">
 <script type="text/javascript">
 	function checkLogin() {
-		var nid = "<%=session.getAttribute("user.id")%>";
-		
+		var nid = "<%=session.getAttribute("user.id")%>";	
 		if (nid == "null" || nid == "") {			
 			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
+			alert("请先登录！");
 		}
 	}
+
+	function showInfo() {
+		var info = "<%=session.getAttribute("alertInfo")%>";
+		<%session.removeAttribute("alertInfo");%>
+		if(info != "null" && info != "") {
+			alert(info);
+		}
+	}
+	showInfo();
 </script>
 </head>
 <body onload="checkLogin()">

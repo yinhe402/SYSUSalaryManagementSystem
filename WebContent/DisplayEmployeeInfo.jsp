@@ -22,23 +22,33 @@
 		}
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
-		
 		if (nid == "null" || nid == "") {			
 			window.location.href="login.jsp";
 			$(".alert").alert("请先登录！");
 		}
 	}
+	
+	function showError() {
+		var resultInfo = "<%=session.getAttribute("resultInfo")%>";
+		<%session.removeAttribute("resultInfo");%>
+		if (resultInfo != "null" && resultInfo != "" && resultInfo != null) {			
+				alert(resultInfo);
+			}
+	}
+
+	showError();
 </script>
 </head>
 
 <body onload="checkLogin()">
 <br>
 <s:form id="myform1" style="margin-left:300px; margin-bottom:-20px;" >
-	<span style="font-weight:bold;">输入职工号：</span><input type="text" name="employee.id" id="input" style="margin-top:10px;">
+	<span style="font-weight:bold;">输入职工号：</span><input type="text" name="employee.id" id="input" style="margin-top:10px;" maxlength="6">
 	<button type="button" class="btn btn-success" onclick="findEmployee()">查询</button>
 </s:form>
 <br>
 <br>
+
 <s:form id="myform" > 
 <table style="width:90%; margin:0 auto; margin-bottom:50px;"class="table table-bordered table-hover" >
 	<thead>
@@ -132,6 +142,8 @@
 		<tr>
 			<td>聘岗级别:</td> <td><s:property  value="#session.eInfo.jobLevel" /></td>
 		</tr>
+		
+		<%session.removeAttribute("eInfo"); %>
 	</tbody>
 </table>
 </s:form>

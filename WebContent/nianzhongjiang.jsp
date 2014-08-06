@@ -99,7 +99,7 @@
 		<tr>
 			<td height="40">
 				<table width="100%" border="0" cellpadding="4" cellspacing="1"
-					bgcolor="#000000" class="newfont03">
+					bgcolor="#EEEEEE" class="newfont03">
 					<tr class="CTitle" bgcolor="#CAE1FF">
 						<td height="22" colspan="7" align="center"
 							style="font-size:16px; "></td>
@@ -123,6 +123,7 @@
 							<td width="10%"><s:property value="#result.year" /></td>
 						</tr>
 					</s:iterator>
+					<%session.removeAttribute("result"); %>
 				</table>
 			</td>
 		</tr>

@@ -14,7 +14,7 @@
 <script type="text/javascript">
 			function checkLogin() {
 				var nid = "<%=session.getAttribute("user.id")%>";
-				
+
 				if (nid == "null" || nid == "") {
 				window.location.href = "login.jsp";
 				$(".alert").alert("请先登录！");
@@ -27,7 +27,7 @@
 				myform.method = "post";
 				myform.submit();
 			}
-			
+
 			function levelChange(){
 				var myform = document.getElementById("changeInfo");
 				myform.action = "change/PayLevelChange_success";
@@ -41,7 +41,7 @@
 		<h2 style="text-align:center;">职称变动人员名单</h2>
 	</div>
 	<hr/>
-	
+
 	<div class="container" style="margin-left:23%;">
 
 		<form class="form-horizontal" id="changeInfo">
@@ -214,21 +214,21 @@
 							<input id="titlechangetime" type="text" class="datepicker" name="levelChangeTime"/>
 						</div>
 					</div>
-									
+
 					<div class="control-group">
 						<label class="control-label" for="chansaltime">变动起薪时间：</label>
 						<div class="controls">
 							<input id="chansaltime" type="text" class="datepicker" name="changeTime"/>
 						</div>
 					</div>
-					
+
 					<div class="control-group">
 						<label class="control-label" for="chansaltime">起始工作时间：</label>
 						<div class="controls">
 							<input id="starttime" type="text" class="datepicker" name="startTime"/>
 						</div>
 					</div>
-					
+
 					<div class="control-group">
 						<label class="control-label" for="currentlabel">考核不合格次数：</label>
 						<div class="controls">
@@ -262,10 +262,10 @@
 
 			 ViewMode: 'years',
 			format : 'yyyy-mm-dd',
-	
-			
+
+
 		});
-	
+
 </script>
 </body>
 </html>

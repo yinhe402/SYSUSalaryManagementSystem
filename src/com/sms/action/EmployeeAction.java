@@ -97,11 +97,11 @@ public class EmployeeAction extends ActionSupport {
 	private String leaveReason;
 	private String business;
 	
-	public Integer geteId() {
+	public Integer getEId() {
 		return eId;
 	}
 
-	public void seteId(Integer eId) {
+	public void setEId(Integer eId) {
 		this.eId = eId;
 	}
 
@@ -198,9 +198,12 @@ public class EmployeeAction extends ActionSupport {
 			employeeManage.addEmployee(employee);
 			ActionContext.getContext().getSession()
 					.put("addedEmployee", employee);
+			ActionContext.getContext().getSession()
+			.put("alertInfo", "增加成功！");
 			return "success";
 		}
 		return "fail";
+		
 	}
 
 	public String modifyEmployee() {
@@ -215,23 +218,27 @@ public class EmployeeAction extends ActionSupport {
 	}
 
 	public String getEmployeeInfo() {
+		Map session = ActionContext.getContext().getSession();
 		System.out.println("-------employeeAction.getEmployeeInfo--------"
 				+ employee.getId());
-		if (employee.getId() == null)
-			return "fail";
+		if (employee.getId() == null) {
+			session.put("resultInfo", "职工号为空");
+			return "success";
+		}
 		if (isValid(employee.getId())
 				&& employeeManage.findEmployeeById(employee.getId()) != null) {
 			Integer eid = employee.getId();
 			employee = employeeManage.findEmployeeById(eid);
-			Map<String, Object> session = ActionContext.getContext().getSession();
 			session.put("eInfo", employee);
 			return "success";
 		}
-		return "fail";
+		session.put("resultInfo", "职工号不存在！");
+		return "success";
 	}
 	
 	public String importEmployeeInfo() throws FileNotFoundException, ExcelException {
 		System.out.println("-------employeeAction.importEmployeeInfo--------");
+		Map session = ActionContext.getContext().getSession();
 		if (employeeFile != null) {
 			List<Employee> employeeList = new ArrayList<Employee>();
 			InputStream in = new FileInputStream(employeeFile);
@@ -260,12 +267,28 @@ public class EmployeeAction extends ActionSupport {
 			fieldMap.put("（拟）聘任岗位", "hireJob");
 			fieldMap.put("聘岗级别", "jobLevel");
 			String[] uniqueFields = {"职工号"};	
+			try {
 			employeeList = ExcelUtil.excelToList(in, "Sheet1", Employee.class, fieldMap, uniqueFields);			
 			for (Employee e : employeeList) {				
 				employeeManage.addEmployee(e);
 			}
+			
+			session.put("employeeList", employeeList);
+			session
+			.put("alertInfo", "导入完成！");
+			return "success";
+			}
+			catch (ExcelException e) {
+				session
+				.put("alertInfo", e.getMessage());
+				return "importFail";
+			}
 		}
-		return "success";
+		else {
+			session.put("alertInfo", "文件有错请重新选择!");
+			return "importFail";
+		}
+		
 	}
 	
 	public String importStopEmployeeInfo() throws FileNotFoundException, ExcelException {
@@ -316,18 +339,22 @@ public class EmployeeAction extends ActionSupport {
 			System.out.println(lPerson.getNote());
 			leaveSchoolPersonManage.addLeaveSchoolPerson(lPerson);
 		}
+		ActionContext.getContext().getSession().put("rightInfo", "导入成功！");
 		return "success";
 	}
 	
 	public String infoSubmit2() {
 		System.out.println("-------employeeAction.infoSubmit2--------");
+		System.out.println(eId);
 		if (!isValid(eId)) {
 			System.out.println("您的输入有误！职工号"+eId+"不存在");
-			return "fail";
+			ActionContext.getContext().getSession().put("rightInfo", "您的输入有误！职工号"+eId+"不存在");
+			return "success";
 		}
 		if (employeeManage.findEmployeeById(eId) == null) {
 			System.out.println("您的输入有误！职工号"+eId+"不存在");
-			return "fail";
+			ActionContext.getContext().getSession().put("rightInfo", "您的输入有误！职工号"+eId+"不存在");
+			return "success";
 		}
 		LeaveSchoolPerson lSPerson = new LeaveSchoolPerson();
 		lSPerson.setEId(eId);
@@ -338,11 +365,32 @@ public class EmployeeAction extends ActionSupport {
 		lSPerson.setStopDate(stopDate);
 		leaveSchoolPersonManage.addLeaveSchoolPerson(lSPerson);
 		
+		ActionContext.getContext().getSession().put("rightInfo", "导入成功！");
 		return "success";
 	}
 	
 	public String query() {
 		System.out.println("-------employeeAction.query--------");
+		if (queryId == null && queryName.equals("") && queryDepartment.equals("")) {
+			List<LeaveSchoolPerson> leList = (ArrayList<LeaveSchoolPerson>)leaveSchoolPersonManage.findLeaveSchoolPersonsList();
+			List<LeavePersonInfo> lPInfoList = new ArrayList<LeavePersonInfo>();
+			for (LeaveSchoolPerson lPerson:leList) {
+				LeavePersonInfo lPInfo = new LeavePersonInfo();
+				lPInfo.seteId(lPerson.getEId());
+				lPInfo.setDepartment(employeeManage.findEmployeeById(lPerson.getEId()).getDepartment());
+				lPInfo.setGender(employeeManage.findEmployeeById(lPerson.getEId()).getGender());
+				lPInfo.setLeaveDate(lPerson.getLeaveSchoolDate());
+				lPInfo.setName(employeeManage.findEmployeeById(lPerson.getEId()).getName());
+				lPInfo.setNote(lPerson.getNote());
+				lPInfo.setReason(lPerson.getLeaveReason());
+				lPInfo.setState(lPerson.getSalaryState());
+				lPInfo.setStopDate(lPerson.getStopDate());
+				lPInfoList.add(lPInfo);
+			}
+			Map session = ActionContext.getContext().getSession();
+			session.put("queryList", lPInfoList);
+			return "success";
+		}
 		if (queryId != null) {
 			System.out.println("Query_ID");
 			if (!isValid(queryId)) {

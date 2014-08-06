@@ -1975,11 +1975,16 @@ public class NewEmployeeAction extends ActionSupport {
 				session.put("tList", techList);
 				session.put("wList", worList);
 				session.put("eList", eduList);
-
+				session.put("salaryInfo", "增添成功");
 				return "success";
 			}
+			else {
+				ActionContext.getContext().getSession().put("salaryInfo", "职工号不存在！");
+				return "daiqixin";
+			}
 		}
-		return "fail";
+		ActionContext.getContext().getSession().put("salaryInfo", "职工号非法！");
+		return "daiqixin";
 	}
 
 	public String addSalaryInfo() {
@@ -1987,6 +1992,7 @@ public class NewEmployeeAction extends ActionSupport {
 				+ startSalaryInfo.getEid());
 		startSalaryInfo.setOperateDate(new Date());
 		startSalaryInfoManage.addStartSalaryInfo(startSalaryInfo);
+		ActionContext.getContext().getSession().put("salaryInfo", "增加成功！");
 		return "success";
 	}
 }

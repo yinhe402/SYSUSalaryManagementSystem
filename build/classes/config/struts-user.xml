@@ -21,12 +21,12 @@
 		<action name="login" class="loginAction">
 			<result name="admin" type="redirect">/userMain.jsp</result>
 			<result name="success" type="redirect">/userQuerySalary.jsp</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="fail">/login.jsp</result>
 		</action>
 		
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success" type="redirect">/login.jsp</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="fail">/userMain.jsp</result>
 		</action>
 		
 		<action name="initCaptcha" class="initCaptcha">
@@ -79,11 +79,11 @@
 	
 	<package name="salaryQuery" namespace="/salaryQuery" extends="abstract_struts">
 		<action name="salaryQuery" class="salaryQuery" method="querySalary">
-			<result name="success" type = "redirect">/Querystatistics.jsp</result>
+			<result name="success">/Queryresult.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 		<action name="userSalaryQuery" class="salaryQuery" method="userSalaryQuery">
-			<result name="success" type = "redirect">/userQuerySalary.jsp</result>
+			<result name="success" type = "redirect">/userQueryResult.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 	</package>
@@ -100,6 +100,7 @@
 		<action name="*_*" class="employeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="importFail"> /ImportEmployeeInfo.jsp </result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
@@ -128,6 +129,7 @@
 		<action name="*_*" class="newEmployeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="daiqixin" type="redirect">/newWorkerSalary_daiqixin.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>

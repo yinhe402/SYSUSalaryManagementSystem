@@ -13,12 +13,17 @@
 <script type="text/javascript">
 	function checkLogin() {
 		var nid = "<%=session.getAttribute("user.id")%>";
-		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
+		var type = "<%=session.getAttribute("user.userType")%>";
+		if (nid == "null" || nid == "") {
+			alert("请先登录！");			
+			window.location.href="login.jsp";	
+		}
+		else if (type != "1" && type != 1) {
+			alert("您不是管理员！无法进入！");			
+			window.location.href="login.jsp";	
 		}
 	}
+	checkLogin();
 </script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -28,7 +33,7 @@
 <script type="text/javascript" src="js/employee.js"></script>
 </head>
 
-<frameset rows="110,*" cols="*"  border="1" framespacing="0" onload="checkLogin()">
+<frameset rows="110,*" cols="*"  border="1" framespacing="0" >
   <frame src="top.jsp" name="topFrame"  scrolling="no" noresize="noresize" id="topFrame" title="topFrame">
     <frameset  cols="300,*" border="3" >
     <frame src="left.jsp" name="leftFrame"  noresize="noresize" id="leftFrame" title="leftFrame" />  

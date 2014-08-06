@@ -11,6 +11,14 @@
 <link rel="stylesheet" href="css/index.css">
 
 <script type="text/javascript">
+	function showError() {
+		var salaryInfo = "<%=session.getAttribute("salaryInfo")%>";
+		<%session.removeAttribute("salaryInfo");%>
+		if (salaryInfo != "null" && salaryInfo != "" && salaryInfo != null) {			
+				alert(salaryInfo);
+			}
+	}
+	showError();
 	//ar myfrom=document.getElementById("myform1");
 	i = 0;
 	j = 0;

@@ -9,4 +9,5 @@ public interface ILeaveSchoolPersonManage {
 	public void deleteLeaveSchoolPerson(LeaveSchoolPerson leaveSchoolPerson);
 	public void modifyLeaveSchoolPerson(LeaveSchoolPerson leaveSchoolPerson);
 	public LeaveSchoolPerson findLeaveSchoolPersonByEId(Integer eId);
+	public List<LeaveSchoolPerson> findLeaveSchoolPersonsList();
 }
