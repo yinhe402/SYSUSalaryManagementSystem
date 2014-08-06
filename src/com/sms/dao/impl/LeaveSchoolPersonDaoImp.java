@@ -49,4 +49,9 @@ public class LeaveSchoolPersonDaoImp implements ILeaveSchoolPersonDao{
 		return (LeaveSchoolPerson)query.uniqueResult();
 	}
 
+	@Override
+	public List<LeaveSchoolPerson> findLeaveSchoolPersonsList() {
+		Query query = (Query)getSession().createQuery("from LeaveSchoolPerson");
+		return (List<LeaveSchoolPerson>)query.list();
+	}
 }

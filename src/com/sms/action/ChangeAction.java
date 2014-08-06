@@ -397,7 +397,36 @@ public class ChangeAction {
 
 	public void setFailTimes(Integer failTimes) {
 		this.failTimes = failTimes;
+	}
+	
+	private String newPosName;//现聘任职务
+	private Integer newPosRank;//现职务级别
+	private String posChangeTime;//职务变动时间
+	
+	public String getNewPosName() {
+		return newPosName;
+	}
+
+	public void setNewPosName(String newPosName) {
+		this.newPosName = newPosName;
+	}
+
+	public Integer getNewPosRank() {
+		return newPosRank;
+	}
+
+	public void setNewPosRank(Integer newPosRank) {
+		this.newPosRank = newPosRank;
+	}
+
+	public String getPosChangeTime() {
+		return posChangeTime;
+	}
+
+	public void setPosChangeTime(String posChangeTime) {
+		this.posChangeTime = posChangeTime;
 	}	
+	
 
 	// 字符串到日期格式转化函数，输入字符串，返回日期
 	public Date strToDate(String str) {
@@ -2060,8 +2089,8 @@ public class ChangeAction {
 		return level;
 	}
 
-	public String search() {
-		System.out.println("-------changeAction.search--------"
+	public String search1() {
+		System.out.println("-------changeAction.search1--------"
 				+ workerid);
 		if (isValid(workerid)) {
 			if (employeeManage.findEmployeeById(workerid) != null) {
@@ -2074,19 +2103,39 @@ public class ChangeAction {
 		}
 		return "fail";
 	}
-	/*
+	
+	public String search2() {
+		System.out.println("-------changeAction.search2--------"
+				+ workerid);
+		if (isValid(workerid)) {
+			if (employeeManage.findEmployeeById(workerid) != null) {
+				Employee tmpEmployee = employeeManage.findEmployeeById(workerid);
+				Map session = ActionContext.getContext().getSession();
+				session.put("queryEmployee2", tmpEmployee);
+				
+				return "success";
+			}
+		}
+		return "fail";
+	}
+	
 	public String PosChange() {
-		int x = 111111;
+		System.out.println("-------changeAction.PayLevelChange--------"
+				+ workerid);
+		int x = workerid;
 		int year = new Date().getYear();
-		String title = "TO DO";
+		String title = newPosName;
 		if (isValid(x)) {
 			if (employeeManage.findEmployeeById(x) != null) {
 				
 				//更新Employee数据表中职务信息
 				//TODO
-				employeeManage.findEmployeeById(x).setHireWork(hireWork);
-				employeeManage.findEmployeeById(x).setWorkLevel(workLevel);
-				employeeManage.findEmployeeById(x).setStartWorkDate(startWorkDate);
+				employeeManage.findEmployeeById(x).setHireWork(newPosName);
+				employeeManage.findEmployeeById(x).setWorkLevel(newPosRank);
+				employeeManage.findEmployeeById(x).setStartWorkDate(strToDate(posChangeTime));
+				//更新StartSalaryInfo数据表中信息
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setStartSalaryDate(strToDate(changeTime));
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setRemarks(remarks);
 				
 				Date baseWorkDate = null;// 基本日期，2006年7月1日，之前套改，之后不套改
 				String baseDateStr = "2006-07-01";
@@ -2132,31 +2181,23 @@ public class ChangeAction {
 					}
 				}
 				
-				//TODO
-				Date attendWorkDate = strToDate(str);
-				int failTime = 0;//自己填写
+				Date attendWorkDate = strToDate(startTime);
+				int failTime = failTimes;
 				posSalaryAndlevelSalary psals = new posSalaryAndlevelSalary();
 				getSalaryLevel(manageList, techList, eduList, attendWorkDate, array1, array2, array1.size(), failTime, worList, psals);
-				
-				
-				
+								
 				//岗位工资确定
-				startSalaryInfo.setPositionSalary(manageSalaryManage
-						.findManPosSalByLevel(
-								startSalaryInfo.getPositionLevel())
-						.getSalaryStandard());
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setPositionSalary(psals.positionSalary);
 				//薪级工资确定
-				startSalaryInfo.setLevelSalary(manageSalaryManage
-						.findManPaySalByPayLevel(
-								startSalaryInfo.getSalaryLevel())
-						.getSalaryStandard());
+				startSalaryInfoManage.findStartSalaryInfoByEId(x).setLevelSalary(psals.levelSalary);
 				
+				return "success";
 			}
 		}
 		return "fail";
 	}
 
-	*/
+	
 	public String PayLevelChange() {
 		System.out.println("-------changeAction.PayLevelChange--------"
 				+ workerid);

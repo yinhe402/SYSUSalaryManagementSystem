@@ -94,6 +94,7 @@
 		</table>
 	</s:form>
 	
+	<%session.removeAttribute("employeeList"); %>
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.file-input.js"></script>

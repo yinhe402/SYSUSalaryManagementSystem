@@ -149,6 +149,7 @@ public class LoginAction extends ActionSupport {
 			System.out.println(autoCaptcha);
 			if(inputCaptcha.equalsIgnoreCase(autoCaptcha)){
 				session.put("user.id", userIdString);
+				session.put("user.userType", userManage.findUserById(Integer.parseInt(userIdString)).getUserType());
 				System.out.println("登录成功，用户名=" + userIdString + "  密码Md5=" + CorrectUserPassword);
 				
 				Employee employeeLogin = iEmployeeManage.findEmployeeById(userNameInteger);

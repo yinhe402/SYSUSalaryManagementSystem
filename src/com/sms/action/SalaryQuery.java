@@ -31,7 +31,7 @@ public class SalaryQuery {
 	private ISalaryManage iSalaryManage;
 	
 	public String querySalary(){
-		System.out.println(eid);
+		System.out.println("aa");
 		salaryList=new ArrayList<Salary>();
 		List<Salary> templist=new ArrayList<Salary>();
 		List<Employee> employList = iEmployeeManage.findEmployeesByName(name);
@@ -68,6 +68,7 @@ public class SalaryQuery {
 		totalPosition=0;
 		totalLevel=0;
 		totalAmount=0;
+		
 		for(int i=0;i<salaryList.size();i++){
 			totalPosition+=salaryList.get(i).getPositionSalary();
 			totalLevel+=salaryList.get(i).getLevelSalary();
@@ -88,6 +89,10 @@ public class SalaryQuery {
 	}
 	
 	public String userSalaryQuery(){
+		totalPosition=0;
+		totalLevel=0;
+		totalAmount=0;
+
 		eid = Integer.parseInt(ActionContext.getContext().getSession().get("user.id").toString());
 		
 		salaryList=new ArrayList<Salary>();
@@ -107,9 +112,16 @@ public class SalaryQuery {
 	
 		ActionContext.getContext().getSession().put("salaryList", salaryList);
 		
-		totalPosition=0;
-		totalLevel=0;
-		totalAmount=0;
+		if(salaryList.isEmpty())  {
+			ActionContext.getContext().getSession().put("totalPosition", 0);
+			ActionContext.getContext().getSession().put("totalLevel", 0);
+			ActionContext.getContext().getSession().put("totalAmount", 0);
+			ActionContext.getContext().getSession().put("averageAmount", 0);
+			ActionContext.getContext().getSession().put("averageLevel", 0);
+			ActionContext.getContext().getSession().put("averagePosition", 0);
+			return "success";
+		}
+	
 		for(int i=0;i<salaryList.size();i++){
 			totalPosition+=salaryList.get(i).getPositionSalary();
 			totalLevel+=salaryList.get(i).getLevelSalary();

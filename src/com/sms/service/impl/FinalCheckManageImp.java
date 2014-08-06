@@ -14,6 +14,15 @@ public class FinalCheckManageImp implements IFinalCheckManage{
 
 	@Override
 	public void addFinalCheck(FinalCheck finalCheck) {
+		List<FinalCheck> checks = iFinalCheckDao.findFinalCheckByEId(finalCheck.getEId());
+		for (FinalCheck f:checks) {
+			if(f.getYear() == finalCheck.getYear()) {
+				f.setCheckResult(finalCheck.getCheckResult());
+				iFinalCheckDao.modifyFinalCheck(f);
+				return;
+			}
+		}
+			
 		iFinalCheckDao.addFinalCheck(finalCheck);
 	}
 

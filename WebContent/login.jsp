@@ -21,7 +21,7 @@
 					</script>
 					<script type="text/javascript">						
 						function initCaptcha() {
-							
+							var verifyObj = document.getElementById("Verify");
 							verifyObj.onclick = function() {
 								this.src = "initCaptcha?timestamp=" + new Date().getTime();
 							};

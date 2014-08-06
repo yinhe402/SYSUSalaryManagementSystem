@@ -79,7 +79,7 @@
 	
 	<package name="salaryQuery" namespace="/salaryQuery" extends="abstract_struts">
 		<action name="salaryQuery" class="salaryQuery" method="querySalary">
-			<result name="success" type = "redirect">/Queryresult.jsp</result>
+			<result name="success">/Queryresult.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 		<action name="userSalaryQuery" class="salaryQuery" method="userSalaryQuery">
@@ -129,6 +129,7 @@
 		<action name="*_*" class="newEmployeeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="daiqixin" type="redirect">/newWorkerSalary_daiqixin.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>

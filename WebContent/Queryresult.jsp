@@ -18,24 +18,33 @@
 		
 </head>
 <body>
-	<div class="container" style="text-align:center;margin-top:20px;">
-	<h3><font color="#CCFFFF">查询结果</font></h3>
-	<hr/>
-	<table class="table table-bordered" width="40%">
-	<thead>
-		<tr>
-			<th></th>
-			<th>职工号</th>
-			<th>岗位工资</th>
-			<th>薪级工资</th>
-			<th>本月工资总额</th>
-			<th>发放日期</th>
-		</tr>
-	</thead>
-	 
-	<tbody>
-	<s:iterator value="#session.salaryList" id="salary"> 
-		<tr>
+
+	<s:form name="fom" id="fom" method="post" action="">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
+			<tr>
+				<td><table id="subtree1" style="DISPLAY: " width="100%"
+						border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td><table width="85%" border="0" align="center"
+									cellpadding="0" cellspacing="0">
+									<tr>
+										<td height="40" class="font42">
+											<table width="100%" border="0" cellpadding="4"
+												cellspacing="1" bgcolor="#000000" class="newfont03">
+												<tr class="CTitle" bgcolor="#CAE1FF" >
+													<td height="22" colspan="7" align="center"
+														style="font-size:16px;">查询结果</td>
+												</tr>
+												<tr bgcolor="#EEEEEE">
+													<td width="10%"></td>
+													<td width="10%">职工号</td>
+													<td width="10%">岗位工资</td>
+													<td width="10%">薪级工资</td>
+													<td width="10%">本月工资总额</td>
+													<td width="10%">发放日期</td>
+												</tr>
+												<s:iterator value="#session.salaryList" id="salary"> 
+		<tr bgcolor="#EEEEEE">
 		<td><%out.print(i++);%></td>
 		<td><s:property value="#salary.eid"/></td>
 		<td><s:property value="#salary.positionSalary"/></td>
@@ -44,7 +53,7 @@
 		<td><s:date name="#salary.time" format="yyyy-MM-dd" /></td>
 		</tr>
 		</s:iterator>
-		<tr>
+		<tr bgcolor="#EEEEEE">
 			<td>总额</td>
 			<td></td>
 			<td><s:property value="#session.totalPosition"/></td>
@@ -53,16 +62,22 @@
 			<td></td>
 		</tr>
 		
-		<tr>
+		<tr bgcolor="#EEEEEE">
 			<td>平均额</td>
 			<td></td>
 			<td><s:property value="#session.averagePosition"/></td>
 			<td><s:property value="#session.averageLevel"/></td>
 			<td><s:property value="#session.averageAmount"/></td>
 			<td></td>
-		</tr>
-	 </tbody>
-	</table>
-	</div>
+		</tr> 
+											</table>
+										</td>
+									</tr>
+								</table></td>
+						</tr>
+					</table></td>
+			</tr>
+		</table>
+	</s:form>
 </body>
 </html>

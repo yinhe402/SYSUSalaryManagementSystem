@@ -23,10 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	//var myfrom=document.getElementById("myform1");
 	
+		function showError() {
+			var rightInfo = "<%=session.getAttribute("rightInfo")%>";
+			<%session.removeAttribute("rightInfo");%>
+			if (rightInfo != "null" && rightInfo != "" && rightInfo != null) {			
+				alert(rightInfo);
+			}
+		}
+		showError();
+		
 		function yesToSubmit()
 		{
 			var myform=document.getElementById("myform1");
-			myform.action="employee/infoSubmit_success";
+			myform.action="employee/infoSubmit_remove";
 			myform.method="post";
 			myform.submit();
 		}
@@ -34,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function yestoSubmit()
 		{
 			var myform=document.getElementById("myform2");
-			myform.action="employee/infoSubmit2_success";
+			myform.action="employee/infoSubmit2_remove";
 			myform.method="post";
 			myform.submit();
 		}

@@ -19,7 +19,7 @@
 	{	
 		var topWin = window.top.document.getElementById("mainFrame").contentWindow;
 		var myform = topWin.document.getElementById("myform1");
-		myform.action="newEmployee/addSalaryInfo_success";
+		myform.action="newEmployee/addSalaryInfo_newWorkerSalary_daiqixin";
 		myform.method="post";
 		myform.submit();
 	}
