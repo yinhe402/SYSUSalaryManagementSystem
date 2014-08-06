@@ -31,6 +31,9 @@ public class SalaryQuery {
 	private ISalaryManage iSalaryManage;
 	
 	public String querySalary(){
+		totalPosition=0;
+		totalLevel=0;
+		totalAmount=0;
 		System.out.println("aa");
 		salaryList=new ArrayList<Salary>();
 		List<Salary> templist=new ArrayList<Salary>();
@@ -65,9 +68,16 @@ public class SalaryQuery {
 		
 		ActionContext.getContext().getSession().put("salaryList", salaryList);
 		
-		totalPosition=0;
-		totalLevel=0;
-		totalAmount=0;
+		if(salaryList.isEmpty())  {
+			ActionContext.getContext().getSession().put("totalPosition", 0);
+			ActionContext.getContext().getSession().put("totalLevel", 0);
+			ActionContext.getContext().getSession().put("totalAmount", 0);
+			ActionContext.getContext().getSession().put("averageAmount", 0);
+			ActionContext.getContext().getSession().put("averageLevel", 0);
+			ActionContext.getContext().getSession().put("averagePosition", 0);
+			return "success";
+		}
+		
 		
 		for(int i=0;i<salaryList.size();i++){
 			totalPosition+=salaryList.get(i).getPositionSalary();

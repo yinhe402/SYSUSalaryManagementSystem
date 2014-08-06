@@ -98,10 +98,14 @@ public class ChangeAction {
 	public String SchoolInnerChange() {
 		System.out.println("-------changeAction.SchoolInnerChange--------"
 				+ departmentChange.getEId());
-		if (!isValid(departmentChange.getEId()))
+		if (!isValid(departmentChange.getEId())) {
+			ActionContext.getContext().getSession().put("innerInfo", "职工号格式有误！");
 			return "fail";
-		if (employeeManage.findEmployeeById(departmentChange.getEId()) == null)
+		}
+		if (employeeManage.findEmployeeById(departmentChange.getEId()) == null) {
+			ActionContext.getContext().getSession().put("innerInfo", "职工号不存在！");
 			return "fail";
+		}
 		if (employeeManage.findEmployeeById(departmentChange.getEId())
 				.getName().equals(departmentChange.getName())
 				&& employeeManage.findEmployeeById(departmentChange.getEId())
@@ -112,6 +116,7 @@ public class ChangeAction {
 			departmentChangeManage.addDepartmentChange(departmentChange);
 			return "success";
 		}
+		ActionContext.getContext().getSession().put("innerInfo", "姓名或学院名称有误！");
 		return "fail";
 	}
 
@@ -2191,10 +2196,16 @@ public class ChangeAction {
 				//薪级工资确定
 				startSalaryInfoManage.findStartSalaryInfoByEId(x).setLevelSalary(psals.levelSalary);
 				
+				ActionContext.getContext().getSession().put("tipInfo", "更改成功！");
+				return "success";
+			}
+			else {
+				ActionContext.getContext().getSession().put("tipInfo", "职工号不存在！");
 				return "success";
 			}
 		}
-		return "fail";
+		ActionContext.getContext().getSession().put("tipInfo", "职工号非法！");
+		return "success";
 	}
 
 	
@@ -2270,10 +2281,16 @@ public class ChangeAction {
 				//薪级工资确定
 				startSalaryInfoManage.findStartSalaryInfoByEId(x).setLevelSalary(psals.levelSalary);
 				
+				ActionContext.getContext().getSession().put("tipInfo", "更改成功！");
+				return "success";
+			}
+			else {
+				ActionContext.getContext().getSession().put("tipInfo", "职工号不存在！");
 				return "success";
 			}
 		}
-		return "fail";
+		ActionContext.getContext().getSession().put("tipInfo", "职工号非法！");
+		return "success";
 	}
 	
 	public static class posSalaryAndlevelSalary {
