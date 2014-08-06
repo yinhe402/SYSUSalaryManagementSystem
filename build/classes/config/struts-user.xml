@@ -169,8 +169,8 @@
 	<package name="changeActions" namespace="/change" extends="abstract_struts">
 		<action name="*_*" class="changeAction" method="{1}">
 			<result name="success" type="redirect">/{2}.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<result name="null" type="redirect">/success.jsp</result>
+			<result name="fail" type="redirect">/campusmobilization.jsp</result>
+			<result name="null" type="redirect">/campusmobilization.jsp</result>
 			<interceptor-ref name="myInterceptor"/>
 		</action>
 	</package>
