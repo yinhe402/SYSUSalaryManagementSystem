@@ -14,22 +14,31 @@
 		
 		<script type="text/javascript">
 		//var myfrom=document.getElementById("myform1");
+		function showError() {
+			var innerInfo = "<%=session.getAttribute("innerInfo")%>";
+			<%session.removeAttribute("innerInfo");%>
+			if (innerInfo != "null" && innerInfo != "" && innerInfo != null) {
+					alert(innerInfo);
+				}
+
+			}
+
+			showError();
+
+			function exportExcel() {
+				var myform = document.forms[0];
+				myform.action = "change/InfoExport_campusmobilization";
+				myform.method = "post";
+				myform.submit();
+			}
+
+			function checkLogin() {
+				var nid = "<%=session.getAttribute("user.id")%>";
 		
-		function exportExcel()
-		{
-			var myform=document.forms[0];
-			myform.action="change/InfoExport_success";
-			myform.method="post";
-			myform.submit();
-		}
-		
-		function checkLogin() {
-		var nid = "<%=session.getAttribute("user.id")%>";
-		
-		if (nid == "null" || nid == "") {			
-			window.location.href="login.jsp";
-			$(".alert").alert("请先登录！");
-		}
+			if (nid == "null" || nid == "") {			
+				window.location.href="login.jsp";
+				$(".alert").alert("请先登录！");
+			}
 	}
 
 	</script>
@@ -68,7 +77,7 @@
 				 
 			</table>
 			<div style="margin-top:10px">
-			<input class="btn btn-success" type="button" value="增加" onclick="exportExcel()"/>
+			<input class="btn btn-success" type="button" value="导出" onclick="exportExcel()"/>
 			</div>
 		</form>
 	</div>

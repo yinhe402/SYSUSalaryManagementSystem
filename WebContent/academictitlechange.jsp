@@ -30,10 +30,20 @@
 
 			function levelChange(){
 				var myform = document.getElementById("changeInfo");
-				myform.action = "change/PayLevelChange_success";
+				myform.action = "change/PayLevelChange_academictitlechange";
 				myform.method = "post";
 				myform.submit();
 			}
+			
+			function showError() {
+				var tipInfo = "<%=session.getAttribute("tipInfo")%>";
+				<%session.removeAttribute("tipInfo");%>
+				if (tipInfo != "null" && tipInfo != "" && tipInfo != null) {			
+					alert(tipInfo);
+				}
+			}
+
+			showError();
 </script>
 </head>
 <body onload="checkLogin()">
@@ -255,6 +265,7 @@
 					</div>
 			</fieldset>
 		</form>
+		<%session.removeAttribute("queryEmployee");%>
 	</div>
 <script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
