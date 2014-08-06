@@ -101,7 +101,7 @@ public class SpecialSalaryAction {
 		iSpecialSalaryRecoveryManage.addSpecialSalaryRecovery(specialSalaryRecovery);
 
 
-		Salary salary = iSalaryManage.findLastSalaryByEId(specialSalaryChange.getEId());
+		Salary salary = iSalaryManage.findLastSalaryByEId(specialSalaryRecovery.getEId());
 
 		if(salary==null){
 			return "fail";
