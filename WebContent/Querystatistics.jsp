@@ -40,8 +40,6 @@
 				}
 			}
 
- 
- 
 			function salaryQuery()
 			{
 				var myform=document.forms[0];
