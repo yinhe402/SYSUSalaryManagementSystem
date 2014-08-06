@@ -12,30 +12,15 @@
 <title>中山大学教职工工资系统</title>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="bootstrap/css/datepicker.css">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="bootstrap/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 
 <script type="text/javascript">
 
-		$(function(){ 
-		    $("#date_1").datepicker({
-	    		format: 'yyyy-mm-dd',
-	    	}); 
-		}); 
 
-		$(function(){ 
-		    $("#date_2").datepicker({
-	    		format: 'yyyy-mm-dd',
-	    	}); 
-		}); 
-
-
-			function checkLogin() {
-				var nid = "<%=session.getAttribute("user.id")%>";
+	function checkLogin() {
+		var nid = "<%=session.getAttribute("user.id")%>";
 
 		if (nid == "null" || nid == "") {
 			window.location.href = "login.jsp";
