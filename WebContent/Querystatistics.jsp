@@ -40,8 +40,6 @@
 				}
 			}
 
- 
- 
 			function salaryQuery()
 			{
 				var myform=document.forms[0];
@@ -76,7 +74,7 @@
 		</div>
  
 		<div class="span12">
-			<a href="Queryresult.jsp" target="mainFrame" class="btn btn-primary" onclick="salaryQuery()">查询</a>
+			<a class="btn btn-primary" onclick="salaryQuery()">查询</a>
 		</div>
 
 	</div>

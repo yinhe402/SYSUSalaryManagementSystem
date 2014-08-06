@@ -31,7 +31,7 @@ public class SalaryQuery {
 	private ISalaryManage iSalaryManage;
 	
 	public String querySalary(){
-		System.out.println(eid);
+		System.out.println("aa");
 		salaryList=new ArrayList<Salary>();
 		List<Salary> templist=new ArrayList<Salary>();
 		List<Employee> employList = iEmployeeManage.findEmployeesByName(name);
@@ -88,6 +88,7 @@ public class SalaryQuery {
 	}
 	
 	public String userSalaryQuery(){
+		System.out.println("aa");
 		eid = Integer.parseInt(ActionContext.getContext().getSession().get("user.id").toString());
 		
 		salaryList=new ArrayList<Salary>();
