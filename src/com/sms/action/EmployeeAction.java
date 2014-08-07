@@ -406,12 +406,14 @@ public class EmployeeAction extends ActionSupport {
 					lPInfo.setName(employeeManage.findEmployeeById(queryId).getName());
 					lPInfo.setGender(employeeManage.findEmployeeById(queryId).getGender());
 					lPInfo.setDepartment(employeeManage.findEmployeeById(queryId).getDepartment());
-					lPInfo.setLeaveDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getLeaveSchoolDate());
-					lPInfo.setReason(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getLeaveReason());
-					lPInfo.setState(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getSalaryState());
-					lPInfo.setStopDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getStopDate());
-					lPInfo.setNote(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getNote());
-					lPInfoList.add(lPInfo);
+					if (leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId) != null) {
+						lPInfo.setLeaveDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getLeaveSchoolDate());
+						lPInfo.setReason(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getLeaveReason());
+						lPInfo.setState(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getSalaryState());
+						lPInfo.setStopDate(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getStopDate());
+						lPInfo.setNote(leaveSchoolPersonManage.findLeaveSchoolPersonByEId(queryId).getNote());
+						lPInfoList.add(lPInfo);
+					}
 					
 					Map session = ActionContext.getContext().getSession();
 					session.put("queryList", lPInfoList);

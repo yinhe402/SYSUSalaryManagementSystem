@@ -98,6 +98,10 @@ public class ChangeAction {
 	public String SchoolInnerChange() {
 		System.out.println("-------changeAction.SchoolInnerChange--------"
 				+ departmentChange.getEId());
+		if (departmentChange.getEId() == null) {
+			ActionContext.getContext().getSession().put("innerInfo", "请填入职工号！");
+			return "fail";
+		}
 		if (!isValid(departmentChange.getEId())) {
 			ActionContext.getContext().getSession().put("innerInfo", "职工号格式有误！");
 			return "fail";
@@ -116,7 +120,7 @@ public class ChangeAction {
 			departmentChangeManage.addDepartmentChange(departmentChange);
 			return "success";
 		}
-		ActionContext.getContext().getSession().put("innerInfo", "姓名或学院名称有误！");
+		ActionContext.getContext().getSession().put("innerInfo", "姓名或单位名称有误！");
 		return "fail";
 	}
 
